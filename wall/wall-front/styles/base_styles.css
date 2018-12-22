@@ -1,0 +1,59 @@
+@import url(tabs.css);
+@font-face {
+  font-family: Yekan;
+  src: url("../base_static_files/fonts/BYekan.ttf"); }
+html {
+  overflow-y: auto;
+  height: 100vh; }
+
+body {
+  font-family: Yekan !important; }
+
+a:hover {
+  text-decoration: none; }
+
+#root {
+  background: url("../base_static_files/images/background.jpg") no-repeat center fixed;
+  background-size: cover;
+  min-height: 100vh; }
+
+.wall-logo {
+  color: rgba(255, 255, 255, 0.5); }
+  .wall-logo:hover {
+    color: rgba(255, 255, 255, 0.75); }
+
+.content {
+  margin-top: 2rem;
+  text-align: right; }
+  .content .title {
+    font-size: 1.25rem;
+    display: block; }
+  .content .explanation {
+    margin-bottom: 3rem; }
+  .content .submit {
+    float: left;
+    margin-right: 1rem; }
+  .content .ltr-input {
+    direction: ltr; }
+  .content .success-message {
+    color: #5cb85c;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 1s linear; }
+    .content .success-message.hidden {
+      visibility: hidden;
+      opacity: 0; }
+
+label {
+  float: right;
+  text-align: right; }
+
+.search-panel {
+  width: 100%;
+  height: 3rem;
+  padding: 0.3rem 0;
+  background-color: rgba(0, 0, 0, 0.5); }
+  .search-panel .full-width {
+    width: 100%; }
+
+/*# sourceMappingURL=base_styles.css.map */

@@ -1,0 +1,137 @@
+type AddBalanceMutationError {
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input AddBalanceMutationInput {
+  clientMutationId: String
+}
+
+type AddBalanceMutationPayload {
+  ok: Boolean!
+  user: UserType
+  clientMutationId: String
+  errors: AddBalanceMutationError
+}
+
+type EditProfileMutationError {
+  firstName: [String]
+  lastName: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input EditProfileMutationInput {
+  firstName: String
+  lastName: String
+  clientMutationId: String
+}
+
+type EditProfileMutationPayload {
+  ok: Boolean!
+  user: UserType
+  clientMutationId: String
+  errors: EditProfileMutationError
+}
+
+type Mutation {
+  userLogin(input: UserLoginInput!): UserLoginPayload
+  userLogout(input: UserLogoutInput!): UserLogoutPayload
+  userSignUp(input: UserSignUpInput!): UserSignUpPayload
+  editProfile(input: EditProfileMutationInput!): EditProfileMutationPayload
+  addBalance(input: AddBalanceMutationInput!): AddBalanceMutationPayload
+  resendCode(input: ResendCodeMutationInput!): ResendCodeMutationPayload
+}
+
+"""An object with an ID"""
+interface Node {
+  """The ID of the object."""
+  id: ID!
+}
+
+type Query {
+  users: [UserType]
+  user(id: String!): UserType
+  me: UserType
+  hi: String
+}
+
+type ResendCodeMutationError {
+  phone: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input ResendCodeMutationInput {
+  phone: String!
+  clientMutationId: String
+}
+
+type ResendCodeMutationPayload {
+  ok: Boolean!
+  clientMutationId: String
+  errors: ResendCodeMutationError
+}
+
+type UserLoginError {
+  phone: [String]
+  code: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input UserLoginInput {
+  phone: String!
+  code: String!
+  clientMutationId: String
+}
+
+type UserLoginPayload {
+  ok: Boolean!
+  user: UserType
+  clientMutationId: String
+  errors: UserLoginError
+}
+
+type UserLogoutError {
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input UserLogoutInput {
+  clientMutationId: String
+}
+
+type UserLogoutPayload {
+  ok: Boolean!
+  clientMutationId: String
+  errors: UserLogoutError
+}
+
+type UserSignUpError {
+  phone: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input UserSignUpInput {
+  phone: String!
+  clientMutationId: String
+}
+
+type UserSignUpPayload {
+  ok: Boolean!
+  user: UserType
+  clientMutationId: String
+  errors: UserSignUpError
+}
+
+type UserType implements Node {
+  """The ID of the object."""
+  id: ID!
+  firstName: String!
+  lastName: String!
+  balance: Int!
+  phone: String
+}
+

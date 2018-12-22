@@ -1,0 +1,120 @@
+@mixin animation($delay, $duration, $animation) {
+  -webkit-animation-delay: $delay;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-name: $animation;
+  -webkit-animation-fill-mode: forwards;
+
+  -moz-animation-delay: $delay;
+  -moz-animation-duration: $duration;
+  -moz-animation-name: $animation;
+  -moz-animation-fill-mode: forwards;
+
+  -o-animation-delay: $delay;
+  -o-animation-duration: $duration;
+  -o-animation-name: $animation;
+  -o-animation-fill-mode: forwards;
+
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-name: $animation;
+  animation-fill-mode: forwards;
+}
+
+@mixin breakpoint($point) {
+  @if $point == big {
+    @media screen and (max-width: 1600px) {
+      @content;
+    }
+  } @else if $point == medium {
+    @media screen and (max-width: 900px) {
+      @content;
+    }
+  } @else if $point == small {
+    @media screen and (max-width: 600px) {
+      @content;
+    }
+  }
+}
+
+$tab-head-color: #525252;
+$tab-checked-border-color: #B8B63E;
+$tab-border-color: #4D4C47;
+$tab-text-color: #DBDBD3;
+$tab-checked-text-color: #F2F2F2;
+$tab-hover-color: #667876;
+$tab-body-wrapper-color: #F7EEC6;
+$tab-delimiter-line-height: 5px;
+$tab-label-height: 3em;
+
+.tabs-wrapper {
+  input[type=radio] {
+    display: none;
+  }
+  .tab-head {
+    transition: background 0.4s ease-in-out, height 0.2s linear;
+    display: inline-block;
+    cursor: pointer;
+    color: $tab-text-color;
+    padding: 1rem;
+    height: $tab-label-height;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: $tab-head-color;
+    text-align: center;
+    &:last-of-type {
+      border-bottom: none;
+    }
+    &:hover {
+      background: $tab-hover-color;
+    }
+    @include breakpoint(small) {
+      display: block;
+      border-bottom: 2px solid $tab-border-color;
+      border-radius: 0;
+    }
+    &.checked {
+      background: $tab-checked-border-color;
+      color: $tab-checked-text-color;
+    }
+  }
+  @include breakpoint(small) {
+    margin: 0;
+  }
+}
+
+.tab-body {
+  position: absolute;
+  top: -9999px;
+  opacity: 0;
+  padding: 10px;
+}
+
+.tab-body-wrapper {
+  width: 100%;
+  padding: 1rem;
+  background: $tab-body-wrapper-color;
+  border-top: $tab-checked-border-color $tab-delimiter-line-height solid;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 3px;
+  @include animation(0.2s, 1.5s, show);
+  @include breakpoint(small) {
+    border: none;
+    border-radius: 0;
+  }
+;
+}
+
+#tab1:checked ~ .tab-body-wrapper #tab-body-1, #tab2:checked ~ .tab-body-wrapper #tab-body-2, #tab3:checked ~ .tab-body-wrapper #tab-body-3, #tab4:checked ~ .tab-body-wrapper #tab-body-4 {
+  position: relative;
+  top: 0px;
+  /* Choose one */
+  /* @include animation(0.2s,0.8s,content-opacity); */
+  /* @include animation(0.2s,0.8s,content-rotate-x); */
+  /* @include animation(0.2s,0.8s,content-rotate-y); */
+  /* @include animation(0.2s,0.8s,content-rotate-both); */
+  /* @include animation(0.2s,0.8s,content-pop-in); */
+  /* @include animation(0.2s,0.8s,content-pop-out); */
+  /* @include animation(0.1s,1s,content-slide-bot); */
+  @include animation(0.1s, 1s, content-slide-top);
+}

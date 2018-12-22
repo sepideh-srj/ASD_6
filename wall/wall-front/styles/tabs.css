@@ -1,0 +1,93 @@
+.tabs-wrapper input[type=radio] {
+  display: none; }
+.tabs-wrapper .tab-head {
+  transition: background 0.4s ease-in-out, height 0.2s linear;
+  display: inline-block;
+  cursor: pointer;
+  color: #DBDBD3;
+  padding: 1rem;
+  height: 3em;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background: #525252;
+  text-align: center; }
+  .tabs-wrapper .tab-head:last-of-type {
+    border-bottom: none; }
+  .tabs-wrapper .tab-head:hover {
+    background: #667876; }
+  @media screen and (max-width: 600px) {
+    .tabs-wrapper .tab-head {
+      display: block;
+      border-bottom: 2px solid #4D4C47;
+      border-radius: 0; } }
+  .tabs-wrapper .tab-head.checked {
+    background: #B8B63E;
+    color: #F2F2F2; }
+@media screen and (max-width: 600px) {
+  .tabs-wrapper {
+    margin: 0; } }
+
+.tab-body {
+  position: absolute;
+  top: -9999px;
+  opacity: 0;
+  padding: 10px; }
+
+.tab-body-wrapper {
+  width: 100%;
+  padding: 1rem;
+  background: #F7EEC6;
+  border-top: #B8B63E 5px solid;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 3px;
+  -webkit-animation-delay: 0.2s;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-name: show;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-delay: 0.2s;
+  -moz-animation-duration: 1.5s;
+  -moz-animation-name: show;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-delay: 0.2s;
+  -o-animation-duration: 1.5s;
+  -o-animation-name: show;
+  -o-animation-fill-mode: forwards;
+  animation-delay: 0.2s;
+  animation-duration: 1.5s;
+  animation-name: show;
+  animation-fill-mode: forwards; }
+  @media screen and (max-width: 600px) {
+    .tab-body-wrapper {
+      border: none;
+      border-radius: 0; } }
+
+#tab1:checked ~ .tab-body-wrapper #tab-body-1, #tab2:checked ~ .tab-body-wrapper #tab-body-2, #tab3:checked ~ .tab-body-wrapper #tab-body-3, #tab4:checked ~ .tab-body-wrapper #tab-body-4 {
+  position: relative;
+  top: 0px;
+  /* Choose one */
+  /* @include animation(0.2s,0.8s,content-opacity); */
+  /* @include animation(0.2s,0.8s,content-rotate-x); */
+  /* @include animation(0.2s,0.8s,content-rotate-y); */
+  /* @include animation(0.2s,0.8s,content-rotate-both); */
+  /* @include animation(0.2s,0.8s,content-pop-in); */
+  /* @include animation(0.2s,0.8s,content-pop-out); */
+  /* @include animation(0.1s,1s,content-slide-bot); */
+  -webkit-animation-delay: 0.1s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: content-slide-top;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-delay: 0.1s;
+  -moz-animation-duration: 1s;
+  -moz-animation-name: content-slide-top;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-delay: 0.1s;
+  -o-animation-duration: 1s;
+  -o-animation-name: content-slide-top;
+  -o-animation-fill-mode: forwards;
+  animation-delay: 0.1s;
+  animation-duration: 1s;
+  animation-name: content-slide-top;
+  animation-fill-mode: forwards; }
+
+/*# sourceMappingURL=tabs.css.map */
