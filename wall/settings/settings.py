@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'webpack_loader',
     'snapshottest',
-    # 'storages',
+    'storages',
     'django_fsm',
 ]
 

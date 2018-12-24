@@ -130,6 +130,7 @@ class EditProfile extends React.Component {
         const {firstName, lastName} = this.state;
         EditProfileMutation(firstName || this.me.firstName, lastName || this.me.lastName, (response) => {
             if (response.ok) {
+                this.props.change_balance(0, 1, firstName || this.me.firstName)
                 toast('تغییرات با موفقیت ذخیره شد.');
             }
             else

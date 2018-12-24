@@ -33,7 +33,7 @@ class BaseNavbar extends Component {
                 phone: this.props.logged.phone
             });
             localStorage.setItem('username', this.props.logged.id);
-            this.props.change_balance(this.props.logged.balance);
+            this.props.change_balance(this.props.logged.balance, 0, this.props.logged.firstName);
         } else {
             localStorage.setItem('username', null)
         }
@@ -53,7 +53,7 @@ class BaseNavbar extends Component {
     }
 
     render() {
-        let name = this.state.first_name === '' ? 'کاربر' : this.state.first_name;
+        let name = this.props.name === '' ? 'کاربر' : this.props.name;
         let icon_style = {
             color: 'white',
             fontSize: '20px',

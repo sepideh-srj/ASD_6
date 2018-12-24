@@ -74,3 +74,9 @@ htmlcov/
 
 #styles
 *.css.map
+
+#virtualenv
+/env
+
+#vscode settings
+/.vscode

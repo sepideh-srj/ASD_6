@@ -6,12 +6,13 @@ import BaseNavbar from './BaseNavbar';
 class BaseNavbarQueryRenderer extends React.Component {
     constructor() {
         super();
-        this.state = {balance: 0}
+        this.state = {balance: 0, name: ''}
     }
 
-    change_balance(offset, coef = 0) {
+    change_balance(offset, coef = 0, name=null) {
         let newBalance = offset + coef * this.state.balance;
         this.setState({balance: newBalance})
+        name && this.setState({name})
         return newBalance
     }
 
@@ -33,7 +34,7 @@ class BaseNavbarQueryRenderer extends React.Component {
                                 }));
                             return (
                                 <div>
-                                    <BaseNavbar logged={props.me} balance={this.state.balance}
+                                    <BaseNavbar logged={props.me} balance={this.state.balance} name={this.state.name}
                                                 change_balance={this.change_balance.bind(this)}
                                     />
                                     {childrenWithProps}

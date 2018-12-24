@@ -19497,7 +19497,7 @@ class BaseNavbar extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 phone: this.props.logged.phone });
 
             localStorage.setItem('username', this.props.logged.id);
-            this.props.change_balance(this.props.logged.balance);
+            this.props.change_balance(this.props.logged.balance, 0, this.props.logged.firstName);
         } else {
             localStorage.setItem('username', null);
         }
@@ -19517,7 +19517,7 @@ class BaseNavbar extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
 
     render() {
-        let name = this.state.first_name === '' ? 'کاربر' : this.state.first_name;
+        let name = this.props.name === '' ? 'کاربر' : this.props.name;
         let icon_style = {
             color: 'white',
             fontSize: '20px',
@@ -19594,12 +19594,13 @@ class BaseNavbar extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 class BaseNavbarQueryRenderer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     constructor() {
         super();
-        this.state = { balance: 0 };
+        this.state = { balance: 0, name: '' };
     }
 
-    change_balance(offset, coef = 0) {
+    change_balance(offset, coef = 0, name = null) {
         let newBalance = offset + coef * this.state.balance;
         this.setState({ balance: newBalance });
+        name && this.setState({ name });
         return newBalance;
     }
 
@@ -19621,7 +19622,7 @@ class BaseNavbarQueryRenderer extends __WEBPACK_IMPORTED_MODULE_0_react___defaul
 
                         return (
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__BaseNavbar__["a" /* default */], { logged: props.me, balance: this.state.balance,
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__BaseNavbar__["a" /* default */], { logged: props.me, balance: this.state.balance, name: this.state.name,
                                     change_balance: this.change_balance.bind(this) }),
 
                                 childrenWithProps));
@@ -20230,6 +20231,7 @@ class EditProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
             const { firstName, lastName } = _this.state;
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__mutations_EditProfileMutation__["a" /* default */])(firstName || _this.me.firstName, lastName || _this.me.lastName, function (response) {
                 if (response.ok) {
+                    _this.props.change_balance(0, 1, firstName || _this.me.firstName);
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_react_toastify__["toast"])('تغییرات با موفقیت ذخیره شد.');
                 } else
 
