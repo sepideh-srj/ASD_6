@@ -4,8 +4,8 @@ from graphene import relay
 from graphene_django.types import DjangoObjectType
 
 from products.models import Product
-from products.mutations.book_mutations import BookCreate, BookHideMutation, BookRemoveMutation
-from products.schema import BorrowRequestFilterSet
+from products.mutations.product_mutations import ProductCreate, ProductHideMutation, ProductRemoveMutation
+# from borrow.schema import BorrowRequestFilterSet
 
 
 class CategoryType(graphene.Enum):
@@ -51,12 +51,12 @@ class ProductType(DjangoObjectType):
             return 'REQUESTED'
         return 'NONE'
 
-    @staticmethod
-    def resolve_borrow_requests(root, info, **kwargs):
-        user = info.context.user
-        if user != root.owner:
-            return root.borrow_requests.none()
-        return BorrowRequestFilterSet(info, kwargs, queryset=root.borrow_requests.all()).qs
+    # @staticmethod
+    # def resolve_borrow_requests(root, info, **kwargs):
+    #     user = info.context.user
+    #     if user != root.owner:
+    #         return root.borrow_requests.none()
+    #     return BorrowRequestFilterSet(info, kwargs, queryset=root.borrow_requests.all()).qs
 
     @staticmethod
     def resolve_image(root, info):
