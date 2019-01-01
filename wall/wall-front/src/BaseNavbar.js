@@ -33,7 +33,7 @@ class BaseNavbar extends Component {
                 phone: this.props.logged.phone
             });
             localStorage.setItem('username', this.props.logged.id);
-            this.props.change_balance(this.props.logged.balance, 0, this.props.logged.firstName);
+            this.props.change_balance(this.props.logged.balance);
         } else {
             localStorage.setItem('username', null)
         }
@@ -53,7 +53,7 @@ class BaseNavbar extends Component {
     }
 
     render() {
-        let name = this.props.name === '' ? 'کاربر' : this.props.name;
+        let name = this.state.first_name === '' ? 'کاربر' : this.state.first_name;
         let icon_style = {
             color: 'white',
             fontSize: '20px',
@@ -64,8 +64,8 @@ class BaseNavbar extends Component {
                 <link rel="stylesheet"
                       href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
                 <Navbar color="dark" dark expand="md">
-                    <Link className="nav-link wall-logo" to="/">
-                        سامانه وال
+                    <Link className="nav-link parma-logo" to="/">
+                        کتابخانه پارما
                     </Link>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
@@ -73,6 +73,13 @@ class BaseNavbar extends Component {
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
                                     <NavLink disabled>{name} عزیز خوش آمدی </NavLink>
+                                </NavItem>
+                                <NavItem>
+
+                                    <Link to="/create-book">
+                                        <i className="material-icons"
+                                           style={icon_style}>add_circle</i>
+                                    </Link>
                                 </NavItem>
                                 <NavItem>
                                     <Link to={"/profile/" + this.props.logged.id}>
