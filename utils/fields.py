@@ -1,4 +1,4 @@
-from django.db.models.fields import CharField
+from django.db.models.fields import CharField, EmailField
 
 
 def normalize_phone(value):
@@ -22,3 +22,6 @@ class NullCharField(CharField):
             return None
         return value
 
+
+class NullEmailField(NullCharField, EmailField):
+    pass

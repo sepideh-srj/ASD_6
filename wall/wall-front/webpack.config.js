@@ -28,8 +28,7 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     //specify that we will be dealing with React code
-                    presets: ['es2017', 'react'],
-                    retainLines: true
+                    presets: ['es2017', 'react']
                 }
             },
             {

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 1ea8f04b136a148700fdd53d0e5ccd36
+ * @relayHash 5c01c38b6ff228de2f0cb51d0631a859
  */
 
 /* eslint-disable */
@@ -8,19 +8,9 @@
 'use strict';
 
 /*::
-import type { ConcreteRequest } from 'relay-runtime';
-type PublicProfile_user$ref = any;
-export type PublicProfileRendererQueryVariables = {|
-  id: string
-|};
+import type {ConcreteBatch} from 'relay-runtime';
 export type PublicProfileRendererQueryResponse = {|
-  +user: ?{|
-    +$fragmentRefs: PublicProfile_user$ref
-  |}
-|};
-export type PublicProfileRendererQuery = {|
-  variables: PublicProfileRendererQueryVariables,
-  response: PublicProfileRendererQueryResponse,
+  +user: ?{| |};
 |};
 */
 
@@ -41,44 +31,33 @@ fragment PublicProfile_user on UserType {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "LocalArgument",
-    "name": "id",
-    "type": "String!",
-    "defaultValue": null
-  }
-],
-v1 = [
-  {
-    "kind": "Variable",
-    "name": "id",
-    "variableName": "id",
-    "type": "String!"
-  }
-];
-return {
-  "kind": "Request",
-  "operationKind": "query",
-  "name": "PublicProfileRendererQuery",
-  "id": null,
-  "text": "query PublicProfileRendererQuery(\n  $id: String!\n) {\n  user(id: $id) {\n    ...PublicProfile_user\n    id\n  }\n}\n\nfragment PublicProfile_user on UserType {\n  firstName\n  lastName\n}\n",
-  "metadata": {},
+const batch /*: ConcreteBatch*/ = {
   "fragment": {
+    "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "id",
+        "type": "String!",
+        "defaultValue": null
+      }
+    ],
     "kind": "Fragment",
-    "name": "PublicProfileRendererQuery",
-    "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "name": "PublicProfileRendererQuery",
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "user",
-        "storageKey": null,
-        "args": v1,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "id",
+            "variableName": "id",
+            "type": "String!"
+          }
+        ],
         "concreteType": "UserType",
+        "name": "user",
         "plural": false,
         "selections": [
           {
@@ -86,51 +65,71 @@ return {
             "name": "PublicProfile_user",
             "args": null
           }
-        ]
+        ],
+        "storageKey": null
       }
-    ]
+    ],
+    "type": "Query"
   },
-  "operation": {
-    "kind": "Operation",
+  "id": null,
+  "kind": "Batch",
+  "metadata": {},
+  "name": "PublicProfileRendererQuery",
+  "query": {
+    "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "id",
+        "type": "String!",
+        "defaultValue": null
+      }
+    ],
+    "kind": "Root",
     "name": "PublicProfileRendererQuery",
-    "argumentDefinitions": v0,
+    "operation": "query",
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "user",
-        "storageKey": null,
-        "args": v1,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "id",
+            "variableName": "id",
+            "type": "String!"
+          }
+        ],
         "concreteType": "UserType",
+        "name": "user",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
+            "args": null,
             "name": "firstName",
-            "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
+            "args": null,
             "name": "lastName",
-            "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "id",
             "args": null,
+            "name": "id",
             "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
       }
     ]
-  }
+  },
+  "text": "query PublicProfileRendererQuery(\n  $id: String!\n) {\n  user(id: $id) {\n    ...PublicProfile_user\n    id\n  }\n}\n\nfragment PublicProfile_user on UserType {\n  firstName\n  lastName\n}\n"
 };
-})();
-// prettier-ignore
-(node/*: any*/).hash = '213eefd1bca380849deaa46ac61bc696';
-module.exports = node;
+
+module.exports = batch;

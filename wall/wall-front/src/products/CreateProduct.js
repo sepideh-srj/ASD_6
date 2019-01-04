@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Form, FormFeedback, FormGroup, Input, Label} from 'reactstrap';
+import {Form, FormGroup, Label, FormFeedback, Input, Button, Col} from 'reactstrap';
 import ProductCreateMutation from "../mutations/ProductCreateMutation";
 import {Category} from '../utils/constants';
 
@@ -9,14 +9,14 @@ class CreateProduct extends React.Component {
 
         this.state = {
             title: '',
-            city: '',
+            address: '',
             description: '',
-            proYear: '',
-            category: Category.PROPERTY.key,
+            prodYear: '',
+            category: Category.DIGITAL_GOODS.key,
             image: null,
             title_error: null,
-            city_error: null,
-            proYear_error: null,
+            address_error: null,
+            prodYear_error: null,
             disabled: false
         };
         this.handle_image = this.handle_image.bind(this);
@@ -69,21 +69,21 @@ class CreateProduct extends React.Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="city" sm={2}>شهر</Label>
+                                    <Label for="address" sm={2}>آدرس</Label>
                                     <Col sm={10}>
-                                        <Input type="text" name="city" id="city"
-                                               valid={this.state.city_error == null ? undefined : false}
-                                               placeholder="نویسنده"
+                                        <Input type="text" name="address" id="address"
+                                               valid={this.state.address_error == null ? undefined : false}
+                                               placeholder="آدرس"
                                                onChange={(e) => this.setState({
-                                                   city: e.target.value,
-                                                   city_error: null
+                                                   address: e.target.value,
+                                                   address_error: null
                                                })}
                                         />
                                     </Col>
                                     <Col sm={2}/>
                                     <Col sm={10}>
                                         <FormFeedback>
-                                            {this.state.city_error ? this.state.city_error[0] : ''}
+                                            {this.state.address_error ? this.state.address_error[0] : ''}
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
@@ -99,21 +99,21 @@ class CreateProduct extends React.Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="proYear" sm={2}>سال تولید (شمسی)</Label>
+                                    <Label for="prodYear" sm={2}>سال تولید (شمسی)</Label>
                                     <Col sm={10}>
-                                        <Input type="number" name="proYear" id="proYear"
-                                               valid={this.state.proYear_error == null ? undefined : false}
-                                               placeholder="سال انتشار"
+                                        <Input type="number" name="prodYear" id="prodYear"
+                                               valid={this.state.prodYear_error == null ? undefined : false}
+                                               placeholder="سال تولید"
                                                onChange={(e) => this.setState({
-                                                   proYear: e.target.value,
-                                                   proYear_error: null
+                                                   prodYear: e.target.value,
+                                                   prodYear_error: null
                                                })}
                                         />
                                     </Col>
                                     <Col sm={2}/>
                                     <Col sm={10}>
                                         <FormFeedback>
-                                            {this.state.proYear_error}
+                                            {this.state.prodYear_error}
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
@@ -122,16 +122,16 @@ class CreateProduct extends React.Component {
                                     <Col sm={10}>
                                         <Input type="select" name="category" id="category"
                                                valid={this.state.category_error == null ? undefined : false}
-                                               placeholder="ژانر"
+                                               placeholder="دسته‌بندی"
                                                onChange={(e) => this.setState({
-                                                   genre: e.target.value,
+                                                   category: e.target.value,
                                                    category_error: null
                                                })}
                                         >
                                             {
                                                 Object.keys(Category).map(category =>
                                                     <option key={Category[category].key}
-                                                            value={Category[category].key}>{Category[category].value}
+                                                        value={Category[category].key}>{Category[category].value}
                                                     </option>
                                                 )
 
@@ -140,7 +140,7 @@ class CreateProduct extends React.Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="image" sm={2}>تصویر</Label>
+                                    <Label for="image" sm={2}>تصویر محصول</Label>
                                     <Col sm={10}>
                                         <Label className="btn btn-primary">
                                             <input hidden type="file" name="image" id="image"
@@ -163,16 +163,16 @@ class CreateProduct extends React.Component {
     }
 
     async _confirm() {
-        const {title, city, description, proYear, category, image} = this.state;
-        ProductCreateMutation(title, city, description, proYear, category, image, (response) => {
+        const {title, address, description, prodYear, category, image} = this.state;
+        ProductCreateMutation(title, address, description, prodYear, category, image, (response) => {
             if (response.ok) {
                 window.location.replace('/');
             }
             else
                 this.setState({
                     title_error: response.errors.title,
-                    city_error: response.errors.city,
-                    proYear_error: response.errors.proYear,
+                    address_error: response.errors.address,
+                    prodYear_error: response.errors.prodYear,
                 });
         })
     }

@@ -12,9 +12,9 @@ class ProductCreate(SafeClientIDMutation):
 
     class Input:
         title = graphene.String(required=True)
-        city = graphene.String(required=True)
+        address = graphene.String(required=True)
         description = graphene.String(required=True)
-        pro_year = graphene.Int()
+        prod_year = graphene.Int()
         category = graphene.Field('products.schema.CategoryType', required=True)
         image = graphene.String()
 

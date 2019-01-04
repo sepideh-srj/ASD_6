@@ -3,6 +3,7 @@ from django.views.generic.base import View
 
 from accounts.models import Image
 
+
 class UploadView(View):
     def post(self, request):
         file = request.FILES.get('file')

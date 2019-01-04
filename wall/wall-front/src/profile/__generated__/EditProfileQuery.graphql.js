@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 871db88f87eff5051debd344017a7ff4
+ * @relayHash 21141b57d7baf5271291430087e4eefc
  */
 
 /* eslint-disable */
@@ -8,19 +8,14 @@
 'use strict';
 
 /*::
-import type { ConcreteRequest } from 'relay-runtime';
-export type EditProfileQueryVariables = {||};
+import type {ConcreteBatch} from 'relay-runtime';
 export type EditProfileQueryResponse = {|
   +me: ?{|
-    +firstName: string,
-    +lastName: string,
-    +phone: ?string,
-    +balance: number,
-  |}
-|};
-export type EditProfileQuery = {|
-  variables: EditProfileQueryVariables,
-  response: EditProfileQueryResponse,
+    +firstName: string;
+    +lastName: string;
+    +phone: ?string;
+    +balance: number;
+  |};
 |};
 */
 
@@ -37,97 +32,114 @@ query EditProfileQuery {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "firstName",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "lastName",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "phone",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "balance",
-  "args": null,
-  "storageKey": null
-};
-return {
-  "kind": "Request",
-  "operationKind": "query",
-  "name": "EditProfileQuery",
-  "id": null,
-  "text": "query EditProfileQuery {\n  me {\n    firstName\n    lastName\n    phone\n    balance\n    id\n  }\n}\n",
-  "metadata": {},
+const batch /*: ConcreteBatch*/ = {
   "fragment": {
+    "argumentDefinitions": [],
     "kind": "Fragment",
-    "name": "EditProfileQuery",
-    "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "me",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "UserType",
-        "plural": false,
-        "selections": [
-          v0,
-          v1,
-          v2,
-          v3
-        ]
-      }
-    ]
-  },
-  "operation": {
-    "kind": "Operation",
     "name": "EditProfileQuery",
-    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "me",
-        "storageKey": null,
         "args": null,
         "concreteType": "UserType",
+        "name": "me",
         "plural": false,
         "selections": [
-          v0,
-          v1,
-          v2,
-          v3,
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "id",
             "args": null,
+            "name": "firstName",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "lastName",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "phone",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "balance",
             "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
+      }
+    ],
+    "type": "Query"
+  },
+  "id": null,
+  "kind": "Batch",
+  "metadata": {},
+  "name": "EditProfileQuery",
+  "query": {
+    "argumentDefinitions": [],
+    "kind": "Root",
+    "name": "EditProfileQuery",
+    "operation": "query",
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "args": null,
+        "concreteType": "UserType",
+        "name": "me",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "firstName",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "lastName",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "phone",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "balance",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "id",
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
       }
     ]
-  }
+  },
+  "text": "query EditProfileQuery {\n  me {\n    firstName\n    lastName\n    phone\n    balance\n    id\n  }\n}\n"
 };
-})();
-// prettier-ignore
-(node/*: any*/).hash = 'cde11a324c3d5a00d9f66e783a44e5d4';
-module.exports = node;
+
+module.exports = batch;

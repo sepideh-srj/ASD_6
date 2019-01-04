@@ -7,40 +7,36 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
-import type { FragmentReference } from "relay-runtime";
-declare export opaque type PublicProfile_user$ref: FragmentReference;
+import type {ConcreteFragment} from 'relay-runtime';
 export type PublicProfile_user = {|
-  +firstName: string,
-  +lastName: string,
-  +$refType: PublicProfile_user$ref,
+  +firstName: string;
+  +lastName: string;
 |};
 */
 
 
-const node/*: ConcreteFragment*/ = {
-  "kind": "Fragment",
-  "name": "PublicProfile_user",
-  "type": "UserType",
-  "metadata": null,
+const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],
+  "kind": "Fragment",
+  "metadata": null,
+  "name": "PublicProfile_user",
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "firstName",
       "args": null,
+      "name": "firstName",
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "lastName",
       "args": null,
+      "name": "lastName",
       "storageKey": null
     }
-  ]
+  ],
+  "type": "UserType"
 };
-// prettier-ignore
-(node/*: any*/).hash = '84a1ffb9fa3941a88ce961cf7e228891';
-module.exports = node;
+
+module.exports = fragment;

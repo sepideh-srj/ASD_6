@@ -1,4 +1,8 @@
 export const Category = {
+    DIGITAL_GOODS: {
+        key: 'DIGITAL_GOODS',
+        value: 'کالاهای دیجیتال'
+    },
     PROPERTY: {
         key: 'PROPERTY',
         value: 'املاک'
@@ -6,10 +10,6 @@ export const Category = {
     VEHICLE: {
         key: 'VEHICLE',
         value: 'وسیله نقلیه'
-    },
-    DIGITAL_GOODS: {
-        key: 'DIGITAL_GOODS',
-        value: 'کالاهای دیجیتال'
     },
     BEAUTY: {
         key: 'BEAUTY',

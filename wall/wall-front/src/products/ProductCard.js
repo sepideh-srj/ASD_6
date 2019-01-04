@@ -23,8 +23,8 @@ class ProductCard extends Component {
                         <CardBody>
 
                             <CardTitle>{this.props.product.title}</CardTitle>
-                            <CardSubtitle>{this.props.product.author}</CardSubtitle>
-                            <CardText className="abstract">{this.props.product.abstract}</CardText>
+                            <CardSubtitle>{this.props.product.address}</CardSubtitle>
+                            <CardText className="description">{this.props.product.description}</CardText>
                         </CardBody>
                     </Card>
                 </Link>
@@ -38,11 +38,11 @@ export default createFragmentContainer(ProductCard, {
     product: graphql`
         fragment ProductCard_product on ProductType{
             description
-            city
+            address
             category
             id
             image
-            proYear
+            prodYear
             title
         }
     `,

@@ -34,7 +34,7 @@ class BaseNavbarQueryRenderer extends React.Component {
                                 }));
                             return (
                                 <div>
-                                    <BaseNavbar logged={props.me} balance={this.state.balance} name={this.state.name}
+                                    <BaseNavbar logged={props.me} balance={this.state.balance}
                                                 change_balance={this.change_balance.bind(this)}
                                     />
                                     {childrenWithProps}

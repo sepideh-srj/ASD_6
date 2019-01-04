@@ -67,7 +67,7 @@ class Login extends Component {
                                 <Button type="button" className="submit" outline color="primary"
                                         onClick={() => this._confirm()}>ورود</Button>
                                 <Button type="button" className="submit" outline color="success"
-                                        onClick={() => this.resend()}>ارسال مجدد کد</Button>
+                                        onClick={() => this.resend()}>ارسال کد</Button>
 
                             </Form>
                         </div>

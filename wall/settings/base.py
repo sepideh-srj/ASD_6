@@ -1,4 +1,3 @@
-
 """
 Django settings for wall project.
 
@@ -31,6 +30,7 @@ ALLOWED_HOSTS = []
 
 PROJECT_APPS = [
     'accounts',
+    'products',
     'wall'
 ]
 
@@ -150,20 +150,13 @@ LOCALE_PATHS = (
 
 TEST_RUNNER = 'snapshottest.django.TestRunner'
 
+
+# Email
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'wall.app@gmail.com'
+EMAIL_HOST_PASSWORD = 'wall12345'
+
+
 SITE_URL = ''
-
-#############################################
-DEBUG = True
-
-ALLOWED_HOSTS = ['10.0.2.2', 'localhost', '127.0.0.1']
-
-WSGI_APPLICATION = 'wall.wsgi.application'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-SITE_URL = 'http://localhost:8000'

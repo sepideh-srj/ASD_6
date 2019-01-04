@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash bb10cc99673f6ae60a23a4d6a314f2fe
+ * @relayHash 27a1420fcad7091e796f0595e61d51b7
  */
 
 /* eslint-disable */
@@ -8,17 +8,9 @@
 'use strict';
 
 /*::
-import type { ConcreteRequest } from 'relay-runtime';
-type BaseNavbar_logged$ref = any;
-export type BaseNavbarQueryRendererQueryVariables = {||};
+import type {ConcreteBatch} from 'relay-runtime';
 export type BaseNavbarQueryRendererQueryResponse = {|
-  +me: ?{|
-    +$fragmentRefs: BaseNavbar_logged$ref
-  |}
-|};
-export type BaseNavbarQueryRendererQuery = {|
-  variables: BaseNavbarQueryRendererQueryVariables,
-  response: BaseNavbarQueryRendererQueryResponse,
+  +me: ?{| |};
 |};
 */
 
@@ -40,27 +32,19 @@ fragment BaseNavbar_logged on UserType {
 }
 */
 
-const node/*: ConcreteRequest*/ = {
-  "kind": "Request",
-  "operationKind": "query",
-  "name": "BaseNavbarQueryRendererQuery",
-  "id": null,
-  "text": "query BaseNavbarQueryRendererQuery {\n  me {\n    ...BaseNavbar_logged\n    id\n  }\n}\n\nfragment BaseNavbar_logged on UserType {\n  firstName\n  id\n  lastName\n  phone\n  balance\n}\n",
-  "metadata": {},
+const batch /*: ConcreteBatch*/ = {
   "fragment": {
-    "kind": "Fragment",
-    "name": "BaseNavbarQueryRendererQuery",
-    "type": "Query",
-    "metadata": null,
     "argumentDefinitions": [],
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "BaseNavbarQueryRendererQuery",
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "me",
-        "storageKey": null,
         "args": null,
         "concreteType": "UserType",
+        "name": "me",
         "plural": false,
         "selections": [
           {
@@ -68,64 +52,71 @@ const node/*: ConcreteRequest*/ = {
             "name": "BaseNavbar_logged",
             "args": null
           }
-        ]
+        ],
+        "storageKey": null
       }
-    ]
+    ],
+    "type": "Query"
   },
-  "operation": {
-    "kind": "Operation",
-    "name": "BaseNavbarQueryRendererQuery",
+  "id": null,
+  "kind": "Batch",
+  "metadata": {},
+  "name": "BaseNavbarQueryRendererQuery",
+  "query": {
     "argumentDefinitions": [],
+    "kind": "Root",
+    "name": "BaseNavbarQueryRendererQuery",
+    "operation": "query",
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "me",
-        "storageKey": null,
         "args": null,
         "concreteType": "UserType",
+        "name": "me",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
+            "args": null,
             "name": "firstName",
-            "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
+            "args": null,
             "name": "id",
-            "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
+            "args": null,
             "name": "lastName",
-            "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
+            "args": null,
             "name": "phone",
-            "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "balance",
             "args": null,
+            "name": "balance",
             "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
       }
     ]
-  }
+  },
+  "text": "query BaseNavbarQueryRendererQuery {\n  me {\n    ...BaseNavbar_logged\n    id\n  }\n}\n\nfragment BaseNavbar_logged on UserType {\n  firstName\n  id\n  lastName\n  phone\n  balance\n}\n"
 };
-// prettier-ignore
-(node/*: any*/).hash = '475925deb67040f8f678f1e25e5f94b4';
-module.exports = node;
+
+module.exports = batch;

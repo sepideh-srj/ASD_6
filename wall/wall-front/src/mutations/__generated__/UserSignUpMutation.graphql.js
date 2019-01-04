@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7a1c7e5e24f283d30902a70aee7f968e
+ * @relayHash 5aa91e656ce1d230bf6951a2454de871
  */
 
 /* eslint-disable */
@@ -8,25 +8,20 @@
 'use strict';
 
 /*::
-import type { ConcreteRequest } from 'relay-runtime';
-export type UserSignUpInput = {
-  phone: string,
-  clientMutationId?: ?string,
-};
+import type {ConcreteBatch} from 'relay-runtime';
 export type UserSignUpMutationVariables = {|
-  input: UserSignUpInput
+  input: {
+    phone: string;
+    clientMutationId?: ?string;
+  };
 |};
 export type UserSignUpMutationResponse = {|
   +userSignUp: ?{|
-    +ok: boolean,
+    +ok: boolean;
     +errors: ?{|
-      +phone: ?$ReadOnlyArray<?string>
-    |},
-  |}
-|};
-export type UserSignUpMutation = {|
-  variables: UserSignUpMutationVariables,
-  response: UserSignUpMutationResponse,
+      +phone: ?$ReadOnlyArray<?string>;
+    |};
+  |};
 |};
 */
 
@@ -44,83 +39,129 @@ mutation UserSignUpMutation(
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "LocalArgument",
-    "name": "input",
-    "type": "UserSignUpInput!",
-    "defaultValue": null
-  }
-],
-v1 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "userSignUp",
-    "storageKey": null,
-    "args": [
+const batch /*: ConcreteBatch*/ = {
+  "fragment": {
+    "argumentDefinitions": [
       {
-        "kind": "Variable",
+        "kind": "LocalArgument",
         "name": "input",
-        "variableName": "input",
-        "type": "UserSignUpInput!"
+        "type": "UserSignUpInput!",
+        "defaultValue": null
       }
     ],
-    "concreteType": "UserSignUpPayload",
-    "plural": false,
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "UserSignUpMutation",
     "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "ok",
-        "args": null,
-        "storageKey": null
-      },
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "errors",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "UserSignUpError",
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "input",
+            "variableName": "input",
+            "type": "UserSignUpInput!"
+          }
+        ],
+        "concreteType": "UserSignUpPayload",
+        "name": "userSignUp",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "phone",
             "args": null,
+            "name": "ok",
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "UserSignUpError",
+            "name": "errors",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "phone",
+                "storageKey": null
+              }
+            ],
             "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
+      }
+    ],
+    "type": "Mutation"
+  },
+  "id": null,
+  "kind": "Batch",
+  "metadata": {},
+  "name": "UserSignUpMutation",
+  "query": {
+    "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "input",
+        "type": "UserSignUpInput!",
+        "defaultValue": null
+      }
+    ],
+    "kind": "Root",
+    "name": "UserSignUpMutation",
+    "operation": "mutation",
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "input",
+            "variableName": "input",
+            "type": "UserSignUpInput!"
+          }
+        ],
+        "concreteType": "UserSignUpPayload",
+        "name": "userSignUp",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "ok",
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "UserSignUpError",
+            "name": "errors",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "phone",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
       }
     ]
-  }
-];
-return {
-  "kind": "Request",
-  "operationKind": "mutation",
-  "name": "UserSignUpMutation",
-  "id": null,
-  "text": "mutation UserSignUpMutation(\n  $input: UserSignUpInput!\n) {\n  userSignUp(input: $input) {\n    ok\n    errors {\n      phone\n    }\n  }\n}\n",
-  "metadata": {},
-  "fragment": {
-    "kind": "Fragment",
-    "name": "UserSignUpMutation",
-    "type": "Mutation",
-    "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
   },
-  "operation": {
-    "kind": "Operation",
-    "name": "UserSignUpMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
-  }
+  "text": "mutation UserSignUpMutation(\n  $input: UserSignUpInput!\n) {\n  userSignUp(input: $input) {\n    ok\n    errors {\n      phone\n    }\n  }\n}\n"
 };
-})();
-// prettier-ignore
-(node/*: any*/).hash = 'c6e59219bd2680b7f85a09c35d3f593e';
-module.exports = node;
+
+module.exports = batch;

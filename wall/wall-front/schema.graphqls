@@ -14,6 +14,19 @@ type AddBalanceMutationPayload {
   errors: AddBalanceMutationError
 }
 
+enum CategoryType {
+  DIGITAL_GOODS
+  PROPERTY
+  VEHICLE
+  BEAUTY
+  CLOTHING
+  HOME_KITCHEN
+  BOOK_MEDIA
+  ENTERTAINMENT
+  SPORT
+  OTHERS
+}
+
 type EditProfileMutationError {
   firstName: [String]
   lastName: [String]
@@ -35,21 +48,152 @@ type EditProfileMutationPayload {
 }
 
 type Mutation {
+  productCreate(input: ProductCreateInput!): ProductCreatePayload
+  productHide(input: ProductHideMutationInput!): ProductHideMutationPayload
+  productRemove(input: ProductRemoveMutationInput!): ProductRemoveMutationPayload
   userLogin(input: UserLoginInput!): UserLoginPayload
   userLogout(input: UserLogoutInput!): UserLogoutPayload
   userSignUp(input: UserSignUpInput!): UserSignUpPayload
   editProfile(input: EditProfileMutationInput!): EditProfileMutationPayload
-  addBalance(input: AddBalanceMutationInput!): AddBalanceMutationPayload
   resendCode(input: ResendCodeMutationInput!): ResendCodeMutationPayload
+  addBalance(input: AddBalanceMutationInput!): AddBalanceMutationPayload
 }
 
-"""An object with an ID"""
+
 interface Node {
-  """The ID of the object."""
+  
   id: ID!
 }
 
+type PageInfo {
+  
+  hasNextPage: Boolean!
+
+  
+  hasPreviousPage: Boolean!
+
+  
+  startCursor: String
+
+  
+  endCursor: String
+}
+
+type ProductConnection {
+  pageInfo: PageInfo!
+  edges: [ProductEdge]!
+}
+
+type ProductCreateError {
+  title: [String]
+  address: [String]
+  description: [String]
+  prodYear: [String]
+  category: [String]
+  image: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input ProductCreateInput {
+  title: String!
+  address: String!
+  description: String!
+  prodYear: Int
+  category: CategoryType!
+  image: String
+  clientMutationId: String
+}
+
+type ProductCreatePayload {
+  ok: Boolean!
+  product: ProductType
+  clientMutationId: String
+  errors: ProductCreateError
+}
+
+type ProductEdge {
+  
+  node: ProductType
+
+  
+  cursor: String!
+}
+
+type ProductHideMutationError {
+  product: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input ProductHideMutationInput {
+  product: ID!
+  clientMutationId: String
+}
+
+type ProductHideMutationPayload {
+  ok: Boolean!
+  clientMutationId: String
+  errors: ProductHideMutationError
+}
+
+type ProductRemoveMutationError {
+  product: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input ProductRemoveMutationInput {
+  product: ID!
+  clientMutationId: String
+}
+
+type ProductRemoveMutationPayload {
+  ok: Boolean!
+  clientMutationId: String
+  errors: ProductRemoveMutationError
+}
+
+input ProductsQueryArguments {
+  categoryIn: [CategoryType]
+  owner: ID
+  prodYearLte: Int
+  prodYearGte: Int
+  prodYear: Int
+  title: String
+  titleContains: String
+  description: String
+  descriptionContains: String
+}
+
+type ProductType implements Node {
+  
+  id: ID!
+  title: String!
+  address: String!
+  description: String
+  prodYear: Int!
+  category: CategoryType!
+  image: String
+  owner: UserType!
+}
+
+type ProductTypeConnection {
+  pageInfo: PageInfo!
+  edges: [ProductTypeEdge]!
+}
+
+type ProductTypeEdge {
+  
+  node: ProductType
+
+  
+  cursor: String!
+}
+
 type Query {
+  products(filters: ProductsQueryArguments, before: String, after: String, first: Int, last: Int): ProductConnection
+  product(id: String!): ProductType
   users: [UserType]
   user(id: String!): UserType
   me: UserType
@@ -127,11 +271,13 @@ type UserSignUpPayload {
 }
 
 type UserType implements Node {
-  """The ID of the object."""
+  
   id: ID!
   firstName: String!
   lastName: String!
   balance: Int!
   phone: String
+  ownedProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
+  boughtProducts: Int
 }
 

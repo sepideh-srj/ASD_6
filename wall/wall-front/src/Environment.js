@@ -1,4 +1,4 @@
-    import {Environment, Network, RecordSource, Store} from 'relay-runtime';
+import {Environment, Network, RecordSource, Store} from 'relay-runtime';
 
 // 2
 const store = new Store(new RecordSource());

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8e18d533305aa3ba019e4c2beb3d5bee
+ * @relayHash e03140abf58cd56aa13c648ed0bb408a
  */
 
 /* eslint-disable */
@@ -8,30 +8,22 @@
 'use strict';
 
 /*::
-import type { ConcreteRequest } from 'relay-runtime';
-type BaseNavbar_logged$ref = any;
-export type UserLoginInput = {
-  phone: string,
-  code: string,
-  clientMutationId?: ?string,
-};
+import type {ConcreteBatch} from 'relay-runtime';
 export type UserLoginMutationVariables = {|
-  input: UserLoginInput
+  input: {
+    phone: string;
+    code: string;
+    clientMutationId?: ?string;
+  };
 |};
 export type UserLoginMutationResponse = {|
   +userLogin: ?{|
-    +ok: boolean,
+    +ok: boolean;
     +errors: ?{|
-      +nonFieldErrors: ?$ReadOnlyArray<?string>
-    |},
-    +user: ?{|
-      +$fragmentRefs: BaseNavbar_logged$ref
-    |},
-  |}
-|};
-export type UserLoginMutation = {|
-  variables: UserLoginMutationVariables,
-  response: UserLoginMutationResponse,
+      +nonFieldErrors: ?$ReadOnlyArray<?string>;
+    |};
+    +user: ?{| |};
+  |};
 |};
 */
 
@@ -61,80 +53,66 @@ fragment BaseNavbar_logged on UserType {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "LocalArgument",
-    "name": "input",
-    "type": "UserLoginInput!",
-    "defaultValue": null
-  }
-],
-v1 = [
-  {
-    "kind": "Variable",
-    "name": "input",
-    "variableName": "input",
-    "type": "UserLoginInput!"
-  }
-],
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "ok",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "errors",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "UserLoginError",
-  "plural": false,
-  "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "nonFieldErrors",
-      "args": null,
-      "storageKey": null
-    }
-  ]
-};
-return {
-  "kind": "Request",
-  "operationKind": "mutation",
-  "name": "UserLoginMutation",
-  "id": null,
-  "text": "mutation UserLoginMutation(\n  $input: UserLoginInput!\n) {\n  userLogin(input: $input) {\n    ok\n    errors {\n      nonFieldErrors\n    }\n    user {\n      ...BaseNavbar_logged\n      id\n    }\n  }\n}\n\nfragment BaseNavbar_logged on UserType {\n  firstName\n  id\n  lastName\n  phone\n  balance\n}\n",
-  "metadata": {},
+const batch /*: ConcreteBatch*/ = {
   "fragment": {
+    "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "input",
+        "type": "UserLoginInput!",
+        "defaultValue": null
+      }
+    ],
     "kind": "Fragment",
-    "name": "UserLoginMutation",
-    "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "name": "UserLoginMutation",
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "userLogin",
-        "storageKey": null,
-        "args": v1,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "input",
+            "variableName": "input",
+            "type": "UserLoginInput!"
+          }
+        ],
         "concreteType": "UserLoginPayload",
+        "name": "userLogin",
         "plural": false,
         "selections": [
-          v2,
-          v3,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "ok",
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "user",
-            "storageKey": null,
+            "args": null,
+            "concreteType": "UserLoginError",
+            "name": "errors",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "nonFieldErrors",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
             "args": null,
             "concreteType": "UserType",
+            "name": "user",
             "plural": false,
             "selections": [
               {
@@ -142,80 +120,124 @@ return {
                 "name": "BaseNavbar_logged",
                 "args": null
               }
-            ]
+            ],
+            "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
       }
-    ]
+    ],
+    "type": "Mutation"
   },
-  "operation": {
-    "kind": "Operation",
+  "id": null,
+  "kind": "Batch",
+  "metadata": {},
+  "name": "UserLoginMutation",
+  "query": {
+    "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "input",
+        "type": "UserLoginInput!",
+        "defaultValue": null
+      }
+    ],
+    "kind": "Root",
     "name": "UserLoginMutation",
-    "argumentDefinitions": v0,
+    "operation": "mutation",
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "userLogin",
-        "storageKey": null,
-        "args": v1,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "input",
+            "variableName": "input",
+            "type": "UserLoginInput!"
+          }
+        ],
         "concreteType": "UserLoginPayload",
+        "name": "userLogin",
         "plural": false,
         "selections": [
-          v2,
-          v3,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "ok",
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "user",
-            "storageKey": null,
             "args": null,
-            "concreteType": "UserType",
+            "concreteType": "UserLoginError",
+            "name": "errors",
             "plural": false,
             "selections": [
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "firstName",
                 "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "lastName",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "phone",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "balance",
-                "args": null,
+                "name": "nonFieldErrors",
                 "storageKey": null
               }
-            ]
+            ],
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "UserType",
+            "name": "user",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "firstName",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "id",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "lastName",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "phone",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "balance",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
       }
     ]
-  }
+  },
+  "text": "mutation UserLoginMutation(\n  $input: UserLoginInput!\n) {\n  userLogin(input: $input) {\n    ok\n    errors {\n      nonFieldErrors\n    }\n    user {\n      ...BaseNavbar_logged\n      id\n    }\n  }\n}\n\nfragment BaseNavbar_logged on UserType {\n  firstName\n  id\n  lastName\n  phone\n  balance\n}\n"
 };
-})();
-// prettier-ignore
-(node/*: any*/).hash = '249d269aac1e550390308a476ebf8859';
-module.exports = node;
+
+module.exports = batch;

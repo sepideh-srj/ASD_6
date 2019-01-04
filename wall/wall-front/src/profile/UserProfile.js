@@ -33,8 +33,16 @@ class UserProfile extends React.Component {
                               onlyActiveOnIndex
                               to={"/profile/" + username}>تکمیل
                             مشخصات</Link>
-                        {/* <span>{"   "}</span> */}
-
+                        <span>{"   "}</span>
+                        <Link className="tab-head"
+                              activeClassName="checked"
+                              to={"/profile/" + username + '/requests'}>لیست
+                            فروخته‌ها</Link>
+                        <span>{"   "}</span>
+                        <Link className="tab-head"
+                              activeClassName="checked"
+                              to={"/profile/" + username + '/lending'}>لیست
+                            خریده‌ها</Link>
                     </div>
                     {childrenWithProps}
                 </div>

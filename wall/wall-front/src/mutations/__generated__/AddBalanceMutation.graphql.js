@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 35a3485b945a6a1889f7d65e5f6439e6
+ * @relayHash 028b5a4582f8f4aa5710da189ba3d087
  */
 
 /* eslint-disable */
@@ -8,24 +8,19 @@
 'use strict';
 
 /*::
-import type { ConcreteRequest } from 'relay-runtime';
-export type AddBalanceMutationInput = {
-  clientMutationId?: ?string
-};
+import type {ConcreteBatch} from 'relay-runtime';
 export type AddBalanceMutationVariables = {|
-  input: AddBalanceMutationInput
+  input: {
+    clientMutationId?: ?string;
+  };
 |};
 export type AddBalanceMutationResponse = {|
   +addBalance: ?{|
-    +ok: boolean,
+    +ok: boolean;
     +errors: ?{|
-      +nonFieldErrors: ?$ReadOnlyArray<?string>
-    |},
-  |}
-|};
-export type AddBalanceMutation = {|
-  variables: AddBalanceMutationVariables,
-  response: AddBalanceMutationResponse,
+      +nonFieldErrors: ?$ReadOnlyArray<?string>;
+    |};
+  |};
 |};
 */
 
@@ -43,83 +38,129 @@ mutation AddBalanceMutation(
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "LocalArgument",
-    "name": "input",
-    "type": "AddBalanceMutationInput!",
-    "defaultValue": null
-  }
-],
-v1 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "addBalance",
-    "storageKey": null,
-    "args": [
+const batch /*: ConcreteBatch*/ = {
+  "fragment": {
+    "argumentDefinitions": [
       {
-        "kind": "Variable",
+        "kind": "LocalArgument",
         "name": "input",
-        "variableName": "input",
-        "type": "AddBalanceMutationInput!"
+        "type": "AddBalanceMutationInput!",
+        "defaultValue": null
       }
     ],
-    "concreteType": "AddBalanceMutationPayload",
-    "plural": false,
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "AddBalanceMutation",
     "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "ok",
-        "args": null,
-        "storageKey": null
-      },
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "errors",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "AddBalanceMutationError",
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "input",
+            "variableName": "input",
+            "type": "AddBalanceMutationInput!"
+          }
+        ],
+        "concreteType": "AddBalanceMutationPayload",
+        "name": "addBalance",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "nonFieldErrors",
             "args": null,
+            "name": "ok",
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "AddBalanceMutationError",
+            "name": "errors",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "nonFieldErrors",
+                "storageKey": null
+              }
+            ],
             "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
+      }
+    ],
+    "type": "Mutation"
+  },
+  "id": null,
+  "kind": "Batch",
+  "metadata": {},
+  "name": "AddBalanceMutation",
+  "query": {
+    "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "input",
+        "type": "AddBalanceMutationInput!",
+        "defaultValue": null
+      }
+    ],
+    "kind": "Root",
+    "name": "AddBalanceMutation",
+    "operation": "mutation",
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "input",
+            "variableName": "input",
+            "type": "AddBalanceMutationInput!"
+          }
+        ],
+        "concreteType": "AddBalanceMutationPayload",
+        "name": "addBalance",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "ok",
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "AddBalanceMutationError",
+            "name": "errors",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "nonFieldErrors",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
       }
     ]
-  }
-];
-return {
-  "kind": "Request",
-  "operationKind": "mutation",
-  "name": "AddBalanceMutation",
-  "id": null,
-  "text": "mutation AddBalanceMutation(\n  $input: AddBalanceMutationInput!\n) {\n  addBalance(input: $input) {\n    ok\n    errors {\n      nonFieldErrors\n    }\n  }\n}\n",
-  "metadata": {},
-  "fragment": {
-    "kind": "Fragment",
-    "name": "AddBalanceMutation",
-    "type": "Mutation",
-    "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
   },
-  "operation": {
-    "kind": "Operation",
-    "name": "AddBalanceMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
-  }
+  "text": "mutation AddBalanceMutation(\n  $input: AddBalanceMutationInput!\n) {\n  addBalance(input: $input) {\n    ok\n    errors {\n      nonFieldErrors\n    }\n  }\n}\n"
 };
-})();
-// prettier-ignore
-(node/*: any*/).hash = '7114275fd1a81169780ecb62e6978baa';
-module.exports = node;
+
+module.exports = batch;

@@ -65,7 +65,7 @@ class BaseNavbar extends Component {
                       href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
                 <Navbar color="dark" dark expand="md">
                     <Link className="nav-link wall-logo" to="/">
-                        سامانه‌ی وال
+                        سامانه وال
                     </Link>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
@@ -76,7 +76,7 @@ class BaseNavbar extends Component {
                                 </NavItem>
                                 <NavItem>
 
-                                    <Link to="/create-book">
+                                    <Link to="/create-product">
                                         <i className="material-icons"
                                            style={icon_style}>add_circle</i>
                                     </Link>

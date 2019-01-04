@@ -13,8 +13,21 @@ class UserType(DjangoObjectType):
         model = User
         interfaces = (relay.Node,)
         only_fields = (
-            'id', 'first_name', 'last_name',
+            'id', 'first_name', 'last_name', 'owned_products',
             'balance', 'phone')
+
+    bought_products = graphene.Int()
+
+    @staticmethod
+    def resolve_bought_products(root, info):
+        return root.buys.count()
+
+    @staticmethod
+    def resolve_owned_products(root, info):
+        user = info.context.user
+        if user == root:
+            return root.owned_products.all()
+        return root.owned_products.visible
 
 
 class AccountQuery(graphene.ObjectType):
@@ -41,5 +54,5 @@ class AccountMutation(graphene.ObjectType):
     user_logout = UserLogout.Field()
     user_sign_up = UserSignUp.Field()
     edit_profile = EditProfileMutation.Field()
-    add_balance = AddBalanceMutation.Field()
     resend_code = ResendCodeMutation.Field()
+    add_balance = AddBalanceMutation.Field()

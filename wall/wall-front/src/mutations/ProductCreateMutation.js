@@ -6,19 +6,19 @@ const mutation = graphql`
         productCreate(input: $input){
             ok
             errors{
-                author
+                address
                 category
-                proYear
+                prodYear
                 title
             }
         }
     }
 `;
 
-export default (title, city, description, proYear, category, image, callback) => {
-    const variables = (proYear === '') ?
-        {input: {title, city, description, category, image}} :
-        {input: {title, city, description, proYear, category, image}}
+export default (title, address, description, prodYear, category, image, callback) => {
+    const variables = (prodYear === '') ?
+        {input: {title, address, description, category, image}} :
+        {input: {title, address, description, prodYear, category, image}}
     ;
     commitMutation(
         environment,

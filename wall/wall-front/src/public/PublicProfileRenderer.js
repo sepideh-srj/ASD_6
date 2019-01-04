@@ -19,7 +19,7 @@ class RequestListRenderer extends React.Component {
         return (
             <QueryRenderer
                 environment={environment}
-                query={BorrowRequestsQuery}
+                query={PublicProfileQuery}
                 variables={{id: this.state.username}}
                 render={
                     ({error, props}) => {
@@ -36,7 +36,7 @@ class RequestListRenderer extends React.Component {
 
 }
 
-const BorrowRequestsQuery = graphql`
+const PublicProfileQuery = graphql`
     query PublicProfileRendererQuery($id: String!){
         user(id:$id){
             ...PublicProfile_user

@@ -59,7 +59,7 @@ class Login extends Component {
             }
             else
                 this.setState({
-                    phone_error: response.errors.phone
+                    phone_error: response.errors.phone,
                 });
         })
 

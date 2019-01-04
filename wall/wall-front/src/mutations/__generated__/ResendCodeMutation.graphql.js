@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a4c2802a9c5bedc6f107cc0021b69c8a
+ * @relayHash 5c4e0958205acd92a4bdb3fe3f79ccd4
  */
 
 /* eslint-disable */
@@ -8,26 +8,21 @@
 'use strict';
 
 /*::
-import type { ConcreteRequest } from 'relay-runtime';
-export type ResendCodeMutationInput = {
-  phone: string,
-  clientMutationId?: ?string,
-};
+import type {ConcreteBatch} from 'relay-runtime';
 export type ResendCodeMutationVariables = {|
-  input: ResendCodeMutationInput
+  input: {
+    phone: string;
+    clientMutationId?: ?string;
+  };
 |};
 export type ResendCodeMutationResponse = {|
   +resendCode: ?{|
-    +ok: boolean,
+    +ok: boolean;
     +errors: ?{|
-      +phone: ?$ReadOnlyArray<?string>,
-      +nonFieldErrors: ?$ReadOnlyArray<?string>,
-    |},
-  |}
-|};
-export type ResendCodeMutation = {|
-  variables: ResendCodeMutationVariables,
-  response: ResendCodeMutationResponse,
+      +phone: ?$ReadOnlyArray<?string>;
+      +nonFieldErrors: ?$ReadOnlyArray<?string>;
+    |};
+  |};
 |};
 */
 
@@ -46,90 +41,143 @@ mutation ResendCodeMutation(
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "LocalArgument",
-    "name": "input",
-    "type": "ResendCodeMutationInput!",
-    "defaultValue": null
-  }
-],
-v1 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "resendCode",
-    "storageKey": null,
-    "args": [
+const batch /*: ConcreteBatch*/ = {
+  "fragment": {
+    "argumentDefinitions": [
       {
-        "kind": "Variable",
+        "kind": "LocalArgument",
         "name": "input",
-        "variableName": "input",
-        "type": "ResendCodeMutationInput!"
+        "type": "ResendCodeMutationInput!",
+        "defaultValue": null
       }
     ],
-    "concreteType": "ResendCodeMutationPayload",
-    "plural": false,
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "ResendCodeMutation",
     "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "ok",
-        "args": null,
-        "storageKey": null
-      },
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "errors",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "ResendCodeMutationError",
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "input",
+            "variableName": "input",
+            "type": "ResendCodeMutationInput!"
+          }
+        ],
+        "concreteType": "ResendCodeMutationPayload",
+        "name": "resendCode",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "phone",
             "args": null,
+            "name": "ok",
             "storageKey": null
           },
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "nonFieldErrors",
             "args": null,
+            "concreteType": "ResendCodeMutationError",
+            "name": "errors",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "phone",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "nonFieldErrors",
+                "storageKey": null
+              }
+            ],
             "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
+      }
+    ],
+    "type": "Mutation"
+  },
+  "id": null,
+  "kind": "Batch",
+  "metadata": {},
+  "name": "ResendCodeMutation",
+  "query": {
+    "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "input",
+        "type": "ResendCodeMutationInput!",
+        "defaultValue": null
+      }
+    ],
+    "kind": "Root",
+    "name": "ResendCodeMutation",
+    "operation": "mutation",
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "input",
+            "variableName": "input",
+            "type": "ResendCodeMutationInput!"
+          }
+        ],
+        "concreteType": "ResendCodeMutationPayload",
+        "name": "resendCode",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "ok",
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "ResendCodeMutationError",
+            "name": "errors",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "phone",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "nonFieldErrors",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
       }
     ]
-  }
-];
-return {
-  "kind": "Request",
-  "operationKind": "mutation",
-  "name": "ResendCodeMutation",
-  "id": null,
-  "text": "mutation ResendCodeMutation(\n  $input: ResendCodeMutationInput!\n) {\n  resendCode(input: $input) {\n    ok\n    errors {\n      phone\n      nonFieldErrors\n    }\n  }\n}\n",
-  "metadata": {},
-  "fragment": {
-    "kind": "Fragment",
-    "name": "ResendCodeMutation",
-    "type": "Mutation",
-    "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
   },
-  "operation": {
-    "kind": "Operation",
-    "name": "ResendCodeMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
-  }
+  "text": "mutation ResendCodeMutation(\n  $input: ResendCodeMutationInput!\n) {\n  resendCode(input: $input) {\n    ok\n    errors {\n      phone\n      nonFieldErrors\n    }\n  }\n}\n"
 };
-})();
-// prettier-ignore
-(node/*: any*/).hash = '3766b97065165e539fec6650742261e7';
-module.exports = node;
+
+module.exports = batch;
