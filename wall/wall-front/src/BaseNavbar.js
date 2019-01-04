@@ -64,8 +64,8 @@ class BaseNavbar extends Component {
                 <link rel="stylesheet"
                       href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
                 <Navbar color="dark" dark expand="md">
-                    <Link className="nav-link parma-logo" to="/">
-                        کتابخانه پارما
+                    <Link className="nav-link wall-logo" to="/">
+                        سامانه‌ی وال
                     </Link>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
