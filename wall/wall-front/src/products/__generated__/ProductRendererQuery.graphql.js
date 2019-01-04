@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash bbc24749ba014a3a13e4fe233b0c5f4c
+ * @relayHash 488e2a3925149379b150071d375b815e
  */
 
 /* eslint-disable */
@@ -31,12 +31,13 @@ fragment ProductDescription_product on ProductType {
   address
   category
   image
-  owner {
+  seller {
     firstName
     lastName
     id
   }
   prodYear
+  price
   title
 }
 */
@@ -153,7 +154,7 @@ const batch /*: ConcreteBatch*/ = {
             "alias": null,
             "args": null,
             "concreteType": "UserType",
-            "name": "owner",
+            "name": "seller",
             "plural": false,
             "selections": [
               {
@@ -191,6 +192,13 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
+            "name": "price",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
             "name": "title",
             "storageKey": null
           }
@@ -199,7 +207,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ProductRendererQuery(\n  $id: String!\n) {\n  product(id: $id) {\n    ...ProductDescription_product\n    id\n  }\n}\n\nfragment ProductDescription_product on ProductType {\n  id\n  description\n  address\n  category\n  image\n  owner {\n    firstName\n    lastName\n    id\n  }\n  prodYear\n  title\n}\n"
+  "text": "query ProductRendererQuery(\n  $id: String!\n) {\n  product(id: $id) {\n    ...ProductDescription_product\n    id\n  }\n}\n\nfragment ProductDescription_product on ProductType {\n  id\n  description\n  address\n  category\n  image\n  seller {\n    firstName\n    lastName\n    id\n  }\n  prodYear\n  price\n  title\n}\n"
 };
 
 module.exports = batch;

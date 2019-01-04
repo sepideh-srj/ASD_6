@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7798e98841828114cc2c0b5f4fa16f56
+ * @relayHash 6d2621f0bbe15040026ed9f0f92d9ccd
  */
 
 /* eslint-disable */
@@ -9,27 +9,18 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type ProductCreateMutationVariables = {|
+export type BuyProductMutationVariables = {|
   input: {
-    title: string;
-    address: string;
-    description: string;
-    prodYear?: ?number;
-    price?: ?number;
-    category: "DIGITAL_GOODS" | "PROPERTY" | "VEHICLE" | "BEAUTY" | "CLOTHING" | "HOME_KITCHEN" | "BOOK_MEDIA" | "ENTERTAINMENT" | "SPORT" | "OTHERS";
-    image?: ?string;
+    productId: string;
     clientMutationId?: ?string;
   };
 |};
-export type ProductCreateMutationResponse = {|
-  +productCreate: ?{|
+export type BuyProductMutationResponse = {|
+  +buyProduct: ?{|
     +ok: boolean;
     +errors: ?{|
-      +address: ?$ReadOnlyArray<?string>;
-      +category: ?$ReadOnlyArray<?string>;
-      +prodYear: ?$ReadOnlyArray<?string>;
-      +price: ?$ReadOnlyArray<?string>;
-      +title: ?$ReadOnlyArray<?string>;
+      +productId: ?$ReadOnlyArray<?string>;
+      +nonFieldErrors: ?$ReadOnlyArray<?string>;
     |};
   |};
 |};
@@ -37,17 +28,14 @@ export type ProductCreateMutationResponse = {|
 
 
 /*
-mutation ProductCreateMutation(
-  $input: ProductCreateInput!
+mutation BuyProductMutation(
+  $input: BuyProductMutationInput!
 ) {
-  productCreate(input: $input) {
+  buyProduct(input: $input) {
     ok
     errors {
-      address
-      category
-      prodYear
-      price
-      title
+      productId
+      nonFieldErrors
     }
   }
 }
@@ -59,13 +47,13 @@ const batch /*: ConcreteBatch*/ = {
       {
         "kind": "LocalArgument",
         "name": "input",
-        "type": "ProductCreateInput!",
+        "type": "BuyProductMutationInput!",
         "defaultValue": null
       }
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "ProductCreateMutation",
+    "name": "BuyProductMutation",
     "selections": [
       {
         "kind": "LinkedField",
@@ -75,11 +63,11 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "Variable",
             "name": "input",
             "variableName": "input",
-            "type": "ProductCreateInput!"
+            "type": "BuyProductMutationInput!"
           }
         ],
-        "concreteType": "ProductCreatePayload",
-        "name": "productCreate",
+        "concreteType": "BuyProductMutationPayload",
+        "name": "buyProduct",
         "plural": false,
         "selections": [
           {
@@ -93,7 +81,7 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "concreteType": "ProductCreateError",
+            "concreteType": "BuyProductMutationError",
             "name": "errors",
             "plural": false,
             "selections": [
@@ -101,35 +89,14 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "name": "address",
+                "name": "productId",
                 "storageKey": null
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "name": "category",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "prodYear",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "price",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "title",
+                "name": "nonFieldErrors",
                 "storageKey": null
               }
             ],
@@ -144,18 +111,18 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "ProductCreateMutation",
+  "name": "BuyProductMutation",
   "query": {
     "argumentDefinitions": [
       {
         "kind": "LocalArgument",
         "name": "input",
-        "type": "ProductCreateInput!",
+        "type": "BuyProductMutationInput!",
         "defaultValue": null
       }
     ],
     "kind": "Root",
-    "name": "ProductCreateMutation",
+    "name": "BuyProductMutation",
     "operation": "mutation",
     "selections": [
       {
@@ -166,11 +133,11 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "Variable",
             "name": "input",
             "variableName": "input",
-            "type": "ProductCreateInput!"
+            "type": "BuyProductMutationInput!"
           }
         ],
-        "concreteType": "ProductCreatePayload",
-        "name": "productCreate",
+        "concreteType": "BuyProductMutationPayload",
+        "name": "buyProduct",
         "plural": false,
         "selections": [
           {
@@ -184,7 +151,7 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "concreteType": "ProductCreateError",
+            "concreteType": "BuyProductMutationError",
             "name": "errors",
             "plural": false,
             "selections": [
@@ -192,35 +159,14 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "name": "address",
+                "name": "productId",
                 "storageKey": null
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "name": "category",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "prodYear",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "price",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "title",
+                "name": "nonFieldErrors",
                 "storageKey": null
               }
             ],
@@ -231,7 +177,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation ProductCreateMutation(\n  $input: ProductCreateInput!\n) {\n  productCreate(input: $input) {\n    ok\n    errors {\n      address\n      category\n      prodYear\n      price\n      title\n    }\n  }\n}\n"
+  "text": "mutation BuyProductMutation(\n  $input: BuyProductMutationInput!\n) {\n  buyProduct(input: $input) {\n    ok\n    errors {\n      productId\n      nonFieldErrors\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

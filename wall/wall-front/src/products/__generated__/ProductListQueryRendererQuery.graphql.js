@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c9fba622e9e593b0d180317c4125b55b
+ * @relayHash e22f70e22e60c773c04e3bac0fc6a537
  */
 
 /* eslint-disable */
@@ -38,7 +38,12 @@ fragment ProductCard_product on ProductType {
   id
   image
   prodYear
+  price
   title
+  buyer {
+    phone
+    id
+  }
 }
 */
 
@@ -165,7 +170,39 @@ const batch /*: ConcreteBatch*/ = {
                     "kind": "ScalarField",
                     "alias": null,
                     "args": null,
+                    "name": "price",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
                     "name": "title",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "UserType",
+                    "name": "buyer",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "phone",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "id",
+                        "storageKey": null
+                      }
+                    ],
                     "storageKey": null
                   }
                 ],
@@ -179,7 +216,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ProductListQueryRendererQuery(\n  $filters: ProductsQueryArguments\n) {\n  ...ProductList_products_VTAHT\n}\n\nfragment ProductList_products_VTAHT on Query {\n  products(filters: $filters) {\n    edges {\n      node {\n        ...ProductCard_product\n        id\n      }\n    }\n  }\n}\n\nfragment ProductCard_product on ProductType {\n  description\n  address\n  category\n  id\n  image\n  prodYear\n  title\n}\n"
+  "text": "query ProductListQueryRendererQuery(\n  $filters: ProductsQueryArguments\n) {\n  ...ProductList_products_VTAHT\n}\n\nfragment ProductList_products_VTAHT on Query {\n  products(filters: $filters) {\n    edges {\n      node {\n        ...ProductCard_product\n        id\n      }\n    }\n  }\n}\n\nfragment ProductCard_product on ProductType {\n  description\n  address\n  category\n  id\n  image\n  prodYear\n  price\n  title\n  buyer {\n    phone\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

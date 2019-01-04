@@ -75,5 +75,5 @@ class ProductRequiredTest(UserRequiredTest):
     def setUpTestData(cls):
         super().setUpTestData()
         cls.product = Product.objects.create(title='title', address='address', description='Description',
-                                       category=Product.CATEGORY_CHOICES[0][0], prod_year=1997,
-                                       owner=cls.user)
+                                       category=Product.CATEGORY_CHOICES[0][0], prod_year=1997, price=100,
+                                       seller=cls.user)

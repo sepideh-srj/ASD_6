@@ -3,7 +3,7 @@ import {graphql, QueryRenderer} from 'react-relay';
 import environment from './../Environment';
 import PublicProfile from "./PublicProfile";
 
-class RequestListRenderer extends React.Component {
+class PublicProfileRenderer extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -43,4 +43,4 @@ const PublicProfileQuery = graphql`
         }
     }
 `;
-export default RequestListRenderer
+export default PublicProfileRenderer

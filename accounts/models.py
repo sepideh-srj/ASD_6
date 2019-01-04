@@ -31,19 +31,14 @@ class User(AbstractUser):
         self.balance = self.balance + amount
         self.save()
 
-    def request(self, product):
-        if product.hidden:
-            raise ValidationError('این محصول را نمی توانید بخرید.')
-        if self.balance < product.PRICE:
+    def buy(self, product):
+        if self.balance < product.price:
             raise ValidationError('اعتبار ناکافی.')
         with transaction.atomic():
-            self.change_balance(-product.PRICE)
-            # BorrowRequest.objects.create(product=product, borrower=self, price=product.PRICE) TODO
-
-    def hide(self, product):
-        if product.owner_id != self.pk:
-            raise ValidationError('این محصول متعلق به شما نیست.')
-        product.hide()
+            self.change_balance(-product.price)
+            product.seller.change_balance(product.price)
+            product.buyer = self
+            product.save()
 
 class Image(models.Model):
     image = models.ImageField()

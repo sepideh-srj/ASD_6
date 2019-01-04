@@ -4,7 +4,7 @@ from graphene import relay
 from graphene_django.types import DjangoObjectType
 
 from products.models import Product
-from products.mutations.product_mutations import ProductCreate, ProductHideMutation, ProductRemoveMutation
+from products.mutations.product_mutations import ProductCreate, ProductRemoveMutation
 
 
 class CategoryType(graphene.Enum):
@@ -23,7 +23,7 @@ class ProductType(DjangoObjectType):
     class Meta:
         model = Product
         interfaces = (relay.Node,)
-        only_fields = ('id', 'title', 'address', 'description', 'prod_year', 'category', 'image', 'owner')
+        only_fields = ('id', 'title', 'address', 'description', 'prod_year', 'price', 'category', 'image', 'seller', 'buyer')
 
     category = graphene.NonNull(CategoryType)
     image = graphene.String()
@@ -45,10 +45,13 @@ class ProductFilterSet(django_filters.FilterSet):
         model = Product
         fields = []
 
-    owner = django_filters.Filter(method='filter_owner')
+    seller = django_filters.Filter(method='filter_seller')
     prod_year_lte = django_filters.Filter(lookup_expr='lte', name='prod_year')
     prod_year_gte = django_filters.Filter(lookup_expr='gte', name='prod_year')
     prod_year = django_filters.Filter(lookup_expr='exact', name='prod_year')
+    price_lte = django_filters.Filter(lookup_expr='lte', name='price')
+    price_gte = django_filters.Filter(lookup_expr='gte', name='price')
+    price = django_filters.Filter(lookup_expr='exact', name='price')
     category_in = django_filters.Filter(method='filter_category_in', name='category', lookup_expr='in')
     title = django_filters.Filter(lookup_expr='exact', name='title')
     title_contains = django_filters.Filter(lookup_expr='icontains', name='title')
@@ -58,7 +61,7 @@ class ProductFilterSet(django_filters.FilterSet):
     def filter_category_in(self, queryset, name, value):
         return queryset.filter(category__in=value)
 
-    def filter_owner(self, queryset, name, value):
+    def filter_seller(self, queryset, name, value):
         value = relay.Node.get_node_from_global_id(self.info, value)
         return queryset.filter(**{name: value})
 
@@ -70,10 +73,14 @@ class ProductConnection(relay.Connection):
 
 class ProductsQueryArguments(graphene.InputObjectType):
     category_in = graphene.List(CategoryType)
-    owner = graphene.ID()
+    seller = graphene.ID()
+    buyer = graphene.ID()
     prod_year_lte = graphene.Int()
     prod_year_gte = graphene.Int()
     prod_year = graphene.Int()
+    price_lte = graphene.Int()
+    price_gte = graphene.Int()
+    price = graphene.Int()
     title = graphene.String()
     title_contains = graphene.String()
     description = graphene.String()
@@ -97,5 +104,4 @@ class ProductsQuery(graphene.ObjectType):
 
 class ProductMutation(graphene.ObjectType):
     product_create = ProductCreate.Field()
-    product_hide = ProductHideMutation.Field()
     product_remove = ProductRemoveMutation.Field()

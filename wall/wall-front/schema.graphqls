@@ -14,6 +14,25 @@ type AddBalanceMutationPayload {
   errors: AddBalanceMutationError
 }
 
+type BuyProductMutationError {
+  productId: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input BuyProductMutationInput {
+  productId: String!
+  clientMutationId: String
+}
+
+type BuyProductMutationPayload {
+  ok: Boolean!
+  user: UserType
+  product: ProductType
+  clientMutationId: String
+  errors: BuyProductMutationError
+}
+
 enum CategoryType {
   DIGITAL_GOODS
   PROPERTY
@@ -49,7 +68,6 @@ type EditProfileMutationPayload {
 
 type Mutation {
   productCreate(input: ProductCreateInput!): ProductCreatePayload
-  productHide(input: ProductHideMutationInput!): ProductHideMutationPayload
   productRemove(input: ProductRemoveMutationInput!): ProductRemoveMutationPayload
   userLogin(input: UserLoginInput!): UserLoginPayload
   userLogout(input: UserLogoutInput!): UserLogoutPayload
@@ -57,6 +75,7 @@ type Mutation {
   editProfile(input: EditProfileMutationInput!): EditProfileMutationPayload
   resendCode(input: ResendCodeMutationInput!): ResendCodeMutationPayload
   addBalance(input: AddBalanceMutationInput!): AddBalanceMutationPayload
+  buyProduct(input: BuyProductMutationInput!): BuyProductMutationPayload
 }
 
 
@@ -89,6 +108,7 @@ type ProductCreateError {
   address: [String]
   description: [String]
   prodYear: [String]
+  price: [String]
   category: [String]
   image: [String]
   clientMutationId: [String]
@@ -100,6 +120,7 @@ input ProductCreateInput {
   address: String!
   description: String!
   prodYear: Int
+  price: Int
   category: CategoryType!
   image: String
   clientMutationId: String
@@ -118,23 +139,6 @@ type ProductEdge {
 
   
   cursor: String!
-}
-
-type ProductHideMutationError {
-  product: [String]
-  clientMutationId: [String]
-  nonFieldErrors: [String]
-}
-
-input ProductHideMutationInput {
-  product: ID!
-  clientMutationId: String
-}
-
-type ProductHideMutationPayload {
-  ok: Boolean!
-  clientMutationId: String
-  errors: ProductHideMutationError
 }
 
 type ProductRemoveMutationError {
@@ -156,10 +160,14 @@ type ProductRemoveMutationPayload {
 
 input ProductsQueryArguments {
   categoryIn: [CategoryType]
-  owner: ID
+  seller: ID
+  buyer: ID
   prodYearLte: Int
   prodYearGte: Int
   prodYear: Int
+  priceLte: Int
+  priceGte: Int
+  price: Int
   title: String
   titleContains: String
   description: String
@@ -169,13 +177,15 @@ input ProductsQueryArguments {
 type ProductType implements Node {
   
   id: ID!
+  price: Int!
   title: String!
   address: String!
   description: String
   prodYear: Int!
   category: CategoryType!
   image: String
-  owner: UserType!
+  seller: UserType!
+  buyer: UserType
 }
 
 type ProductTypeConnection {
@@ -277,7 +287,7 @@ type UserType implements Node {
   lastName: String!
   balance: Int!
   phone: String
-  ownedProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
-  boughtProducts: Int
+  boughtProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
+  sellingProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
 }
 

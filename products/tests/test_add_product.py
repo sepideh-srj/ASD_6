@@ -56,6 +56,7 @@ class AddProductTest(ProductRequiredTest):
             'address': None,
             'description': None,
             'prodYear': None,
+            'price': None
             'category': None,
             'image': None,
         }, 'ok': False}})
@@ -74,10 +75,10 @@ class RemoveProductTest(ProductRequiredTest):
     @classmethod
     def setUpTestData(cls):
         super().setUpTestData()
-        cls.user2 = User.objects.create(username='second_user', balance=Product.PRICE)
+        cls.user2 = User.objects.create(username='second_user', balance=Product.price)
         cls.product2 = Product.objects.create(title='title', address='address', description='Description',
-                                        category=Product.CATEGORY_CHOICES[0][0], prod_year=1997,
-                                        owner=cls.user2)
+                                        category=Product.CATEGORY_CHOICES[0][0], prod_year=1997, price=100,
+                                        seller=cls.user2)
 
     def remove_product(self, login=True, **kwargs):
         if login:
@@ -106,4 +107,4 @@ class RemoveProductTest(ProductRequiredTest):
         r = self.remove_product(product=self.quot(relay.Node.to_global_id('ProductType', self.product.id)))
         self.assertMatchSnapshot(r)  # ok
         r = self.remove_product(product=self.quot(relay.Node.to_global_id('ProductType', self.product2.id)))
-        self.assertMatchSnapshot(r)  # owner error
+        self.assertMatchSnapshot(r)  # seller error

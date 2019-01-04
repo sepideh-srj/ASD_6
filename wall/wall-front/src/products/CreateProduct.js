@@ -12,11 +12,13 @@ class CreateProduct extends React.Component {
             address: '',
             description: '',
             prodYear: '',
+            price: '',
             category: Category.DIGITAL_GOODS.key,
             image: null,
             title_error: null,
             address_error: null,
             prodYear_error: null,
+            price_error: null,
             disabled: false
         };
         this.handle_image = this.handle_image.bind(this);
@@ -99,6 +101,25 @@ class CreateProduct extends React.Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
+                                    <Label for="price" sm={2}>قیمت (تومان)</Label>
+                                    <Col sm={10}>
+                                        <Input type="number" name="price" id="price"
+                                               valid={this.state.price_error == null ? undefined : false}
+                                               placeholder="قیمت"
+                                               onChange={(e) => this.setState({
+                                                   price: e.target.value,
+                                                   price_error: null
+                                               })}
+                                        />
+                                    </Col>
+                                    <Col sm={2}/>
+                                    <Col sm={10}>
+                                        <FormFeedback>
+                                            {this.state.price_error}
+                                        </FormFeedback>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
                                     <Label for="prodYear" sm={2}>سال تولید (شمسی)</Label>
                                     <Col sm={10}>
                                         <Input type="number" name="prodYear" id="prodYear"
@@ -163,8 +184,8 @@ class CreateProduct extends React.Component {
     }
 
     async _confirm() {
-        const {title, address, description, prodYear, category, image} = this.state;
-        ProductCreateMutation(title, address, description, prodYear, category, image, (response) => {
+        const {title, address, description, prodYear, price, category, image} = this.state;
+        ProductCreateMutation(title, address, description, prodYear, price, category, image, (response) => {
             if (response.ok) {
                 window.location.replace('/');
             }
@@ -173,6 +194,7 @@ class CreateProduct extends React.Component {
                     title_error: response.errors.title,
                     address_error: response.errors.address,
                     prodYear_error: response.errors.prodYear,
+                    price_error: response.errors.price,
                 });
         })
     }

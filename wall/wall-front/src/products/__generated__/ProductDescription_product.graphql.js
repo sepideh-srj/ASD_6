@@ -14,12 +14,13 @@ export type ProductDescription_product = {|
   +address: string;
   +category: "DIGITAL_GOODS" | "PROPERTY" | "VEHICLE" | "BEAUTY" | "CLOTHING" | "HOME_KITCHEN" | "BOOK_MEDIA" | "ENTERTAINMENT" | "SPORT" | "OTHERS";
   +image: ?string;
-  +owner: {|
+  +seller: {|
     +firstName: string;
     +lastName: string;
     +id: string;
   |};
   +prodYear: number;
+  +price: number;
   +title: string;
 |};
 */
@@ -71,7 +72,7 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "concreteType": "UserType",
-      "name": "owner",
+      "name": "seller",
       "plural": false,
       "selections": [
         {
@@ -103,6 +104,13 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "prodYear",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "price",
       "storageKey": null
     },
     {

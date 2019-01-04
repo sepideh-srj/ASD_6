@@ -3,6 +3,7 @@ import {createFragmentContainer, graphql} from 'react-relay';
 import {Category} from '../utils/constants';
 import {Button} from 'reactstrap';
 import ProductRemoveMutation from "../mutations/ProductRemoveMutation";
+import BuyProductMutation from "../mutations/BuyProductMutation";
 import {toast, ToastContainer} from 'react-toastify';
 import {Link} from 'react-router';
 
@@ -25,17 +26,24 @@ class ProductDescription extends React.Component {
     }
 
     async buy(){
-
+        BuyProductMutation(this.props.product.id, (response) => {
+            if (response.ok) {
+                this.props.router.push('/')
+                toast('کالای مورد نظر خریده شد.');
+            }
+            else
+                toast(response.errors.product || response.errors.nonFieldErrors[0])
+        });
     }
 
     render() {
         let button_text = 'خرید';
         let button_state = false;
-        let is_owner = false;
-        let owner_button = null;
-        if (is_owner) {
+        let is_seller = false;
+        let seller_button = null;
+        if (is_seller) {
             if (this.state.remove_confirm)
-                owner_button = <div>
+                seller_button = <div>
                     <Button
                         color='primary'
                         onClick={() => this.setState({remove_confirm: false})}>بازگشت
@@ -46,7 +54,7 @@ class ProductDescription extends React.Component {
                     </Button>
                 </div>;
             else
-                owner_button = <Button outline color="primary"
+                seller_button = <Button outline color="primary"
                                        onClick={() => (this.setState({remove_confirm: true}))}>حذف
                     محصول</Button>;
         }
@@ -69,18 +77,18 @@ class ProductDescription extends React.Component {
                                 <div className="product-description">{this.props.product.description}</div>
                             </div>
                             <div className="bottom-part">
-                                <div className="product-owner">صاحب محصول:
+                                <div className="product-seller">صاحب محصول:
                                     <span>   </span>
-                                    <Link to={`/public/${this.props.product.owner.id}`}>
-                                        {this.props.product.owner.firstName ?
-                                            <span>{this.props.product.owner.firstName} {this.props.product.owner.lastName}</span> :
-                                            <span>{this.props.product.owner.id}</span>
+                                    <Link to={`/public/${this.props.product.seller.id}`}>
+                                        {this.props.product.seller.firstName ?
+                                            <span>{this.props.product.seller.firstName} {this.props.product.seller.lastName}</span> :
+                                            <span>{this.props.product.seller.id}</span>
                                         }
                                     </Link>
 
                                 </div>
                                 {
-                                    (is_owner ? owner_button :
+                                    (is_seller ? seller_button :
                                             this.props.code === "" ? "" :
                                                 <Button outline color="primary"
                                                         disabled={button_state}
@@ -104,12 +112,13 @@ export default createFragmentContainer(ProductDescription, {
             address
             category
             image
-            owner{
+            seller{
                 firstName
                 lastName
                 id
             }
             prodYear
+            price
             title
         }
     `

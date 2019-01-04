@@ -8,7 +8,7 @@ class ProductManager(models.Manager):
 
 
 class Product(models.Model):
-    PRICE = 600
+    price = models.IntegerField('قیمت')
     CATEGORY_CHOICES = (
         ('DIGITAL_GOODS', 'کالاهای دیجیتال'),
         ('PROPERTY', 'املاک'),
@@ -27,18 +27,11 @@ class Product(models.Model):
     prod_year = models.IntegerField('سال چاپ')
     category = models.CharField('دسته‌بندی', max_length=100, choices=CATEGORY_CHOICES)
     image = models.ForeignKey('accounts.Image', on_delete=models.SET_NULL, null=True, blank=True)
-    owner = models.ForeignKey('accounts.User', on_delete=models.CASCADE,
-                              related_name='owned_products')
+    seller = models.ForeignKey('accounts.User', on_delete=models.CASCADE, related_name='selling_products')
+    buyer = models.ForeignKey('accounts.User', on_delete=models.CASCADE, null=True, blank=True, related_name='bought_products')
+    
     hidden = models.BooleanField(default=False)
     objects = ProductManager()
 
     def __str__(self):
         return self.title
-
-    def hide(self):
-        self.hidden = True
-        self.save(update_fields=['hidden'])
-
-    def show(self):
-        self.hidden = False
-        self.save()

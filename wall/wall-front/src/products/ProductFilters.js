@@ -22,6 +22,8 @@ class ProductFilters extends React.Component {
             categoryIn: '',
             prodYearLte: '',
             prodYearGte: '',
+            priceLte: '',
+            priceGte: '',
             dropdownOpen: false,
             categoryText: '----',
         }
@@ -44,16 +46,27 @@ class ProductFilters extends React.Component {
     }
 
     onMinYearChange(e) {
-        e.preventDefault();
-        let prodYearLte = e.target.value;
-        this.setState({prodYearLte})
-    }
+      e.preventDefault();
+      let prodYearLte = e.target.value;
+      this.setState({prodYearLte})
+  }
 
-    onMaxYearChange(e) {
-        e.preventDefault();
-        let prodYearGte = e.target.value;
-        this.setState({prodYearGte})
-    }
+  onMaxYearChange(e) {
+      e.preventDefault();
+      let prodYearGte = e.target.value;
+      this.setState({prodYearGte})
+  }
+  onMinPriceChange(e) {
+      e.preventDefault();
+      let priceLte = e.target.value;
+      this.setState({priceLte})
+  }
+
+  onMaxPriceChange(e) {
+      e.preventDefault();
+      let priceGte = e.target.value;
+      this.setState({priceGte})
+  }
 
     toggle(){
       this.setState({
@@ -108,6 +121,18 @@ class ProductFilters extends React.Component {
                               }
                             </DropdownMenu>
                         </Dropdown>
+                      </InputGroup>
+                    </Col>
+                    <Col>
+                      <InputGroup>
+                        <InputGroupAddon addontype="prepend">از قیمت</InputGroupAddon>
+                        <Input type="number" id="price-from" onChange={(e) => this.onMaxPriceChange(e)} />
+                      </InputGroup>
+                    </Col>
+                    <Col>
+                      <InputGroup>
+                        <InputGroupAddon addontype="prepend">تا قیمت</InputGroupAddon>
+                        <Input type="number" id="price-to" onChange={(e) => this.onMinPriceChange(e)} />
                       </InputGroup>
                     </Col>
                     <Col>

@@ -15,7 +15,11 @@ export type ProductCard_product = {|
   +id: string;
   +image: ?string;
   +prodYear: number;
+  +price: number;
   +title: string;
+  +buyer: ?{|
+    +phone: ?string;
+  |};
 |};
 */
 
@@ -72,7 +76,32 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
+      "name": "price",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
       "name": "title",
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "args": null,
+      "concreteType": "UserType",
+      "name": "buyer",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "phone",
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     }
   ],

@@ -15,6 +15,7 @@ class ProductCreate(SafeClientIDMutation):
         address = graphene.String(required=True)
         description = graphene.String(required=True)
         prod_year = graphene.Int()
+        price = graphene.Int()
         category = graphene.Field('products.schema.CategoryType', required=True)
         image = graphene.String()
 
@@ -28,26 +29,10 @@ class ProductCreate(SafeClientIDMutation):
             image = Image.objects.get(pk=kwargs.get('image'))
         kwargs['image'] = image
         product = Product(**kwargs)
-        product.owner = user
+        product.seller = user
         product.full_clean()
         product.save()
         return cls(product=product)
-
-
-class ProductHideMutation(SafeClientIDMutation):
-    login_required = True
-
-    class Input:
-        product = graphene.ID(required=True)
-
-    @classmethod
-    def safe_mutate(cls, root, info, **kwargs):
-        user = info.context.user
-        product_id = relay.Node.from_global_id(kwargs.get('product'))[1]
-        product = Product.objects.get(pk=product_id)
-        user.hide(product)
-        return cls()
-
 
 class ProductRemoveMutation(SafeClientIDMutation):
     login_required = True
@@ -59,7 +44,7 @@ class ProductRemoveMutation(SafeClientIDMutation):
     def safe_mutate(cls, root, info, **kwargs):
         user = info.context.user
         product = relay.Node.get_node_from_global_id(info, kwargs.get('product'))
-        if product.owner != user:
+        if product.seller != user:
             raise ValidationError('شما باید صاحب محصول باشید.')
         product.delete()
         return cls()

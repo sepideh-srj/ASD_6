@@ -18,7 +18,7 @@ snapshots['ProductQueryTest::test_query_snapshots 1'] = {
                         'category': 'DIGITAL_GOODS',
                         'id': 'Qm9va1R5cGU6MQ==',
                         'image': None,
-                        'owner': {
+                        'seller': {
                             'phone': '+989123456789'
                         },
                         'prodYear': 1997,
@@ -32,7 +32,7 @@ snapshots['ProductQueryTest::test_query_snapshots 1'] = {
                         'category': 'DIGITAL_GOODS',
                         'id': 'Qm9va1R5cGU6Mg==',
                         'image': None,
-                        'owner': {
+                        'seller': {
                             'phone': '+989123456789'
                         },
                         'prodYear': 2000,
@@ -55,10 +55,11 @@ snapshots['ProductQueryTest::test_query_snapshots 2'] = {
                         'category': 'DIGITAL_GOODS',
                         'id': 'Qm9va1R5cGU6Mg==',
                         'image': None,
-                        'owner': {
+                        'seller': {
                             'phone': '+989123456789'
                         },
                         'prodYear': 2000,
+                        'price': 100,
                         'title': 'Random'
                     }
                 }

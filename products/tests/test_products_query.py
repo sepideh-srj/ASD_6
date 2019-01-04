@@ -6,8 +6,8 @@ from utils.testing import ProductRequiredTest
 
 class ProductQueryTest(ProductRequiredTest):
     def test_query_snapshots(self):
-        Product.objects.create(address='name', prod_year=2000, description='Description', title='Random',
-                            category=Product.CATEGORY_CHOICES[0][0], owner=self.user)
+        Product.objects.create(address='name', prod_year=2000, price=100, description='Description', title='Random',
+                            category=Product.CATEGORY_CHOICES[0][0], seller=self.user)
         response = self.gql_client.execute(
             '''
             {
@@ -19,9 +19,10 @@ class ProductQueryTest(ProductRequiredTest):
                     address
                     description
                     prodYear
+                    price
                     category
                     image
-                    owner{
+                    seller{
                       phone
                     }
                   }
@@ -45,7 +46,7 @@ class ProductQueryTest(ProductRequiredTest):
                     prodYear
                     category
                     image
-                    owner{
+                    seller{
                       phone
                     }
                   }

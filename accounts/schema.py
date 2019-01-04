@@ -5,7 +5,7 @@ from graphene_django.types import DjangoObjectType
 from accounts.models import User
 from accounts.mutations.authentication_mutations import UserSignUp, UserLogin, UserLogout, \
     ResendCodeMutation
-from accounts.mutations.profile_mutations import EditProfileMutation, AddBalanceMutation
+from accounts.mutations.profile_mutations import EditProfileMutation, AddBalanceMutation, BuyProductMutation
 
 
 class UserType(DjangoObjectType):
@@ -13,21 +13,16 @@ class UserType(DjangoObjectType):
         model = User
         interfaces = (relay.Node,)
         only_fields = (
-            'id', 'first_name', 'last_name', 'owned_products',
+            'id', 'first_name', 'last_name', 'selling_products', 'bought_products',
             'balance', 'phone')
-
-    bought_products = graphene.Int()
 
     @staticmethod
     def resolve_bought_products(root, info):
-        return root.buys.count()
+        return root.bought_products.all()
 
     @staticmethod
-    def resolve_owned_products(root, info):
-        user = info.context.user
-        if user == root:
-            return root.owned_products.all()
-        return root.owned_products.visible
+    def resolve_selling_products(root, info):
+        return root.selling_products.all()
 
 
 class AccountQuery(graphene.ObjectType):
@@ -56,3 +51,4 @@ class AccountMutation(graphene.ObjectType):
     edit_profile = EditProfileMutation.Field()
     resend_code = ResendCodeMutation.Field()
     add_balance = AddBalanceMutation.Field()
+    buy_product = BuyProductMutation.Field()

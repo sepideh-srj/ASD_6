@@ -7,7 +7,6 @@ import BaseNavbarQueryRenderer from "./BaseNavbarQueryRenderer";
 import CreateProduct from "./products/CreateProduct";
 import ProductRenderer from "./products/ProductRenderer";
 import UserProfile from "./profile/UserProfile";
-import RequestListRenderer from "./profile/RequestListRenderer";
 import PublicProfileRenderer from "./public/PublicProfileRenderer";
 import EditProfile from "./profile/EditProfile";
 
