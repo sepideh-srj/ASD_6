@@ -2,29 +2,26 @@ import {commitMutation, graphql} from 'react-relay'
 import environment from '../Environment'
 
 const mutation = graphql`
-    mutation UserLogoutMutation($input: UserLogoutInput!) {
-        userLogout(input: $input){
+    mutation ActivateAccountMutation($input: ActivateAccountMutationInput!) {
+        activateAccount(input: $input){
             ok
             errors{
+                code
                 nonFieldErrors
             }
         }
     }
 `;
 
-export default (callback) => {
-    const variables = {
-        input: {
-            clientMutationId: ""
-        }
-    };
+export default (code, callback) => {
+    const variables = {input: {code}};
     commitMutation(
         environment,
         {
             mutation,
             variables,
             onCompleted: (response) => {
-                callback(response.userlogout);
+                callback(response.activateAccount);
             },
             onError: err => console.error(err),
         },

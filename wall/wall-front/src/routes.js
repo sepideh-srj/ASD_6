@@ -1,6 +1,7 @@
 import React from 'react';
 import {IndexRoute, Route} from 'react-router';
 import Login from './accounts/Login';
+import Activate from './accounts/Activate';
 import Signup from './accounts/Signup';
 import ProductListQueryRenderer from './products/ProductListQueryRenderer';
 import BaseNavbarQueryRenderer from "./BaseNavbarQueryRenderer";
@@ -16,6 +17,7 @@ export default (
 
         <Route path="/signup" components={Signup}/>
         <Route path="/login" components={Login}/>
+        <Route path="/activate" components={Activate}/>
 
         <Route path="/create-product" components={CreateProduct}/>
         <Route path="/products/:id" components={ProductRenderer}/>

@@ -35,6 +35,26 @@ class ResendCodeMutation(SafeClientIDMutation):
         user.save()
         return cls()
 
+class ActivateAccountMutation(SafeClientIDMutation):
+    class Input:
+        code = graphene.String(required=True)
+
+    user = graphene.Field('accounts.schema.UserType')
+
+    @classmethod
+    def safe_mutate(cls, root, info, **kwargs):
+        user = info.context.user
+        print()
+        print(user)
+        print()
+        print(kwargs)
+        print()
+        if user.code == kwargs.get('code'):
+            setattr(user, 'activated', True)
+            user.save()
+            return cls(user=user)
+        return cls.error(['کد وارد شده اشتباه است!'])
+        
 
 class UserLogout(ClientIDMutationWithErrors):
     @classmethod

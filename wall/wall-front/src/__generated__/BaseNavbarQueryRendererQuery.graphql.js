@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 27a1420fcad7091e796f0595e61d51b7
+ * @relayHash 4034adf1567c41d2e2bff3ed6bc6efa0
  */
 
 /* eslint-disable */
@@ -29,6 +29,7 @@ fragment BaseNavbar_logged on UserType {
   lastName
   phone
   balance
+  activated
 }
 */
 
@@ -110,13 +111,20 @@ const batch /*: ConcreteBatch*/ = {
             "args": null,
             "name": "balance",
             "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "activated",
+            "storageKey": null
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query BaseNavbarQueryRendererQuery {\n  me {\n    ...BaseNavbar_logged\n    id\n  }\n}\n\nfragment BaseNavbar_logged on UserType {\n  firstName\n  id\n  lastName\n  phone\n  balance\n}\n"
+  "text": "query BaseNavbarQueryRendererQuery {\n  me {\n    ...BaseNavbar_logged\n    id\n  }\n}\n\nfragment BaseNavbar_logged on UserType {\n  firstName\n  id\n  lastName\n  phone\n  balance\n  activated\n}\n"
 };
 
 module.exports = batch;

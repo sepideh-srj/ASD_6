@@ -17,6 +17,7 @@ class User(AbstractUser):
     phone = PhoneField('شماره تلفن', null=True, max_length=13, validators=[PhoneRegex], unique=True)
     code = models.CharField(max_length=CODE_LENGTH, null=True)
     password = models.CharField(max_length=30)
+    activated = models.BooleanField(default=False)
     objects = UserManager()
 
     def generate_code(self):

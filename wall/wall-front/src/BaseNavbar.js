@@ -3,7 +3,6 @@ import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
     NavLink
@@ -27,6 +26,10 @@ class BaseNavbar extends Component {
 
     componentDidMount() {
         if (this.props.logged) {
+            if(this.props.logged.activated == false && !("" + window.location).includes("/activate")){
+                window.location.replace('/activate')
+                return
+            }
             this.setState({
                 logged_in: true,
                 first_name: this.props.logged.firstName,
@@ -36,6 +39,10 @@ class BaseNavbar extends Component {
             this.props.change_balance(this.props.logged.balance);
         } else {
             localStorage.setItem('username', null)
+            if(("" + window.location).includes("/activate")){
+                window.location.replace('/')
+                return
+            }
         }
 
     }
@@ -47,7 +54,8 @@ class BaseNavbar extends Component {
     }
 
     logout() {
-        UserLogoutMutation((r) => {
+        this.setState({phone: ''})
+        UserLogoutMutation(() => {
             window.location.replace('/')
         });
     }
@@ -123,6 +131,7 @@ export default createFragmentContainer(BaseNavbar, {
             lastName
             phone
             balance
+            activated
         }
     `,
 

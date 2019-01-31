@@ -1,20 +1,18 @@
 import React, {Component} from 'react';
-import UserLoginMutation from "../mutations/UserLoginMutation";
 import {Form, FormGroup, Label, FormFeedback, Input, Button, Col} from 'reactstrap';
 import '../../styles/accounts/login.css';
+import ActivateAccountMutation from "../mutations/ActivateAccountMutation";
 import ResendCodeMutation from "../mutations/ResendCodeMutation";
 import {ToastContainer, toast} from 'react-toastify';
 
-class Login extends Component {
+class Activate extends Component {
     constructor() {
         super();
 
         this.state = {
-            password: '',
-            phone: '',
-            login_result: '',
-            valid: undefined,
-            input_disabled: false
+            code: '',
+            activate_result: '',
+            valid: undefined
         };
     }
 
@@ -34,40 +32,27 @@ class Login extends Component {
                         <div className="login-form-container">
                             <Form>
                                 <FormGroup row>
-                                    <Label for="phone" sm={2}>شماره موبایل</Label>
+                                    <Label for="code" sm={2}>کد ارسال شده</Label>
                                     <Col sm={10}>
-                                        <Input className="ltr-input"
-                                               disabled={this.state.input_disabled}
-                                               type="text" name="phone"
-                                               id="phone"
-                                               placeholder="شماره موبایل"
-                                               value={this.state.phone}
-                                               onChange={(e) => this.setState({phone: e.target.value})}
-                                        />
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label for="password" sm={2}>رمز عبور</Label>
-                                    <Col sm={10}>
-                                        <Input className="ltr-input" type="password" name="password"
-                                               id="password"
+                                        <Input className="ltr-input" type="code" name="code"
+                                               id="code"
                                                valid={this.state.valid}
-                                               placeholder="رمز عبور"
-                                               onChange={(e) => this.setState({password: e.target.value})}
+                                               placeholder="کد ارسالی"
+                                               onChange={(e) => this.setState({code: e.target.value})}
                                         />
                                     </Col>
                                     <Col sm={2}>
                                     </Col>
                                     <Col sm={10}>
                                         <FormFeedback>
-                                            {this.state.login_result}
+                                            {this.state.activate_result}
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
                                 <Button type="button" className="submit" outline color="primary"
-                                        onClick={() => this._confirm()}>ورود</Button>
-                                {/* <Button type="button" className="submit" outline color="success"
-                                        onClick={() => this.resend()}>ارسال کد</Button> */}
+                                        onClick={() => this._confirm()}>فعالسازی</Button>
+                                <Button type="button" className="submit" outline color="success"
+                                        onClick={() => this.resend()}>ارسال دوباره کد</Button>
 
                             </Form>
                         </div>
@@ -78,13 +63,13 @@ class Login extends Component {
     }
 
     async _confirm() {
-        const {phone, password} = this.state;
-        UserLoginMutation(phone, password, (response) => {
+        const {code} = this.state;
+        ActivateAccountMutation(code, (response) => {
             if (response.ok) {
                 window.location.replace('/');
             }
             else
-                this.setState({valid: false, login_result: response.errors.nonFieldErrors});
+                this.setState({valid: false, activate_result: response.errors.nonFieldErrors});
         })
     }
 
@@ -102,4 +87,4 @@ class Login extends Component {
 
 }
 
-export default Login;
+export default Activate;
