@@ -94,6 +94,7 @@ type Mutation {
   userSignUp(input: UserSignUpInput!): UserSignUpPayload
   editProfile(input: EditProfileMutationInput!): EditProfileMutationPayload
   resendCode(input: ResendCodeMutationInput!): ResendCodeMutationPayload
+  resendPassword(input: ResendPasswordMutationInput!): ResendPasswordMutationPayload
   activateAccount(input: ActivateAccountMutationInput!): ActivateAccountMutationPayload
   addBalance(input: AddBalanceMutationInput!): AddBalanceMutationPayload
   buyProduct(input: BuyProductMutationInput!): BuyProductMutationPayload
@@ -248,6 +249,23 @@ type ResendCodeMutationPayload {
   errors: ResendCodeMutationError
 }
 
+type ResendPasswordMutationError {
+  phone: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input ResendPasswordMutationInput {
+  phone: String!
+  clientMutationId: String
+}
+
+type ResendPasswordMutationPayload {
+  ok: Boolean!
+  clientMutationId: String
+  errors: ResendPasswordMutationError
+}
+
 type UserLoginError {
   phone: [String]
   password: [String]
@@ -312,7 +330,7 @@ type UserType implements Node {
   phone: String
   password: String!
   activated: Boolean!
-  boughtProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
   sellingProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
+  boughtProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
 }
 

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import UserLoginMutation from "../mutations/UserLoginMutation";
 import {Form, FormGroup, Label, FormFeedback, Input, Button, Col} from 'reactstrap';
 import '../../styles/accounts/login.css';
-import ResendCodeMutation from "../mutations/ResendCodeMutation";
+import ResendPasswordMutation from "../mutations/ResendPasswordMutation";
 import {ToastContainer, toast} from 'react-toastify';
 
 class Login extends Component {
@@ -66,8 +66,8 @@ class Login extends Component {
                                 </FormGroup>
                                 <Button type="button" className="submit" outline color="primary"
                                         onClick={() => this._confirm()}>ورود</Button>
-                                {/* <Button type="button" className="submit" outline color="success"
-                                        onClick={() => this.resend()}>ارسال کد</Button> */}
+                                <Button type="button" className="submit" outline color="success"
+                                        onClick={() => this.resend()}>فراموشی رمز عبور</Button>
 
                             </Form>
                         </div>
@@ -90,9 +90,9 @@ class Login extends Component {
 
     async resend() {
         const {phone} = this.state;
-        ResendCodeMutation(phone, (response) => {
+        ResendPasswordMutation(phone, (response) => {
             if (response.ok) {
-                toast("کد ورود جدیدی برای شما ارسال شد.");
+                toast("رمز عبورتان برای شما ارسال شد.");
             }
             else
                 toast(response.errors.nonFieldErrors[0]);

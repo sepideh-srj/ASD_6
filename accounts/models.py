@@ -29,6 +29,11 @@ class User(AbstractUser):
         from utils.sms import SMS
         SMS(self.phone, text).start()
 
+    def send_password_by_sms(self):
+        text = 'رمز عبور حساب شما در سامانه وال {} است.'.format(self.password)
+        from utils.sms import SMS
+        SMS(self.phone, text).start()
+
     def change_balance(self, amount):
         self.balance = self.balance + amount
         self.save()

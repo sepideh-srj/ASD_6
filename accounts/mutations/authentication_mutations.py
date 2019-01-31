@@ -35,6 +35,16 @@ class ResendCodeMutation(SafeClientIDMutation):
         user.save()
         return cls()
 
+class ResendPasswordMutation(SafeClientIDMutation):
+    class Input:
+        phone = graphene.String(required=True)
+
+    @classmethod
+    def safe_mutate(cls, root, info, **kwargs):
+        user = User.objects.get(**kwargs)
+        user.send_password_by_sms()
+        return cls()
+
 class ActivateAccountMutation(SafeClientIDMutation):
     class Input:
         code = graphene.String(required=True)

@@ -4,7 +4,7 @@ from graphene_django.types import DjangoObjectType
 
 from accounts.models import User
 from accounts.mutations.authentication_mutations import UserSignUp, UserLogin, UserLogout, \
-    ResendCodeMutation, ActivateAccountMutation
+    ResendCodeMutation, ActivateAccountMutation, ResendPasswordMutation
 from accounts.mutations.profile_mutations import EditProfileMutation, AddBalanceMutation, BuyProductMutation
 
 
@@ -50,6 +50,7 @@ class AccountMutation(graphene.ObjectType):
     user_sign_up = UserSignUp.Field()
     edit_profile = EditProfileMutation.Field()
     resend_code = ResendCodeMutation.Field()
+    resend_password = ResendPasswordMutation.Field()
     activate_account = ActivateAccountMutation.Field()
     add_balance = AddBalanceMutation.Field()
     buy_product = BuyProductMutation.Field()
