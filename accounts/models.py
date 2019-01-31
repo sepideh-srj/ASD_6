@@ -12,10 +12,11 @@ from utils.validators import PhoneRegex
 
 class User(AbstractUser):
     CODE_LENGTH = 8
+
     balance = models.PositiveIntegerField('اعتبار', default=0)
-    phone = PhoneField('شماره تلفن', null=True, max_length=13, validators=[PhoneRegex],
-                       unique=True)
+    phone = PhoneField('شماره تلفن', null=True, max_length=13, validators=[PhoneRegex], unique=True)
     code = models.CharField(max_length=CODE_LENGTH, null=True)
+    password = models.CharField(max_length=30)
     objects = UserManager()
 
     def generate_code(self):

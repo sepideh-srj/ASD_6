@@ -2,15 +2,18 @@ import React, {Component} from 'react';
 import SignUpUserMutation from "../mutations/UserSignUpMutation";
 import {Form, FormGroup, Label, FormFeedback, Input, Button, Col} from 'reactstrap';
 import '../../styles/accounts/login.css';
-import UserLoginMutation from "../mutations/UserLoginMutation";
 
-class Login extends Component {
+class Signup extends Component {
     constructor() {
         super();
 
         this.state = {
             phone: '',
             phone_error: null,
+            password: '',
+            password_error: null,
+            cpassword: '',
+            cpassword_error: null
         };
     }
 
@@ -41,6 +44,46 @@ class Login extends Component {
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
+                                <FormGroup row>
+                                    <Label for="password" sm={2}>رمز عبور</Label>
+                                    <Col sm={10}>
+                                        <Input className="ltr-input" type="text" name="password"
+                                               id="password"
+                                               valid={this.state.password_error == null ? undefined : false}
+                                               placeholder="رمز عبور"
+                                               onChange={(e) => this.setState({
+                                                   password: e.target.value,
+                                                   password_error: null
+                                               })}
+                                        />
+                                    </Col>
+                                    <Col sm={2}/>
+                                    <Col sm={10}>
+                                        <FormFeedback>
+                                            {this.state.password_error}
+                                        </FormFeedback>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label for="cpassword" sm={2}>تایید رمز عبور</Label>
+                                    <Col sm={10}>
+                                        <Input className="ltr-input" type="text" name="cpassword"
+                                               id="cpassword"
+                                               valid={this.state.cpassword_error == null ? undefined : false}
+                                               placeholder="تایید رمز عبور"
+                                               onChange={(e) => this.setState({
+                                                   cpassword: e.target.value,
+                                                   cpassword_error: null
+                                               })}
+                                        />
+                                    </Col>
+                                    <Col sm={2}/>
+                                    <Col sm={10}>
+                                        <FormFeedback>
+                                            {this.state.cpassword_error}
+                                        </FormFeedback>
+                                    </Col>
+                                </FormGroup>
                                 <Button className="submit" outline color="primary"
                                         onClick={() => this._confirm()}>ثبت</Button>
                             </Form>
@@ -52,14 +95,19 @@ class Login extends Component {
     }
 
     async _confirm() {
-        const {phone} = this.state;
-        SignUpUserMutation(phone, (response) => {
+        const {phone, password, cpassword} = this.state;
+        if (password !== cpassword){
+            this.setState({cpassword_error: "تایید رمز عبور اشتباه است!"})
+            return
+        }
+        SignUpUserMutation(phone, password, (response) => {
             if (response.ok) {
                 this.props.router.push('/login/?number=' + phone);
             }
             else
                 this.setState({
                     phone_error: response.errors.phone,
+                    password_error: response.errors.password
                 });
         })
 
@@ -67,4 +115,4 @@ class Login extends Component {
 
 }
 
-export default Login;
+export default Signup;

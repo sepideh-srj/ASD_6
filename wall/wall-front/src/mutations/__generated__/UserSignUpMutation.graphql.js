@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5aa91e656ce1d230bf6951a2454de871
+ * @relayHash eb806eea5c9365d0f4d26706ee2d82cc
  */
 
 /* eslint-disable */
@@ -12,6 +12,7 @@ import type {ConcreteBatch} from 'relay-runtime';
 export type UserSignUpMutationVariables = {|
   input: {
     phone: string;
+    password: string;
     clientMutationId?: ?string;
   };
 |};
@@ -20,6 +21,7 @@ export type UserSignUpMutationResponse = {|
     +ok: boolean;
     +errors: ?{|
       +phone: ?$ReadOnlyArray<?string>;
+      +password: ?$ReadOnlyArray<?string>;
     |};
   |};
 |};
@@ -34,6 +36,7 @@ mutation UserSignUpMutation(
     ok
     errors {
       phone
+      password
     }
   }
 }
@@ -88,6 +91,13 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "phone",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "password",
                 "storageKey": null
               }
             ],
@@ -152,6 +162,13 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "phone",
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "password",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -161,7 +178,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation UserSignUpMutation(\n  $input: UserSignUpInput!\n) {\n  userSignUp(input: $input) {\n    ok\n    errors {\n      phone\n    }\n  }\n}\n"
+  "text": "mutation UserSignUpMutation(\n  $input: UserSignUpInput!\n) {\n  userSignUp(input: $input) {\n    ok\n    errors {\n      phone\n      password\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

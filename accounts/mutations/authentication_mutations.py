@@ -9,7 +9,7 @@ from utils.mutation import ClientIDMutationWithErrors, SafeClientIDMutation
 class UserLogin(ClientIDMutationWithErrors):
     class Input:
         phone = graphene.String(required=True)
-        code = graphene.String(required=True)
+        password = graphene.String(required=True)
 
     user = graphene.Field('accounts.schema.UserType')
 
@@ -46,15 +46,18 @@ class UserLogout(ClientIDMutationWithErrors):
 class UserSignUp(SafeClientIDMutation):
     class Input:
         phone = graphene.String(required=True)
+        password = graphene.String(required=True)
 
     user = graphene.Field('accounts.schema.UserType')
 
     @classmethod
     def safe_mutate(cls, root, info, **kwargs):
         phone = kwargs.get('phone')
-        user = User(username=phone, phone=phone)
+        password = kwargs.get('password')
+        user = User(username=phone, phone=phone, password=password)
+        # print(password)
         user.generate_code()
-        user.set_password('')
+        # user.set_password(password)
         try:
             user.full_clean()
         except ValidationError as e:

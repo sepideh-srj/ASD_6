@@ -15,11 +15,11 @@ const mutation = graphql`
     }
 `;
 
-export default (phone, code, callback) => {
+export default (phone, password, callback) => {
     const variables = {
         input: {
             phone,
-            code
+            password
         }
     };
     commitMutation(

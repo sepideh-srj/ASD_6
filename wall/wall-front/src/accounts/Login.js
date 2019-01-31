@@ -10,7 +10,7 @@ class Login extends Component {
         super();
 
         this.state = {
-            code: '',
+            password: '',
             phone: '',
             login_result: '',
             valid: undefined,
@@ -47,13 +47,13 @@ class Login extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="code" sm={2}>کد ارسال شده</Label>
+                                    <Label for="password" sm={2}>رمز عبور</Label>
                                     <Col sm={10}>
-                                        <Input className="ltr-input" type="code" name="code"
-                                               id="code"
+                                        <Input className="ltr-input" type="password" name="password"
+                                               id="password"
                                                valid={this.state.valid}
-                                               placeholder="کد"
-                                               onChange={(e) => this.setState({code: e.target.value})}
+                                               placeholder="رمز عبور"
+                                               onChange={(e) => this.setState({password: e.target.value})}
                                         />
                                     </Col>
                                     <Col sm={2}>
@@ -66,8 +66,8 @@ class Login extends Component {
                                 </FormGroup>
                                 <Button type="button" className="submit" outline color="primary"
                                         onClick={() => this._confirm()}>ورود</Button>
-                                <Button type="button" className="submit" outline color="success"
-                                        onClick={() => this.resend()}>ارسال کد</Button>
+                                {/* <Button type="button" className="submit" outline color="success"
+                                        onClick={() => this.resend()}>ارسال کد</Button> */}
 
                             </Form>
                         </div>
@@ -78,8 +78,8 @@ class Login extends Component {
     }
 
     async _confirm() {
-        const {phone, code} = this.state;
-        UserLoginMutation(phone, code, (response) => {
+        const {phone, password} = this.state;
+        UserLoginMutation(phone, password, (response) => {
             if (response.ok) {
                 window.location.replace('/');
             }

@@ -229,14 +229,14 @@ type ResendCodeMutationPayload {
 
 type UserLoginError {
   phone: [String]
-  code: [String]
+  password: [String]
   clientMutationId: [String]
   nonFieldErrors: [String]
 }
 
 input UserLoginInput {
   phone: String!
-  code: String!
+  password: String!
   clientMutationId: String
 }
 
@@ -264,12 +264,14 @@ type UserLogoutPayload {
 
 type UserSignUpError {
   phone: [String]
+  password: [String]
   clientMutationId: [String]
   nonFieldErrors: [String]
 }
 
 input UserSignUpInput {
   phone: String!
+  password: String!
   clientMutationId: String
 }
 
@@ -287,7 +289,7 @@ type UserType implements Node {
   lastName: String!
   balance: Int!
   phone: String
-  boughtProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
   sellingProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
+  boughtProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
 }
 

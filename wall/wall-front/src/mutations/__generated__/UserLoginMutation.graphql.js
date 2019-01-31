@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e03140abf58cd56aa13c648ed0bb408a
+ * @relayHash b74f18a6f54c5149f07e067e929702ff
  */
 
 /* eslint-disable */
@@ -12,7 +12,7 @@ import type {ConcreteBatch} from 'relay-runtime';
 export type UserLoginMutationVariables = {|
   input: {
     phone: string;
-    code: string;
+    password: string;
     clientMutationId?: ?string;
   };
 |};

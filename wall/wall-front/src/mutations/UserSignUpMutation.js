@@ -7,15 +7,17 @@ const mutation = graphql`
             ok
             errors{
                 phone
+                password
             }
         }
     }
 `;
 
-export default (phone, callback) => {
+export default (phone, password, callback) => {
     const variables = {
         input: {
-            phone
+            phone,
+            password
         }
     };
     commitMutation(
