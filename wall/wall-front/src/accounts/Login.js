@@ -97,7 +97,6 @@ class Login extends Component {
             else
                 toast(response.errors.nonFieldErrors[0]);
         })
-
     }
 
 }

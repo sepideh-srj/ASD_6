@@ -18959,11 +18959,12 @@ const mutation = function () {
     return __webpack_require__(175);
 };
 
-/* harmony default export */ __webpack_exports__["a"] = ((firstName, lastName, callback) => {
+/* harmony default export */ __webpack_exports__["a"] = ((firstName, lastName, password, callback) => {
     const variables = {
         input: {
             firstName,
-            lastName
+            lastName,
+            password
         }
     };
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_react_relay__["commitMutation"])(__WEBPACK_IMPORTED_MODULE_1__Environment__["a" /* default */], {
@@ -19609,7 +19610,7 @@ module.exports = batch;
 "use strict";
 /**
  * 
- * @relayHash eb62fb11b8cce328643b959bcc6ef1a0
+ * @relayHash 8d7e375318ef6c0dbcefe9262029b80c
  */
 
 /* eslint-disable */
@@ -19622,6 +19623,7 @@ export type EditProfileMutationVariables = {|
   input: {
     firstName?: ?string;
     lastName?: ?string;
+    password?: ?string;
     clientMutationId?: ?string;
   };
 |};
@@ -19631,6 +19633,7 @@ export type EditProfileMutationResponse = {|
     +errors: ?{|
       +firstName: ?$ReadOnlyArray<?string>;
       +lastName: ?$ReadOnlyArray<?string>;
+      +password: ?$ReadOnlyArray<?string>;
       +nonFieldErrors: ?$ReadOnlyArray<?string>;
     |};
   |};
@@ -19646,6 +19649,7 @@ mutation EditProfileMutation(
     errors {
       firstName
       lastName
+      password
       nonFieldErrors
     }
   }
@@ -19699,6 +19703,12 @@ const batch /*: ConcreteBatch*/ = {
           "alias": null,
           "args": null,
           "name": "lastName",
+          "storageKey": null
+        }, {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "password",
           "storageKey": null
         }, {
           "kind": "ScalarField",
@@ -19768,6 +19778,12 @@ const batch /*: ConcreteBatch*/ = {
           "kind": "ScalarField",
           "alias": null,
           "args": null,
+          "name": "password",
+          "storageKey": null
+        }, {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
           "name": "nonFieldErrors",
           "storageKey": null
         }],
@@ -19776,7 +19792,7 @@ const batch /*: ConcreteBatch*/ = {
       "storageKey": null
     }]
   },
-  "text": "mutation EditProfileMutation(\n  $input: EditProfileMutationInput!\n) {\n  editProfile(input: $input) {\n    ok\n    errors {\n      firstName\n      lastName\n      nonFieldErrors\n    }\n  }\n}\n"
+  "text": "mutation EditProfileMutation(\n  $input: EditProfileMutationInput!\n) {\n  editProfile(input: $input) {\n    ok\n    errors {\n      firstName\n      lastName\n      password\n      nonFieldErrors\n    }\n  }\n}\n"
 };
 
 module.exports = batch;
@@ -22533,6 +22549,10 @@ class EditProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
             lastName: '',
             phone: '',
             balance: '',
+            password: '',
+            cpassword: '',
+            password_error: '',
+            cpassword_error: '',
             firstName_error: null,
             lastName_error: null
         };
@@ -22662,6 +22682,70 @@ class EditProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
                                     { row: true },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         __WEBPACK_IMPORTED_MODULE_1_reactstrap__["d" /* Label */],
+                                        { 'for': 'password', sm: 2 },
+                                        '\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062C\u062F\u06CC\u062F'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Col */],
+                                        { sm: 10 },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_reactstrap__["e" /* Input */], { className: 'ltr-input', type: 'text', name: 'password',
+                                            id: 'password',
+                                            valid: this.state.password_error == null ? undefined : false,
+                                            placeholder: '\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062C\u062F\u06CC\u062F',
+                                            onChange: e => this.setState({
+                                                password: e.target.value,
+                                                password_error: null
+                                            })
+                                        })
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Col */], { sm: 2 }),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Col */],
+                                        { sm: 10 },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            __WEBPACK_IMPORTED_MODULE_1_reactstrap__["f" /* FormFeedback */],
+                                            null,
+                                            this.state.password_error
+                                        )
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_1_reactstrap__["c" /* FormGroup */],
+                                    { row: true },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_1_reactstrap__["d" /* Label */],
+                                        { 'for': 'cpassword', sm: 2 },
+                                        '\u062A\u0627\u06CC\u06CC\u062F \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062C\u062F\u06CC\u062F'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Col */],
+                                        { sm: 10 },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_reactstrap__["e" /* Input */], { className: 'ltr-input', type: 'text', name: 'cpassword',
+                                            id: 'cpassword',
+                                            valid: this.state.cpassword_error == null ? undefined : false,
+                                            placeholder: '\u062A\u0627\u06CC\u06CC\u062F \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062C\u062F\u06CC\u062F',
+                                            onChange: e => this.setState({
+                                                cpassword: e.target.value,
+                                                cpassword_error: null
+                                            })
+                                        })
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Col */], { sm: 2 }),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Col */],
+                                        { sm: 10 },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            __WEBPACK_IMPORTED_MODULE_1_reactstrap__["f" /* FormFeedback */],
+                                            null,
+                                            this.state.cpassword_error
+                                        )
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_1_reactstrap__["c" /* FormGroup */],
+                                    { row: true },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_1_reactstrap__["d" /* Label */],
                                         { 'for': 'balance', sm: 2 },
                                         '\u0627\u0639\u062A\u0628\u0627\u0631'
                                     ),
@@ -22706,14 +22790,19 @@ class EditProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
         var _this = this;
 
         return _asyncToGenerator(function* () {
-            const { firstName, lastName } = _this.state;
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__mutations_EditProfileMutation__["a" /* default */])(firstName || _this.me.firstName, lastName || _this.me.lastName, function (response) {
+            const { firstName, lastName, password, cpassword } = _this.state;
+            if (password !== cpassword) {
+                _this.setState({ cpassword_error: "تایید رمز عبور اشتباه است!" });
+                return;
+            }
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__mutations_EditProfileMutation__["a" /* default */])(firstName || _this.me.firstName, lastName || _this.me.lastName, password, function (response) {
                 if (response.ok) {
                     _this.props.change_balance(0, 1, firstName || _this.me.firstName);
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_react_toastify__["toast"])('تغییرات با موفقیت ذخیره شد.');
                 } else _this.setState({
                     firstName_error: response.errors.firstName,
-                    lastName_error: response.errors.lastName
+                    lastName_error: response.errors.lastName,
+                    password_error: response.errors.password
                 });
             });
         })();

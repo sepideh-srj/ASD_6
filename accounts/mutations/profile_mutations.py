@@ -10,6 +10,7 @@ class EditProfileMutation(SafeClientIDMutation):
     class Input:
         first_name = graphene.String()
         last_name = graphene.String()
+        password = graphene.String()
 
     user = graphene.Field('accounts.schema.UserType')
 
@@ -17,6 +18,8 @@ class EditProfileMutation(SafeClientIDMutation):
     def safe_mutate(cls, root, info, **kwargs):
         user = info.context.user
         for k, v in kwargs.items():
+            if(k == "password" and v == ""):
+                continue
             setattr(user, k, v)
         user.full_clean()
         user.save()

@@ -16,6 +16,10 @@ class EditProfile extends React.Component {
             lastName: '',
             phone: '',
             balance: '',
+            password: '',
+            cpassword: '',
+            password_error: '',
+            cpassword_error: '',
             firstName_error: null,
             lastName_error: null,
         };
@@ -97,6 +101,47 @@ class EditProfile extends React.Component {
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup row>
+                                    <Label for="password" sm={2}>رمز عبور جدید</Label>
+                                    <Col sm={10}>
+                                        <Input className="ltr-input" type="text" name="password"
+                                               id="password"
+                                               valid={this.state.password_error == null ? undefined : false}
+                                               placeholder="رمز عبور جدید"
+                                               onChange={(e) => this.setState({
+                                                   password: e.target.value,
+                                                   password_error: null
+                                               })}
+                                        />
+                                    </Col>
+                                    <Col sm={2}/>
+                                    <Col sm={10}>
+                                        <FormFeedback>
+                                            {this.state.password_error}
+                                        </FormFeedback>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label for="cpassword" sm={2}>تایید رمز عبور جدید</Label>
+                                    <Col sm={10}>
+                                        <Input className="ltr-input" type="text" name="cpassword"
+                                               id="cpassword"
+                                               valid={this.state.cpassword_error == null ? undefined : false}
+                                               placeholder="تایید رمز عبور جدید"
+                                               onChange={(e) => this.setState({
+                                                   cpassword: e.target.value,
+                                                   cpassword_error: null
+                                               })}
+                                        />
+                                    </Col>
+                                    <Col sm={2}/>
+                                    <Col sm={10}>
+                                        <FormFeedback>
+                                            {this.state.cpassword_error}
+                                        </FormFeedback>
+                                    </Col>
+                                </FormGroup>
+
+                                            <FormGroup row>
                                                 <Label for="balance" sm={2}>اعتبار</Label>
                                                 <Col sm={10}>
                                                     <Input type="text" 
@@ -127,8 +172,12 @@ class EditProfile extends React.Component {
     }
 
     async _confirm() {
-        const {firstName, lastName} = this.state;
-        EditProfileMutation(firstName || this.me.firstName, lastName || this.me.lastName, (response) => {
+        const {firstName, lastName, password, cpassword} = this.state;
+        if (password !== cpassword){
+            this.setState({cpassword_error: "تایید رمز عبور اشتباه است!"})
+            return
+        }
+        EditProfileMutation(firstName || this.me.firstName, lastName || this.me.lastName, password, (response) => {
             if (response.ok) {
                 this.props.change_balance(0, 1, firstName || this.me.firstName)
                 toast('تغییرات با موفقیت ذخیره شد.');
@@ -137,6 +186,7 @@ class EditProfile extends React.Component {
                 this.setState({
                     firstName_error: response.errors.firstName,
                     lastName_error: response.errors.lastName,
+                    password_error: response.errors.password
                 });
         })
     }

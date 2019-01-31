@@ -8,17 +8,19 @@ const mutation = graphql`
             errors{
                 firstName
                 lastName
+                password
                 nonFieldErrors
             }
         }
     }
 `;
 
-export default (firstName, lastName, callback) => {
+export default (firstName, lastName, password, callback) => {
     const variables = {
         input: {
             firstName,
             lastName,
+            password
         }
     };
     commitMutation(

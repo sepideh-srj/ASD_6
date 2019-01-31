@@ -14,7 +14,7 @@ class UserType(DjangoObjectType):
         interfaces = (relay.Node,)
         only_fields = (
             'id', 'first_name', 'last_name', 'selling_products', 'bought_products',
-            'balance', 'phone', 'activated')
+            'balance', 'phone', 'activated', 'password')
 
     @staticmethod
     def resolve_bought_products(root, info):

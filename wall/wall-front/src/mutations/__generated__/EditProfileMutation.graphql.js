@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash eb62fb11b8cce328643b959bcc6ef1a0
+ * @relayHash 8d7e375318ef6c0dbcefe9262029b80c
  */
 
 /* eslint-disable */
@@ -13,6 +13,7 @@ export type EditProfileMutationVariables = {|
   input: {
     firstName?: ?string;
     lastName?: ?string;
+    password?: ?string;
     clientMutationId?: ?string;
   };
 |};
@@ -22,6 +23,7 @@ export type EditProfileMutationResponse = {|
     +errors: ?{|
       +firstName: ?$ReadOnlyArray<?string>;
       +lastName: ?$ReadOnlyArray<?string>;
+      +password: ?$ReadOnlyArray<?string>;
       +nonFieldErrors: ?$ReadOnlyArray<?string>;
     |};
   |};
@@ -38,6 +40,7 @@ mutation EditProfileMutation(
     errors {
       firstName
       lastName
+      password
       nonFieldErrors
     }
   }
@@ -100,6 +103,13 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "lastName",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "password",
                 "storageKey": null
               },
               {
@@ -183,6 +193,13 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
+                "name": "password",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
                 "name": "nonFieldErrors",
                 "storageKey": null
               }
@@ -194,7 +211,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation EditProfileMutation(\n  $input: EditProfileMutationInput!\n) {\n  editProfile(input: $input) {\n    ok\n    errors {\n      firstName\n      lastName\n      nonFieldErrors\n    }\n  }\n}\n"
+  "text": "mutation EditProfileMutation(\n  $input: EditProfileMutationInput!\n) {\n  editProfile(input: $input) {\n    ok\n    errors {\n      firstName\n      lastName\n      password\n      nonFieldErrors\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

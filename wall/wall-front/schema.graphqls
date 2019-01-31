@@ -67,6 +67,7 @@ enum CategoryType {
 type EditProfileMutationError {
   firstName: [String]
   lastName: [String]
+  password: [String]
   clientMutationId: [String]
   nonFieldErrors: [String]
 }
@@ -74,6 +75,7 @@ type EditProfileMutationError {
 input EditProfileMutationInput {
   firstName: String
   lastName: String
+  password: String
   clientMutationId: String
 }
 
@@ -308,8 +310,9 @@ type UserType implements Node {
   lastName: String!
   balance: Int!
   phone: String
+  password: String!
   activated: Boolean!
-  sellingProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
   boughtProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
+  sellingProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
 }
 
