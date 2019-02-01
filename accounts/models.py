@@ -10,6 +10,8 @@ from django.utils.crypto import get_random_string
 from utils.fields import PhoneField, NullEmailField
 from utils.validators import PhoneRegex
 
+import json
+
 class User(AbstractUser):
     CODE_LENGTH = 8
 
@@ -18,7 +20,17 @@ class User(AbstractUser):
     code = models.CharField(max_length=CODE_LENGTH, null=True)
     password = models.CharField(max_length=30)
     activated = models.BooleanField(default=False)
+    addresses = models.CharField(max_length=10000, default="[]")
+
     objects = UserManager()
+
+    def add_address(self, address):
+        addresses = self.get_addresses
+        addresses += [address]
+        self.addresses = json.dumps(addresses)
+
+    def get_addresses(self):
+        return json.loads(self.addresses)
 
     def generate_code(self):
         self.code = get_random_string(self.CODE_LENGTH, 'abcdefghijklmnopqrstuvwxyz0123456789')
@@ -41,6 +53,8 @@ class User(AbstractUser):
     def buy(self, product):
         if self.balance < product.price:
             raise ValidationError('اعتبار ناکافی.')
+        if product.seller.phone == self.phone:
+            raise ValidationError('کالا برای خودتان است!')
         with transaction.atomic():
             self.change_balance(-product.price)
             product.seller.change_balance(product.price)

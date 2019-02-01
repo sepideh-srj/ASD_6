@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash eb806eea5c9365d0f4d26706ee2d82cc
+ * @relayHash adc55507fab5ea430f25aefe8f0a30a4
  */
 
 /* eslint-disable */
@@ -11,6 +11,8 @@
 import type {ConcreteBatch} from 'relay-runtime';
 export type UserSignUpMutationVariables = {|
   input: {
+    firstName: string;
+    lastName: string;
     phone: string;
     password: string;
     clientMutationId?: ?string;
@@ -20,6 +22,8 @@ export type UserSignUpMutationResponse = {|
   +userSignUp: ?{|
     +ok: boolean;
     +errors: ?{|
+      +firstName: ?$ReadOnlyArray<?string>;
+      +lastName: ?$ReadOnlyArray<?string>;
       +phone: ?$ReadOnlyArray<?string>;
       +password: ?$ReadOnlyArray<?string>;
     |};
@@ -35,6 +39,8 @@ mutation UserSignUpMutation(
   userSignUp(input: $input) {
     ok
     errors {
+      firstName
+      lastName
       phone
       password
     }
@@ -86,6 +92,20 @@ const batch /*: ConcreteBatch*/ = {
             "name": "errors",
             "plural": false,
             "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "firstName",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "lastName",
+                "storageKey": null
+              },
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -160,6 +180,20 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
+                "name": "firstName",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "lastName",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
                 "name": "phone",
                 "storageKey": null
               },
@@ -178,7 +212,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation UserSignUpMutation(\n  $input: UserSignUpInput!\n) {\n  userSignUp(input: $input) {\n    ok\n    errors {\n      phone\n      password\n    }\n  }\n}\n"
+  "text": "mutation UserSignUpMutation(\n  $input: UserSignUpInput!\n) {\n  userSignUp(input: $input) {\n    ok\n    errors {\n      firstName\n      lastName\n      phone\n      password\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

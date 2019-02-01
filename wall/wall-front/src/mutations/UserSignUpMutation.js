@@ -6,6 +6,8 @@ const mutation = graphql`
         userSignUp(input: $input){
             ok
             errors{
+                firstName
+                lastName
                 phone
                 password
             }
@@ -13,9 +15,11 @@ const mutation = graphql`
     }
 `;
 
-export default (phone, password, callback) => {
+export default (first_name, last_name, phone, password, callback) => {
     const variables = {
         input: {
+            firstName: first_name, 
+            lastName: last_name, 
             phone,
             password
         }

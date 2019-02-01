@@ -8,6 +8,10 @@ class Signup extends Component {
         super();
 
         this.state = {
+            first_name: '',
+            first_name_error: null,
+            last_name: '',
+            last_name_error: null,
             phone: '',
             phone_error: null,
             password: '',
@@ -25,7 +29,47 @@ class Signup extends Component {
                         <div className="login-form-container">
                             <Form>
                                 <FormGroup row>
-                                    <Label for="phone" sm={2}>شماره موبایل</Label>
+                                    <Label for="first_name" sm={2}>*نام</Label>
+                                    <Col sm={10}>
+                                        <Input className="ltr-input" type="text" name="first_name"
+                                               id="first_name"
+                                               valid={this.state.first_name_error == null ? undefined : false}
+                                               placeholder="نام"
+                                               onChange={(e) => this.setState({
+                                                   first_name: e.target.value,
+                                                   first_name_error: null
+                                               })}
+                                        />
+                                    </Col>
+                                    <Col sm={2}/>
+                                    <Col sm={10}>
+                                        <FormFeedback>
+                                            {this.state.first_name_error}
+                                        </FormFeedback>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label for="last_name" sm={2}>*نام خانوادگی</Label>
+                                    <Col sm={10}>
+                                        <Input className="ltr-input" type="text" name="last_name"
+                                               id="last_name"
+                                               valid={this.state.last_name_error == null ? undefined : false}
+                                               placeholder="نام خانوادگی"
+                                               onChange={(e) => this.setState({
+                                                   last_name: e.target.value,
+                                                   last_name_error: null
+                                               })}
+                                        />
+                                    </Col>
+                                    <Col sm={2}/>
+                                    <Col sm={10}>
+                                        <FormFeedback>
+                                            {this.state.last_name_error}
+                                        </FormFeedback>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label for="phone" sm={2}>*شماره موبایل</Label>
                                     <Col sm={10}>
                                         <Input className="ltr-input" type="text" name="phone"
                                                id="phone"
@@ -45,7 +89,7 @@ class Signup extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="password" sm={2}>رمز عبور</Label>
+                                    <Label for="password" sm={2}>*رمز عبور</Label>
                                     <Col sm={10}>
                                         <Input className="ltr-input" type="text" name="password"
                                                id="password"
@@ -65,7 +109,7 @@ class Signup extends Component {
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="cpassword" sm={2}>تایید رمز عبور</Label>
+                                    <Label for="cpassword" sm={2}>*تایید رمز عبور</Label>
                                     <Col sm={10}>
                                         <Input className="ltr-input" type="text" name="cpassword"
                                                id="cpassword"
@@ -95,12 +139,24 @@ class Signup extends Component {
     }
 
     async _confirm() {
-        const {phone, password, cpassword} = this.state;
+        const {first_name, last_name, phone, password, cpassword} = this.state;
+        let hasError = false
         if (password !== cpassword){
             this.setState({cpassword_error: "تایید رمز عبور اشتباه است!"})
+            hasError = true
+        }
+        if(first_name == ''){
+            this.setState({first_name_error: 'نام نمیتواند خالی باشد.'})
+            hasError = true
+        }
+        if(last_name == ''){
+            this.setState({last_name_error: 'نام خانوادگی نمیتواند خالی باشد.'})
+            hasError = true
+        }
+        if(hasError){
             return
         }
-        SignUpUserMutation(phone, password, (response) => {
+        SignUpUserMutation(first_name, last_name, phone, password, (response) => {
             if (response.ok) {
                 this.props.router.push('/login/?number=' + phone);
             }

@@ -18,8 +18,8 @@ class EditProfile extends React.Component {
             balance: '',
             password: '',
             cpassword: '',
-            password_error: '',
-            cpassword_error: '',
+            password_error: null,
+            cpassword_error: null,
             firstName_error: null,
             lastName_error: null,
         };

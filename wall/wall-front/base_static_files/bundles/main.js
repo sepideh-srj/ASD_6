@@ -17641,22 +17641,22 @@ module.exports = normalizePayload;
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
+    { path: '/', components: __WEBPACK_IMPORTED_MODULE_6__BaseNavbarQueryRenderer__["a" /* default */] },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_5__products_ProductListQueryRenderer__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/signup', components: __WEBPACK_IMPORTED_MODULE_4__accounts_Signup__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/login', components: __WEBPACK_IMPORTED_MODULE_2__accounts_Login__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/activate', components: __WEBPACK_IMPORTED_MODULE_3__accounts_Activate__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/create-product', components: __WEBPACK_IMPORTED_MODULE_7__products_CreateProduct__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/products/:id', components: __WEBPACK_IMPORTED_MODULE_8__products_ProductRenderer__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
-        { path: '/', components: __WEBPACK_IMPORTED_MODULE_6__BaseNavbarQueryRenderer__["a" /* default */] },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_5__products_ProductListQueryRenderer__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/signup', components: __WEBPACK_IMPORTED_MODULE_4__accounts_Signup__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/login', components: __WEBPACK_IMPORTED_MODULE_2__accounts_Login__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/activate', components: __WEBPACK_IMPORTED_MODULE_3__accounts_Activate__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/create-product', components: __WEBPACK_IMPORTED_MODULE_7__products_CreateProduct__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/products/:id', components: __WEBPACK_IMPORTED_MODULE_8__products_ProductRenderer__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
-                { path: '/profile/:username', components: __WEBPACK_IMPORTED_MODULE_9__profile_UserProfile__["a" /* default */] },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_11__profile_EditProfile__["a" /* default */] }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: 'boughts', components: null }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: 'solds', components: null })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/public/:username', components: __WEBPACK_IMPORTED_MODULE_10__public_PublicProfileRenderer__["a" /* default */] })
+        { path: '/profile/:username', components: __WEBPACK_IMPORTED_MODULE_9__profile_UserProfile__["a" /* default */] },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_11__profile_EditProfile__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: 'boughts', components: null }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: 'solds', components: null })
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/public/:username', components: __WEBPACK_IMPORTED_MODULE_10__public_PublicProfileRenderer__["a" /* default */] })
 ));
 
 /***/ }),
@@ -18650,6 +18650,10 @@ class Signup extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         super();
 
         this.state = {
+            first_name: '',
+            first_name_error: null,
+            last_name: '',
+            last_name_error: null,
             phone: '',
             phone_error: null,
             password: '',
@@ -18675,6 +18679,70 @@ class Signup extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             __WEBPACK_IMPORTED_MODULE_2_reactstrap__["b" /* Form */],
                             null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                __WEBPACK_IMPORTED_MODULE_2_reactstrap__["c" /* FormGroup */],
+                                { row: true },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_2_reactstrap__["d" /* Label */],
+                                    { 'for': 'first_name', sm: 2 },
+                                    '\u0646\u0627\u0645'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_2_reactstrap__["a" /* Col */],
+                                    { sm: 10 },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { className: 'ltr-input', type: 'text', name: 'first_name',
+                                        id: 'first_name',
+                                        valid: this.state.first_name_error == null ? undefined : false,
+                                        placeholder: '\u0646\u0627\u0645',
+                                        onChange: e => this.setState({
+                                            first_name: e.target.value,
+                                            first_name_error: null
+                                        })
+                                    })
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["a" /* Col */], { sm: 2 }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_2_reactstrap__["a" /* Col */],
+                                    { sm: 10 },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_2_reactstrap__["f" /* FormFeedback */],
+                                        null,
+                                        this.state.first_name_error
+                                    )
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                __WEBPACK_IMPORTED_MODULE_2_reactstrap__["c" /* FormGroup */],
+                                { row: true },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_2_reactstrap__["d" /* Label */],
+                                    { 'for': 'last_name', sm: 2 },
+                                    '\u0646\u0627\u0645 \u062E\u0627\u0646\u0648\u0627\u062F\u06AF\u06CC'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_2_reactstrap__["a" /* Col */],
+                                    { sm: 10 },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { className: 'ltr-input', type: 'text', name: 'last_name',
+                                        id: 'last_name',
+                                        valid: this.state.last_name_error == null ? undefined : false,
+                                        placeholder: '\u0646\u0627\u0645 \u062E\u0627\u0646\u0648\u0627\u062F\u06AF\u06CC',
+                                        onChange: e => this.setState({
+                                            last_name: e.target.value,
+                                            last_name_error: null
+                                        })
+                                    })
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["a" /* Col */], { sm: 2 }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    __WEBPACK_IMPORTED_MODULE_2_reactstrap__["a" /* Col */],
+                                    { sm: 10 },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_2_reactstrap__["f" /* FormFeedback */],
+                                        null,
+                                        this.state.last_name_error
+                                    )
+                                )
+                            ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 __WEBPACK_IMPORTED_MODULE_2_reactstrap__["c" /* FormGroup */],
                                 { row: true },
@@ -18788,12 +18856,24 @@ class Signup extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         var _this = this;
 
         return _asyncToGenerator(function* () {
-            const { phone, password, cpassword } = _this.state;
+            const { first_name, last_name, phone, password, cpassword } = _this.state;
+            let hasError = false;
             if (password !== cpassword) {
                 _this.setState({ cpassword_error: "تایید رمز عبور اشتباه است!" });
+                hasError = true;
+            }
+            if (first_name == '') {
+                _this.setState({ first_name_error: 'نام نمیتواند خالی باشد.' });
+                hasError = true;
+            }
+            if (last_name == '') {
+                _this.setState({ last_name_error: 'نام خانوادگی نمیتواند خالی باشد.' });
+                hasError = true;
+            }
+            if (hasError) {
                 return;
             }
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__mutations_UserSignUpMutation__["a" /* default */])(phone, password, function (response) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__mutations_UserSignUpMutation__["a" /* default */])(first_name, last_name, phone, password, function (response) {
                 if (response.ok) {
                     _this.props.router.push('/login/?number=' + phone);
                 } else _this.setState({
@@ -19169,9 +19249,11 @@ const mutation = function () {
     return __webpack_require__(185);
 };
 
-/* harmony default export */ __webpack_exports__["a"] = ((phone, password, callback) => {
+/* harmony default export */ __webpack_exports__["a"] = ((first_name, last_name, phone, password, callback) => {
     const variables = {
         input: {
+            firstName: first_name,
+            lastName: last_name,
             phone,
             password
         }
@@ -21205,7 +21287,7 @@ module.exports = batch;
 "use strict";
 /**
  * 
- * @relayHash eb806eea5c9365d0f4d26706ee2d82cc
+ * @relayHash adc55507fab5ea430f25aefe8f0a30a4
  */
 
 /* eslint-disable */
@@ -21216,6 +21298,8 @@ module.exports = batch;
 import type {ConcreteBatch} from 'relay-runtime';
 export type UserSignUpMutationVariables = {|
   input: {
+    firstName: string;
+    lastName: string;
     phone: string;
     password: string;
     clientMutationId?: ?string;
@@ -21225,6 +21309,8 @@ export type UserSignUpMutationResponse = {|
   +userSignUp: ?{|
     +ok: boolean;
     +errors: ?{|
+      +firstName: ?$ReadOnlyArray<?string>;
+      +lastName: ?$ReadOnlyArray<?string>;
       +phone: ?$ReadOnlyArray<?string>;
       +password: ?$ReadOnlyArray<?string>;
     |};
@@ -21239,6 +21325,8 @@ mutation UserSignUpMutation(
   userSignUp(input: $input) {
     ok
     errors {
+      firstName
+      lastName
       phone
       password
     }
@@ -21283,6 +21371,18 @@ const batch /*: ConcreteBatch*/ = {
         "name": "errors",
         "plural": false,
         "selections": [{
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "firstName",
+          "storageKey": null
+        }, {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "lastName",
+          "storageKey": null
+        }, {
           "kind": "ScalarField",
           "alias": null,
           "args": null,
@@ -21344,6 +21444,18 @@ const batch /*: ConcreteBatch*/ = {
           "kind": "ScalarField",
           "alias": null,
           "args": null,
+          "name": "firstName",
+          "storageKey": null
+        }, {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "lastName",
+          "storageKey": null
+        }, {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
           "name": "phone",
           "storageKey": null
         }, {
@@ -21358,7 +21470,7 @@ const batch /*: ConcreteBatch*/ = {
       "storageKey": null
     }]
   },
-  "text": "mutation UserSignUpMutation(\n  $input: UserSignUpInput!\n) {\n  userSignUp(input: $input) {\n    ok\n    errors {\n      phone\n      password\n    }\n  }\n}\n"
+  "text": "mutation UserSignUpMutation(\n  $input: UserSignUpInput!\n) {\n  userSignUp(input: $input) {\n    ok\n    errors {\n      firstName\n      lastName\n      phone\n      password\n    }\n  }\n}\n"
 };
 
 module.exports = batch;
@@ -26045,7 +26157,7 @@ exports = module.exports = __webpack_require__(21)(undefined);
 
 
 // module
-exports.push([module.i, ".tabs-wrapper input[type=radio] {\r\n  display: none; }\r\n.tabs-wrapper .tab-head {\r\n  transition: background 0.4s ease-in-out, height 0.2s linear;\r\n  display: inline-block;\r\n  cursor: pointer;\r\n  color: #DBDBD3;\r\n  padding: 1rem;\r\n  height: 3em;\r\n  border-top-left-radius: 3px;\r\n  border-top-right-radius: 3px;\r\n  background: #525252;\r\n  text-align: center; }\r\n  .tabs-wrapper .tab-head:last-of-type {\r\n    border-bottom: none; }\r\n  .tabs-wrapper .tab-head:hover {\r\n    background: #667876; }\r\n  @media screen and (max-width: 600px) {\r\n    .tabs-wrapper .tab-head {\r\n      display: block;\r\n      border-bottom: 2px solid #4D4C47;\r\n      border-radius: 0; } }\r\n  .tabs-wrapper .tab-head.checked {\r\n    background: #B8B63E;\r\n    color: #F2F2F2; }\r\n@media screen and (max-width: 600px) {\r\n  .tabs-wrapper {\r\n    margin: 0; } }\r\n\r\n.tab-body {\r\n  position: absolute;\r\n  top: -9999px;\r\n  opacity: 0;\r\n  padding: 10px; }\r\n\r\n.tab-body-wrapper {\r\n  width: 100%;\r\n  padding: 1rem;\r\n  background: #F7EEC6;\r\n  border-top: #B8B63E 5px solid;\r\n  border-bottom-right-radius: 3px;\r\n  border-bottom-left-radius: 3px;\r\n  border-top-right-radius: 3px;\r\n  -webkit-animation-delay: 0.2s;\r\n  -webkit-animation-duration: 1.5s;\r\n  -webkit-animation-name: show;\r\n  -webkit-animation-fill-mode: forwards;\r\n  -moz-animation-delay: 0.2s;\r\n  -moz-animation-duration: 1.5s;\r\n  -moz-animation-name: show;\r\n  -moz-animation-fill-mode: forwards;\r\n  -o-animation-delay: 0.2s;\r\n  -o-animation-duration: 1.5s;\r\n  -o-animation-name: show;\r\n  -o-animation-fill-mode: forwards;\r\n  animation-delay: 0.2s;\r\n  animation-duration: 1.5s;\r\n  animation-name: show;\r\n  animation-fill-mode: forwards; }\r\n  @media screen and (max-width: 600px) {\r\n    .tab-body-wrapper {\r\n      border: none;\r\n      border-radius: 0; } }\r\n\r\n#tab1:checked ~ .tab-body-wrapper #tab-body-1, #tab2:checked ~ .tab-body-wrapper #tab-body-2, #tab3:checked ~ .tab-body-wrapper #tab-body-3, #tab4:checked ~ .tab-body-wrapper #tab-body-4 {\r\n  position: relative;\r\n  top: 0px;\r\n  /* Choose one */\r\n  /* @include animation(0.2s,0.8s,content-opacity); */\r\n  /* @include animation(0.2s,0.8s,content-rotate-x); */\r\n  /* @include animation(0.2s,0.8s,content-rotate-y); */\r\n  /* @include animation(0.2s,0.8s,content-rotate-both); */\r\n  /* @include animation(0.2s,0.8s,content-pop-in); */\r\n  /* @include animation(0.2s,0.8s,content-pop-out); */\r\n  /* @include animation(0.1s,1s,content-slide-bot); */\r\n  -webkit-animation-delay: 0.1s;\r\n  -webkit-animation-duration: 1s;\r\n  -webkit-animation-name: content-slide-top;\r\n  -webkit-animation-fill-mode: forwards;\r\n  -moz-animation-delay: 0.1s;\r\n  -moz-animation-duration: 1s;\r\n  -moz-animation-name: content-slide-top;\r\n  -moz-animation-fill-mode: forwards;\r\n  -o-animation-delay: 0.1s;\r\n  -o-animation-duration: 1s;\r\n  -o-animation-name: content-slide-top;\r\n  -o-animation-fill-mode: forwards;\r\n  animation-delay: 0.1s;\r\n  animation-duration: 1s;\r\n  animation-name: content-slide-top;\r\n  animation-fill-mode: forwards; }\r\n", ""]);
+exports.push([module.i, ".tabs-wrapper input[type=radio] {\n  display: none; }\n.tabs-wrapper .tab-head {\n  transition: background 0.4s ease-in-out, height 0.2s linear;\n  display: inline-block;\n  cursor: pointer;\n  color: #DBDBD3;\n  padding: 1rem;\n  height: 3em;\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n  background: #525252;\n  text-align: center; }\n  .tabs-wrapper .tab-head:last-of-type {\n    border-bottom: none; }\n  .tabs-wrapper .tab-head:hover {\n    background: #667876; }\n  @media screen and (max-width: 600px) {\n    .tabs-wrapper .tab-head {\n      display: block;\n      border-bottom: 2px solid #4D4C47;\n      border-radius: 0; } }\n  .tabs-wrapper .tab-head.checked {\n    background: #B8B63E;\n    color: #F2F2F2; }\n@media screen and (max-width: 600px) {\n  .tabs-wrapper {\n    margin: 0; } }\n\n.tab-body {\n  position: absolute;\n  top: -9999px;\n  opacity: 0;\n  padding: 10px; }\n\n.tab-body-wrapper {\n  width: 100%;\n  padding: 1rem;\n  background: #F7EEC6;\n  border-top: #B8B63E 5px solid;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n  border-top-right-radius: 3px;\n  -webkit-animation-delay: 0.2s;\n  -webkit-animation-duration: 1.5s;\n  -webkit-animation-name: show;\n  -webkit-animation-fill-mode: forwards;\n  -moz-animation-delay: 0.2s;\n  -moz-animation-duration: 1.5s;\n  -moz-animation-name: show;\n  -moz-animation-fill-mode: forwards;\n  -o-animation-delay: 0.2s;\n  -o-animation-duration: 1.5s;\n  -o-animation-name: show;\n  -o-animation-fill-mode: forwards;\n  animation-delay: 0.2s;\n  animation-duration: 1.5s;\n  animation-name: show;\n  animation-fill-mode: forwards; }\n  @media screen and (max-width: 600px) {\n    .tab-body-wrapper {\n      border: none;\n      border-radius: 0; } }\n\n#tab1:checked ~ .tab-body-wrapper #tab-body-1, #tab2:checked ~ .tab-body-wrapper #tab-body-2, #tab3:checked ~ .tab-body-wrapper #tab-body-3, #tab4:checked ~ .tab-body-wrapper #tab-body-4 {\n  position: relative;\n  top: 0px;\n  /* Choose one */\n  /* @include animation(0.2s,0.8s,content-opacity); */\n  /* @include animation(0.2s,0.8s,content-rotate-x); */\n  /* @include animation(0.2s,0.8s,content-rotate-y); */\n  /* @include animation(0.2s,0.8s,content-rotate-both); */\n  /* @include animation(0.2s,0.8s,content-pop-in); */\n  /* @include animation(0.2s,0.8s,content-pop-out); */\n  /* @include animation(0.1s,1s,content-slide-bot); */\n  -webkit-animation-delay: 0.1s;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-name: content-slide-top;\n  -webkit-animation-fill-mode: forwards;\n  -moz-animation-delay: 0.1s;\n  -moz-animation-duration: 1s;\n  -moz-animation-name: content-slide-top;\n  -moz-animation-fill-mode: forwards;\n  -o-animation-delay: 0.1s;\n  -o-animation-duration: 1s;\n  -o-animation-name: content-slide-top;\n  -o-animation-fill-mode: forwards;\n  animation-delay: 0.1s;\n  animation-duration: 1s;\n  animation-name: content-slide-top;\n  animation-fill-mode: forwards; }\n", ""]);
 
 // exports
 

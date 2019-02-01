@@ -75,6 +75,8 @@ class UserLogout(ClientIDMutationWithErrors):
 
 class UserSignUp(SafeClientIDMutation):
     class Input:
+        first_name = graphene.String(required=True)
+        last_name = graphene.String(required=True)
         phone = graphene.String(required=True)
         password = graphene.String(required=True)
 
@@ -82,12 +84,12 @@ class UserSignUp(SafeClientIDMutation):
 
     @classmethod
     def safe_mutate(cls, root, info, **kwargs):
+        first_name = kwargs.get('first_name')
+        last_name = kwargs.get('last_name')
         phone = kwargs.get('phone')
         password = kwargs.get('password')
-        user = User(username=phone, phone=phone, password=password)
-        # print(password)
+        user = User(first_name=first_name, last_name=last_name, username=phone, phone=phone, password=password)
         user.generate_code()
-        # user.set_password(password)
         try:
             user.full_clean()
         except ValidationError as e:
