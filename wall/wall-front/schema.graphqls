@@ -32,6 +32,26 @@ type AddBalanceMutationPayload {
   errors: AddBalanceMutationError
 }
 
+type AddCommentMutationError {
+  text: [String]
+  product: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input AddCommentMutationInput {
+  text: String!
+  product: ID!
+  clientMutationId: String
+}
+
+type AddCommentMutationPayload {
+  ok: Boolean!
+  comment: CommentType
+  clientMutationId: String
+  errors: AddCommentMutationError
+}
+
 type BuyProductMutationError {
   productId: [String]
   clientMutationId: [String]
@@ -64,6 +84,14 @@ enum CategoryType {
   OTHERS
 }
 
+type CommentType implements Node {
+  
+  id: ID!
+  product: ProductType!
+  author: UserType!
+  text: String!
+}
+
 type EditProfileMutationError {
   firstName: [String]
   lastName: [String]
@@ -89,6 +117,7 @@ type EditProfileMutationPayload {
 type Mutation {
   productCreate(input: ProductCreateInput!): ProductCreatePayload
   productRemove(input: ProductRemoveMutationInput!): ProductRemoveMutationPayload
+  addComment(input: AddCommentMutationInput!): AddCommentMutationPayload
   userLogin(input: UserLoginInput!): UserLoginPayload
   userLogout(input: UserLogoutInput!): UserLogoutPayload
   userSignUp(input: UserSignUpInput!): UserSignUpPayload
@@ -208,6 +237,7 @@ type ProductType implements Node {
   image: String
   seller: UserType!
   buyer: UserType
+  comments: [CommentType]
 }
 
 type ProductTypeConnection {

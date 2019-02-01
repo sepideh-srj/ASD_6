@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
-import {Col, Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle} from 'reactstrap';
+import {Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle, Col} from 'reactstrap';
 import {Link} from 'react-router';
 
 class ProductCard extends Component {
@@ -8,7 +8,7 @@ class ProductCard extends Component {
     render() {
         return (
             <Col xs="12" sm="6" md="4">
-                <Link to={this.props.product.buyer?"/":"/products/" + this.props.product.id}>
+                <Link to={this.props.product.buyer ? "/" : "/products/" + this.props.product.id}>
                     <Card className="product-card">
                         <div className="product-image-container">
                             <CardImg className="product-image" width="100%"
@@ -25,8 +25,8 @@ class ProductCard extends Component {
                             <CardTitle>{this.props.product.title}</CardTitle>
                             <CardSubtitle>{this.props.product.address}</CardSubtitle>
                             <CardText className="description">{this.props.product.description}</CardText>
-                            {this.props.product.buyer && <p style={{backgroundColor: "red", color: "white"}}>فروخته شد</p>}
-                            {/* <p>{JSON.stringify(this.props.product)}</p> */}
+                            {this.props.product.buyer &&
+                            <p style={{backgroundColor: "red", color: "white"}}>فروخته شد</p>}
                         </CardBody>
                     </Card>
                 </Link>
@@ -40,6 +40,13 @@ export default createFragmentContainer(ProductCard, {
     product: graphql`
         fragment ProductCard_product on ProductType{
             description
+            comments{
+                text
+                author{
+                    firstName
+                    lastName
+                }
+            }
             address
             category
             id

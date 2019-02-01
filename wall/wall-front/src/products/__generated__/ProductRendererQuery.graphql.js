@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 488e2a3925149379b150071d375b815e
+ * @relayHash 3a8dd6cc88e9401278b8aa2a81e55a6c
  */
 
 /* eslint-disable */
@@ -38,6 +38,15 @@ fragment ProductDescription_product on ProductType {
   }
   prodYear
   price
+  comments {
+    text
+    author {
+      firstName
+      lastName
+      id
+    }
+    id
+  }
   title
 }
 */
@@ -196,6 +205,63 @@ const batch /*: ConcreteBatch*/ = {
             "storageKey": null
           },
           {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "CommentType",
+            "name": "comments",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "text",
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "UserType",
+                "name": "author",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "firstName",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "lastName",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "id",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "id",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
+          {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
@@ -207,7 +273,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ProductRendererQuery(\n  $id: String!\n) {\n  product(id: $id) {\n    ...ProductDescription_product\n    id\n  }\n}\n\nfragment ProductDescription_product on ProductType {\n  id\n  description\n  address\n  category\n  image\n  seller {\n    firstName\n    lastName\n    id\n  }\n  prodYear\n  price\n  title\n}\n"
+  "text": "query ProductRendererQuery(\n  $id: String!\n) {\n  product(id: $id) {\n    ...ProductDescription_product\n    id\n  }\n}\n\nfragment ProductDescription_product on ProductType {\n  id\n  description\n  address\n  category\n  image\n  seller {\n    firstName\n    lastName\n    id\n  }\n  prodYear\n  price\n  comments {\n    text\n    author {\n      firstName\n      lastName\n      id\n    }\n    id\n  }\n  title\n}\n"
 };
 
 module.exports = batch;

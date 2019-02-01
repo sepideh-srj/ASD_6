@@ -6,6 +6,7 @@ import ProductRemoveMutation from "../mutations/ProductRemoveMutation";
 import BuyProductMutation from "../mutations/BuyProductMutation";
 import {toast, ToastContainer} from 'react-toastify';
 import {Link} from 'react-router';
+import CommentList from "./CommentList";
 
 class ProductDescription extends React.Component {
     constructor() {
@@ -25,10 +26,10 @@ class ProductDescription extends React.Component {
         });
     }
 
-    async buy(){
+    async buy() {
         BuyProductMutation(this.props.product.id, (response) => {
             if (response.ok) {
-                this.props.router.push('/')
+                this.props.router.push('/');
                 toast('کالای مورد نظر خریده شد.');
             }
             else
@@ -41,6 +42,8 @@ class ProductDescription extends React.Component {
         let button_state = false;
         let is_seller = false;
         let seller_button = null;
+        let {image, title, address, category, description, seller, comments} = this.props.product;
+
         if (is_seller) {
             if (this.state.remove_confirm)
                 seller_button = <div>
@@ -55,9 +58,9 @@ class ProductDescription extends React.Component {
                 </div>;
             else
                 seller_button = <Button outline color="primary"
-                                       onClick={() => (this.setState({remove_confirm: true}))}>حذف
-                    محصول</Button>;
+                                        onClick={() => (this.setState({remove_confirm: true}))}>حذف محصول</Button>;
         }
+
         return (
             <div className="content container">
                 <ToastContainer/>
@@ -65,24 +68,25 @@ class ProductDescription extends React.Component {
                     <div className="col col-md-12 order-md-1">
                         <div className="product-description">
                             <img className="product-image"
-                                 src={this.props.product.image || "/static/images/default_cover.jpg"}/>
+                                 src={image || "/static/images/default_cover.jpg"}/>
                             <div className="right-side">
-                                <div className="product-title">{this.props.product.title}</div>
+                                <div className="product-title">{title}</div>
                                 <div className="product-address">آدرس:
-                                    <span> {this.props.product.address}</span>
+                                    <span> {address}</span>
                                 </div>
                                 <div className="product-category">دسته‌بندی:
-                                    <span> {Category[this.props.product.category].value}</span>
+                                    <span> {Category[category].value}</span>
                                 </div>
-                                <div className="product-description">{this.props.product.description}</div>
+                                <div className="product-description">{description}</div>
+                                {<CommentList comments={comments} product={this.props.product}/>}
                             </div>
                             <div className="bottom-part">
                                 <div className="product-seller">صاحب محصول:
                                     <span>   </span>
-                                    <Link to={`/public/${this.props.product.seller.id}`}>
-                                        {this.props.product.seller.firstName ?
-                                            <span>{this.props.product.seller.firstName} {this.props.product.seller.lastName}</span> :
-                                            <span>{this.props.product.seller.id}</span>
+                                    <Link to={`/public/${seller.id}`}>
+                                        {seller.firstName ?
+                                            <span>{seller.firstName} {seller.lastName}</span> :
+                                            <span>{seller.id}</span>
                                         }
                                     </Link>
 
@@ -119,6 +123,13 @@ export default createFragmentContainer(ProductDescription, {
             }
             prodYear
             price
+            comments{
+                text
+                author{
+                    firstName
+                    lastName
+                }
+            }
             title
         }
     `
