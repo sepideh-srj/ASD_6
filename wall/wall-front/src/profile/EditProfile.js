@@ -158,14 +158,6 @@ class EditProfile extends React.Component {
                                         onClick={() => this._addBalance()}>افزایش اعتبار</Button>
                                     </Col>
                                 </FormGroup>
-                                <div>
-                                    <div>
-                                        <p>{'آدرس ها:'}</p>
-                                    </div>
-                                    {(this.me.addresses.concat(this.state.additional_addresses)).map((address, key) => <div key={key}>
-                                        <p>{address}</p>
-                                    </div>)}
-                                </div>
 
                                 <FormGroup row>
                                     <Label for="address" sm={2}>آدرس</Label>
@@ -183,6 +175,16 @@ class EditProfile extends React.Component {
                                         onClick={() => this._addAddress()}>افزودن آدرس</Button>
                                     </Col>
                                 </FormGroup>
+
+                                <div>
+                                    <div>
+                                        <p>{'آدرس ها:'}</p>
+                                    </div>
+                                    {(this.me.addresses.concat(this.state.additional_addresses)).map((address, key) => <div key={key}>
+                                        <p>{address}</p>
+                                    </div>)}
+                                </div>
+                                
                                 <Button type="button" className="submit" outline color="primary"
                                         onClick={() => this._confirm()}>ثبت</Button>
                             </Form>

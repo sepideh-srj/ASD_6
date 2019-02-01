@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 1e6947123e4ad443e9cee1a20c815994
+ * @relayHash cefd0abd80f0a23a020a87476e9f18c3
  */
 
 /* eslint-disable */
@@ -51,6 +51,7 @@ fragment BaseNavbar_logged on UserType {
   phone
   balance
   activated
+  addresses
 }
 */
 
@@ -236,6 +237,13 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "activated",
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "addresses",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -245,7 +253,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation UserLoginMutation(\n  $input: UserLoginInput!\n) {\n  userLogin(input: $input) {\n    ok\n    errors {\n      nonFieldErrors\n    }\n    user {\n      ...BaseNavbar_logged\n      id\n    }\n  }\n}\n\nfragment BaseNavbar_logged on UserType {\n  firstName\n  id\n  lastName\n  phone\n  balance\n  activated\n}\n"
+  "text": "mutation UserLoginMutation(\n  $input: UserLoginInput!\n) {\n  userLogin(input: $input) {\n    ok\n    errors {\n      nonFieldErrors\n    }\n    user {\n      ...BaseNavbar_logged\n      id\n    }\n  }\n}\n\nfragment BaseNavbar_logged on UserType {\n  firstName\n  id\n  lastName\n  phone\n  balance\n  activated\n  addresses\n}\n"
 };
 
 module.exports = batch;

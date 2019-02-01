@@ -2,6 +2,7 @@ import React from 'react';
 import {Form, FormGroup, Label, FormFeedback, Input, Button, Col} from 'reactstrap';
 import ProductCreateMutation from "../mutations/ProductCreateMutation";
 import {Category} from '../utils/constants';
+import AddressMenu from './AddressMenu'
 
 class CreateProduct extends React.Component {
     constructor() {
@@ -70,12 +71,21 @@ class CreateProduct extends React.Component {
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
+
+                                <AddressMenu
+                                    cb={option=>{
+                                        this.setState({address: option})
+                                    }}
+                                />
+                                
+
                                 <FormGroup row>
                                     <Label for="address" sm={2}>آدرس</Label>
                                     <Col sm={10}>
                                         <Input type="text" name="address" id="address"
                                                valid={this.state.address_error == null ? undefined : false}
                                                placeholder="آدرس"
+                                               value={this.state.address}
                                                onChange={(e) => this.setState({
                                                    address: e.target.value,
                                                    address_error: null
@@ -89,6 +99,9 @@ class CreateProduct extends React.Component {
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
+                                
+                                
+
                                 <FormGroup row>
                                     <Label for="description" sm={2}>توضیحات</Label>
                                     <Col sm={10}>

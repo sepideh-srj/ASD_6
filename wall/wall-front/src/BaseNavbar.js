@@ -36,8 +36,10 @@ class BaseNavbar extends Component {
                 phone: this.props.logged.phone
             });
             localStorage.setItem('username', this.props.logged.id);
+            localStorage.setItem('addresses', JSON.stringify(this.props.logged.addresses))
             this.props.change_balance(this.props.logged.balance);
         } else {
+            localStorage.setItem('addresses', null)
             localStorage.setItem('username', null)
             if(("" + window.location).includes("/activate")){
                 window.location.replace('/')
@@ -132,6 +134,7 @@ export default createFragmentContainer(BaseNavbar, {
             phone
             balance
             activated
+            addresses
         }
     `,
 

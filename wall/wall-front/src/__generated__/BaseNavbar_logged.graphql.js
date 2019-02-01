@@ -15,6 +15,7 @@ export type BaseNavbar_logged = {|
   +phone: ?string;
   +balance: number;
   +activated: boolean;
+  +addresses: ?$ReadOnlyArray<?string>;
 |};
 */
 
@@ -65,6 +66,13 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "activated",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "addresses",
       "storageKey": null
     }
   ],
