@@ -21,6 +21,13 @@ export type ProductDescription_product = {|
   |};
   +prodYear: number;
   +price: number;
+  +comments: ?$ReadOnlyArray<?{|
+    +text: string;
+    +author: {|
+      +firstName: string;
+      +lastName: string;
+    |};
+  |}>;
   +title: string;
 |};
 */
@@ -111,6 +118,49 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "price",
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "args": null,
+      "concreteType": "CommentType",
+      "name": "comments",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "text",
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "args": null,
+          "concreteType": "UserType",
+          "name": "author",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "firstName",
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "lastName",
+              "storageKey": null
+            }
+          ],
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     },
     {
