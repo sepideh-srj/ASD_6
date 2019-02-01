@@ -23,7 +23,8 @@ class EditProfile extends React.Component {
             cpassword_error: null,
             firstName_error: null,
             lastName_error: null,
-            address: ''
+            address: '',
+            additional_addresses: []
         };
 
         this.me = {}
@@ -157,6 +158,15 @@ class EditProfile extends React.Component {
                                         onClick={() => this._addBalance()}>افزایش اعتبار</Button>
                                     </Col>
                                 </FormGroup>
+                                <div>
+                                    <div>
+                                        <p>{'آدرس ها:'}</p>
+                                    </div>
+                                    {(this.me.addresses.concat(this.state.additional_addresses)).map((address, key) => <div key={key}>
+                                        <p>{address}</p>
+                                    </div>)}
+                                </div>
+
                                 <FormGroup row>
                                     <Label for="address" sm={2}>آدرس</Label>
                                     <Col sm={10}>
@@ -173,7 +183,6 @@ class EditProfile extends React.Component {
                                         onClick={() => this._addAddress()}>افزودن آدرس</Button>
                                     </Col>
                                 </FormGroup>
-                                <p>{JSON.stringify(this.me.addresses)}</p>
                                 <Button type="button" className="submit" outline color="primary"
                                         onClick={() => this._confirm()}>ثبت</Button>
                             </Form>
@@ -222,7 +231,7 @@ class EditProfile extends React.Component {
         }
         AddAddressMutation(this.state.address, (response) => {
             if (response.ok) {
-                this.setState({address: ''})
+                this.setState({additional_addresses: this.state.additional_addresses.concat([this.state.address]), address: ''})
                 toast('آدرس اضافه شد.');
             }
         })

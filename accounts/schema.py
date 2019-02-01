@@ -16,6 +16,8 @@ class UserType(DjangoObjectType):
             'id', 'first_name', 'last_name', 'selling_products', 'bought_products',
             'balance', 'phone', 'activated', 'password', 'addresses')
 
+    addresses = graphene.List(graphene.String)
+    
     @staticmethod
     def resolve_addresses(root, info):
         return root.get_addresses()

@@ -383,7 +383,7 @@ type UserType implements Node {
   phone: String
   password: String!
   activated: Boolean!
-  addresses: String!
+  addresses: [String]
   sellingProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
   boughtProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
 }

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 741db7c068cb36818d92072edf98686a
+ * @relayHash 3f088af7dbff4abd18a7c14e12dd054a
  */
 
 /* eslint-disable */
@@ -15,7 +15,7 @@ export type EditProfileQueryResponse = {|
     +lastName: string;
     +phone: ?string;
     +balance: number;
-    +addresses: string;
+    +addresses: ?$ReadOnlyArray<?string>;
   |};
 |};
 */

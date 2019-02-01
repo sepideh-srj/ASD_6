@@ -23697,7 +23697,8 @@ class EditProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
             cpassword_error: null,
             firstName_error: null,
             lastName_error: null,
-            address: ''
+            address: '',
+            additional_addresses: []
         };
 
         this.me = {};
@@ -23911,6 +23912,28 @@ class EditProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
                                     )
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            'آدرس ها:'
+                                        )
+                                    ),
+                                    this.me.addresses.concat(this.state.additional_addresses).map((address, key) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { key: key },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'p',
+                                            null,
+                                            address
+                                        )
+                                    ))
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     __WEBPACK_IMPORTED_MODULE_1_reactstrap__["c" /* FormGroup */],
                                     { row: true },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -23937,11 +23960,6 @@ class EditProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
                                             '\u0627\u0641\u0632\u0648\u062F\u0646 \u0622\u062F\u0631\u0633'
                                         )
                                     )
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'p',
-                                    null,
-                                    JSON.stringify(this.me.addresses)
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     __WEBPACK_IMPORTED_MODULE_1_reactstrap__["g" /* Button */],
@@ -24007,7 +24025,7 @@ class EditProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
             }
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__mutations_AddAddressMutation__["a" /* default */])(_this3.state.address, function (response) {
                 if (response.ok) {
-                    _this3.setState({ address: '' });
+                    _this3.setState({ additional_addresses: _this3.state.additional_addresses.concat([_this3.state.address]), address: '' });
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_react_toastify__["toast"])('آدرس اضافه شد.');
                 }
             });
@@ -24110,7 +24128,7 @@ class UserProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 "use strict";
 /**
  * 
- * @relayHash 741db7c068cb36818d92072edf98686a
+ * @relayHash 3f088af7dbff4abd18a7c14e12dd054a
  */
 
 /* eslint-disable */
@@ -24125,7 +24143,7 @@ export type EditProfileQueryResponse = {|
     +lastName: string;
     +phone: ?string;
     +balance: number;
-    +addresses: string;
+    +addresses: ?$ReadOnlyArray<?string>;
   |};
 |};
 */
