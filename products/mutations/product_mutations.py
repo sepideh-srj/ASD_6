@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from graphene import relay
 
 from accounts.models import Image
-from products.models import Product
+from products.models import Product, Comment
 from utils.mutation import SafeClientIDMutation
 
 
@@ -34,6 +34,7 @@ class ProductCreate(SafeClientIDMutation):
         product.save()
         return cls(product=product)
 
+
 class ProductRemoveMutation(SafeClientIDMutation):
     login_required = True
 
@@ -48,3 +49,22 @@ class ProductRemoveMutation(SafeClientIDMutation):
             raise ValidationError('شما باید صاحب محصول باشید.')
         product.delete()
         return cls()
+
+
+class AddCommentMutation(SafeClientIDMutation):
+    login_required = True
+
+    class Input:
+        text = graphene.String(required=True)
+        product = graphene.ID(required=True)
+
+    comment = graphene.Field('products.schema.CommentType')
+
+    @classmethod
+    def safe_mutate(cls, root, info, **kwargs):
+        user = info.context.user
+        product = relay.Node.get_node_from_global_id(info, kwargs.get('product'))
+        comment = Comment(text=kwargs.get('text'), author=user, product=product)
+        comment.full_clean()
+        comment.save()
+        return cls(comment=comment)

@@ -7,6 +7,12 @@ class ProductManager(models.Manager):
         return self.get_queryset().filter(hidden=False)
 
 
+class Comment(models.Model):
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
+    author = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
+    text = models.CharField('متن', max_length=1000)
+
+
 class Product(models.Model):
     price = models.IntegerField('قیمت')
     CATEGORY_CHOICES = (
@@ -28,8 +34,8 @@ class Product(models.Model):
     category = models.CharField('دسته‌بندی', max_length=100, choices=CATEGORY_CHOICES)
     image = models.ForeignKey('accounts.Image', on_delete=models.SET_NULL, null=True, blank=True)
     seller = models.ForeignKey('accounts.User', on_delete=models.CASCADE, related_name='selling_products')
-    buyer = models.ForeignKey('accounts.User', on_delete=models.CASCADE, null=True, blank=True, related_name='bought_products')
-    
+    buyer = models.ForeignKey('accounts.User', on_delete=models.CASCADE, null=True, blank=True,
+                              related_name='bought_products')
     hidden = models.BooleanField(default=False)
     objects = ProductManager()
 

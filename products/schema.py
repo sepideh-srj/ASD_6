@@ -3,8 +3,8 @@ import graphene
 from graphene import relay
 from graphene_django.types import DjangoObjectType
 
-from products.models import Product
-from products.mutations.product_mutations import ProductCreate, ProductRemoveMutation
+from products.models import Product, Comment
+from products.mutations.product_mutations import ProductCreate, ProductRemoveMutation, AddCommentMutation
 
 
 class CategoryType(graphene.Enum):
@@ -19,14 +19,25 @@ class CategoryType(graphene.Enum):
     SPORT = 'SPORT'
     OTHERS = 'OTHERS'
 
+
+class CommentType(DjangoObjectType):
+    class Meta:
+        model = Comment
+        interfaces = (relay.Node,)
+        only_fields = ('id', 'text', 'product', 'author')
+
+
 class ProductType(DjangoObjectType):
     class Meta:
         model = Product
         interfaces = (relay.Node,)
-        only_fields = ('id', 'title', 'address', 'description', 'prod_year', 'price', 'category', 'image', 'seller', 'buyer')
+        only_fields = (
+            'id', 'title', 'address', 'description', 'prod_year', 'price', 'category', 'image', 'seller', 'buyer',
+            'comments')
 
     category = graphene.NonNull(CategoryType)
     image = graphene.String()
+    comments = graphene.List(CommentType)
 
     @staticmethod
     def resolve_image(root, info):
@@ -34,6 +45,11 @@ class ProductType(DjangoObjectType):
         if not image:
             return None
         return image.image.url
+
+    @staticmethod
+    def resolve_comments(root, info):
+        comments = Comment.objects.filter(product__id=root.id)
+        return comments
 
 
 class ProductFilterSet(django_filters.FilterSet):
@@ -105,3 +121,4 @@ class ProductsQuery(graphene.ObjectType):
 class ProductMutation(graphene.ObjectType):
     product_create = ProductCreate.Field()
     product_remove = ProductRemoveMutation.Field()
+    add_comment = AddCommentMutation.Field()
