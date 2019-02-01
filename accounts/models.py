@@ -25,7 +25,7 @@ class User(AbstractUser):
     objects = UserManager()
 
     def add_address(self, address):
-        addresses = self.get_addresses
+        addresses = self.get_addresses()
         addresses += [address]
         self.addresses = json.dumps(addresses)
 

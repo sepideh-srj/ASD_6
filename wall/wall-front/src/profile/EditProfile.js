@@ -2,6 +2,7 @@ import React from 'react';
 import {Form, FormGroup, Input, Col, Label, FormFeedback, Button} from 'reactstrap';
 import EditProfileMutation from "../mutations/EditProfileMutation";
 import AddBalanceMutation from "../mutations/AddBalanceMutation";
+import AddAddressMutation from "../mutations/AddAddressMutation";
 import {ToastContainer, toast} from 'react-toastify';
 
 import {graphql, QueryRenderer} from 'react-relay';
@@ -22,6 +23,7 @@ class EditProfile extends React.Component {
             cpassword_error: null,
             firstName_error: null,
             lastName_error: null,
+            address: ''
         };
 
         this.me = {}
@@ -141,34 +143,47 @@ class EditProfile extends React.Component {
                                     </Col>
                                 </FormGroup>
 
-                                            <FormGroup row>
-                                                <Label for="balance" sm={2}>اعتبار</Label>
-                                                <Col sm={10}>
-                                                    <Input type="text" 
-                                                           name="balance"
-                                                           id="balance"
-                                                           placeholder={props.me.balance}
-                                                           value={this.state.balance}
-                                                           disabled
-                                                    />
-                                                </Col>
-                                                <Button type="button" className="submit" outline color="success"
-                                                    onClick={() => this._addBalance()}>افزایش اعتبار</Button>
-                                            </FormGroup>
-                    
-                                            <Button type="button" className="submit" outline color="primary"
-                                                    onClick={() => this._confirm()}>ثبت</Button>
-                                        </Form>
+                                <FormGroup row>
+                                    <Label for="balance" sm={2}>اعتبار</Label>
+                                    <Col sm={10}>
+                                        <Input type="text" 
+                                                name="balance"
+                                                id="balance"
+                                                placeholder={props.me.balance}
+                                                value={this.state.balance}
+                                                disabled
+                                        />
+                                        <Button type="button" className="submit" outline color="success"
+                                        onClick={() => this._addBalance()}>افزایش اعتبار</Button>
                                     </Col>
-                                </div>
-                            )
-
-
-
-                        }
-                        return <div>Loading</div>
-                    }}
-            />
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label for="address" sm={2}>آدرس</Label>
+                                    <Col sm={10}>
+                                        <Input type="text" 
+                                                name="address"
+                                                id="address"
+                                                placeholder={"آدرس"}
+                                                value={this.state.address}
+                                                onChange={(e) => this.setState({
+                                                    address: e.target.value,
+                                                })}
+                                        />
+                                        <Button type="button" className="submit" outline color="success"
+                                        onClick={() => this._addAddress()}>افزودن آدرس</Button>
+                                    </Col>
+                                </FormGroup>
+                                <p>{JSON.stringify(this.me.addresses)}</p>
+                                <Button type="button" className="submit" outline color="primary"
+                                        onClick={() => this._confirm()}>ثبت</Button>
+                            </Form>
+                        </Col>
+                    </div>
+                )
+            }
+            return <div>Loading</div>
+        }}
+        />
     }
 
     async _confirm() {
@@ -199,6 +214,19 @@ class EditProfile extends React.Component {
             }
         })
     }
+
+    async _addAddress() {
+        if(this.state.address == ''){
+            toast('آدرس نمیتواند خالی باشد.')
+            return
+        }
+        AddAddressMutation(this.state.address, (response) => {
+            if (response.ok) {
+                this.setState({address: ''})
+                toast('آدرس اضافه شد.');
+            }
+        })
+    }
 }
 
 const ProfileInfoQuery = graphql`
@@ -208,6 +236,7 @@ const ProfileInfoQuery = graphql`
             lastName
             phone
             balance
+            addresses
         }
     }
 `;

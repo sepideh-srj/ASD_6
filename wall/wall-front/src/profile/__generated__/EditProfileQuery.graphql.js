@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 21141b57d7baf5271291430087e4eefc
+ * @relayHash 741db7c068cb36818d92072edf98686a
  */
 
 /* eslint-disable */
@@ -15,6 +15,7 @@ export type EditProfileQueryResponse = {|
     +lastName: string;
     +phone: ?string;
     +balance: number;
+    +addresses: string;
   |};
 |};
 */
@@ -27,6 +28,7 @@ query EditProfileQuery {
     lastName
     phone
     balance
+    addresses
     id
   }
 }
@@ -73,6 +75,13 @@ const batch /*: ConcreteBatch*/ = {
             "alias": null,
             "args": null,
             "name": "balance",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "addresses",
             "storageKey": null
           }
         ],
@@ -131,6 +140,13 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
+            "name": "addresses",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
             "name": "id",
             "storageKey": null
           }
@@ -139,7 +155,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query EditProfileQuery {\n  me {\n    firstName\n    lastName\n    phone\n    balance\n    id\n  }\n}\n"
+  "text": "query EditProfileQuery {\n  me {\n    firstName\n    lastName\n    phone\n    balance\n    addresses\n    id\n  }\n}\n"
 };
 
 module.exports = batch;
