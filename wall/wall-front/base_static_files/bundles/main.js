@@ -21698,7 +21698,8 @@ class Card extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
   toggleMenu(event) {
     event && event.preventDefault();
-    this.setState({ options: JSON.parse(localStorage.getItem('addresses')), showMenu: !this.state.showMenu });
+    let options = JSON.parse(localStorage.getItem('addresses'));
+    this.setState({ options, showMenu: !this.state.showMenu });
   }
 
   render() {
@@ -24119,6 +24120,7 @@ class EditProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
             }
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__mutations_AddAddressMutation__["a" /* default */])(_this3.state.address, function (response) {
                 if (response.ok) {
+                    localStorage.setItem('addresses', JSON.stringify(JSON.parse(localStorage.getItem('addresses')).concat([_this3.state.address])));
                     _this3.setState({ additional_addresses: _this3.state.additional_addresses.concat([_this3.state.address]), address: '' });
                     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_react_toastify__["toast"])('آدرس اضافه شد.');
                 }

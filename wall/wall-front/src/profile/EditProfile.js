@@ -184,7 +184,7 @@ class EditProfile extends React.Component {
                                         <p>{address}</p>
                                     </div>)}
                                 </div>
-                                
+
                                 <Button type="button" className="submit" outline color="primary"
                                         onClick={() => this._confirm()}>ثبت</Button>
                             </Form>
@@ -233,6 +233,7 @@ class EditProfile extends React.Component {
         }
         AddAddressMutation(this.state.address, (response) => {
             if (response.ok) {
+                localStorage.setItem('addresses', JSON.stringify(JSON.parse(localStorage.getItem('addresses')).concat([this.state.address])))
                 this.setState({additional_addresses: this.state.additional_addresses.concat([this.state.address]), address: ''})
                 toast('آدرس اضافه شد.');
             }

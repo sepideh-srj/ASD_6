@@ -15,7 +15,8 @@ export default class Card extends Component {
   
   toggleMenu(event) {
     event && event.preventDefault();
-    this.setState({ options: JSON.parse(localStorage.getItem('addresses')), showMenu: !this.state.showMenu });
+    let options = JSON.parse(localStorage.getItem('addresses'))
+    this.setState({ options, showMenu: !this.state.showMenu });
   }
 
   render() {
