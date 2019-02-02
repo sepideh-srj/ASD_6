@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, FormGroup, Label, FormFeedback, Input, Button, Col} from 'reactstrap';
+import {Button, Col, Form, FormFeedback, FormGroup, Input, Label} from 'reactstrap';
 import ProductCreateMutation from "../mutations/ProductCreateMutation";
 import {Category} from '../utils/constants';
 
@@ -14,6 +14,7 @@ class CreateProduct extends React.Component {
             prodYear: '',
             price: '',
             category: Category.DIGITAL_GOODS.key,
+            subCategory: Category.DIGITAL_GOODS.sub.MOBILE_PHONE.key,
             image: null,
             title_error: null,
             address_error: null,
@@ -142,21 +143,31 @@ class CreateProduct extends React.Component {
                                     <Label for="category" sm={2}>دسته‌بندی</Label>
                                     <Col sm={10}>
                                         <Input type="select" name="category" id="category"
-                                               valid={this.state.category_error == null ? undefined : false}
                                                placeholder="دسته‌بندی"
                                                onChange={(e) => this.setState({
                                                    category: e.target.value,
-                                                   category_error: null
-                                               })}
-                                        >
-                                            {
-                                                Object.keys(Category).map(category =>
-                                                    <option key={Category[category].key}
-                                                        value={Category[category].key}>{Category[category].value}
-                                                    </option>
-                                                )
-
-                                            }
+                                               })}>
+                                            {Object.keys(Category).map(category =>
+                                                <option key={Category[category].key}
+                                                        value={Category[category].key}>
+                                                    {Category[category].value}
+                                                </option>)}
+                                        </Input>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                    <Label for="subCategory" sm={2}>دسته‌بندی جزئی</Label>
+                                    <Col sm={10}>
+                                        <Input type="select" name="subCategory" id="sub_category"
+                                               placeholder="دسته‌بندی جزئی"
+                                               onChange={(e) => this.setState({
+                                                   subCategory: e.target.value,
+                                               })}>
+                                            {Object.keys(Category[this.state.category].sub).map(sub =>
+                                                <option key={Category[this.state.category].sub[sub].key}
+                                                        value={Category[this.state.category].sub[sub].key}>
+                                                    {Category[this.state.category].sub[sub].value}
+                                                </option>)}
                                         </Input>
                                     </Col>
                                 </FormGroup>
@@ -184,8 +195,8 @@ class CreateProduct extends React.Component {
     }
 
     async _confirm() {
-        const {title, address, description, prodYear, price, category, image} = this.state;
-        ProductCreateMutation(title, address, description, prodYear, price, category, image, (response) => {
+        const {title, address, description, prodYear, price, image, category, subCategory} = this.state;
+        ProductCreateMutation(title, address, description, prodYear, price, category, subCategory, image, (response) => {
             if (response.ok) {
                 window.location.replace('/');
             }
