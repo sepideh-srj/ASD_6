@@ -9,7 +9,6 @@ export default class RequestList extends React.Component {
         window.scrollTo(0, this.props.position);
         if (this.props.message !== '')
             toast(this.props.message)
-        alert(JSON.stringify((this.props.products)))
     }
 
     render() {
