@@ -5,7 +5,7 @@ from wall.settings.base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['wall.herokuapp.com']
+ALLOWED_HOSTS = ['warm-temple-16283.herokuapp.com']
 
 WSGI_APPLICATION = 'wall.wsgi.application'
 
