@@ -12,7 +12,8 @@ export type ProductDescription_product = {|
   +id: string;
   +description: ?string;
   +address: string;
-  +category: "DIGITAL_GOODS" | "PROPERTY" | "VEHICLE" | "BEAUTY" | "CLOTHING" | "HOME_KITCHEN" | "BOOK_MEDIA" | "ENTERTAINMENT" | "SPORT" | "OTHERS";
+  +category: "DIGITAL_GOODS" | "PERSONAL_APPLIANCE" | "VEHICLES" | "APPAREL" | "HOME_AND_KITCHEN" | "BOOK_AND_MEDIA" | "SPORT_ENTERTAINMENT";
+  +subCategory: "MOBILE_PHONE" | "MOBILE_ACCESSORIES" | "CAMERA" | "CAMERA_ACCESSORIES" | "LAPTOP" | "LAPTOP_ACCESSORIES" | "COMPUTER_PARTS" | "OFFICE_MACHINES" | "TABLET" | "BEAUTY" | "HAIR_CLIPPER" | "ELECTRICAL_PERSONAL_CARE" | "SUNGLASSES" | "PERFUME_ALL" | "JEWELERY" | "HEALTH_CARE" | "CARS" | "CAR_ACCESSORY_PARTS" | "CONSUMABLE_PARTS" | "MOTORBIKE" | "POWER_TOOLS" | "MEN_APPAREL" | "WOMEN_APPAREL" | "WATCH_CLOCK" | "SPORTS_WEAR" | "KIS_APPAREL" | "PERSONAL_APPLIANCE_ACCESSORY" | "SPORT_SHOES" | "VIDEO_AUDIO" | "HOME_APPLIANCE" | "SERVING" | "LIGHTING" | "DECORATIVE" | "PUBLICATION" | "TRAINING_PACK" | "SOFTWARE" | "STATIONERY" | "MUSICAL_INSTRUMENTS" | "HANDICRAFT" | "SPORT" | "SPORT_WEAR" | "BICYCLE" | "BICYCLE_ACCESSORIES" | "HIKING_AND_CAMPING" | "TRAVELING_EQUIPMENT";
   +image: ?string;
   +seller: {|
     +firstName: string;
@@ -43,14 +44,14 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "id",
+      "name": "image",
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "description",
+      "name": "id",
       "storageKey": null
     },
     {
@@ -71,7 +72,14 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "image",
+      "name": "subCategory",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "description",
       "storageKey": null
     },
     {

@@ -16,10 +16,10 @@ const mutation = graphql`
     }
 `;
 
-export default (title, address, description, prodYear, price, category, image, callback) => {
+export default (title, address, description, prodYear, price, category, subCategory, image, callback) => {
     const variables = (prodYear === '') ?
-        {input: {title, address, description, price, category, image}} :
-        {input: {title, address, description, prodYear, price, category, image}}
+        {input: {title, address, description, price, category, subCategory, image}} :
+        {input: {title, address, description, prodYear, price, category, subCategory, image}}
     ;
     commitMutation(
         environment,

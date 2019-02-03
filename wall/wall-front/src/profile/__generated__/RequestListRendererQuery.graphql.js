@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 4598ca75b065947f31da341a9f8d5dbd
+ * @relayHash 723639bb9cebf85fc52dd84d2100e19b
  */
 
 /* eslint-disable */
@@ -17,7 +17,7 @@ export type RequestListRendererQueryResponse = {|
       +address: string;
       +prodYear: number;
       +price: number;
-      +category: "DIGITAL_GOODS" | "PROPERTY" | "VEHICLE" | "BEAUTY" | "CLOTHING" | "HOME_KITCHEN" | "BOOK_MEDIA" | "ENTERTAINMENT" | "SPORT" | "OTHERS";
+      +category: "DIGITAL_GOODS" | "PERSONAL_APPLIANCE" | "VEHICLES" | "APPAREL" | "HOME_AND_KITCHEN" | "BOOK_AND_MEDIA" | "SPORT_ENTERTAINMENT";
       +image: ?string;
       +seller: {|
         +id: string;
@@ -38,7 +38,7 @@ export type RequestListRendererQueryResponse = {|
       +address: string;
       +prodYear: number;
       +price: number;
-      +category: "DIGITAL_GOODS" | "PROPERTY" | "VEHICLE" | "BEAUTY" | "CLOTHING" | "HOME_KITCHEN" | "BOOK_MEDIA" | "ENTERTAINMENT" | "SPORT" | "OTHERS";
+      +category: "DIGITAL_GOODS" | "PERSONAL_APPLIANCE" | "VEHICLES" | "APPAREL" | "HOME_AND_KITCHEN" | "BOOK_AND_MEDIA" | "SPORT_ENTERTAINMENT";
       +image: ?string;
       +seller: {|
         +id: string;

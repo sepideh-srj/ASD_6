@@ -91,15 +91,12 @@ type BuyProductMutationPayload {
 
 enum CategoryType {
   DIGITAL_GOODS
-  PROPERTY
-  VEHICLE
-  BEAUTY
-  CLOTHING
-  HOME_KITCHEN
-  BOOK_MEDIA
-  ENTERTAINMENT
-  SPORT
-  OTHERS
+  PERSONAL_APPLIANCE
+  VEHICLES
+  APPAREL
+  HOME_AND_KITCHEN
+  BOOK_AND_MEDIA
+  SPORT_ENTERTAINMENT
 }
 
 type CommentType implements Node {
@@ -180,6 +177,7 @@ type ProductCreateError {
   prodYear: [String]
   price: [String]
   category: [String]
+  subCategory: [String]
   image: [String]
   clientMutationId: [String]
   nonFieldErrors: [String]
@@ -192,6 +190,7 @@ input ProductCreateInput {
   prodYear: Int
   price: Int
   category: CategoryType!
+  subCategory: SubCategoryType!
   image: String
   clientMutationId: String
 }
@@ -230,6 +229,7 @@ type ProductRemoveMutationPayload {
 
 input ProductsQueryArguments {
   categoryIn: [CategoryType]
+  subCategoryIn: [SubCategoryType]
   seller: ID
   buyer: ID
   prodYearLte: Int
@@ -253,6 +253,7 @@ type ProductType implements Node {
   description: String
   prodYear: Int!
   category: CategoryType!
+  subCategory: SubCategoryType!
   image: String
   seller: UserType!
   buyer: UserType
@@ -300,6 +301,54 @@ type ResendPasswordMutationPayload {
   ok: Boolean!
   clientMutationId: String
   errors: ResendPasswordMutationError
+}
+
+enum SubCategoryType {
+  MOBILE_PHONE
+  MOBILE_ACCESSORIES
+  CAMERA
+  CAMERA_ACCESSORIES
+  LAPTOP
+  LAPTOP_ACCESSORIES
+  COMPUTER_PARTS
+  OFFICE_MACHINES
+  TABLET
+  BEAUTY
+  HAIR_CLIPPER
+  ELECTRICAL_PERSONAL_CARE
+  SUNGLASSES
+  PERFUME_ALL
+  JEWELERY
+  HEALTH_CARE
+  CARS
+  CAR_ACCESSORY_PARTS
+  CONSUMABLE_PARTS
+  MOTORBIKE
+  POWER_TOOLS
+  MEN_APPAREL
+  WOMEN_APPAREL
+  WATCH_CLOCK
+  SPORTS_WEAR
+  KIS_APPAREL
+  PERSONAL_APPLIANCE_ACCESSORY
+  SPORT_SHOES
+  VIDEO_AUDIO
+  HOME_APPLIANCE
+  SERVING
+  LIGHTING
+  DECORATIVE
+  PUBLICATION
+  TRAINING_PACK
+  SOFTWARE
+  STATIONERY
+  MUSICAL_INSTRUMENTS
+  HANDICRAFT
+  SPORT
+  SPORT_WEAR
+  BICYCLE
+  BICYCLE_ACCESSORIES
+  HIKING_AND_CAMPING
+  TRAVELING_EQUIPMENT
 }
 
 type UserLoginError {
@@ -371,7 +420,7 @@ type UserType implements Node {
   password: String!
   activated: Boolean!
   addresses: [String]
-  sellingProducts: [ProductType]
   boughtProducts: [ProductType]
+  sellingProducts: [ProductType]
 }
 
