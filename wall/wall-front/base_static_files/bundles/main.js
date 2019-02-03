@@ -1141,8 +1141,8 @@ module.exports = {
 /* unused harmony export CarouselItem */
 /* unused harmony export CarouselIndicators */
 /* unused harmony export CarouselCaption */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return CardSubtitle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return CardText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return CardSubtitle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return CardText; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return CardTitle; });
 /* unused harmony export Popover */
 /* unused harmony export PopoverContent */
@@ -22730,12 +22730,17 @@ class ProductCard extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                             this.props.product.title
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_2_reactstrap__["l" /* CardSubtitle */],
+                            __WEBPACK_IMPORTED_MODULE_2_reactstrap__["l" /* CardText */],
+                            { className: 'description' },
+                            'قیمت: ' + this.props.product.price + 'تومان'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_2_reactstrap__["m" /* CardSubtitle */],
                             null,
                             this.props.product.address
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_2_reactstrap__["m" /* CardText */],
+                            __WEBPACK_IMPORTED_MODULE_2_reactstrap__["l" /* CardText */],
                             { className: 'description' },
                             this.props.product.description
                         ),
@@ -22891,7 +22896,7 @@ class ProductDescription extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.C
                                 'div',
                                 { className: 'product-category' },
                                 '\u062F\u0633\u062A\u0647\u200C\u0628\u0646\u062F\u06CC:',
-                                __WEBPACK_IMPORTED_MODULE_2__utils_constants__["a" /* Category */][category] && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                __WEBPACK_IMPORTED_MODULE_2__utils_constants__["a" /* Category */][category] && __WEBPACK_IMPORTED_MODULE_2__utils_constants__["a" /* Category */][category].sub[subCategory] && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'span',
                                     null,
                                     ' ',
@@ -22946,8 +22951,7 @@ class ProductDescription extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.C
                                     'span',
                                     null,
                                     price
-                                ),
-                                ' :'
+                                )
                             ),
                             is_seller ? seller_button : this.props.code === "" ? "" : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 __WEBPACK_IMPORTED_MODULE_3_reactstrap__["g" /* Button */],
