@@ -75,7 +75,7 @@ class ProductDescription extends React.Component {
                                     <span> {address}</span>
                                 </div>
                                 <div className="product-category">دسته‌بندی:
-                                    {Category[category] &&
+                                    {Category[category] && Category[category].sub[subCategory] &&
                                         <span> {Category[category].value.concat(' > ' + Category[category].sub[subCategory].value)}</span>
                                     }
                                 </div>
@@ -95,7 +95,7 @@ class ProductDescription extends React.Component {
                                 </div>
                                 <div className="product-seller">قیمت:
                                     <span>   </span>
-                                            <span>{price}</span> :
+                                            <span>{price}</span>
                                 </div>
                                 {
                                     (is_seller ? seller_button :
