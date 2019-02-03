@@ -36,12 +36,12 @@ class UserProfile extends React.Component {
                         <span>{"   "}</span>
                         <Link className="tab-head"
                               activeClassName="checked"
-                              to={"/profile/" + username + '/'}>لیست
+                              to={"/selling/" + username + '/'}>لیست
                             فروخته‌ها</Link>
                         <span>{"   "}</span>
                         <Link className="tab-head"
                               activeClassName="checked"
-                              to={"/profile/" + username + '/'}>لیست
+                              to={"/bought/" + username + '/'}>لیست
                             خریده‌ها</Link>
                     </div>
                     {childrenWithProps}

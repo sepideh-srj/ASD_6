@@ -259,19 +259,6 @@ type ProductType implements Node {
   comments: [CommentType]
 }
 
-type ProductTypeConnection {
-  pageInfo: PageInfo!
-  edges: [ProductTypeEdge]!
-}
-
-type ProductTypeEdge {
-  
-  node: ProductType
-
-  
-  cursor: String!
-}
-
 type Query {
   products(filters: ProductsQueryArguments, before: String, after: String, first: Int, last: Int): ProductConnection
   product(id: String!): ProductType
@@ -384,7 +371,7 @@ type UserType implements Node {
   password: String!
   activated: Boolean!
   addresses: [String]
-  sellingProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
-  boughtProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
+  sellingProducts: [ProductType]
+  boughtProducts: [ProductType]
 }
 

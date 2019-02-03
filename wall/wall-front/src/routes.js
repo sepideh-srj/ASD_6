@@ -10,6 +10,7 @@ import ProductRenderer from "./products/ProductRenderer";
 import UserProfile from "./profile/UserProfile";
 import PublicProfileRenderer from "./public/PublicProfileRenderer";
 import EditProfile from "./profile/EditProfile";
+import RequestListRenderer from "./profile/RequestListRenderer";
 
 export default (
     <Route path="/" components={BaseNavbarQueryRenderer}>
@@ -24,8 +25,8 @@ export default (
 
         <Route path="/profile/:username" components={UserProfile}>
             <IndexRoute components={EditProfile}/>
-            <Route path='boughts' components={null}/>
-            <Route path='solds' components={null}/>
+            <Route path='/bought/:username' components={RequestListRenderer}/>
+            <Route path='/selling/:username' components={RequestListRenderer}/>
 
         </Route>
         <Route path="/public/:username" components={PublicProfileRenderer}/>

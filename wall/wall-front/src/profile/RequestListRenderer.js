@@ -29,7 +29,7 @@ class RequestListRenderer extends React.Component {
                             return <div>{error.message}</div>
                         } else if (props) {
                             return <RequestList change={this.increaseAction.bind(this)}
-                                                products={props.me.phone}
+                                                products={props.me.sellingProducts}
                                                 message={this.state.message}
                                                 position={this.state.position}
                             />
@@ -45,8 +45,50 @@ class RequestListRenderer extends React.Component {
 const PublicProfileQuery = graphql`
     query RequestListRendererQuery{
         me{
-            phone
+            sellingProducts{
+                id
+                title
+                address
+                prodYear
+                price
+                category
+                image
+                seller{
+                    id
+                    phone
+                    firstName
+                    lastName
+                }
+                buyer{
+                    id
+                    phone
+                    firstName
+                    lastName
+                }
+            }
+            boughtProducts{
+                id
+                title
+                address
+                prodYear
+                price
+                category
+                image
+                seller{
+                    id
+                    phone
+                    firstName
+                    lastName
+                }
+                buyer{
+                    id
+                    phone
+                    firstName
+                    lastName
+                }
+            }
         }
     }
 `;
+
 export default RequestListRenderer

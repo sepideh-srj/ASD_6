@@ -3,6 +3,8 @@ from graphene import relay
 from graphene_django.types import DjangoObjectType
 
 from accounts.models import User
+from products.schema import ProductType
+from products.models import Product
 from accounts.mutations.authentication_mutations import UserSignUp, UserLogin, UserLogout, \
     ResendCodeMutation, ActivateAccountMutation, ResendPasswordMutation
 from accounts.mutations.profile_mutations import EditProfileMutation, AddBalanceMutation, BuyProductMutation, AddAddressMutation
@@ -17,18 +19,23 @@ class UserType(DjangoObjectType):
             'balance', 'phone', 'activated', 'password', 'addresses')
 
     addresses = graphene.List(graphene.String)
-    
+    selling_products = graphene.List(ProductType)
+    bought_products = graphene.List(ProductType)
+
+
     @staticmethod
     def resolve_addresses(root, info):
         return root.get_addresses()
 
     @staticmethod
     def resolve_bought_products(root, info):
-        return root.bought_products.all()
+        products = Product.objects.filter(buyer__id=root.id)
+        return products
 
     @staticmethod
     def resolve_selling_products(root, info):
-        return root.selling_products.all()
+        products = Product.objects.filter(seller__id=root.id)
+        return products
 
 
 class AccountQuery(graphene.ObjectType):

@@ -3,12 +3,13 @@ import {createFragmentContainer, graphql} from 'react-relay';
 import {toast, ToastContainer} from 'react-toastify';
 import {Link} from 'react-router';
 
-class RequestList extends React.Component {
+export default class RequestList extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, this.props.position);
         if (this.props.message !== '')
             toast(this.props.message)
+        // alert(JSON.stringify(this.props.products))
     }
 
     render() {
