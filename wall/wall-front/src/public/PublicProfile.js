@@ -4,15 +4,20 @@ import '../../styles/profile/public_profile.css';
 import {Form, FormGroup, Input, Col, Label, FormFeedback, Button} from 'reactstrap';
 import SendMessageMutation from "../mutations/SendMessageMutation"
 import {ToastContainer, toast} from 'react-toastify';
+
+import Messages from '../profile/Messages';
+
 class PublicProfile extends React.Component {
 
     constructor(props) {
+        
         super(props);
 
         this.state = {
             message: '',
             message_error: null,
         };
+
     }
 
     async _confirm() {
@@ -56,15 +61,24 @@ class PublicProfile extends React.Component {
                                 </table>
 
                                 <ToastContainer/>
-                                <Col className="explanation" sm={12}>
-                                        <span>پیام به کاربر</span>
-                                    </Col>
 
 
 
 
                     <Col sm={12}>
+
+
+                                <Messages change={()=>{}}
+                                                messages={this.props.user.messages}
+                                                phone={localStorage.getItem('username')}
+                                                message={''}
+                                                position={0}
+                            />
                     
+
+                    {/* <Col className="explanation" sm={12}>
+                                        <span>پیام به کاربر</span>
+                                    </Col> */}
                     <Form>
                         <FormGroup row>
                             <Label for="message" sm={2}>متن پیام</Label>
@@ -91,10 +105,6 @@ class PublicProfile extends React.Component {
         </Form>
     </Col>
 
-
-
-
-
                             </div>
                         </div>
                     </div>
@@ -107,6 +117,22 @@ class PublicProfile extends React.Component {
 export default createFragmentContainer(PublicProfile, {
     user: graphql`
         fragment PublicProfile_user on UserType{
+            messages{
+                id
+                text
+                sender{
+                    id
+                    phone
+                    firstName
+                    lastName
+                }
+                receiver{
+                    id
+                    phone
+                    firstName
+                    lastName
+                }
+            }
             id
             phone
             firstName

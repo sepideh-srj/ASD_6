@@ -36,7 +36,7 @@ export default class RequestList extends React.Component {
                     <ToastContainer/>
                     <div className="table-row header">
                         <div className="cell">وضعیت</div>
-                        <div className="cell">نام مخاصب</div>
+                        <div className="cell">نام مخاطب</div>
                         <div className="cell">پیام</div>
                     </div>
                     {this.props.messages.map(p =>{

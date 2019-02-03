@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 14dbe2a0f6a115aba3894da9ed35a583
+ * @relayHash d0cdf0765df1b477abbfa7289cc6107e
  */
 
 /* eslint-disable */
@@ -26,6 +26,22 @@ query PublicProfileRendererQuery(
 }
 
 fragment PublicProfile_user on UserType {
+  messages {
+    id
+    text
+    sender {
+      id
+      phone
+      firstName
+      lastName
+    }
+    receiver {
+      id
+      phone
+      firstName
+      lastName
+    }
+  }
   id
   phone
   firstName
@@ -106,6 +122,109 @@ const batch /*: ConcreteBatch*/ = {
         "plural": false,
         "selections": [
           {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "MessageType",
+            "name": "messages",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "id",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "text",
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "UserType",
+                "name": "sender",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "phone",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "firstName",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "lastName",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "UserType",
+                "name": "receiver",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "phone",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "firstName",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "lastName",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
+          {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
@@ -138,7 +257,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PublicProfileRendererQuery(\n  $id: String!\n) {\n  user(id: $id) {\n    ...PublicProfile_user\n    id\n  }\n}\n\nfragment PublicProfile_user on UserType {\n  id\n  phone\n  firstName\n  lastName\n}\n"
+  "text": "query PublicProfileRendererQuery(\n  $id: String!\n) {\n  user(id: $id) {\n    ...PublicProfile_user\n    id\n  }\n}\n\nfragment PublicProfile_user on UserType {\n  messages {\n    id\n    text\n    sender {\n      id\n      phone\n      firstName\n      lastName\n    }\n    receiver {\n      id\n      phone\n      firstName\n      lastName\n    }\n  }\n  id\n  phone\n  firstName\n  lastName\n}\n"
 };
 
 module.exports = batch;

@@ -2,6 +2,7 @@ import React from 'react';
 import {graphql, QueryRenderer} from 'react-relay';
 import environment from './../Environment';
 import PublicProfile from "./PublicProfile";
+import Messages from '../profile/Messages';
 
 class PublicProfileRenderer extends React.Component {
     constructor() {
@@ -26,7 +27,11 @@ class PublicProfileRenderer extends React.Component {
                         if (error) {
                             return <div>{error.message}</div>
                         } else if (props) {
-                            return <PublicProfile user={props.user}/>
+                            // alert(JSON.stringify(props.user))
+                            return  <PublicProfile user={props.user}/>
+                            // <div>
+                               
+                                // </div>
                         }
                         return <div/>
                     }}
