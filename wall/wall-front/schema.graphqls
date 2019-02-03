@@ -451,5 +451,6 @@ type UserType implements Node {
   addresses: [String]
   boughtProducts: [ProductType]
   sellingProducts: [ProductType]
+  messages: [MessageType]
 }
 

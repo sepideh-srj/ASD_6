@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5c01c38b6ff228de2f0cb51d0631a859
+ * @relayHash 14dbe2a0f6a115aba3894da9ed35a583
  */
 
 /* eslint-disable */
@@ -26,6 +26,8 @@ query PublicProfileRendererQuery(
 }
 
 fragment PublicProfile_user on UserType {
+  id
+  phone
   firstName
   lastName
 }
@@ -107,6 +109,20 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
+            "name": "id",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "phone",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
             "name": "firstName",
             "storageKey": null
           },
@@ -116,20 +132,13 @@ const batch /*: ConcreteBatch*/ = {
             "args": null,
             "name": "lastName",
             "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query PublicProfileRendererQuery(\n  $id: String!\n) {\n  user(id: $id) {\n    ...PublicProfile_user\n    id\n  }\n}\n\nfragment PublicProfile_user on UserType {\n  firstName\n  lastName\n}\n"
+  "text": "query PublicProfileRendererQuery(\n  $id: String!\n) {\n  user(id: $id) {\n    ...PublicProfile_user\n    id\n  }\n}\n\nfragment PublicProfile_user on UserType {\n  id\n  phone\n  firstName\n  lastName\n}\n"
 };
 
 module.exports = batch;

@@ -42,7 +42,7 @@ class ProductDescription extends React.Component {
         let button_state = false;
         let is_seller = false;
         let seller_button = null;
-        let {image, title, address, category, subCategory, description, seller, comments} = this.props.product;
+        let {image, title, address, category, subCategory, description, seller, comments, price} = this.props.product;
 
         if (is_seller) {
             if (this.state.remove_confirm)
@@ -75,7 +75,9 @@ class ProductDescription extends React.Component {
                                     <span> {address}</span>
                                 </div>
                                 <div className="product-category">دسته‌بندی:
-                                    <span> {Category[category].value.concat(' > ' + Category[category].sub[subCategory].value)}</span>
+                                    {Category[category] &&
+                                        <span> {Category[category].value.concat(' > ' + Category[category].sub[subCategory].value)}</span>
+                                    }
                                 </div>
                                 <div className="product-description">{description}</div>
                                 {<CommentList comments={comments} product={this.props.product}/>}
@@ -90,6 +92,10 @@ class ProductDescription extends React.Component {
                                         }
                                     </Link>
 
+                                </div>
+                                <div className="product-seller">قیمت:
+                                    <span>   </span>
+                                            <span>{price}</span> :
                                 </div>
                                 {
                                     (is_seller ? seller_button :

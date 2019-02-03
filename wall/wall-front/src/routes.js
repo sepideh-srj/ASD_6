@@ -12,6 +12,7 @@ import PublicProfileRenderer from "./public/PublicProfileRenderer";
 import EditProfile from "./profile/EditProfile";
 import BoughtListRenderer from "./profile/BoughtListRenderer";
 import SellingListRenderer from "./profile/SellingListRenderer";
+import MessageRenderer from "./profile/MessageRenderer";
 
 export default (
     <Route path="/" components={BaseNavbarQueryRenderer}>
@@ -28,6 +29,7 @@ export default (
             <IndexRoute components={EditProfile}/>
             <Route path='/bought/:username' components={BoughtListRenderer}/>
             <Route path='/selling/:username' components={SellingListRenderer}/>
+            <Route path='/message/:username' components={MessageRenderer}/>
 
         </Route>
         <Route path="/public/:username" components={PublicProfileRenderer}/>

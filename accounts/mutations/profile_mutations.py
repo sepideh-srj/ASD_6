@@ -5,6 +5,8 @@ from utils.mutation import SafeClientIDMutation
 from products.models import Product
 from accounts.models import User, Message
 
+from graphene import relay
+
 class EditProfileMutation(SafeClientIDMutation):
     login_required = True
 
