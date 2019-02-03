@@ -162,4 +162,12 @@ label {
   }
 }
 
+.scrollable-menu {
+  width: auto;
+  min-width: 200px;
+  height: auto;
+  max-height: 600px;
+  overflow-x: hidden;
+}
+
 @import "tabs.css";

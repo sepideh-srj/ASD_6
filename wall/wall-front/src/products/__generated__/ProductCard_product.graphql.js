@@ -18,7 +18,7 @@ export type ProductCard_product = {|
     |};
   |}>;
   +address: string;
-  +category: "DIGITAL_GOODS" | "PROPERTY" | "VEHICLE" | "BEAUTY" | "CLOTHING" | "HOME_KITCHEN" | "BOOK_MEDIA" | "ENTERTAINMENT" | "SPORT" | "OTHERS";
+  +category: "DIGITAL_GOODS" | "PERSONAL_APPLIANCE" | "VEHICLES" | "APPAREL" | "HOME_AND_KITCHEN" | "BOOK_AND_MEDIA" | "SPORT_ENTERTAINMENT";
   +id: string;
   +image: ?string;
   +prodYear: number;

@@ -17,6 +17,7 @@ class ProductCreate(SafeClientIDMutation):
         prod_year = graphene.Int()
         price = graphene.Int()
         category = graphene.Field('products.schema.CategoryType', required=True)
+        sub_category = graphene.Field('products.schema.SubCategoryType', required=True)
         image = graphene.String()
 
     product = graphene.Field('products.schema.ProductType')
