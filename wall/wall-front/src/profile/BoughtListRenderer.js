@@ -3,7 +3,7 @@ import {graphql, QueryRenderer} from 'react-relay';
 import environment from './../Environment';
 import RequestList from './RequestList';
 
-class RequestListRenderer extends React.Component {
+class BoughtListRenderer extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -29,7 +29,7 @@ class RequestListRenderer extends React.Component {
                             return <div>{error.message}</div>
                         } else if (props) {
                             return <RequestList change={this.increaseAction.bind(this)}
-                                                products={props.me.sellingProducts}
+                                                products={props.me.boughtProducts}
                                                 message={this.state.message}
                                                 position={this.state.position}
                             />
@@ -43,29 +43,8 @@ class RequestListRenderer extends React.Component {
 }
 
 const PublicProfileQuery = graphql`
-    query RequestListRendererQuery{
+    query BoughtListRendererQuery{
         me{
-            sellingProducts{
-                id
-                title
-                address
-                prodYear
-                price
-                category
-                image
-                seller{
-                    id
-                    phone
-                    firstName
-                    lastName
-                }
-                buyer{
-                    id
-                    phone
-                    firstName
-                    lastName
-                }
-            }
             boughtProducts{
                 id
                 title
@@ -91,4 +70,4 @@ const PublicProfileQuery = graphql`
     }
 `;
 
-export default RequestListRenderer
+export default BoughtListRenderer

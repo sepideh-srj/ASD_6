@@ -9,7 +9,7 @@ export default class RequestList extends React.Component {
         window.scrollTo(0, this.props.position);
         if (this.props.message !== '')
             toast(this.props.message)
-        // alert(JSON.stringify(this.props.products))
+        alert(JSON.stringify((this.props.products)))
     }
 
     render() {
@@ -20,39 +20,29 @@ export default class RequestList extends React.Component {
                     <div className="table-row header">
                         <div className="cell">عنوان محصول</div>
                         <div className="cell">دسته‌بندی</div>
-                        <div className="cell">درخواست دهنده</div>
-                        <div className="cell">وضعیت درخواست</div>
-                        <div className="cell">رد</div>
-                        <div className="cell">تایید</div>
+                        <div className="cell">خریدار</div>
                     </div>
-                    {/* {this.props.products.edges.map(product =>
-                        product.node.borrowRequests.edges.map((req) =>
-                            <div key={req.node.id} className="table-row">
+                    {this.props.products.map(p =>
+                            <div key={p.id} className="table-row">
                                 <div className="cell">
-                                    {req.node.product.title}
+                                    {p.title}
                                 </div>
                                 <div className="cell">
-                                    {req.node.product.category}
+                                    {p.category}
                                 </div>
-                                <Link to={`/public/${req.node.borrower.id}`}>
-                                    {req.node.borrower.firstName ?
-                                        <div className="cell">
-                                            {req.node.borrower.firstName} {req.node.borrower.lastName}
-                                        </div> :
-                                        <div className="cell">
-                                            {req.node.borrower.id}
-                                        </div>
-                                    }
-                                </Link>
-                                <div className="cell">
-                                    {req.node.state}
-                                </div>
+                                {p.buyer && 
+                                    <Link to={`/public/${p.buyer.id}`}>
+                                    <div className="cell">
+                                        {p.buyer.firstName} {p.buyer.lastName}
+                                    </div></Link>}{!p.buyer &&
+                                    <div className="cell">
+                                        {"فروخته نشده"}
+                                    </div>
+                                }
                             </div>
-                        )
-                    )} TODO*/}
+                    )}
                 </div>
             </div>
         )
-
     }
 }

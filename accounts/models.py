@@ -63,3 +63,8 @@ class User(AbstractUser):
 
 class Image(models.Model):
     image = models.ImageField()
+
+class Message(models.Model):
+    sender = models.ForeignKey('accounts.User', on_delete=models.CASCADE, related_name='output_message')
+    receiver = models.ForeignKey('accounts.User', on_delete=models.CASCADE, related_name='input_message')
+    text = models.CharField('متن', max_length=1000)

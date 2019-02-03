@@ -2,12 +2,12 @@ import graphene
 from graphene import relay
 from graphene_django.types import DjangoObjectType
 
-from accounts.models import User
+from accounts.models import User, Message
 from products.schema import ProductType
 from products.models import Product
 from accounts.mutations.authentication_mutations import UserSignUp, UserLogin, UserLogout, \
     ResendCodeMutation, ActivateAccountMutation, ResendPasswordMutation
-from accounts.mutations.profile_mutations import EditProfileMutation, AddBalanceMutation, BuyProductMutation, AddAddressMutation
+from accounts.mutations.profile_mutations import EditProfileMutation, AddBalanceMutation, BuyProductMutation, AddAddressMutation, SendMessageMutation
 
 
 class UserType(DjangoObjectType):
@@ -36,6 +36,12 @@ class UserType(DjangoObjectType):
     def resolve_selling_products(root, info):
         products = Product.objects.filter(seller__id=root.id)
         return products
+
+class MessageType(DjangoObjectType):
+    class Meta:
+        model = Message
+        interfaces = (relay.Node,)
+        only_fields = ('id', 'text', 'sender', 'receiver')
 
 
 class AccountQuery(graphene.ObjectType):
@@ -68,3 +74,4 @@ class AccountMutation(graphene.ObjectType):
     add_balance = AddBalanceMutation.Field()
     buy_product = BuyProductMutation.Field()
     add_address = AddAddressMutation.Field()
+    send_message = SendMessageMutation.Field()
