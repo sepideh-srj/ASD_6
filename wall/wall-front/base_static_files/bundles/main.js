@@ -606,21 +606,6 @@ module.exports = {
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * Relay v1.4.1
- *
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-module.exports = __webpack_require__(330);
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -685,6 +670,21 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Relay v1.4.1
+ *
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+module.exports = __webpack_require__(330);
 
 /***/ }),
 /* 6 */
@@ -6893,7 +6893,7 @@ function createFragmentSpecResolver(context, containerName, fragments, props, ca
     var fragmentNames = Object.keys(fragments);
     fragmentNames.forEach(function (fragmentName) {
       var propValue = props[fragmentName];
-      __webpack_require__(5)(propValue !== undefined, 'createFragmentSpecResolver: Expected prop `%s` to be supplied to `%s`, but ' + 'got `undefined`. Pass an explicit `null` if this is intentional.', fragmentName, containerName);
+      __webpack_require__(4)(propValue !== undefined, 'createFragmentSpecResolver: Expected prop `%s` to be supplied to `%s`, but ' + 'got `undefined`. Pass an explicit `null` if this is intentional.', fragmentName, containerName);
     });
   }
 
@@ -7412,7 +7412,7 @@ function update(store, payload) {
           mergeEdges(prevEdges, nextEdges, nodeIDs);
           mergeEdges(_serverEdges, nextEdges, nodeIDs);
         } else {
-          __webpack_require__(5)(false, 'RelayConnectionHandler: Unexpected after cursor `%s`, edges must ' + 'be fetched from the end of the list (`%s`).', args.after, clientPageInfo && clientPageInfo.getValue(END_CURSOR));
+          __webpack_require__(4)(false, 'RelayConnectionHandler: Unexpected after cursor `%s`, edges must ' + 'be fetched from the end of the list (`%s`).', args.after, clientPageInfo && clientPageInfo.getValue(END_CURSOR));
           return;
         }
       } else if (args.before != null) {
@@ -7422,7 +7422,7 @@ function update(store, payload) {
           mergeEdges(_serverEdges, nextEdges, _nodeIDs);
           mergeEdges(prevEdges, nextEdges, _nodeIDs);
         } else {
-          __webpack_require__(5)(false, 'RelayConnectionHandler: Unexpected before cursor `%s`, edges must ' + 'be fetched from the beginning of the list (`%s`).', args.before, clientPageInfo && clientPageInfo.getValue(START_CURSOR));
+          __webpack_require__(4)(false, 'RelayConnectionHandler: Unexpected before cursor `%s`, edges must ' + 'be fetched from the beginning of the list (`%s`).', args.before, clientPageInfo && clientPageInfo.getValue(START_CURSOR));
           return;
         }
       } else {
@@ -12287,7 +12287,7 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_toastify__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_toastify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_toastify__);
@@ -12848,7 +12848,7 @@ exports.default = runTransitionHook;
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(0);
-  var warning = __webpack_require__(5);
+  var warning = __webpack_require__(4);
   var ReactPropTypesSecret = __webpack_require__(84);
   var loggedTypeFailures = {};
 }
@@ -14249,7 +14249,7 @@ function rangeAdd(config, operation) {
       edgeName = config.edgeName;
 
   if (!parentID) {
-    __webpack_require__(5)(false, 'setRelayModernMutationConfigs: For mutation config RANGE_ADD ' + 'to work you must include a parentID');
+    __webpack_require__(4)(false, 'setRelayModernMutationConfigs: For mutation config RANGE_ADD ' + 'to work you must include a parentID');
     return;
   }
   var rootField = getRootField(operation);
@@ -14290,7 +14290,7 @@ function rangeAdd(config, operation) {
                   __webpack_require__(27).insertEdgeBefore(connection, clientEdge);
                   break;
                 default:
-                  __webpack_require__(5)(false, 'setRelayModernMutationConfigs: RANGE_ADD range behavior ' + ('\'' + info.rangeBehavior + '\' will not work as expected in RelayModern, ') + "supported range behaviors are 'append', 'prepend', and " + "'ignore'");
+                  __webpack_require__(4)(false, 'setRelayModernMutationConfigs: RANGE_ADD range behavior ' + ('\'' + info.rangeBehavior + '\' will not work as expected in RelayModern, ') + "supported range behaviors are 'append', 'prepend', and " + "'ignore'");
                   break;
               }
             }
@@ -14326,7 +14326,7 @@ function rangeDelete(config, operation) {
       deletedIDFieldName = config.deletedIDFieldName;
 
   if (!parentID) {
-    __webpack_require__(5)(false, 'setRelayModernMutationConfigs: For mutation config RANGE_DELETE ' + 'to work you must include a parentID');
+    __webpack_require__(4)(false, 'setRelayModernMutationConfigs: For mutation config RANGE_DELETE ' + 'to work you must include a parentID');
     return;
   }
   var rootField = getRootField(operation);
@@ -14392,7 +14392,7 @@ function rangeDelete(config, operation) {
 }
 
 function deleteNode(parentID, connectionKeys, pathToConnection, store, deleteIDs) {
-  __webpack_require__(5)(connectionKeys, 'setRelayModernMutationConfigs: RANGE_DELETE must provide a ' + 'connectionKeys');
+  __webpack_require__(4)(connectionKeys, 'setRelayModernMutationConfigs: RANGE_DELETE must provide a ' + 'connectionKeys');
   var parent = store.get(parentID);
   if (!parent) {
     return;
@@ -14443,10 +14443,10 @@ function deleteNode(parentID, connectionKeys, pathToConnection, store, deleteIDs
         }
       }
     } else {
-      __webpack_require__(5)(false, 'setRelayModernMutationConfigs: RANGE_DELETE ' + 'pathToConnection is incorrect. Unable to find connection with ' + 'parentID: %s and path: %s', parentID, pathToConnection.toString());
+      __webpack_require__(4)(false, 'setRelayModernMutationConfigs: RANGE_DELETE ' + 'pathToConnection is incorrect. Unable to find connection with ' + 'parentID: %s and path: %s', parentID, pathToConnection.toString());
     }
   } else {
-    __webpack_require__(5)(false, 'setRelayModernMutationConfigs: RANGE_DELETE ' + 'pathToConnection must include at least parent and connection');
+    __webpack_require__(4)(false, 'setRelayModernMutationConfigs: RANGE_DELETE ' + 'pathToConnection must include at least parent and connection');
   }
 }
 
@@ -14803,7 +14803,7 @@ rawAsap.makeRequestCallFromTimer = makeRequestCallFromTimer;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -14830,7 +14830,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -14857,7 +14857,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -14886,7 +14886,7 @@ const mutation = function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_toastify__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_toastify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_toastify__);
@@ -15674,7 +15674,7 @@ var _memoizeStringOnly = __webpack_require__(277);
 
 var _memoizeStringOnly2 = _interopRequireDefault(_memoizeStringOnly);
 
-var _warning = __webpack_require__(5);
+var _warning = __webpack_require__(4);
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -17024,7 +17024,7 @@ function getOperationVariables(operation, variables) {
     }
     operationVariables[def.name] = value;
     if (process.env.NODE_ENV !== 'production') {
-      __webpack_require__(5)(value != null || def.type[def.type.length - 1] !== '!', 'RelayConcreteVariables: Expected a value for non-nullable variable ' + '`$%s: %s` on operation `%s`, got `%s`. Make sure you supply a ' + 'value for all non-nullable arguments.', def.name, def.type, operation.name, JSON.stringify(value));
+      __webpack_require__(4)(value != null || def.type[def.type.length - 1] !== '!', 'RelayConcreteVariables: Expected a value for non-nullable variable ' + '`$%s: %s` on operation `%s`, got `%s`. Make sure you supply a ' + 'value for all non-nullable arguments.', def.name, def.type, operation.name, JSON.stringify(value));
     }
   });
   return operationVariables;
@@ -17427,7 +17427,7 @@ function getSelector(operationVariables, fragment, item) {
       variables: fragmentVariables
     };
   }
-  __webpack_require__(5)(false, 'RelayModernSelector: Expected object to contain data for fragment `%s`, got ' + '`%s`. Make sure that the parent operation/fragment included fragment ' + '`...%s` without `@relay(mask: false)`.', fragment.name, JSON.stringify(item), fragment.name);
+  __webpack_require__(4)(false, 'RelayModernSelector: Expected object to contain data for fragment `%s`, got ' + '`%s`. Make sure that the parent operation/fragment included fragment ' + '`...%s` without `@relay(mask: false)`.', fragment.name, JSON.stringify(item), fragment.name);
   return null;
 }
 
@@ -17534,7 +17534,7 @@ function getDataID(fragment, item) {
   if (typeof dataID === 'string') {
     return dataID;
   }
-  __webpack_require__(5)(false, 'RelayModernSelector: Expected object to contain data for fragment `%s`, got ' + '`%s`. Make sure that the parent operation/fragment included fragment ' + '`...%s` without `@relay(mask: false)`.', fragment.name, JSON.stringify(item), fragment.name);
+  __webpack_require__(4)(false, 'RelayModernSelector: Expected object to contain data for fragment `%s`, got ' + '`%s`. Make sure that the parent operation/fragment included fragment ' + '`...%s` without `@relay(mask: false)`.', fragment.name, JSON.stringify(item), fragment.name);
   return null;
 }
 
@@ -18345,7 +18345,7 @@ RawTask.prototype.call = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_reactstrap__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations_UserLogoutMutation__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router__ = __webpack_require__(18);
@@ -18532,7 +18532,7 @@ class BaseNavbar extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Environment__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__BaseNavbar__ = __webpack_require__(159);
@@ -19512,18 +19512,13 @@ class AuctionCreate extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_constants__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_reactstrap__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mutations_ProductRemoveMutation__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mutations_BuyProductMutation__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_toastify__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_toastify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_toastify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_router__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_constants__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mutations_ProductRemoveMutation__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations_BuyProductMutation__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_toastify__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_toastify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_toastify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router__ = __webpack_require__(18);
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-
 
 
 
@@ -19538,16 +19533,40 @@ class AuctionProduct extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
         this.state = {
             remove_confirm: false
         };
+
+        this.p = {
+            id: '123',
+            description: 'salam',
+            address: 'tehran',
+            category: 'DIGITAL_GOODS',
+            subCategory: 'MOBILE_PHONE',
+            image: null,
+            seller: {
+                firstName: 'Alireza',
+                lastName: 'Naeiji',
+                id: '1'
+            },
+            prodYear: 1393,
+            price: 1100,
+            comments: [{
+                text: 'salam',
+                author: {
+                    firstName: 'Alireza',
+                    lastName: 'Naeiji'
+                }
+            }],
+            title: 'boooooook'
+        };
     }
 
     remove_product() {
         var _this = this;
 
         return _asyncToGenerator(function* () {
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__mutations_ProductRemoveMutation__["a" /* default */])(_this.props.product.id, function (response) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__mutations_ProductRemoveMutation__["a" /* default */])(_this.props.product.id, function (response) {
                 if (response.ok) {
                     _this.props.router.push('/');
-                } else __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_react_toastify__["toast"])(response.errors.product || response.errors.nonFieldErrors[0]);
+                } else __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_react_toastify__["toast"])(response.errors.product || response.errors.nonFieldErrors[0]);
             });
         })();
     }
@@ -19556,60 +19575,25 @@ class AuctionProduct extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
         var _this2 = this;
 
         return _asyncToGenerator(function* () {
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__mutations_BuyProductMutation__["a" /* default */])(_this2.props.product.id, function (response) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__mutations_BuyProductMutation__["a" /* default */])(_this2.props.product.id, function (response) {
                 if (response.ok) {
                     _this2.props.router.push('/');
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_react_toastify__["toast"])('کالای مورد نظر خریده شد.');
-                } else __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_react_toastify__["toast"])(response.errors.product || response.errors.nonFieldErrors[0]);
+                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_react_toastify__["toast"])('کالای مورد نظر خریده شد.');
+                } else __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_react_toastify__["toast"])(response.errors.product || response.errors.nonFieldErrors[0]);
             });
         })();
     }
 
     render() {
-        let button_text = 'خرید';
-        let button_state = false;
         let seller_button = null;
         let auction_button = null;
-        let { id, image, title, address, category, subCategory, description, seller, comments, price } = this.props.product;
+        let { id, image, title, address, category, subCategory, description, seller, comments, price } = this.p;
         let is_seller = seller.id === localStorage.getItem('username');
-
-        if (is_seller) {
-            if (this.state.remove_confirm) seller_button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_3_reactstrap__["g" /* Button */],
-                    {
-                        color: 'primary',
-                        onClick: () => this.setState({ remove_confirm: false }) },
-                    '\u0628\u0627\u0632\u06AF\u0634\u062A'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_3_reactstrap__["g" /* Button */],
-                    {
-                        color: 'danger',
-                        onClick: this.remove_product.bind(this) },
-                    '\u062D\u0630\u0641'
-                )
-            );else seller_button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_3_reactstrap__["g" /* Button */],
-                { outline: true, color: 'primary',
-                    onClick: () => this.setState({ remove_confirm: true }) },
-                '\u062D\u0630\u0641 \u0645\u062D\u0635\u0648\u0644'
-            );
-
-            auction_button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_3_reactstrap__["g" /* Button */],
-                { outline: true, color: 'primary',
-                    onClick: () => this.props.router.push('/create-auction/?id=' + id) },
-                '\u06AF\u0630\u0627\u0634\u062A\u0646 \u0645\u0632\u0627\u06CC\u062F\u0647'
-            );
-        }
 
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'content container' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_toastify__["ToastContainer"], null),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_toastify__["ToastContainer"], null),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'row' },
@@ -19644,11 +19628,11 @@ class AuctionProduct extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                                 'div',
                                 { className: 'product-category' },
                                 '\u062F\u0633\u062A\u0647\u200C\u0628\u0646\u062F\u06CC:',
-                                __WEBPACK_IMPORTED_MODULE_2__utils_constants__["a" /* Category */][category] && __WEBPACK_IMPORTED_MODULE_2__utils_constants__["a" /* Category */][category].sub[subCategory] && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                __WEBPACK_IMPORTED_MODULE_1__utils_constants__["a" /* Category */][category] && __WEBPACK_IMPORTED_MODULE_1__utils_constants__["a" /* Category */][category].sub[subCategory] && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'span',
                                     null,
                                     ' ',
-                                    __WEBPACK_IMPORTED_MODULE_2__utils_constants__["a" /* Category */][category].value.concat(' > ' + __WEBPACK_IMPORTED_MODULE_2__utils_constants__["a" /* Category */][category].sub[subCategory].value)
+                                    __WEBPACK_IMPORTED_MODULE_1__utils_constants__["a" /* Category */][category].value.concat(' > ' + __WEBPACK_IMPORTED_MODULE_1__utils_constants__["a" /* Category */][category].sub[subCategory].value)
                                 )
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -19670,7 +19654,7 @@ class AuctionProduct extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                                     '   '
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    __WEBPACK_IMPORTED_MODULE_7_react_router__["e" /* Link */],
+                                    __WEBPACK_IMPORTED_MODULE_5_react_router__["e" /* Link */],
                                     { to: `/public/${seller.id}` },
                                     seller.firstName ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'span',
@@ -19688,7 +19672,7 @@ class AuctionProduct extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'product-seller' },
-                                '\u0642\u06CC\u0645\u062A:',
+                                '\u0642\u06CC\u0645\u062A \u067E\u0627\u06CC\u0647:',
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'span',
                                     null,
@@ -19698,26 +19682,6 @@ class AuctionProduct extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                                     'span',
                                     null,
                                     price
-                                )
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'div',
-                                { className: 'row' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'div',
-                                    { className: 'product-auction-btn' },
-                                    is_seller ? auction_button : null
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'div',
-                                    null,
-                                    is_seller ? seller_button : this.props.code === "" ? "" : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        __WEBPACK_IMPORTED_MODULE_3_reactstrap__["g" /* Button */],
-                                        { outline: true, color: 'primary',
-                                            disabled: button_state,
-                                            onClick: this.buy.bind(this) },
-                                        button_text
-                                    )
                                 )
                             )
                         )
@@ -19769,7 +19733,7 @@ __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -19796,7 +19760,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -19823,7 +19787,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -19850,7 +19814,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -19877,7 +19841,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -19910,7 +19874,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -19937,7 +19901,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -19964,7 +19928,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -19991,7 +19955,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -20023,7 +19987,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -20054,7 +20018,7 @@ const mutation = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Environment__ = __webpack_require__(8);
 
@@ -23161,7 +23125,7 @@ class CreateProduct extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_reactstrap__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router__ = __webpack_require__(18);
@@ -23238,7 +23202,7 @@ class ProductCard extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_constants__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_reactstrap__ = __webpack_require__(13);
@@ -23720,7 +23684,7 @@ class ProductFilters extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ProductCard__ = __webpack_require__(198);
 
@@ -23756,7 +23720,7 @@ class ProductList extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Environment__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ProductList__ = __webpack_require__(201);
@@ -23826,7 +23790,7 @@ const ProductListQuery = function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Environment__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ProductDescription__ = __webpack_require__(199);
@@ -24773,7 +24737,7 @@ module.exports = batch;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Environment__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__RequestList__ = __webpack_require__(105);
@@ -24841,7 +24805,7 @@ const PublicProfileQuery = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mutations_AddAddressMutation__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_toastify__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_toastify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_toastify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Environment__ = __webpack_require__(8);
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
@@ -25221,7 +25185,7 @@ const ProfileInfoQuery = function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Environment__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Messages__ = __webpack_require__(68);
@@ -25284,7 +25248,7 @@ const PublicProfileQuery = function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Environment__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__RequestList__ = __webpack_require__(105);
@@ -26598,7 +26562,7 @@ module.exports = batch;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_profile_public_profile_css__ = __webpack_require__(394);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_profile_public_profile_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__styles_profile_public_profile_css__);
@@ -26784,7 +26748,7 @@ class PublicProfile extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_relay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_relay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Environment__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PublicProfile__ = __webpack_require__(218);
@@ -28081,7 +28045,7 @@ var emptyObject = __webpack_require__(45);
 var _invariant = __webpack_require__(0);
 
 if (process.env.NODE_ENV !== 'production') {
-  var warning = __webpack_require__(5);
+  var warning = __webpack_require__(4);
 }
 
 var MIXINS_KEY = 'mixins';
@@ -29460,7 +29424,7 @@ var _CSSProperty = __webpack_require__(279);
 
 var _CSSProperty2 = _interopRequireDefault(_CSSProperty);
 
-var _warning = __webpack_require__(5);
+var _warning = __webpack_require__(4);
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -34638,7 +34602,7 @@ module.exports = function() {
 
 var emptyFunction = __webpack_require__(11);
 var invariant = __webpack_require__(0);
-var warning = __webpack_require__(5);
+var warning = __webpack_require__(4);
 var assign = __webpack_require__(17);
 
 var ReactPropTypesSecret = __webpack_require__(84);
@@ -35408,7 +35372,7 @@ if (process.env.NODE_ENV !== "production") {
 
 var React = __webpack_require__(1);
 var invariant = __webpack_require__(0);
-var warning = __webpack_require__(5);
+var warning = __webpack_require__(4);
 var ExecutionEnvironment = __webpack_require__(120);
 var _assign = __webpack_require__(17);
 var emptyFunction = __webpack_require__(11);
@@ -52165,7 +52129,7 @@ function createContainerWithFragments(Component, fragments, connectionConfig) {
       var hasMore = direction === FORWARD ? pageInfo[HAS_NEXT_PAGE] : pageInfo[HAS_PREV_PAGE];
       var cursor = direction === FORWARD ? pageInfo[END_CURSOR] : pageInfo[START_CURSOR];
       if (typeof hasMore !== 'boolean' || typeof cursor !== 'string') {
-        __webpack_require__(5)(false, 'ReactRelayPaginationContainer: Cannot paginate without %s fields in `%s`. ' + 'Be sure to fetch %s (got `%s`) and %s (got `%s`).', PAGE_INFO, componentName, direction === FORWARD ? HAS_NEXT_PAGE : HAS_PREV_PAGE, hasMore, direction === FORWARD ? END_CURSOR : START_CURSOR, cursor);
+        __webpack_require__(4)(false, 'ReactRelayPaginationContainer: Cannot paginate without %s fields in `%s`. ' + 'Be sure to fetch %s (got `%s`) and %s (got `%s`).', PAGE_INFO, componentName, direction === FORWARD ? HAS_NEXT_PAGE : HAS_PREV_PAGE, hasMore, direction === FORWARD ? END_CURSOR : START_CURSOR, cursor);
         return null;
       }
       return {
@@ -56587,7 +56551,7 @@ if (process.env.NODE_ENV !== "production") {
 var _assign = __webpack_require__(17);
 var emptyObject = __webpack_require__(45);
 var invariant = __webpack_require__(0);
-var warning = __webpack_require__(5);
+var warning = __webpack_require__(4);
 var emptyFunction = __webpack_require__(11);
 var checkPropTypes = __webpack_require__(83);
 
@@ -58970,7 +58934,7 @@ var RelayModernEnvironment = function () {
         onNext = _ref4.onNext,
         operation = _ref4.operation;
 
-    __webpack_require__(5)(false, 'environment.sendQuery() is deprecated. Update to the latest ' + 'version of react-relay, and use environment.execute().');
+    __webpack_require__(4)(false, 'environment.sendQuery() is deprecated. Update to the latest ' + 'version of react-relay, and use environment.execute().');
     return this.execute({ operation: operation, cacheConfig: cacheConfig }).subscribeLegacy({
       onNext: onNext,
       onError: onError,
@@ -58990,7 +58954,7 @@ var RelayModernEnvironment = function () {
         onNext = _ref5.onNext,
         operation = _ref5.operation;
 
-    __webpack_require__(5)(false, 'environment.streamQuery() is deprecated. Update to the latest ' + 'version of react-relay, and use environment.execute().');
+    __webpack_require__(4)(false, 'environment.streamQuery() is deprecated. Update to the latest ' + 'version of react-relay, and use environment.execute().');
     return this.execute({ operation: operation, cacheConfig: cacheConfig }).subscribeLegacy({
       onNext: onNext,
       onError: onError,
@@ -59012,7 +58976,7 @@ var RelayModernEnvironment = function () {
         updater = _ref6.updater,
         uploadables = _ref6.uploadables;
 
-    __webpack_require__(5)(false, 'environment.sendMutation() is deprecated. Update to the latest ' + 'version of react-relay, and use environment.executeMutation().');
+    __webpack_require__(4)(false, 'environment.sendMutation() is deprecated. Update to the latest ' + 'version of react-relay, and use environment.executeMutation().');
     return this.executeMutation({
       operation: operation,
       optimisticResponse: optimisticResponse,
@@ -59043,7 +59007,7 @@ var RelayModernEnvironment = function () {
         operation = _ref7.operation,
         updater = _ref7.updater;
 
-    __webpack_require__(5)(false, 'environment.sendSubscription() is deprecated. Update to the latest ' + 'version of react-relay, and use environment.execute().');
+    __webpack_require__(4)(false, 'environment.sendSubscription() is deprecated. Update to the latest ' + 'version of react-relay, and use environment.execute().');
     return this.execute({
       operation: operation,
       updater: updater,
@@ -60298,7 +60262,7 @@ var RelayResponseNormalizer = function () {
         return;
       }
       if (process.env.NODE_ENV !== 'production') {
-        __webpack_require__(5)(Object.prototype.hasOwnProperty.call(data, responseKey), 'RelayResponseNormalizer(): Payload did not contain a value ' + 'for field `%s: %s`. Check that you are parsing with the same ' + 'query that was used to fetch the payload.', responseKey, storageKey);
+        __webpack_require__(4)(Object.prototype.hasOwnProperty.call(data, responseKey), 'RelayResponseNormalizer(): Payload did not contain a value ' + 'for field `%s: %s`. Check that you are parsing with the same ' + 'query that was used to fetch the payload.', responseKey, storageKey);
       }
       __webpack_require__(3).setValue(record, storageKey, null);
       return;
@@ -60370,7 +60334,7 @@ var RelayResponseNormalizer = function () {
 
   RelayResponseNormalizer.prototype._validateRecordType = function _validateRecordType(record, field, payload) {
     var typeName = field.concreteType || this._getRecordType(payload);
-    __webpack_require__(5)(__webpack_require__(3).getType(record) === typeName, 'RelayResponseNormalizer: Invalid record `%s`. Expected %s to be ' + 'be consistent, but the record was assigned conflicting types `%s` ' + 'and `%s`. The GraphQL server likely violated the globally unique ' + 'id requirement by returning the same id for different objects.', __webpack_require__(3).getDataID(record), TYPENAME_KEY, __webpack_require__(3).getType(record), typeName);
+    __webpack_require__(4)(__webpack_require__(3).getType(record) === typeName, 'RelayResponseNormalizer: Invalid record `%s`. Expected %s to be ' + 'be consistent, but the record was assigned conflicting types `%s` ' + 'and `%s`. The GraphQL server likely violated the globally unique ' + 'id requirement by returning the same id for different objects.', __webpack_require__(3).getDataID(record), TYPENAME_KEY, __webpack_require__(3).getType(record), typeName);
   };
 
   return RelayResponseNormalizer;
@@ -60575,11 +60539,11 @@ function commitRelayModernMutation(environment, config) {
   // TODO: remove this check after we fix flow.
   if (typeof optimisticResponse === 'function') {
     optimisticResponse = optimisticResponse();
-    __webpack_require__(5)(false, 'commitRelayModernMutation: Expected `optimisticResponse` to be an object, ' + 'received a function.');
+    __webpack_require__(4)(false, 'commitRelayModernMutation: Expected `optimisticResponse` to be an object, ' + 'received a function.');
   }
   if (optimisticResponse && mutation.query.selections && mutation.query.selections.length === 1 && mutation.query.selections[0].kind === 'LinkedField') {
     var mutationRoot = mutation.query.selections[0].name;
-    __webpack_require__(5)(optimisticResponse[mutationRoot], 'commitRelayModernMutation: Expected `optimisticResponse` to be wrapped ' + 'in mutation name `%s`', mutationRoot);
+    __webpack_require__(4)(optimisticResponse[mutationRoot], 'commitRelayModernMutation: Expected `optimisticResponse` to be wrapped ' + 'in mutation name `%s`', mutationRoot);
   }
   if (configs) {
     var _setRelayModernMutati = __webpack_require__(97)(configs, mutation, optimisticUpdater, updater);
@@ -60836,7 +60800,7 @@ function requestRelaySubscription(environment, config) {
 
   var operation = createOperationSelector(subscription, variables);
 
-  __webpack_require__(5)(!(config.updater && configs), 'requestRelaySubscription: Expected only one of `updater` and `configs` to be provided');
+  __webpack_require__(4)(!(config.updater && configs), 'requestRelaySubscription: Expected only one of `updater` and `configs` to be provided');
 
   var _ref = configs ? __webpack_require__(97)(configs, subscription, null /* optimisticUpdater */
   , config.updater) : config,

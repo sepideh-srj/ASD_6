@@ -1,7 +1,5 @@
 import React from 'react';
-import {createFragmentContainer, graphql} from 'react-relay';
 import {Category} from '../utils/constants';
-import {Button} from 'reactstrap';
 import ProductRemoveMutation from "../mutations/ProductRemoveMutation";
 import BuyProductMutation from "../mutations/BuyProductMutation";
 import {toast, ToastContainer} from 'react-toastify';
@@ -12,6 +10,30 @@ class AuctionProduct extends React.Component {
         super();
         this.state = {
             remove_confirm: false
+        };
+
+        this.p = {
+            id: '123',
+            description: 'salam',
+            address: 'tehran',
+            category: 'DIGITAL_GOODS',
+            subCategory: 'MOBILE_PHONE',
+            image: null,
+            seller: {
+                firstName: 'Alireza',
+                lastName: 'Naeiji',
+                id: '1'
+            },
+            prodYear: 1393,
+            price: 1100,
+            comments: [{
+                text: 'salam',
+                author: {
+                    firstName: 'Alireza',
+                    lastName: 'Naeiji'
+                }
+            },],
+            title: 'boooooook',
         }
     }
 
@@ -37,33 +59,10 @@ class AuctionProduct extends React.Component {
     }
 
     render() {
-        let button_text = 'خرید';
-        let button_state = false;
         let seller_button = null;
         let auction_button = null;
-        let {id, image, title, address, category, subCategory, description, seller, comments, price} = this.props.product;
+        let {id, image, title, address, category, subCategory, description, seller, comments, price} = this.p;
         let is_seller = seller.id === localStorage.getItem('username');
-
-        if (is_seller) {
-            if (this.state.remove_confirm)
-                seller_button = <div>
-                    <Button
-                        color='primary'
-                        onClick={() => this.setState({remove_confirm: false})}>بازگشت
-                    </Button>
-                    <Button
-                        color='danger'
-                        onClick={this.remove_product.bind(this)}>حذف
-                    </Button>
-                </div>;
-            else
-                seller_button = <Button outline color="primary"
-                                        onClick={() => (this.setState({remove_confirm: true}))}>حذف محصول</Button>;
-
-            auction_button = <Button outline color="primary"
-                                     onClick={() => this.props.router.push('/create-auction/?id=' + id)}>گذاشتن
-                مزایده</Button>;
-        }
 
         return (
             <div className="content container">
@@ -82,7 +81,7 @@ class AuctionProduct extends React.Component {
                                     {Category[category] && Category[category].sub[subCategory] &&
                                     <span> {Category[category].value.concat(' > ' + Category[category].sub[subCategory].value)}</span>
                                     }
-                                </div>
+                                </div>g
                                 <div className="product-description">{description}</div>
                             </div>
                             <div className="bottom-part">
@@ -96,26 +95,9 @@ class AuctionProduct extends React.Component {
                                     </Link>
 
                                 </div>
-                                <div className="product-seller">قیمت:
+                                <div className="product-seller">قیمت پایه:
                                     <span>   </span>
                                     <span>{price}</span>
-                                </div>
-                                <div className="row">
-                                    <div className="product-auction-btn">
-                                        {
-                                            (is_seller ? auction_button : null)
-                                        }
-                                    </div>
-                                    <div>
-                                        {
-                                            (is_seller ? seller_button :
-                                                    this.props.code === "" ? "" :
-                                                        <Button outline color="primary"
-                                                                disabled={button_state}
-                                                                onClick={this.buy.bind(this)}>{button_text}</Button>
-                                            )
-                                        }
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -126,30 +108,4 @@ class AuctionProduct extends React.Component {
     }
 }
 
-export default createFragmentContainer(AuctionProduct, {
-    product: graphql`
-        fragment ProductDescription_product on ProductType{
-            id
-            description
-            address
-            category
-            subCategory
-            image
-            seller{
-                firstName
-                lastName
-                id
-            }
-            prodYear
-            price
-            comments{
-                text
-                author{
-                    firstName
-                    lastName
-                }
-            }
-            title
-        }
-    `
-});
+export default AuctionProduct;
