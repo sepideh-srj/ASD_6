@@ -2,7 +2,7 @@ import graphene
 from django.contrib.auth import login, logout
 from django.core.exceptions import ValidationError
 
-from accounts.models import User
+from accounts.models import User, Invitation
 from utils.mutation import ClientIDMutationWithErrors, SafeClientIDMutation
 
 
@@ -79,11 +79,19 @@ class UserSignUp(SafeClientIDMutation):
         last_name = graphene.String(required=True)
         phone = graphene.String(required=True)
         password = graphene.String(required=True)
+        invitation_code = graphene.String()
 
     user = graphene.Field('accounts.schema.UserType')
 
     @classmethod
     def safe_mutate(cls, root, info, **kwargs):
+        code = kwargs.pop('invitation_code', None)
+        host = None
+        if code:
+            try:
+                host = User.objects.get(invitation_code=code)
+            except User.DoesNotExist:
+                return cls.error(invitation_code=['کد نامعتبر است.'])
         first_name = kwargs.get('first_name')
         last_name = kwargs.get('last_name')
         phone = kwargs.get('phone')
@@ -97,4 +105,6 @@ class UserSignUp(SafeClientIDMutation):
             raise e
         user.send_code_by_sms()
         user.save()
+        if host:
+            Invitation(host, None).reward(user)
         return cls(user=user)

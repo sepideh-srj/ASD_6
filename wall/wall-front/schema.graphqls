@@ -129,6 +129,23 @@ type EditProfileMutationPayload {
   errors: EditProfileMutationError
 }
 
+type InviteError {
+  phone: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input InviteInput {
+  phone: String!
+  clientMutationId: String
+}
+
+type InvitePayload {
+  ok: Boolean!
+  clientMutationId: String
+  errors: InviteError
+}
+
 type MessageType implements Node {
   
   id: ID!
@@ -152,6 +169,7 @@ type Mutation {
   buyProduct(input: BuyProductMutationInput!): BuyProductMutationPayload
   addAddress(input: AddAddressMutationInput!): AddAddressMutationPayload
   sendMessage(input: SendMessageMutationInput!): SendMessageMutationPayload
+  invite(input: InviteInput!): InvitePayload
 }
 
 
@@ -420,6 +438,7 @@ type UserSignUpError {
   lastName: [String]
   phone: [String]
   password: [String]
+  invitationCode: [String]
   clientMutationId: [String]
   nonFieldErrors: [String]
 }
@@ -429,6 +448,7 @@ input UserSignUpInput {
   lastName: String!
   phone: String!
   password: String!
+  invitationCode: String
   clientMutationId: String
 }
 
@@ -446,11 +466,12 @@ type UserType implements Node {
   lastName: String!
   balance: Int!
   phone: String
+  invitationCode: String!
   password: String!
   activated: Boolean!
   addresses: [String]
-  sellingProducts: [ProductType]
   boughtProducts: [ProductType]
+  sellingProducts: [ProductType]
   messages: [MessageType]
 }
 

@@ -28,10 +28,15 @@ class BaseNavbarQueryRenderer extends React.Component {
                             return <div>{error.message}</div>
                         } else if (props) {
                             localStorage.setItem('logged', props.me !== null ? 'true' : 'false');
+                            let invitation_code = '';
+                            if (props.me)
+                                invitation_code = props.me.invitationCode;
                             let childrenWithProps = React.Children.map(this.props.children, child =>
                                 React.cloneElement(child, {
+                                    invitation_code,
                                     change_balance: this.change_balance.bind(this)
-                                }));
+                                }
+                                ));
                             return (
                                 <div>
                                     <BaseNavbar logged={props.me} balance={this.state.balance}
@@ -52,6 +57,7 @@ class BaseNavbarQueryRenderer extends React.Component {
 const CheckLoginQuery = graphql`
     query BaseNavbarQueryRendererQuery{
         me{
+            invitationCode
             ...BaseNavbar_logged
         }
     }

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash adc55507fab5ea430f25aefe8f0a30a4
+ * @relayHash fc3cae65032b9230aeb0a2c96367f3c8
  */
 
 /* eslint-disable */
@@ -15,6 +15,7 @@ export type UserSignUpMutationVariables = {|
     lastName: string;
     phone: string;
     password: string;
+    invitationCode?: ?string;
     clientMutationId?: ?string;
   };
 |};
@@ -26,6 +27,7 @@ export type UserSignUpMutationResponse = {|
       +lastName: ?$ReadOnlyArray<?string>;
       +phone: ?$ReadOnlyArray<?string>;
       +password: ?$ReadOnlyArray<?string>;
+      +invitationCode: ?$ReadOnlyArray<?string>;
     |};
   |};
 |};
@@ -43,6 +45,7 @@ mutation UserSignUpMutation(
       lastName
       phone
       password
+      invitationCode
     }
   }
 }
@@ -118,6 +121,13 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "password",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "invitationCode",
                 "storageKey": null
               }
             ],
@@ -203,6 +213,13 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "password",
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "invitationCode",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -212,7 +229,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation UserSignUpMutation(\n  $input: UserSignUpInput!\n) {\n  userSignUp(input: $input) {\n    ok\n    errors {\n      firstName\n      lastName\n      phone\n      password\n    }\n  }\n}\n"
+  "text": "mutation UserSignUpMutation(\n  $input: UserSignUpInput!\n) {\n  userSignUp(input: $input) {\n    ok\n    errors {\n      firstName\n      lastName\n      phone\n      password\n      invitationCode\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

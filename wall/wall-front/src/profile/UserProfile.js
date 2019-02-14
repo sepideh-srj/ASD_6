@@ -21,6 +21,7 @@ class UserProfile extends React.Component {
     render() {
         let childrenWithProps = React.Children.map(this.props.children, child =>
             React.cloneElement(child, {
+                invitation_code: this.props.invitation_code,
                 change_balance: this.props.change_balance
             }));
         let username = this.state.username;
@@ -33,6 +34,12 @@ class UserProfile extends React.Component {
                               onlyActiveOnIndex
                               to={"/profile/" + username}>تکمیل
                             مشخصات</Link>
+                        <span>{"   "}</span>
+
+                        <Link className="tab-head"
+                              activeClassName="checked"
+                              to={"/profile/" + username + '/invitation'}>دعوت
+                            دوستان</Link>
                         <span>{"   "}</span>
                         <Link className="tab-head"
                               activeClassName="checked"

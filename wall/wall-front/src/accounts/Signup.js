@@ -17,8 +17,17 @@ class Signup extends Component {
             password: '',
             password_error: null,
             cpassword: '',
-            cpassword_error: null
+            cpassword_error: null,
+            invitationCode: '',
+            invitation_error: null,
         };
+    }
+
+    componentDidMount() {
+        let invitationCode = this.props.location.query.invitation_code;
+
+        if (invitationCode)
+            this.setState({invitationCode})
     }
 
     render() {
@@ -128,6 +137,27 @@ class Signup extends Component {
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
+                                <FormGroup row>
+                                    <Label for="invitation" sm={2}>کد دعوت</Label>
+                                    <Col sm={10}>
+                                        <Input className="ltr-input" type="text" name="invitation"
+                                               id="invitation"
+                                               value={this.state.invitationCode}
+                                               valid={this.state.invitation_error == null ? undefined : false}
+                                               placeholder="کد دعوت"
+                                               onChange={(e) => this.setState({
+                                                   invitationCode: e.target.value,
+                                                   invitation_error: null
+                                               })}
+                                        />
+                                    </Col>
+                                    <Col sm={2}/>
+                                    <Col sm={10}>
+                                        <FormFeedback>
+                                            {this.state.invitation_error}
+                                        </FormFeedback>
+                                    </Col>
+                                </FormGroup>
                                 <Button className="submit" outline color="primary"
                                         onClick={() => this._confirm()}>ثبت</Button>
                             </Form>
@@ -139,7 +169,7 @@ class Signup extends Component {
     }
 
     async _confirm() {
-        const {first_name, last_name, phone, password, cpassword} = this.state;
+        const {first_name, last_name, phone, password, cpassword, invitationCode} = this.state;
         let hasError = false
         if (password !== cpassword){
             this.setState({cpassword_error: "تایید رمز عبور اشتباه است!"})
@@ -156,14 +186,15 @@ class Signup extends Component {
         if(hasError){
             return
         }
-        SignUpUserMutation(first_name, last_name, phone, password, (response) => {
+        SignUpUserMutation(first_name, last_name, phone, password, invitationCode, (response) => {
             if (response.ok) {
                 this.props.router.push('/login/?number=' + phone);
             }
             else
                 this.setState({
                     phone_error: response.errors.phone,
-                    password_error: response.errors.password
+                    password_error: response.errors.password,
+                    invitation_error: response.errors.invitationCode,
                 });
         })
 

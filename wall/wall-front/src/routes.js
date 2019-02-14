@@ -14,6 +14,7 @@ import BoughtListRenderer from "./profile/BoughtListRenderer";
 import SellingListRenderer from "./profile/SellingListRenderer";
 import MessageRenderer from "./profile/MessageRenderer";
 import AuctionCreate from "./auction/AuctionCreate";
+import Invitation from "./profile/Invitation";
 
 export default (
     <Route path="/" components={BaseNavbarQueryRenderer}>
@@ -30,6 +31,7 @@ export default (
 
         <Route path="/profile/:username" components={UserProfile}>
             <IndexRoute components={EditProfile}/>
+            <Route path='invitation' components={Invitation}/>
             <Route path='/bought/:username' components={BoughtListRenderer}/>
             <Route path='/selling/:username' components={SellingListRenderer}/>
             <Route path='/message/:username' components={MessageRenderer}/>

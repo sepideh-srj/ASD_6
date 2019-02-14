@@ -8,6 +8,7 @@ from products.models import Product
 from accounts.mutations.authentication_mutations import UserSignUp, UserLogin, UserLogout, \
     ResendCodeMutation, ActivateAccountMutation, ResendPasswordMutation
 from accounts.mutations.profile_mutations import EditProfileMutation, AddBalanceMutation, BuyProductMutation, AddAddressMutation, SendMessageMutation
+from accounts.mutations.invite_mutations import Invite
 from django.db.models import Q
 
 class MessageType(DjangoObjectType):
@@ -22,7 +23,7 @@ class UserType(DjangoObjectType):
         model = User
         interfaces = (relay.Node,)
         only_fields = (
-            'id', 'first_name', 'last_name', 'selling_products', 'bought_products',
+            'id', 'first_name', 'last_name', 'selling_products', 'bought_products', 'invitation_code',
             'balance', 'phone', 'activated', 'password', 'addresses', 'messages')
 
     addresses = graphene.List(graphene.String)
@@ -81,3 +82,4 @@ class AccountMutation(graphene.ObjectType):
     buy_product = BuyProductMutation.Field()
     add_address = AddAddressMutation.Field()
     send_message = SendMessageMutation.Field()
+    invite = Invite.Field()

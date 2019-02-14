@@ -19,6 +19,7 @@ class ProductRenderer extends React.Component {
                             return <div>{error.message}</div>
                         } else if (props) {
                             return <ProductDescription product={props.product} router={this.props.router}
+                                                    code={this.props.invitation_code}
                                                     change_balance={this.props.change_balance}
                             />
                         }

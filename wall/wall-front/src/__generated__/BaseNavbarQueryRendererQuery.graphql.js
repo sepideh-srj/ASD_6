@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 4b44e7a111bc6d5ac029b26e480a5bd4
+ * @relayHash 08603513130bf33c65ab854cc8ec2605
  */
 
 /* eslint-disable */
@@ -10,7 +10,9 @@
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
 export type BaseNavbarQueryRendererQueryResponse = {|
-  +me: ?{| |};
+  +me: ?{|
+    +invitationCode: string;
+  |};
 |};
 */
 
@@ -18,6 +20,7 @@ export type BaseNavbarQueryRendererQueryResponse = {|
 /*
 query BaseNavbarQueryRendererQuery {
   me {
+    invitationCode
     ...BaseNavbar_logged
     id
   }
@@ -50,6 +53,13 @@ const batch /*: ConcreteBatch*/ = {
         "plural": false,
         "selections": [
           {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "invitationCode",
+            "storageKey": null
+          },
+          {
             "kind": "FragmentSpread",
             "name": "BaseNavbar_logged",
             "args": null
@@ -78,6 +88,13 @@ const batch /*: ConcreteBatch*/ = {
         "name": "me",
         "plural": false,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "invitationCode",
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -132,7 +149,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query BaseNavbarQueryRendererQuery {\n  me {\n    ...BaseNavbar_logged\n    id\n  }\n}\n\nfragment BaseNavbar_logged on UserType {\n  firstName\n  id\n  lastName\n  phone\n  balance\n  activated\n  addresses\n}\n"
+  "text": "query BaseNavbarQueryRendererQuery {\n  me {\n    invitationCode\n    ...BaseNavbar_logged\n    id\n  }\n}\n\nfragment BaseNavbar_logged on UserType {\n  firstName\n  id\n  lastName\n  phone\n  balance\n  activated\n  addresses\n}\n"
 };
 
 module.exports = batch;

@@ -1,6 +1,6 @@
 from envparse import env
 
-deploy = True
+deploy = False
 try:
     deploy = env.int('DEPLOY')
 except:

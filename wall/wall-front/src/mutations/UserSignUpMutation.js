@@ -10,18 +10,20 @@ const mutation = graphql`
                 lastName
                 phone
                 password
+                invitationCode
             }
         }
     }
 `;
 
-export default (first_name, last_name, phone, password, callback) => {
+export default (first_name, last_name, phone, password, invitationCode, callback) => {
     const variables = {
         input: {
             firstName: first_name, 
             lastName: last_name, 
             phone,
-            password
+            password,
+            invitationCode
         }
     };
     commitMutation(
