@@ -6,9 +6,8 @@ import ProductRemoveMutation from "../mutations/ProductRemoveMutation";
 import BuyProductMutation from "../mutations/BuyProductMutation";
 import {toast, ToastContainer} from 'react-toastify';
 import {Link} from 'react-router';
-import CommentList from "./CommentList";
 
-class ProductDescription extends React.Component {
+class AuctionProduct extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -62,7 +61,7 @@ class ProductDescription extends React.Component {
                                         onClick={() => (this.setState({remove_confirm: true}))}>حذف محصول</Button>;
 
             auction_button = <Button outline color="primary"
-                                     onClick={() => this.props.router.push('/product-auction/?id=' + id)}>گذاشتن
+                                     onClick={() => this.props.router.push('/create-auction/?id=' + id)}>گذاشتن
                 مزایده</Button>;
         }
 
@@ -85,7 +84,6 @@ class ProductDescription extends React.Component {
                                     }
                                 </div>
                                 <div className="product-description">{description}</div>
-                                {<CommentList comments={comments} product={this.props.product}/>}
                             </div>
                             <div className="bottom-part">
                                 <div className="product-seller">صاحب محصول:
@@ -128,7 +126,7 @@ class ProductDescription extends React.Component {
     }
 }
 
-export default createFragmentContainer(ProductDescription, {
+export default createFragmentContainer(AuctionProduct, {
     product: graphql`
         fragment ProductDescription_product on ProductType{
             id

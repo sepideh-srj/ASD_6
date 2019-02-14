@@ -14,6 +14,7 @@ import BoughtListRenderer from "./profile/BoughtListRenderer";
 import SellingListRenderer from "./profile/SellingListRenderer";
 import MessageRenderer from "./profile/MessageRenderer";
 import AuctionCreate from "./auction/AuctionCreate";
+import AuctionProduct from "./auction/AuctionProduct";
 
 export default (
     <Route path="/" components={BaseNavbarQueryRenderer}>
@@ -27,6 +28,7 @@ export default (
         <Route path="/products/:id" components={ProductRenderer}/>
 
         <Route path="/create-auction/" components={AuctionCreate}/>
+        <Route path="/product-auction/" components={AuctionProduct}/>
 
         <Route path="/profile/:username" components={UserProfile}>
             <IndexRoute components={EditProfile}/>
