@@ -129,6 +129,14 @@ type EditProfileMutationPayload {
   errors: EditProfileMutationError
 }
 
+type MessageType implements Node {
+  
+  id: ID!
+  sender: UserType!
+  receiver: UserType!
+  text: String!
+}
+
 type Mutation {
   productCreate(input: ProductCreateInput!): ProductCreatePayload
   productRemove(input: ProductRemoveMutationInput!): ProductRemoveMutationPayload
@@ -143,6 +151,7 @@ type Mutation {
   addBalance(input: AddBalanceMutationInput!): AddBalanceMutationPayload
   buyProduct(input: BuyProductMutationInput!): BuyProductMutationPayload
   addAddress(input: AddAddressMutationInput!): AddAddressMutationPayload
+  sendMessage(input: SendMessageMutationInput!): SendMessageMutationPayload
 }
 
 
@@ -260,19 +269,6 @@ type ProductType implements Node {
   comments: [CommentType]
 }
 
-type ProductTypeConnection {
-  pageInfo: PageInfo!
-  edges: [ProductTypeEdge]!
-}
-
-type ProductTypeEdge {
-  
-  node: ProductType
-
-  
-  cursor: String!
-}
-
 type Query {
   products(filters: ProductsQueryArguments, before: String, after: String, first: Int, last: Int): ProductConnection
   product(id: String!): ProductType
@@ -314,6 +310,26 @@ type ResendPasswordMutationPayload {
   ok: Boolean!
   clientMutationId: String
   errors: ResendPasswordMutationError
+}
+
+type SendMessageMutationError {
+  text: [String]
+  receiver: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input SendMessageMutationInput {
+  text: String!
+  receiver: ID!
+  clientMutationId: String
+}
+
+type SendMessageMutationPayload {
+  ok: Boolean!
+  message: MessageType
+  clientMutationId: String
+  errors: SendMessageMutationError
 }
 
 enum SubCategoryType {
@@ -433,7 +449,8 @@ type UserType implements Node {
   password: String!
   activated: Boolean!
   addresses: [String]
-  sellingProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
-  boughtProducts(before: String, after: String, first: Int, last: Int): ProductTypeConnection
+  boughtProducts: [ProductType]
+  sellingProducts: [ProductType]
+  messages: [MessageType]
 }
 

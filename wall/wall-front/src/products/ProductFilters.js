@@ -117,8 +117,8 @@ class ProductFilters extends React.Component {
                                                 onClick={this.onCategoryChange.bind(this, '', '', '----')}>----</DropdownItem>
 
                                             {
-                                                Object.keys(Category).map(category =>
-                                                    <div>
+                                                Object.keys(Category).map((category,key) =>
+                                                    <div key={key}>
                                                         <DropdownItem header>{Category[category].value}</DropdownItem>
 
                                                         {

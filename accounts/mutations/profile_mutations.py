@@ -3,7 +3,9 @@ from graphql_relay.node.node import from_global_id
 
 from utils.mutation import SafeClientIDMutation
 from products.models import Product
-from accounts.models import User
+from accounts.models import User, Message
+
+from graphene import relay
 
 class EditProfileMutation(SafeClientIDMutation):
     login_required = True
@@ -57,6 +59,24 @@ class AddAddressMutation(SafeClientIDMutation):
         user.full_clean()
         user.save()
         return cls(user=user)
+
+class SendMessageMutation(SafeClientIDMutation):
+    login_required = True
+
+    class Input:
+        text = graphene.String(required=True)
+        receiver = graphene.ID(required=True)
+
+    message = graphene.Field('accounts.schema.MessageType')
+
+    @classmethod
+    def safe_mutate(cls, root, info, **kwargs):
+        user = User.objects.get(phone=info.context.user.phone)
+        receiver = relay.Node.get_node_from_global_id(info, kwargs.get('receiver'))
+        message = Message(text=kwargs.get('text'), sender=user, receiver=receiver)
+        message.full_clean()
+        message.save()
+        return cls(message=message)
 
 class BuyProductMutation(SafeClientIDMutation):
     login_required = True

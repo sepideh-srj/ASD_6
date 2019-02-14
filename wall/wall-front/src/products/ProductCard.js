@@ -23,6 +23,7 @@ class ProductCard extends Component {
                         <CardBody>
 
                             <CardTitle>{this.props.product.title}</CardTitle>
+                            <CardText className="description">{'قیمت: ' + this.props.product.price + 'تومان'}</CardText>
                             <CardSubtitle>{this.props.product.address}</CardSubtitle>
                             <CardText className="description">{this.props.product.description}</CardText>
                             {this.props.product.buyer &&
