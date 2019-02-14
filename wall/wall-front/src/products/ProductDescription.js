@@ -40,9 +40,10 @@ class ProductDescription extends React.Component {
     render() {
         let button_text = 'خرید';
         let button_state = false;
-        let is_seller = false;
         let seller_button = null;
+        let auction_button = null;
         let {image, title, address, category, subCategory, description, seller, comments, price} = this.props.product;
+        let is_seller = seller.id === localStorage.getItem('username');
 
         if (is_seller) {
             if (this.state.remove_confirm)
@@ -59,6 +60,9 @@ class ProductDescription extends React.Component {
             else
                 seller_button = <Button outline color="primary"
                                         onClick={() => (this.setState({remove_confirm: true}))}>حذف محصول</Button>;
+
+            auction_button = <Button outline color="primary"
+                                     onClick={() => null}>گذاشتن مزایده</Button>;
         }
 
         return (
@@ -76,7 +80,7 @@ class ProductDescription extends React.Component {
                                 </div>
                                 <div className="product-category">دسته‌بندی:
                                     {Category[category] && Category[category].sub[subCategory] &&
-                                        <span> {Category[category].value.concat(' > ' + Category[category].sub[subCategory].value)}</span>
+                                    <span> {Category[category].value.concat(' > ' + Category[category].sub[subCategory].value)}</span>
                                     }
                                 </div>
                                 <div className="product-description">{description}</div>
@@ -95,16 +99,25 @@ class ProductDescription extends React.Component {
                                 </div>
                                 <div className="product-seller">قیمت:
                                     <span>   </span>
-                                            <span>{price}</span>
+                                    <span>{price}</span>
                                 </div>
-                                {
-                                    (is_seller ? seller_button :
-                                            this.props.code === "" ? "" :
-                                                <Button outline color="primary"
-                                                        disabled={button_state}
-                                                        onClick={this.buy.bind(this)}>{button_text}</Button>
-                                    )
-                                }
+                                <div className="row">
+                                    <div className="product-auction-btn">
+                                        {
+                                            (is_seller ? auction_button : null)
+                                        }
+                                    </div>
+                                    <div>
+                                        {
+                                            (is_seller ? seller_button :
+                                                    this.props.code === "" ? "" :
+                                                        <Button outline color="primary"
+                                                                disabled={button_state}
+                                                                onClick={this.buy.bind(this)}>{button_text}</Button>
+                                            )
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

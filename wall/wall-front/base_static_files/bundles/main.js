@@ -18003,23 +18003,23 @@ module.exports = normalizePayload;
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
-    { path: '/', components: __WEBPACK_IMPORTED_MODULE_6__BaseNavbarQueryRenderer__["a" /* default */] },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_5__products_ProductListQueryRenderer__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/signup', components: __WEBPACK_IMPORTED_MODULE_4__accounts_Signup__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/login', components: __WEBPACK_IMPORTED_MODULE_2__accounts_Login__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/activate', components: __WEBPACK_IMPORTED_MODULE_3__accounts_Activate__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/create-product', components: __WEBPACK_IMPORTED_MODULE_7__products_CreateProduct__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/products/:id', components: __WEBPACK_IMPORTED_MODULE_8__products_ProductRenderer__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
-        { path: '/profile/:username', components: __WEBPACK_IMPORTED_MODULE_9__profile_UserProfile__["a" /* default */] },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_11__profile_EditProfile__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/bought/:username', components: __WEBPACK_IMPORTED_MODULE_12__profile_BoughtListRenderer__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/selling/:username', components: __WEBPACK_IMPORTED_MODULE_13__profile_SellingListRenderer__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/message/:username', components: __WEBPACK_IMPORTED_MODULE_14__profile_MessageRenderer__["a" /* default */] })
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/public/:username', components: __WEBPACK_IMPORTED_MODULE_10__public_PublicProfileRenderer__["a" /* default */] })
+        { path: '/', components: __WEBPACK_IMPORTED_MODULE_6__BaseNavbarQueryRenderer__["a" /* default */] },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_5__products_ProductListQueryRenderer__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/signup', components: __WEBPACK_IMPORTED_MODULE_4__accounts_Signup__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/login', components: __WEBPACK_IMPORTED_MODULE_2__accounts_Login__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/activate', components: __WEBPACK_IMPORTED_MODULE_3__accounts_Activate__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/create-product', components: __WEBPACK_IMPORTED_MODULE_7__products_CreateProduct__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/products/:id', components: __WEBPACK_IMPORTED_MODULE_8__products_ProductRenderer__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
+                { path: '/profile/:username', components: __WEBPACK_IMPORTED_MODULE_9__profile_UserProfile__["a" /* default */] },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_11__profile_EditProfile__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/bought/:username', components: __WEBPACK_IMPORTED_MODULE_12__profile_BoughtListRenderer__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/selling/:username', components: __WEBPACK_IMPORTED_MODULE_13__profile_SellingListRenderer__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/message/:username', components: __WEBPACK_IMPORTED_MODULE_14__profile_MessageRenderer__["a" /* default */] })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/public/:username', components: __WEBPACK_IMPORTED_MODULE_10__public_PublicProfileRenderer__["a" /* default */] })
 ));
 
 /***/ }),
@@ -22914,9 +22914,10 @@ class ProductDescription extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.C
     render() {
         let button_text = 'خرید';
         let button_state = false;
-        let is_seller = false;
         let seller_button = null;
+        let auction_button = null;
         let { image, title, address, category, subCategory, description, seller, comments, price } = this.props.product;
+        let is_seller = seller.id === localStorage.getItem('username');
 
         if (is_seller) {
             if (this.state.remove_confirm) seller_button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -22941,6 +22942,13 @@ class ProductDescription extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.C
                 { outline: true, color: 'primary',
                     onClick: () => this.setState({ remove_confirm: true }) },
                 '\u062D\u0630\u0641 \u0645\u062D\u0635\u0648\u0644'
+            );
+
+            auction_button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_3_reactstrap__["g" /* Button */],
+                { outline: true, color: 'primary',
+                    onClick: () => null },
+                '\u06AF\u0630\u0627\u0634\u062A\u0646 \u0645\u0632\u0627\u06CC\u062F\u0647'
             );
         }
 
@@ -23039,12 +23047,25 @@ class ProductDescription extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.C
                                     price
                                 )
                             ),
-                            is_seller ? seller_button : this.props.code === "" ? "" : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                __WEBPACK_IMPORTED_MODULE_3_reactstrap__["g" /* Button */],
-                                { outline: true, color: 'primary',
-                                    disabled: button_state,
-                                    onClick: this.buy.bind(this) },
-                                button_text
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'row' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'product-auction-btn' },
+                                    is_seller ? auction_button : null
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    null,
+                                    is_seller ? seller_button : this.props.code === "" ? "" : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        __WEBPACK_IMPORTED_MODULE_3_reactstrap__["g" /* Button */],
+                                        { outline: true, color: 'primary',
+                                            disabled: button_state,
+                                            onClick: this.buy.bind(this) },
+                                        button_text
+                                    )
+                                )
                             )
                         )
                     )
@@ -28637,7 +28658,7 @@ exports = module.exports = __webpack_require__(22)(undefined);
 exports.i(__webpack_require__(269), "");
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: Yekan;\n  src: url(" + __webpack_require__(395) + "); }\n\nhtml {\n  overflow-y: auto;\n  height: 100vh; }\n\nbody {\n  font-family: Yekan !important; }\n\na:hover {\n  text-decoration: none; }\n\n#root {\n  background: url(" + __webpack_require__(394) + ") no-repeat center fixed;\n  background-size: cover;\n  min-height: 100vh; }\n\n.wall-logo {\n  color: rgba(255, 255, 255, 0.5); }\n\n.wall-logo:hover {\n  color: rgba(255, 255, 255, 0.75); }\n\n.content {\n  margin-top: 2rem;\n  text-align: right; }\n\n.content .title {\n  font-size: 1.25rem;\n  display: block; }\n\n.content .explanation {\n  margin-bottom: 3rem; }\n\n.content .submit {\n  float: left;\n  margin-right: 1rem; }\n\n.content .ltr-input {\n  direction: ltr; }\n\n.content .success-message {\n  color: #5cb85c;\n  visibility: visible;\n  opacity: 1;\n  transition: visibility 0s, opacity 1s linear; }\n\n.content .success-message.hidden {\n  visibility: hidden;\n  opacity: 0; }\n\n.product-card {\n  text-align: right;\n  margin-top: 30px; }\n\n.product-card .card-title {\n  color: black; }\n\n.product-card .card-body .card-subtitle {\n  color: #717171; }\n\n.product-card .card-body .card-text {\n  color: #6B8795;\n  height: 4.5rem;\n  overflow: hidden; }\n\n.product-card .product-image-container {\n  position: relative;\n  height: 21.75rem; }\n\n.product-card .product-image-container .product-image {\n  max-height: 100%;\n  max-width: 100%; }\n\n.product-card .product-image-container .description {\n  margin-top: 1rem;\n  height: 5rem; }\n\nlabel {\n  float: right;\n  text-align: right; }\n\n.product-description {\n  background-color: white;\n  border-radius: 0.25rem;\n  position: relative;\n  min-height: 30rem;\n  padding-top: 1rem; }\n\n.product-description * {\n  text-align: right; }\n\n.product-description .product-image {\n  position: absolute;\n  right: 1rem;\n  height: 20rem;\n  width: 20rem;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n\n.product-description .right-side {\n  margin-right: 23rem;\n  height: 20rem; }\n\n.product-description .right-side .product-title {\n  font-size: 1.5rem; }\n\n.product-description .right-side .product-address {\n  color: #7A788D;\n  font-size: 1rem;\n  margin: 1rem 0; }\n\n.product-description .right-side .product-address span {\n  color: #FF505D; }\n\n.product-description .right-side .product-description {\n  margin-top: 1rem;\n  color: #B8B6C3; }\n\n.product-description .right-side .product-category {\n  color: #7A788D; }\n\n.product-description .right-side .product-category span {\n  color: #30385C; }\n\n.product-description .bottom-part {\n  position: absolute;\n  height: 10rem;\n  padding: 3rem;\n  bottom: 0; }\n\n.search-panel {\n  width: 100%;\n  height: 3rem;\n  padding: 0.3rem 0;\n  background-color: rgba(0, 0, 0, 0.5); }\n\n.search-panel .full-width {\n  width: 100%; }\n\n.scrollable-menu {\n  width: auto;\n  min-width: 200px;\n  height: auto;\n  max-height: 600px;\n  overflow-x: hidden; }\n", ""]);
+exports.push([module.i, "@font-face {\n  font-family: Yekan;\n  src: url(" + __webpack_require__(395) + "); }\n\nhtml {\n  overflow-y: auto;\n  height: 100vh; }\n\nbody {\n  font-family: Yekan !important; }\n\na:hover {\n  text-decoration: none; }\n\n#root {\n  background: url(" + __webpack_require__(394) + ") no-repeat center fixed;\n  background-size: cover;\n  min-height: 100vh; }\n\n.wall-logo {\n  color: rgba(255, 255, 255, 0.5); }\n\n.wall-logo:hover {\n  color: rgba(255, 255, 255, 0.75); }\n\n.content {\n  margin-top: 2rem;\n  text-align: right; }\n\n.content .title {\n  font-size: 1.25rem;\n  display: block; }\n\n.content .explanation {\n  margin-bottom: 3rem; }\n\n.content .submit {\n  float: left;\n  margin-right: 1rem; }\n\n.content .ltr-input {\n  direction: ltr; }\n\n.content .success-message {\n  color: #5cb85c;\n  visibility: visible;\n  opacity: 1;\n  transition: visibility 0s, opacity 1s linear; }\n\n.content .success-message.hidden {\n  visibility: hidden;\n  opacity: 0; }\n\n.product-card {\n  text-align: right;\n  margin-top: 30px; }\n\n.product-card .card-title {\n  color: black; }\n\n.product-card .card-body .card-subtitle {\n  color: #717171; }\n\n.product-card .card-body .card-text {\n  color: #6B8795;\n  height: 4.5rem;\n  overflow: hidden; }\n\n.product-card .product-image-container {\n  position: relative;\n  height: 21.75rem; }\n\n.product-card .product-image-container .product-image {\n  max-height: 100%;\n  max-width: 100%; }\n\n.product-card .product-image-container .description {\n  margin-top: 1rem;\n  height: 5rem; }\n\nlabel {\n  float: right;\n  text-align: right; }\n\n.product-description {\n  background-color: white;\n  border-radius: 0.25rem;\n  position: relative;\n  min-height: 30rem;\n  padding-top: 1rem; }\n\n.product-description * {\n  text-align: right; }\n\n.product-description .product-image {\n  position: absolute;\n  right: 1rem;\n  height: 20rem;\n  width: 20rem;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n\n.product-description .right-side {\n  margin-right: 23rem;\n  height: 20rem; }\n\n.product-description .right-side .product-title {\n  font-size: 1.5rem; }\n\n.product-description .right-side .product-address {\n  color: #7A788D;\n  font-size: 1rem;\n  margin: 1rem 0; }\n\n.product-description .right-side .product-address span {\n  color: #FF505D; }\n\n.product-description .right-side .product-description {\n  margin-top: 1rem;\n  color: #B8B6C3; }\n\n.product-description .right-side .product-category {\n  color: #7A788D; }\n\n.product-description .right-side .product-category span {\n  color: #30385C; }\n\n.product-description .bottom-part {\n  position: absolute;\n  height: 10rem;\n  padding: 3rem;\n  bottom: 0; }\n\n.product-auction-btn {\n  padding-left: 10px; }\n\n.search-panel {\n  width: 100%;\n  height: 3rem;\n  padding: 0.3rem 0;\n  background-color: rgba(0, 0, 0, 0.5); }\n\n.search-panel .full-width {\n  width: 100%; }\n\n.scrollable-menu {\n  width: auto;\n  min-width: 200px;\n  height: auto;\n  max-height: 600px;\n  overflow-x: hidden; }\n", ""]);
 
 // exports
 
@@ -28665,7 +28686,7 @@ exports = module.exports = __webpack_require__(22)(undefined);
 
 
 // module
-exports.push([module.i, ".tabs-wrapper input[type=radio] {\n  display: none; }\n.tabs-wrapper .tab-head {\n  transition: background 0.4s ease-in-out, height 0.2s linear;\n  display: inline-block;\n  cursor: pointer;\n  color: #DBDBD3;\n  padding: 1rem;\n  height: 3em;\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n  background: #525252;\n  text-align: center; }\n  .tabs-wrapper .tab-head:last-of-type {\n    border-bottom: none; }\n  .tabs-wrapper .tab-head:hover {\n    background: #667876; }\n  @media screen and (max-width: 600px) {\n    .tabs-wrapper .tab-head {\n      display: block;\n      border-bottom: 2px solid #4D4C47;\n      border-radius: 0; } }\n  .tabs-wrapper .tab-head.checked {\n    background: #B8B63E;\n    color: #F2F2F2; }\n@media screen and (max-width: 600px) {\n  .tabs-wrapper {\n    margin: 0; } }\n\n.tab-body {\n  position: absolute;\n  top: -9999px;\n  opacity: 0;\n  padding: 10px; }\n\n.tab-body-wrapper {\n  width: 100%;\n  padding: 1rem;\n  background: #F7EEC6;\n  border-top: #B8B63E 5px solid;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n  border-top-right-radius: 3px;\n  -webkit-animation-delay: 0.2s;\n  -webkit-animation-duration: 1.5s;\n  -webkit-animation-name: show;\n  -webkit-animation-fill-mode: forwards;\n  -moz-animation-delay: 0.2s;\n  -moz-animation-duration: 1.5s;\n  -moz-animation-name: show;\n  -moz-animation-fill-mode: forwards;\n  -o-animation-delay: 0.2s;\n  -o-animation-duration: 1.5s;\n  -o-animation-name: show;\n  -o-animation-fill-mode: forwards;\n  animation-delay: 0.2s;\n  animation-duration: 1.5s;\n  animation-name: show;\n  animation-fill-mode: forwards; }\n  @media screen and (max-width: 600px) {\n    .tab-body-wrapper {\n      border: none;\n      border-radius: 0; } }\n\n#tab1:checked ~ .tab-body-wrapper #tab-body-1, #tab2:checked ~ .tab-body-wrapper #tab-body-2, #tab3:checked ~ .tab-body-wrapper #tab-body-3, #tab4:checked ~ .tab-body-wrapper #tab-body-4 {\n  position: relative;\n  top: 0px;\n  /* Choose one */\n  /* @include animation(0.2s,0.8s,content-opacity); */\n  /* @include animation(0.2s,0.8s,content-rotate-x); */\n  /* @include animation(0.2s,0.8s,content-rotate-y); */\n  /* @include animation(0.2s,0.8s,content-rotate-both); */\n  /* @include animation(0.2s,0.8s,content-pop-in); */\n  /* @include animation(0.2s,0.8s,content-pop-out); */\n  /* @include animation(0.1s,1s,content-slide-bot); */\n  -webkit-animation-delay: 0.1s;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-name: content-slide-top;\n  -webkit-animation-fill-mode: forwards;\n  -moz-animation-delay: 0.1s;\n  -moz-animation-duration: 1s;\n  -moz-animation-name: content-slide-top;\n  -moz-animation-fill-mode: forwards;\n  -o-animation-delay: 0.1s;\n  -o-animation-duration: 1s;\n  -o-animation-name: content-slide-top;\n  -o-animation-fill-mode: forwards;\n  animation-delay: 0.1s;\n  animation-duration: 1s;\n  animation-name: content-slide-top;\n  animation-fill-mode: forwards; }\n", ""]);
+exports.push([module.i, ".tabs-wrapper input[type=radio] {\r\n  display: none; }\r\n.tabs-wrapper .tab-head {\r\n  transition: background 0.4s ease-in-out, height 0.2s linear;\r\n  display: inline-block;\r\n  cursor: pointer;\r\n  color: #DBDBD3;\r\n  padding: 1rem;\r\n  height: 3em;\r\n  border-top-left-radius: 3px;\r\n  border-top-right-radius: 3px;\r\n  background: #525252;\r\n  text-align: center; }\r\n  .tabs-wrapper .tab-head:last-of-type {\r\n    border-bottom: none; }\r\n  .tabs-wrapper .tab-head:hover {\r\n    background: #667876; }\r\n  @media screen and (max-width: 600px) {\r\n    .tabs-wrapper .tab-head {\r\n      display: block;\r\n      border-bottom: 2px solid #4D4C47;\r\n      border-radius: 0; } }\r\n  .tabs-wrapper .tab-head.checked {\r\n    background: #B8B63E;\r\n    color: #F2F2F2; }\r\n@media screen and (max-width: 600px) {\r\n  .tabs-wrapper {\r\n    margin: 0; } }\r\n\r\n.tab-body {\r\n  position: absolute;\r\n  top: -9999px;\r\n  opacity: 0;\r\n  padding: 10px; }\r\n\r\n.tab-body-wrapper {\r\n  width: 100%;\r\n  padding: 1rem;\r\n  background: #F7EEC6;\r\n  border-top: #B8B63E 5px solid;\r\n  border-bottom-right-radius: 3px;\r\n  border-bottom-left-radius: 3px;\r\n  border-top-right-radius: 3px;\r\n  -webkit-animation-delay: 0.2s;\r\n  -webkit-animation-duration: 1.5s;\r\n  -webkit-animation-name: show;\r\n  -webkit-animation-fill-mode: forwards;\r\n  -moz-animation-delay: 0.2s;\r\n  -moz-animation-duration: 1.5s;\r\n  -moz-animation-name: show;\r\n  -moz-animation-fill-mode: forwards;\r\n  -o-animation-delay: 0.2s;\r\n  -o-animation-duration: 1.5s;\r\n  -o-animation-name: show;\r\n  -o-animation-fill-mode: forwards;\r\n  animation-delay: 0.2s;\r\n  animation-duration: 1.5s;\r\n  animation-name: show;\r\n  animation-fill-mode: forwards; }\r\n  @media screen and (max-width: 600px) {\r\n    .tab-body-wrapper {\r\n      border: none;\r\n      border-radius: 0; } }\r\n\r\n#tab1:checked ~ .tab-body-wrapper #tab-body-1, #tab2:checked ~ .tab-body-wrapper #tab-body-2, #tab3:checked ~ .tab-body-wrapper #tab-body-3, #tab4:checked ~ .tab-body-wrapper #tab-body-4 {\r\n  position: relative;\r\n  top: 0px;\r\n  /* Choose one */\r\n  /* @include animation(0.2s,0.8s,content-opacity); */\r\n  /* @include animation(0.2s,0.8s,content-rotate-x); */\r\n  /* @include animation(0.2s,0.8s,content-rotate-y); */\r\n  /* @include animation(0.2s,0.8s,content-rotate-both); */\r\n  /* @include animation(0.2s,0.8s,content-pop-in); */\r\n  /* @include animation(0.2s,0.8s,content-pop-out); */\r\n  /* @include animation(0.1s,1s,content-slide-bot); */\r\n  -webkit-animation-delay: 0.1s;\r\n  -webkit-animation-duration: 1s;\r\n  -webkit-animation-name: content-slide-top;\r\n  -webkit-animation-fill-mode: forwards;\r\n  -moz-animation-delay: 0.1s;\r\n  -moz-animation-duration: 1s;\r\n  -moz-animation-name: content-slide-top;\r\n  -moz-animation-fill-mode: forwards;\r\n  -o-animation-delay: 0.1s;\r\n  -o-animation-duration: 1s;\r\n  -o-animation-name: content-slide-top;\r\n  -o-animation-fill-mode: forwards;\r\n  animation-delay: 0.1s;\r\n  animation-duration: 1s;\r\n  animation-name: content-slide-top;\r\n  animation-fill-mode: forwards; }\r\n", ""]);
 
 // exports
 
