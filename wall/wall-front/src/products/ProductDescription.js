@@ -42,7 +42,7 @@ class ProductDescription extends React.Component {
         let button_state = false;
         let seller_button = null;
         let auction_button = null;
-        let {image, title, address, category, subCategory, description, seller, comments, price} = this.props.product;
+        let {id, image, title, address, category, subCategory, description, seller, comments, price} = this.props.product;
         let is_seller = seller.id === localStorage.getItem('username');
 
         if (is_seller) {
@@ -62,7 +62,8 @@ class ProductDescription extends React.Component {
                                         onClick={() => (this.setState({remove_confirm: true}))}>حذف محصول</Button>;
 
             auction_button = <Button outline color="primary"
-                                     onClick={() => null}>گذاشتن مزایده</Button>;
+                                     onClick={() => this.props.router.push('/create-auction/?id=' + id)}>گذاشتن
+                مزایده</Button>;
         }
 
         return (
