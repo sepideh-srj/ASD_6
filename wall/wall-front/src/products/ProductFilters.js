@@ -93,13 +93,13 @@ class ProductFilters extends React.Component {
                             <Col>
                                 <InputGroup>
                                     <InputGroupAddon addontype="prepend">عنوان</InputGroupAddon>
-                                    <Input onChange={(e) => this.onTitleChange(e)}/>
+                                    <Input className="more-width" onChange={(e) => this.onTitleChange(e)}/>
                                 </InputGroup>
                             </Col>
                             <Col>
                                 <InputGroup>
                                     <InputGroupAddon addontype="prepend">توضیحات</InputGroupAddon>
-                                    <Input onChange={(e) => this.onDescriptionChange(e)}/>
+                                    <Input className="more-width" onChange={(e) => this.onDescriptionChange(e)}/>
                                 </InputGroup>
                             </Col>
                             <Col>
@@ -137,28 +137,30 @@ class ProductFilters extends React.Component {
                                     </Dropdown>
                                 </InputGroup>
                             </Col>
+                            </Row>
+                            <Row>
                             <Col>
                                 <InputGroup>
                                     <InputGroupAddon addontype="prepend">از قیمت</InputGroupAddon>
-                                    <Input type="number" id="price-from" onChange={(e) => this.onMaxPriceChange(e)}/>
+                                    <Input className="more-width" type="number" id="price-from" onChange={(e) => this.onMaxPriceChange(e)}/>
                                 </InputGroup>
                             </Col>
                             <Col>
                                 <InputGroup>
                                     <InputGroupAddon addontype="prepend">تا قیمت</InputGroupAddon>
-                                    <Input type="number" id="price-to" onChange={(e) => this.onMinPriceChange(e)}/>
+                                    <Input className="more-width" type="number" id="price-to" onChange={(e) => this.onMinPriceChange(e)}/>
                                 </InputGroup>
                             </Col>
                             <Col>
                                 <InputGroup>
                                     <InputGroupAddon addontype="prepend">از سال</InputGroupAddon>
-                                    <Input type="number" id="date-from" onChange={(e) => this.onMaxYearChange(e)}/>
+                                    <Input className="more-width" type="number" id="date-from" onChange={(e) => this.onMaxYearChange(e)}/>
                                 </InputGroup>
                             </Col>
                             <Col>
                                 <InputGroup>
                                     <InputGroupAddon addontype="prepend">تا سال</InputGroupAddon>
-                                    <Input type="number" id="date-to" onChange={(e) => this.onMinYearChange(e)}/>
+                                    <Input className="more-width" type="number" id="date-to" onChange={(e) => this.onMinYearChange(e)}/>
                                 </InputGroup>
                             </Col>
                             <Col>
@@ -168,7 +170,6 @@ class ProductFilters extends React.Component {
                                     className="full-width"
                                     onClick={this.search.bind(this)}>
                                     جستجو
-
                                 </Button>
                             </Col>
                         </Row>

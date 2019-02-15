@@ -171,12 +171,15 @@ label {
 
 .search-panel {
     width: 100%;
-    height: 3rem;
+    height: 6rem;
     padding: 0.3rem 0;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
 .search-panel .full-width {
+    width: 100%;
+}
+.search-panel .more-width {
     width: 100%;
 }
 

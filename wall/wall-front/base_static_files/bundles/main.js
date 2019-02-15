@@ -23779,7 +23779,7 @@ class ProductFilters extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                                     { addontype: 'prepend' },
                                     '\u0639\u0646\u0648\u0627\u0646'
                                 ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { onChange: e => this.onTitleChange(e) })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { className: 'more-width', onChange: e => this.onTitleChange(e) })
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -23793,7 +23793,7 @@ class ProductFilters extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                                     { addontype: 'prepend' },
                                     '\u062A\u0648\u0636\u06CC\u062D\u0627\u062A'
                                 ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { onChange: e => this.onDescriptionChange(e) })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { className: 'more-width', onChange: e => this.onDescriptionChange(e) })
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -23844,7 +23844,11 @@ class ProductFilters extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                                     )
                                 )
                             )
-                        ),
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_2_reactstrap__["o" /* Row */],
+                        null,
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             __WEBPACK_IMPORTED_MODULE_2_reactstrap__["a" /* Col */],
                             null,
@@ -23856,7 +23860,7 @@ class ProductFilters extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                                     { addontype: 'prepend' },
                                     '\u0627\u0632 \u0642\u06CC\u0645\u062A'
                                 ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { type: 'number', id: 'price-from', onChange: e => this.onMaxPriceChange(e) })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { className: 'more-width', type: 'number', id: 'price-from', onChange: e => this.onMaxPriceChange(e) })
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -23870,7 +23874,7 @@ class ProductFilters extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                                     { addontype: 'prepend' },
                                     '\u062A\u0627 \u0642\u06CC\u0645\u062A'
                                 ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { type: 'number', id: 'price-to', onChange: e => this.onMinPriceChange(e) })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { className: 'more-width', type: 'number', id: 'price-to', onChange: e => this.onMinPriceChange(e) })
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -23884,7 +23888,7 @@ class ProductFilters extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                                     { addontype: 'prepend' },
                                     '\u0627\u0632 \u0633\u0627\u0644'
                                 ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { type: 'number', id: 'date-from', onChange: e => this.onMaxYearChange(e) })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { className: 'more-width', type: 'number', id: 'date-from', onChange: e => this.onMaxYearChange(e) })
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -23898,7 +23902,7 @@ class ProductFilters extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
                                     { addontype: 'prepend' },
                                     '\u062A\u0627 \u0633\u0627\u0644'
                                 ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { type: 'number', id: 'date-to', onChange: e => this.onMinYearChange(e) })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_reactstrap__["e" /* Input */], { className: 'more-width', type: 'number', id: 'date-to', onChange: e => this.onMinYearChange(e) })
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -29395,7 +29399,7 @@ exports = module.exports = __webpack_require__(22)(undefined);
 exports.i(__webpack_require__(273), "");
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: Yekan;\n  src: url(" + __webpack_require__(399) + "); }\n\nhtml {\n  overflow-y: auto;\n  height: 100vh; }\n\nbody {\n  font-family: Yekan !important; }\n\na:hover {\n  text-decoration: none; }\n\n#root {\n  background: url(" + __webpack_require__(398) + ") no-repeat center fixed;\n  background-size: cover;\n  min-height: 100vh; }\n\n.wall-logo {\n  color: rgba(255, 255, 255, 0.5); }\n\n.wall-logo:hover {\n  color: rgba(255, 255, 255, 0.75); }\n\n.content {\n  margin-top: 2rem;\n  text-align: right; }\n\n.content .title {\n  font-size: 1.25rem;\n  display: block; }\n\n.content .explanation {\n  margin-bottom: 3rem; }\n\n.content .submit {\n  float: left;\n  margin-right: 1rem; }\n\n.content .ltr-input {\n  direction: ltr; }\n\n.content .success-message {\n  color: #5cb85c;\n  visibility: visible;\n  opacity: 1;\n  transition: visibility 0s, opacity 1s linear; }\n\n.content .success-message.hidden {\n  visibility: hidden;\n  opacity: 0; }\n\n.product-card {\n  text-align: right;\n  margin-top: 30px; }\n\n.product-card .card-title {\n  color: black; }\n\n.product-card .card-body .card-subtitle {\n  color: #717171; }\n\n.product-card .card-body .card-text {\n  color: #6B8795;\n  height: 4.5rem;\n  overflow: hidden; }\n\n.product-card .product-image-container {\n  position: relative;\n  height: 21.75rem; }\n\n.product-card .product-image-container .product-image {\n  max-height: 100%;\n  max-width: 100%; }\n\n.product-card .product-image-container .description {\n  margin-top: 1rem;\n  height: 5rem; }\n\nlabel {\n  float: right;\n  text-align: right; }\n\n.product-description {\n  background-color: white;\n  border-radius: 0.25rem;\n  position: relative;\n  min-height: 30rem;\n  padding-top: 1rem; }\n\n.product-description * {\n  text-align: right; }\n\n.product-description .product-image {\n  position: absolute;\n  right: 1rem;\n  height: 20rem;\n  width: 20rem;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n\n.product-description .right-side {\n  margin-right: 23rem;\n  height: 20rem; }\n\n.product-description .right-side .product-title {\n  font-size: 1.5rem; }\n\n.product-description .right-side .product-address {\n  color: #7A788D;\n  font-size: 1rem;\n  margin: 1rem 0; }\n\n.product-description .right-side .product-address span {\n  color: #FF505D; }\n\n.product-description .right-side .product-description {\n  margin-top: 1rem;\n  color: #B8B6C3; }\n\n.product-description .right-side .product-category {\n  color: #7A788D; }\n\n.product-description .right-side .product-category span {\n  color: #30385C; }\n\n.product-description .bottom-part {\n  position: absolute;\n  height: 10rem;\n  padding: 3rem;\n  bottom: 0; }\n\n.product-auction-btn {\n  padding-left: 10px; }\n\n.search-panel {\n  width: 100%;\n  height: 3rem;\n  padding: 0.3rem 0;\n  background-color: rgba(0, 0, 0, 0.5); }\n\n.search-panel .full-width {\n  width: 100%; }\n\n.scrollable-menu {\n  width: auto;\n  min-width: 200px;\n  height: auto;\n  max-height: 600px;\n  overflow-x: hidden; }\n", ""]);
+exports.push([module.i, "@font-face {\n  font-family: Yekan;\n  src: url(" + __webpack_require__(399) + "); }\n\nhtml {\n  overflow-y: auto;\n  height: 100vh; }\n\nbody {\n  font-family: Yekan !important; }\n\na:hover {\n  text-decoration: none; }\n\n#root {\n  background: url(" + __webpack_require__(398) + ") no-repeat center fixed;\n  background-size: cover;\n  min-height: 100vh; }\n\n.wall-logo {\n  color: rgba(255, 255, 255, 0.5); }\n\n.wall-logo:hover {\n  color: rgba(255, 255, 255, 0.75); }\n\n.content {\n  margin-top: 2rem;\n  text-align: right; }\n\n.content .title {\n  font-size: 1.25rem;\n  display: block; }\n\n.content .explanation {\n  margin-bottom: 3rem; }\n\n.content .submit {\n  float: left;\n  margin-right: 1rem; }\n\n.content .ltr-input {\n  direction: ltr; }\n\n.content .success-message {\n  color: #5cb85c;\n  visibility: visible;\n  opacity: 1;\n  transition: visibility 0s, opacity 1s linear; }\n\n.content .success-message.hidden {\n  visibility: hidden;\n  opacity: 0; }\n\n.product-card {\n  text-align: right;\n  margin-top: 30px; }\n\n.product-card .card-title {\n  color: black; }\n\n.product-card .card-body .card-subtitle {\n  color: #717171; }\n\n.product-card .card-body .card-text {\n  color: #6B8795;\n  height: 4.5rem;\n  overflow: hidden; }\n\n.product-card .product-image-container {\n  position: relative;\n  height: 21.75rem; }\n\n.product-card .product-image-container .product-image {\n  max-height: 100%;\n  max-width: 100%; }\n\n.product-card .product-image-container .description {\n  margin-top: 1rem;\n  height: 5rem; }\n\nlabel {\n  float: right;\n  text-align: right; }\n\n.product-description {\n  background-color: white;\n  border-radius: 0.25rem;\n  position: relative;\n  min-height: 30rem;\n  padding-top: 1rem; }\n\n.product-description * {\n  text-align: right; }\n\n.product-description .product-image {\n  position: absolute;\n  right: 1rem;\n  height: 20rem;\n  width: 20rem;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n\n.product-description .right-side {\n  margin-right: 23rem;\n  height: 20rem; }\n\n.product-description .right-side .product-title {\n  font-size: 1.5rem; }\n\n.product-description .right-side .product-address {\n  color: #7A788D;\n  font-size: 1rem;\n  margin: 1rem 0; }\n\n.product-description .right-side .product-address span {\n  color: #FF505D; }\n\n.product-description .right-side .product-description {\n  margin-top: 1rem;\n  color: #B8B6C3; }\n\n.product-description .right-side .product-category {\n  color: #7A788D; }\n\n.product-description .right-side .product-category span {\n  color: #30385C; }\n\n.product-description .bottom-part {\n  position: absolute;\n  height: 10rem;\n  padding: 3rem;\n  bottom: 0; }\n\n.product-auction-btn {\n  padding-left: 10px; }\n\n.search-panel {\n  width: 100%;\n  height: 6rem;\n  padding: 0.3rem 0;\n  background-color: rgba(0, 0, 0, 0.5); }\n\n.search-panel .full-width {\n  width: 100%; }\n\n.search-panel .more-width {\n  width: 100%; }\n\n.scrollable-menu {\n  width: auto;\n  min-width: 200px;\n  height: auto;\n  max-height: 600px;\n  overflow-x: hidden; }\n", ""]);
 
 // exports
 
