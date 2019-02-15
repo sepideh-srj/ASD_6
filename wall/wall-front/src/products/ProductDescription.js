@@ -41,7 +41,8 @@ class ProductDescription extends React.Component {
         let button_text = 'خرید';
         let button_state = false;
         let seller_button = null;
-        let auction_button = null;
+        let auction_button1 = null;
+        let auction_button2 = null;
         let {id, image, title, address, category, subCategory, description, seller, comments, price} = this.props.product;
         let is_seller = seller.id === localStorage.getItem('username');
 
@@ -61,8 +62,12 @@ class ProductDescription extends React.Component {
                 seller_button = <Button outline color="primary"
                                         onClick={() => (this.setState({remove_confirm: true}))}>حذف محصول</Button>;
 
-            auction_button = <Button outline color="primary"
-                                     onClick={() => this.props.router.push('/product-auction/?id=' + id)}>گذاشتن
+            auction_button1 = <Button outline color="primary"
+                                      onClick={() => this.props.router.push('/create-auction/?id=' + id)}>گذاشتن
+                مزایده</Button>;
+        } else {
+            auction_button2 = <Button outline color="primary"
+                                      onClick={() => this.props.router.push('/product-auction/?id=' + id)}>دیدن
                 مزایده</Button>;
         }
 
@@ -105,7 +110,7 @@ class ProductDescription extends React.Component {
                                 <div className="row">
                                     <div className="product-auction-btn">
                                         {
-                                            (is_seller ? auction_button : null)
+                                            (is_seller ? auction_button1 : auction_button2)
                                         }
                                     </div>
                                     <div>

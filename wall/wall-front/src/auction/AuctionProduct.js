@@ -1,15 +1,17 @@
 import React from 'react';
 import {Category} from '../utils/constants';
-import ProductRemoveMutation from "../mutations/ProductRemoveMutation";
 import BuyProductMutation from "../mutations/BuyProductMutation";
 import {toast, ToastContainer} from 'react-toastify';
 import {Link} from 'react-router';
+import Countdown from "react-countdown-now";
+import CommentList from "../products/CommentList";
+import AuctionList from "./AuctionList";
 
 class AuctionProduct extends React.Component {
     constructor() {
         super();
         this.state = {
-            remove_confirm: false
+            auction_confirm: false
         };
 
         this.p = {
@@ -37,17 +39,7 @@ class AuctionProduct extends React.Component {
         }
     }
 
-    async remove_product() {
-        ProductRemoveMutation(this.props.product.id, (response) => {
-            if (response.ok) {
-                this.props.router.push('/')
-            }
-            else
-                toast(response.errors.product || response.errors.nonFieldErrors[0])
-        });
-    }
-
-    async buy() {
+    async auction() {
         BuyProductMutation(this.props.product.id, (response) => {
             if (response.ok) {
                 this.props.router.push('/');
@@ -59,9 +51,7 @@ class AuctionProduct extends React.Component {
     }
 
     render() {
-        let seller_button = null;
-        let auction_button = null;
-        let {id, image, title, address, category, subCategory, description, seller, comments, price} = this.p;
+        let {id, image, title, address, category, subCategory, description, seller, auctions, price} = this.p;
         let is_seller = seller.id === localStorage.getItem('username');
 
         return (
@@ -81,8 +71,16 @@ class AuctionProduct extends React.Component {
                                     {Category[category] && Category[category].sub[subCategory] &&
                                     <span> {Category[category].value.concat(' > ' + Category[category].sub[subCategory].value)}</span>
                                     }
-                                </div>g
-                                <div className="product-description">{description}</div>
+                                </div>
+
+                                <div className="product-address">وقت باقی‌مانده:
+                                    <Countdown
+                                        date={Date.now() + 10000 * 10000}
+                                        intervalDelay={0}
+                                    />
+                                </div>
+
+                                {<AuctionList auctions={[]} product={this.p}/>}
                             </div>
                             <div className="bottom-part">
                                 <div className="product-seller">صاحب محصول:
