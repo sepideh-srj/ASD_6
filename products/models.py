@@ -1,5 +1,5 @@
 from django.db import models
-
+import json
 
 class ProductManager(models.Manager):
     @property
@@ -11,6 +11,27 @@ class Comment(models.Model):
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
     author = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
     text = models.CharField('متن', max_length=1000)
+
+class Auction(models.Model):
+    base_price = models.IntegerField('قیمت پایه')
+    deadline = models.IntegerField('زمان')
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
+    prices = models.CharField('قیمت های پیشنهادی', max_length=100000, default='[]')
+
+    def set_prices(self):
+        pass
+
+    def add_price(self, user, price):
+        prices = self.get_prices()
+        for p in prices.items():
+            if p['phone'] == user.phone:
+                p['price'] = price
+                return
+        prices += [{'phone': user.phone, 'price': price}]
+        self.prices = json.dumps(prices)
+
+    def get_prices(self):
+        return json.loads(self.prices)
 
 
 class Product(models.Model):

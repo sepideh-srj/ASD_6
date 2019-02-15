@@ -65,11 +65,20 @@ class ProductDescription extends React.Component {
             auction_button1 = <Button outline color="primary"
                                       onClick={() => this.props.router.push('/create-auction/?id=' + id)}>گذاشتن
                 مزایده</Button>;
-        } else {
-            auction_button2 = <Button outline color="primary"
-                                      onClick={() => this.props.router.push('/product-auction/?id=' + id)}>دیدن
-                مزایده</Button>;
-        }
+        // } else {
+        //     auction_button2 = <Button outline color="primary"
+        //                               onClick={() => this.props.router.push('/product-auction/?id=' + id)}>دیدن
+        //         مزایده</Button>;
+        // }
+    } else {
+        auction_button2 = <Button outline color="primary"
+                                  onClick={() => this.props.router.push({
+                                    pathname: '/product-auction/',//?id=' + id,
+                                    search: '',
+                                    state: { product: this.props.product, id }
+                                  })}>دیدن
+            مزایده</Button>;
+    }
 
         return (
             <div className="content container">
@@ -157,6 +166,10 @@ export default createFragmentContainer(ProductDescription, {
                 }
             }
             title
+            auction{
+                basePrice
+                deadline
+            }
         }
     `
 });

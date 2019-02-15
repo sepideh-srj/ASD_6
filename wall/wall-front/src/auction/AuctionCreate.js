@@ -1,7 +1,8 @@
 import React from 'react';
 import {Button, Col, Form, FormFeedback, FormGroup, Input, Label} from 'reactstrap';
-import ProductCreateMutation from "../mutations/ProductCreateMutation";
+import AddAuctionMutation from "../mutations/AddAuctionMutation";
 import {Category} from '../utils/constants';
+import { toast } from 'react-toastify';
 
 class AuctionCreate extends React.Component {
     constructor() {
@@ -84,17 +85,15 @@ class AuctionCreate extends React.Component {
     }
 
     async _confirm() {
-        const {title, address, description, prodYear, price, image, category, subCategory} = this.state;
-        ProductCreateMutation(title, address, description, prodYear, price, category, subCategory, image, (response) => {
+        const {basePrice, days, productId} = this.state;
+        AddAuctionMutation(basePrice, days, productId, (response) => {
             if (response.ok) {
-                window.location.replace('/');
+                toast('ساخته شد.')
             }
             else
                 this.setState({
-                    title_error: response.errors.title,
-                    address_error: response.errors.address,
-                    prodYear_error: response.errors.prodYear,
-                    price_error: response.errors.price,
+                    basePrice_error: response.errors.basePrice,
+                    days_error: response.errors.deadline,
                 });
         })
     }

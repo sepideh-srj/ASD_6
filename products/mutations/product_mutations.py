@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from graphene import relay
 
 from accounts.models import Image
-from products.models import Product, Comment
+from products.models import Product, Comment, Auction
 from utils.mutation import SafeClientIDMutation
 
 
@@ -69,3 +69,40 @@ class AddCommentMutation(SafeClientIDMutation):
         comment.full_clean()
         comment.save()
         return cls(comment=comment)
+
+class AddAuctionMutation(SafeClientIDMutation):
+    login_required = True
+
+    class Input:
+        base_price = graphene.Int(required=True)
+        deadline = graphene.Int(required=True)
+        product = graphene.ID(required=True)
+
+    product = graphene.Field('products.schema.ProductType')
+
+    @classmethod
+    def safe_mutate(cls, root, info, **kwargs):
+        base_price = kwargs.get('base_price')
+        deadline = kwargs.get('deadline')
+        product = relay.Node.get_node_from_global_id(info, kwargs.get('product'))
+        auction = Auction(product=product, base_price=base_price, deadline=deadline)
+        auction.full_clean()
+        auction.save()
+        return cls()
+
+class SuggestPriceMutation(SafeClientIDMutation):
+    login_required = True
+
+    class Input:
+        auction = graphene.ID(required=True)
+        price = graphene.Int(required=True)
+
+    @classmethod
+    def safe_mutate(cls, root, info, **kwargs):
+        user = info.context.user
+        price = kwargs.get('price')
+        auction = relay.Node.get_node_from_global_id(info, kwargs.get('auction'))
+        auction.add_price(user, price)
+        auction.full_clean()
+        auction.save()
+        return cls()

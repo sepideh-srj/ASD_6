@@ -34,6 +34,28 @@ type AddAddressMutationPayload {
   errors: AddAddressMutationError
 }
 
+type AddAuctionMutationError {
+  basePrice: [String]
+  deadline: [String]
+  product: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input AddAuctionMutationInput {
+  basePrice: Int!
+  deadline: Int!
+  product: ID!
+  clientMutationId: String
+}
+
+type AddAuctionMutationPayload {
+  ok: Boolean!
+  product: ProductType
+  clientMutationId: String
+  errors: AddAuctionMutationError
+}
+
 type AddBalanceMutationError {
   clientMutationId: [String]
   nonFieldErrors: [String]
@@ -68,6 +90,14 @@ type AddCommentMutationPayload {
   comment: CommentType
   clientMutationId: String
   errors: AddCommentMutationError
+}
+
+type AuctionType implements Node {
+  
+  id: ID!
+  basePrice: Int!
+  deadline: Int!
+  prices: [PriceSuggestionType]
 }
 
 type BuyProductMutationError {
@@ -141,6 +171,8 @@ type Mutation {
   productCreate(input: ProductCreateInput!): ProductCreatePayload
   productRemove(input: ProductRemoveMutationInput!): ProductRemoveMutationPayload
   addComment(input: AddCommentMutationInput!): AddCommentMutationPayload
+  addAuction(input: AddAuctionMutationInput!): AddAuctionMutationPayload
+  suggestPrice(input: SuggestPriceMutationInput!): SuggestPriceMutationPayload
   userLogin(input: UserLoginInput!): UserLoginPayload
   userLogout(input: UserLogoutInput!): UserLogoutPayload
   userSignUp(input: UserSignUpInput!): UserSignUpPayload
@@ -172,6 +204,10 @@ type PageInfo {
 
   
   endCursor: String
+}
+
+type PriceSuggestionType {
+  price: Int
 }
 
 type ProductConnection {
@@ -267,6 +303,7 @@ type ProductType implements Node {
   seller: UserType!
   buyer: UserType
   comments: [CommentType]
+  auction: AuctionType
 }
 
 type Query {
@@ -380,6 +417,25 @@ enum SubCategoryType {
   TRAVELING_EQUIPMENT
 }
 
+type SuggestPriceMutationError {
+  auction: [String]
+  price: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input SuggestPriceMutationInput {
+  auction: ID!
+  price: Int!
+  clientMutationId: String
+}
+
+type SuggestPriceMutationPayload {
+  ok: Boolean!
+  clientMutationId: String
+  errors: SuggestPriceMutationError
+}
+
 type UserLoginError {
   phone: [String]
   password: [String]
@@ -449,8 +505,8 @@ type UserType implements Node {
   password: String!
   activated: Boolean!
   addresses: [String]
-  sellingProducts: [ProductType]
   boughtProducts: [ProductType]
+  sellingProducts: [ProductType]
   messages: [MessageType]
 }
 

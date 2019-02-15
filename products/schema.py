@@ -3,8 +3,17 @@ import graphene
 from graphene import relay
 from graphene_django.types import DjangoObjectType
 
-from products.models import Product, Comment
-from products.mutations.product_mutations import ProductCreate, ProductRemoveMutation, AddCommentMutation
+from products.models import Product, Comment, Auction
+from products.mutations.product_mutations import ProductCreate, ProductRemoveMutation, AddCommentMutation, AddAuctionMutation, SuggestPriceMutation
+from accounts.models import User
+
+class UserType(DjangoObjectType):
+    class Meta:
+        model = User
+        interfaces = (relay.Node,)
+        only_fields = (
+            'id', 'first_name', 'last_name',
+            'balance', 'phone', 'activated')
 
 
 class CategoryType(graphene.Enum):
@@ -16,7 +25,7 @@ class CategoryType(graphene.Enum):
     BOOK_AND_MEDIA = 'BOOK_AND_MEDIA'
     SPORT_ENTERTAINMENT = 'SPORT_ENTERTAINMENT'
 
-
+ 
 class SubCategoryType(graphene.Enum):
     MOBILE_PHONE = 'MOBILE_PHONE'
     MOBILE_ACCESSORIES = 'MOBILE_ACCESSORIES'
@@ -71,6 +80,31 @@ class CommentType(DjangoObjectType):
         interfaces = (relay.Node,)
         only_fields = ('id', 'text', 'product', 'author')
 
+class PriceSuggestionType(graphene.ObjectType):
+    user = UserType
+    price = graphene.Int()
+
+
+class AuctionType(DjangoObjectType):
+    class Meta:
+        model = Auction
+        interfaces = (relay.Node,)
+        only_fields = ('id', 'base_price', 'deadline', 'prices')
+    
+    # product = graphene.NonNull(ProductType)
+    prices = graphene.List(PriceSuggestionType)
+
+    # @staticmethod
+    # def resolve_product(root, info):
+    #     product = Product.objects.get(root.product)
+    
+    @staticmethod
+    def resolve_prices(root, info):
+        prices = root.get_prices()
+        for price in prices.items():
+            price['user'] = User.objects.get_by_natural_key(price['user'])
+        return prices
+
 
 class ProductType(DjangoObjectType):
     class Meta:
@@ -78,12 +112,20 @@ class ProductType(DjangoObjectType):
         interfaces = (relay.Node,)
         only_fields = (
             'id', 'title', 'address', 'description', 'prod_year', 'price', 'category', 'sub_category', 'image',
-            'seller', 'buyer', 'comments')
+            'seller', 'buyer', 'comments', 'auction')
 
     category = graphene.NonNull(CategoryType)
     sub_category = graphene.NonNull(SubCategoryType)
     image = graphene.String()
     comments = graphene.List(CommentType)
+    auction = graphene.Field(AuctionType)
+ 
+    @staticmethod
+    def resolve_auction(root, info):
+        auction = Auction.objects.filter(product__id=root.id)
+        if not auction:
+            return None
+        return auction[0]
 
     @staticmethod
     def resolve_image(root, info):
@@ -96,7 +138,6 @@ class ProductType(DjangoObjectType):
     def resolve_comments(root, info):
         comments = Comment.objects.filter(product__id=root.id)
         return comments
-
 
 class ProductFilterSet(django_filters.FilterSet):
     def __init__(self, info, *args, **kwargs):
@@ -173,3 +214,5 @@ class ProductMutation(graphene.ObjectType):
     product_create = ProductCreate.Field()
     product_remove = ProductRemoveMutation.Field()
     add_comment = AddCommentMutation.Field()
+    add_auction = AddAuctionMutation.Field()
+    suggest_price = SuggestPriceMutation.Field()

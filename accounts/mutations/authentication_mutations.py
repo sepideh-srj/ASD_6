@@ -54,11 +54,6 @@ class ActivateAccountMutation(SafeClientIDMutation):
     @classmethod
     def safe_mutate(cls, root, info, **kwargs):
         user = info.context.user
-        print()
-        print(user)
-        print()
-        print(kwargs)
-        print()
         if user.code == kwargs.get('code'):
             setattr(user, 'activated', True)
             user.save()
