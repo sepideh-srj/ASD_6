@@ -3,8 +3,8 @@ import graphene
 from graphene import relay
 from graphene_django.types import DjangoObjectType
 
-from products.models import Product, Comment
-from products.mutations.product_mutations import ProductCreate, ProductRemoveMutation, AddCommentMutation
+from products.models import Product, Comment, Request
+from products.mutations.product_mutations import ProductCreate, ProductRemoveMutation, AddCommentMutation, AddRequestMutation
 
 
 class CategoryType(graphene.Enum):
@@ -70,6 +70,13 @@ class CommentType(DjangoObjectType):
         model = Comment
         interfaces = (relay.Node,)
         only_fields = ('id', 'text', 'product', 'author')
+
+
+class RequestType(DjangoObjectType):
+    class Meta:
+        model = Request
+        interfaces = (relay.Node,)
+        only_fields = ('id', 'user', 'title')
 
 
 class ProductType(DjangoObjectType):
@@ -173,3 +180,4 @@ class ProductMutation(graphene.ObjectType):
     product_create = ProductCreate.Field()
     product_remove = ProductRemoveMutation.Field()
     add_comment = AddCommentMutation.Field()
+    add_request = AddRequestMutation.Field()

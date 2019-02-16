@@ -3,8 +3,8 @@ from graphene import relay
 from graphene_django.types import DjangoObjectType
 
 from accounts.models import User, Message
-from products.schema import ProductType
-from products.models import Product
+from products.schema import ProductType, RequestType
+from products.models import Product, Request
 from accounts.mutations.authentication_mutations import UserSignUp, UserLogin, UserLogout, \
     ResendCodeMutation, ActivateAccountMutation, ResendPasswordMutation
 from accounts.mutations.profile_mutations import EditProfileMutation, AddBalanceMutation, BuyProductMutation, AddAddressMutation, SendMessageMutation
@@ -23,13 +23,19 @@ class UserType(DjangoObjectType):
         model = User
         interfaces = (relay.Node,)
         only_fields = (
-            'id', 'first_name', 'last_name', 'selling_products', 'bought_products', 'invitation_code',
+            'id', 'first_name', 'last_name', 'selling_products', 'bought_products', 'invitation_code', 'requests',
             'balance', 'phone', 'activated', 'password', 'addresses', 'messages')
 
     addresses = graphene.List(graphene.String)
     selling_products = graphene.List(ProductType)
     bought_products = graphene.List(ProductType)
     messages = graphene.List(MessageType)
+    requests = graphene.List(RequestType)
+
+    @staticmethod
+    def resolve_requests(root, info):
+        requests = Request.objects.filter(user__id=root.id)
+        return requests
 
     @staticmethod
     def resolve_messages(root, info):

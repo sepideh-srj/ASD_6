@@ -70,6 +70,23 @@ type AddCommentMutationPayload {
   errors: AddCommentMutationError
 }
 
+type AddRequestMutationError {
+  title: [String]
+  clientMutationId: [String]
+  nonFieldErrors: [String]
+}
+
+input AddRequestMutationInput {
+  title: String!
+  clientMutationId: String
+}
+
+type AddRequestMutationPayload {
+  ok: Boolean!
+  clientMutationId: String
+  errors: AddRequestMutationError
+}
+
 type BuyProductMutationError {
   productId: [String]
   clientMutationId: [String]
@@ -158,6 +175,7 @@ type Mutation {
   productCreate(input: ProductCreateInput!): ProductCreatePayload
   productRemove(input: ProductRemoveMutationInput!): ProductRemoveMutationPayload
   addComment(input: AddCommentMutationInput!): AddCommentMutationPayload
+  addRequest(input: AddRequestMutationInput!): AddRequestMutationPayload
   userLogin(input: UserLoginInput!): UserLoginPayload
   userLogout(input: UserLogoutInput!): UserLogoutPayload
   userSignUp(input: UserSignUpInput!): UserSignUpPayload
@@ -294,6 +312,13 @@ type Query {
   user(id: String!): UserType
   me: UserType
   hi: String
+}
+
+type RequestType implements Node {
+  
+  id: ID!
+  user: UserType!
+  title: String!
 }
 
 type ResendCodeMutationError {
@@ -473,5 +498,6 @@ type UserType implements Node {
   boughtProducts: [ProductType]
   sellingProducts: [ProductType]
   messages: [MessageType]
+  requests: [RequestType]
 }
 

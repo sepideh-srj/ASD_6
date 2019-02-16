@@ -85,16 +85,24 @@ class BaseNavbar extends Component {
                                     <NavLink disabled>{name} عزیز خوش آمدی </NavLink>
                                 </NavItem>
                                 <NavItem>
-
                                     <Link to="/create-product">
-                                        <i className="material-icons"
-                                           style={icon_style}>add_circle</i>
+                                        کالای جدید
                                     </Link>
                                 </NavItem>
                                 <NavItem>
+                                    <p> . . . </p>
+                                </NavItem>
+                                <NavItem>
                                     <Link to={"/profile/" + this.props.logged.id}>
-                                        <i className="material-icons"
-                                           style={icon_style}>person</i>
+                                        پروفایل من
+                                    </Link>
+                                </NavItem>
+                                <NavItem>
+                                    <p> . . . </p>
+                                </NavItem>
+                                <NavItem>
+                                    <Link to="/create-request/">
+                                        درخواست کالا
                                     </Link>
                                 </NavItem>
                                 <NavItem>

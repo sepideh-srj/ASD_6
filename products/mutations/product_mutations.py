@@ -3,9 +3,9 @@ from django.core.exceptions import ValidationError
 from graphene import relay
 
 from accounts.models import Image
-from products.models import Product, Comment
+from products.models import Product, Comment, Request
 from utils.mutation import SafeClientIDMutation
-
+from django.db.models import Q
 
 class ProductCreate(SafeClientIDMutation):
     login_required = True
@@ -33,6 +33,9 @@ class ProductCreate(SafeClientIDMutation):
         product.seller = user
         product.full_clean()
         product.save()
+        requests = Request.objects.filter(title=kwargs.get('title'))
+        for req in requests:
+            req.sendNotif(product.id)
         return cls(product=product)
 
 
@@ -69,3 +72,21 @@ class AddCommentMutation(SafeClientIDMutation):
         comment.full_clean()
         comment.save()
         return cls(comment=comment)
+
+class AddRequestMutation(SafeClientIDMutation):
+    login_required = True
+
+    class Input:
+        title = graphene.String(required=True)
+
+    @classmethod
+    def safe_mutate(cls, root, info, **kwargs):
+        user = info.context.user
+        title = kwargs.get('title')
+        request = Request(title=title, user=user)
+        request.full_clean()
+        request.save()
+        products = Product.objects.filter(Q(buyer=None) & Q(hidden=False) & Q(title=title))
+        if products.count() > 0:
+            request.sendNotif(products[0].id)
+        return cls()

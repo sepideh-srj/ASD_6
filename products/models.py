@@ -13,6 +13,16 @@ class Comment(models.Model):
     text = models.CharField('متن', max_length=1000)
 
 
+class Request(models.Model):
+    user = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
+    title = models.CharField('عنوان', max_length=200)
+
+    def sendNotif(self, prodId):
+        url = 'https://warm-temple-16283.herokuapp.com/products/' + str(prodId)
+        text = 'سامانه وال\n' + 'کالای درخواستی شما به نام ' + self.title + ' در لینک ' + url + 'موجود شد.'
+        from utils.sms import SMS
+        SMS(self.user.phone, text).start()
+
 class Product(models.Model):
     price = models.IntegerField('قیمت')
     CATEGORY_CHOICES = (
@@ -73,7 +83,7 @@ class Product(models.Model):
     )
 
     title = models.CharField('عنوان', max_length=200)
-    address = models.CharField('آدرس', max_length=100)
+    address = models.CharField('آدرس', max_length=200)
     description = models.TextField('توضیحات', max_length=1000, null=True, blank=True)
     prod_year = models.IntegerField('سال چاپ')
     category = models.CharField('دسته‌بندی', max_length=100, choices=CATEGORY_CHOICES)
