@@ -15,6 +15,10 @@ class AuctionList extends Component {
         };
     }
 
+    componentDidMount(){
+        alert(JSON.stringify(this.props))
+    }
+
     render() {
         return (
             <Card>
@@ -23,7 +27,7 @@ class AuctionList extends Component {
                 </Col>
                 <Col sm={12}>
                     <Form>
-                        {(this.props.auction.prices).map((price, key) => <AuctionCard
+                        {(JSON.parse(this.props.auction.prices)).map((price, key) => <AuctionCard
                             key={key}
                             price={price}/>)}
 
@@ -63,7 +67,7 @@ class AuctionList extends Component {
         if (this.state.price_error) {
             return;
         }
-
+        
         SuggestPriceMutation(this.props.auction.id, this.state.price, (response) => {
             if (response.ok) {
                 toast('قمیت پیشنهادی شما با موفقیت ثبت شد.');

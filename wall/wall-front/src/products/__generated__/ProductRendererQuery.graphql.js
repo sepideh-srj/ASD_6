@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 2c252ca36751a9ea32b64d019653ecc2
+ * @relayHash 8265a0c2bb9e8cf09fdb3260754e2bc4
  */
 
 /* eslint-disable */
@@ -50,12 +50,10 @@ fragment ProductDescription_product on ProductType {
   }
   title
   auction {
+    id
     basePrice
     deadline
-    prices {
-      price
-    }
-    id
+    prices
   }
 }
 */
@@ -296,6 +294,13 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
+                "name": "id",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
                 "name": "basePrice",
                 "storageKey": null
               },
@@ -307,28 +312,10 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               },
               {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "PriceSuggestionType",
-                "name": "prices",
-                "plural": true,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "price",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              },
-              {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "name": "id",
+                "name": "prices",
                 "storageKey": null
               }
             ],
@@ -339,7 +326,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ProductRendererQuery(\n  $id: String!\n) {\n  product(id: $id) {\n    ...ProductDescription_product\n    id\n  }\n}\n\nfragment ProductDescription_product on ProductType {\n  seller {\n    firstName\n    lastName\n    id\n  }\n  id\n  address\n  category\n  subCategory\n  image\n  description\n  prodYear\n  price\n  comments {\n    text\n    author {\n      firstName\n      lastName\n      id\n    }\n    id\n  }\n  title\n  auction {\n    basePrice\n    deadline\n    prices {\n      price\n    }\n    id\n  }\n}\n"
+  "text": "query ProductRendererQuery(\n  $id: String!\n) {\n  product(id: $id) {\n    ...ProductDescription_product\n    id\n  }\n}\n\nfragment ProductDescription_product on ProductType {\n  seller {\n    firstName\n    lastName\n    id\n  }\n  id\n  address\n  category\n  subCategory\n  image\n  description\n  prodYear\n  price\n  comments {\n    text\n    author {\n      firstName\n      lastName\n      id\n    }\n    id\n  }\n  title\n  auction {\n    id\n    basePrice\n    deadline\n    prices\n  }\n}\n"
 };
 
 module.exports = batch;

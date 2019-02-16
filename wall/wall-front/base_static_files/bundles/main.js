@@ -19537,6 +19537,10 @@ class AuctionList extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         };
     }
 
+    componentDidMount() {
+        alert(JSON.stringify(this.props));
+    }
+
     render() {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_reactstrap__["h" /* Card */],
@@ -19556,7 +19560,7 @@ class AuctionList extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_1_reactstrap__["b" /* Form */],
                     null,
-                    this.props.auction.prices.map((price, key) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__AuctionCard__["a" /* default */], {
+                    JSON.parse(this.props.auction.prices).map((price, key) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__AuctionCard__["a" /* default */], {
                         key: key,
                         price: price })),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_reactstrap__["e" /* Input */], { type: "auction",
@@ -23985,7 +23989,7 @@ class ProductDescription extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.C
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'div',
                                     { className: 'product-auction-btn' },
-                                    logged_in ? is_seller && auction ? auction_button2 : auction_button1 : null
+                                    logged_in ? auction ? auction_button2 : is_seller ? auction_button1 : null : null
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'div',
@@ -24603,11 +24607,10 @@ export type ProductDescription_product = {|
   |}>;
   +title: string;
   +auction: ?{|
+    +id: string;
     +basePrice: number;
     +deadline: string;
-    +prices: ?$ReadOnlyArray<?{|
-      +price: ?number;
-    |}>;
+    +prices: string;
   |};
 |};
 */
@@ -24745,6 +24748,12 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
+      "name": "id",
+      "storageKey": null
+    }, {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
       "name": "basePrice",
       "storageKey": null
     }, {
@@ -24754,19 +24763,10 @@ const fragment /*: ConcreteFragment*/ = {
       "name": "deadline",
       "storageKey": null
     }, {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "concreteType": "PriceSuggestionType",
       "name": "prices",
-      "plural": true,
-      "selections": [{
-        "kind": "ScalarField",
-        "alias": null,
-        "args": null,
-        "name": "price",
-        "storageKey": null
-      }],
       "storageKey": null
     }],
     "storageKey": null
@@ -25112,7 +25112,7 @@ module.exports = fragment;
 "use strict";
 /**
  * 
- * @relayHash 2c252ca36751a9ea32b64d019653ecc2
+ * @relayHash 8265a0c2bb9e8cf09fdb3260754e2bc4
  */
 
 /* eslint-disable */
@@ -25161,12 +25161,10 @@ fragment ProductDescription_product on ProductType {
   }
   title
   auction {
+    id
     basePrice
     deadline
-    prices {
-      price
-    }
-    id
+    prices
   }
 }
 */
@@ -25369,6 +25367,12 @@ const batch /*: ConcreteBatch*/ = {
           "kind": "ScalarField",
           "alias": null,
           "args": null,
+          "name": "id",
+          "storageKey": null
+        }, {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
           "name": "basePrice",
           "storageKey": null
         }, {
@@ -25378,25 +25382,10 @@ const batch /*: ConcreteBatch*/ = {
           "name": "deadline",
           "storageKey": null
         }, {
-          "kind": "LinkedField",
-          "alias": null,
-          "args": null,
-          "concreteType": "PriceSuggestionType",
-          "name": "prices",
-          "plural": true,
-          "selections": [{
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "price",
-            "storageKey": null
-          }],
-          "storageKey": null
-        }, {
           "kind": "ScalarField",
           "alias": null,
           "args": null,
-          "name": "id",
+          "name": "prices",
           "storageKey": null
         }],
         "storageKey": null
@@ -25404,7 +25393,7 @@ const batch /*: ConcreteBatch*/ = {
       "storageKey": null
     }]
   },
-  "text": "query ProductRendererQuery(\n  $id: String!\n) {\n  product(id: $id) {\n    ...ProductDescription_product\n    id\n  }\n}\n\nfragment ProductDescription_product on ProductType {\n  seller {\n    firstName\n    lastName\n    id\n  }\n  id\n  address\n  category\n  subCategory\n  image\n  description\n  prodYear\n  price\n  comments {\n    text\n    author {\n      firstName\n      lastName\n      id\n    }\n    id\n  }\n  title\n  auction {\n    basePrice\n    deadline\n    prices {\n      price\n    }\n    id\n  }\n}\n"
+  "text": "query ProductRendererQuery(\n  $id: String!\n) {\n  product(id: $id) {\n    ...ProductDescription_product\n    id\n  }\n}\n\nfragment ProductDescription_product on ProductType {\n  seller {\n    firstName\n    lastName\n    id\n  }\n  id\n  address\n  category\n  subCategory\n  image\n  description\n  prodYear\n  price\n  comments {\n    text\n    author {\n      firstName\n      lastName\n      id\n    }\n    id\n  }\n  title\n  auction {\n    id\n    basePrice\n    deadline\n    prices\n  }\n}\n"
 };
 
 module.exports = batch;

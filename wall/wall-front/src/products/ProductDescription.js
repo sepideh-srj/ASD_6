@@ -121,7 +121,7 @@ class ProductDescription extends React.Component {
                                     <div className="product-auction-btn">
                                         {
                                             (logged_in ?
-                                                (is_seller && auction ? auction_button2 : auction_button1) : null)
+                                                (auction ? auction_button2 : (is_seller ? auction_button1 : null)) : null)
                                         }
                                     </div>
                                     <div>
@@ -172,9 +172,15 @@ export default createFragmentContainer(ProductDescription, {
                 id
                 basePrice
                 deadline
-                prices{
-                    price
-                }
+                prices
+                # {
+                #     price
+                #     user{
+                #         firstName
+                #         lastName
+                #         phone
+                #     }
+                # }
             }
         }
     `

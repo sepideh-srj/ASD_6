@@ -25,11 +25,11 @@ class Auction(models.Model):
 
     def add_price(self, user, price):
         prices = self.get_prices()
-        for p in prices.items():
-            if p['phone'] == user.phone:
+        for p in prices:
+            if p['user']['phone'] == user.phone:
                 p['price'] = price
                 return
-        prices += [{'phone': user.phone, 'price': price}]
+        prices += [{'user':{'phone': user.phone,'balance': user.balance, 'firstName': user.first_name, 'lastName': user.last_name}, 'price': price}]
         self.prices = json.dumps(prices)
 
     def get_prices(self):

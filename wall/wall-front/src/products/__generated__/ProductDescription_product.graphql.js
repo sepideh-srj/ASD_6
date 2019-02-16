@@ -31,11 +31,10 @@ export type ProductDescription_product = {|
   |}>;
   +title: string;
   +auction: ?{|
+    +id: string;
     +basePrice: number;
     +deadline: string;
-    +prices: ?$ReadOnlyArray<?{|
-      +price: ?number;
-    |}>;
+    +prices: string;
   |};
 |};
 */
@@ -197,6 +196,13 @@ const fragment /*: ConcreteFragment*/ = {
           "kind": "ScalarField",
           "alias": null,
           "args": null,
+          "name": "id",
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
           "name": "basePrice",
           "storageKey": null
         },
@@ -208,21 +214,10 @@ const fragment /*: ConcreteFragment*/ = {
           "storageKey": null
         },
         {
-          "kind": "LinkedField",
+          "kind": "ScalarField",
           "alias": null,
           "args": null,
-          "concreteType": "PriceSuggestionType",
           "name": "prices",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "args": null,
-              "name": "price",
-              "storageKey": null
-            }
-          ],
           "storageKey": null
         }
       ],

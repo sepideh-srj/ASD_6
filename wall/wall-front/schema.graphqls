@@ -97,7 +97,7 @@ type AuctionType implements Node {
   id: ID!
   basePrice: Int!
   deadline: String!
-  prices: [PriceSuggestionType]
+  prices: String!
 }
 
 type BuyProductMutationError {
@@ -206,10 +206,6 @@ type PageInfo {
   endCursor: String
 }
 
-type PriceSuggestionType {
-  price: Int
-}
-
 type ProductConnection {
   pageInfo: PageInfo!
   edges: [ProductEdge]!
@@ -303,7 +299,7 @@ type ProductType implements Node {
   seller: UserType!
   buyer: UserType
   comments: [CommentType]
-  auction: AuctionType
+  auction(id: String): AuctionType
 }
 
 type Query {
