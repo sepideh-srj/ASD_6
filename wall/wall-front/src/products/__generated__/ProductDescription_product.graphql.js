@@ -32,7 +32,10 @@ export type ProductDescription_product = {|
   +title: string;
   +auction: ?{|
     +basePrice: number;
-    +deadline: number;
+    +deadline: string;
+    +prices: ?$ReadOnlyArray<?{|
+      +price: ?number;
+    |}>;
   |};
 |};
 */
@@ -202,6 +205,24 @@ const fragment /*: ConcreteFragment*/ = {
           "alias": null,
           "args": null,
           "name": "deadline",
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "args": null,
+          "concreteType": "PriceSuggestionType",
+          "name": "prices",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "price",
+              "storageKey": null
+            }
+          ],
           "storageKey": null
         }
       ],

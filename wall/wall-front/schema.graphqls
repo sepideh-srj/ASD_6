@@ -44,7 +44,7 @@ type AddAuctionMutationError {
 
 input AddAuctionMutationInput {
   basePrice: Int!
-  deadline: Int!
+  deadline: String!
   product: ID!
   clientMutationId: String
 }
@@ -96,7 +96,7 @@ type AuctionType implements Node {
   
   id: ID!
   basePrice: Int!
-  deadline: Int!
+  deadline: String!
   prices: [PriceSuggestionType]
 }
 

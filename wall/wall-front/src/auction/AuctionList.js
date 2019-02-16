@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Card, Col, Form, FormFeedback, Input} from "reactstrap";
-import AddCommentMutation from "../mutations/AddCommentMutation";
+import SuggestPriceMutation from "../mutations/SuggestPriceMutation";
 import {toast} from "react-toastify";
 import AuctionCard from "./AuctionCard";
 
@@ -23,9 +23,9 @@ class AuctionList extends Component {
                 </Col>
                 <Col sm={12}>
                     <Form>
-                        {(this.props.auctions).map((auction, key) => <AuctionCard
+                        {(this.props.auction.prices).map((price, key) => <AuctionCard
                             key={key}
-                            auction={auction}/>)}
+                            price={price}/>)}
 
                         <Input type="auction"
                                name="text"
@@ -40,6 +40,7 @@ class AuctionList extends Component {
                         />
 
                         <Button type="button" className="submit" outline color="primary"
+                                disabled={this.props.is_seller}
                                 onClick={() => this._confirm()}>ثبت</Button>
                         <Col sm={2}/>
                         <Col sm={10}>
@@ -54,27 +55,26 @@ class AuctionList extends Component {
     }
 
     async _confirm() {
-        if (this.state.comment === '') {
-            this.setState({comment_error: 'متن نظر نمی‌تواند خالی باشد!'});
+        if (this.state.price === '') {
+            this.setState({price_error: 'قیمت نمی‌تواند خالی باشد!'});
             return;
         }
 
-        if (this.state.comment_error) {
+        if (this.state.price_error) {
             return;
         }
 
-        AddCommentMutation(this.state.comment, this.props.product.id, (response) => {
+        SuggestPriceMutation(this.props.auction.id, this.state.price, (response) => {
             if (response.ok) {
-                toast('نظر شما با موفقیت ثبت شد.');
+                toast('قمیت پیشنهادی شما با موفقیت ثبت شد.');
                 this.setState({
-                    comment: '',
-                    comment_error: null,
-                    additional_comments: this.state.additional_comments.concat(response.comment)
+                    price: '',
+                    price_error: null
                 })
             }
             else
                 this.setState({
-                    comment_error: response.errors.comment,
+                    price_error: response.errors.price,
                 });
         })
     }

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e373f56932a3ef9dc7c1840fd0c57f4d
+ * @relayHash 2c252ca36751a9ea32b64d019653ecc2
  */
 
 /* eslint-disable */
@@ -52,6 +52,9 @@ fragment ProductDescription_product on ProductType {
   auction {
     basePrice
     deadline
+    prices {
+      price
+    }
     id
   }
 }
@@ -304,6 +307,24 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               },
               {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "PriceSuggestionType",
+                "name": "prices",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "price",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
@@ -318,7 +339,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ProductRendererQuery(\n  $id: String!\n) {\n  product(id: $id) {\n    ...ProductDescription_product\n    id\n  }\n}\n\nfragment ProductDescription_product on ProductType {\n  seller {\n    firstName\n    lastName\n    id\n  }\n  id\n  address\n  category\n  subCategory\n  image\n  description\n  prodYear\n  price\n  comments {\n    text\n    author {\n      firstName\n      lastName\n      id\n    }\n    id\n  }\n  title\n  auction {\n    basePrice\n    deadline\n    id\n  }\n}\n"
+  "text": "query ProductRendererQuery(\n  $id: String!\n) {\n  product(id: $id) {\n    ...ProductDescription_product\n    id\n  }\n}\n\nfragment ProductDescription_product on ProductType {\n  seller {\n    firstName\n    lastName\n    id\n  }\n  id\n  address\n  category\n  subCategory\n  image\n  description\n  prodYear\n  price\n  comments {\n    text\n    author {\n      firstName\n      lastName\n      id\n    }\n    id\n  }\n  title\n  auction {\n    basePrice\n    deadline\n    prices {\n      price\n    }\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

@@ -13,7 +13,8 @@ class AuctionCreate extends React.Component {
             basePrice: '',
             basePrice_error: null,
             days: '',
-            days_error: null
+            days_error: null,
+            disabled: false,
         };
     }
 
@@ -99,6 +100,7 @@ class AuctionCreate extends React.Component {
         AddAuctionMutation(basePrice, deadline, this.props.location.state.product.id, (response) => {
             if (response.ok) {
                 toast('ساخته شد.');
+                this.setState({disabled: true});
             }
             else {
                 this.setState({

@@ -1,10 +1,10 @@
 import React from 'react';
 import {Category} from '../utils/constants';
-import BuyProductMutation from "../mutations/BuyProductMutation";
 import {toast, ToastContainer} from 'react-toastify';
 import {Link} from 'react-router';
 import Countdown from "react-countdown-now";
 import AuctionList from "./AuctionList";
+import SuggestPriceMutation from "../mutations/SuggestPriceMutation";
 
 class AuctionProduct extends React.Component {
     constructor() {
@@ -16,7 +16,7 @@ class AuctionProduct extends React.Component {
     }
 
     async auction() {
-        BuyProductMutation(this.props.product.id, (response) => {
+        SuggestPriceMutation(this.props.product.id, (response) => {
             if (response.ok) {
                 this.props.router.push('/');
                 toast('کالای مورد نظر خریده شد.');
@@ -56,7 +56,7 @@ class AuctionProduct extends React.Component {
                                     />
                                 </div>
 
-                                {<AuctionList auctions={[]} product={this.p}/>}
+                                {<AuctionList auction={auction} is_seller={is_seller}/>}
                             </div>
                             <div className="bottom-part">
                                 <div className="product-seller">صاحب محصول:

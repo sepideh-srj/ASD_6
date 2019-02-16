@@ -42,10 +42,12 @@ class ProductDescription extends React.Component {
         let button_state = false;
         let seller_button = null;
         let auction_button1 = null;
-        let {id, image, title, address, category, subCategory, description, seller, auction, comments, price} = this.props.product;
+        let {image, title, address, category, subCategory, description, seller, auction, comments, price} = this.props.product;
         let is_seller = seller.id === localStorage.getItem('username');
         let logged_in = localStorage.getItem('logged') === 'true';
 
+
+        alert(JSON.stringify(auction));
 
         if (is_seller) {
             if (this.state.remove_confirm)
@@ -167,8 +169,12 @@ export default createFragmentContainer(ProductDescription, {
             }
             title
             auction{
+                id
                 basePrice
                 deadline
+                prices{
+                    price
+                }
             }
         }
     `

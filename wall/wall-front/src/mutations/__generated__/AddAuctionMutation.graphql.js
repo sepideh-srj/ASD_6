@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 6fe97ac1ec40b8eaf1833e1d350ccbe5
+ * @relayHash 9be8cda0fd13530c1b64e92c659c02c2
  */
 
 /* eslint-disable */
@@ -12,7 +12,7 @@ import type {ConcreteBatch} from 'relay-runtime';
 export type AddAuctionMutationVariables = {|
   input: {
     basePrice: number;
-    deadline: number;
+    deadline: string;
     product: string;
     clientMutationId?: ?string;
   };
