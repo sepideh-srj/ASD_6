@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Col, Form, FormFeedback, FormGroup, Input, Label} from 'reactstrap';
 import AddAuctionMutation from "../mutations/AddAuctionMutation";
-import {toast} from 'react-toastify';
+import {ToastContainer, toast} from 'react-toastify';
 
 class AuctionCreate extends React.Component {
     constructor() {
@@ -28,6 +28,7 @@ class AuctionCreate extends React.Component {
 
                     <div className="col col-md-9 order-md-1">
                         <div className="login-form-container">
+                        <ToastContainer/>
                             <Form>
                                 <FormGroup row>
                                     <Label for="title" sm={2}>قیمت پایه</Label>

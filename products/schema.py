@@ -101,7 +101,7 @@ class AuctionType(DjangoObjectType):
     @staticmethod
     def resolve_prices(root, info):
         prices = root.get_prices()
-        for price in prices.items():
+        for price in prices:
             price['user'] = User.objects.get_by_natural_key(price['user'])
         return prices
 
