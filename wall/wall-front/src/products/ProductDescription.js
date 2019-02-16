@@ -42,9 +42,10 @@ class ProductDescription extends React.Component {
         let button_state = false;
         let seller_button = null;
         let auction_button1 = null;
-        let auction_button2 = null;
-        let {id, image, title, address, category, subCategory, description, seller, comments, price} = this.props.product;
+        let {id, image, title, address, category, subCategory, description, seller, auction, comments, price} = this.props.product;
         let is_seller = seller.id === localStorage.getItem('username');
+        let logged_in = localStorage.getItem('logged') === 'true';
+
 
         if (is_seller) {
             if (this.state.remove_confirm)
@@ -63,22 +64,20 @@ class ProductDescription extends React.Component {
                                         onClick={() => (this.setState({remove_confirm: true}))}>حذف محصول</Button>;
 
             auction_button1 = <Button outline color="primary"
-                                      onClick={() => this.props.router.push('/create-auction/?id=' + id)}>گذاشتن
-                مزایده</Button>;
-        // } else {
-        //     auction_button2 = <Button outline color="primary"
-        //                               onClick={() => this.props.router.push('/product-auction/?id=' + id)}>دیدن
-        //         مزایده</Button>;
-        // }
-    } else {
-        auction_button2 = <Button outline color="primary"
-                                  onClick={() => this.props.router.push({
-                                    pathname: '/product-auction/',//?id=' + id,
-                                    search: '',
-                                    state: { product: this.props.product, id }
-                                  })}>دیدن
-            مزایده</Button>;
-    }
+                                      onClick={() => this.props.router.push({
+                                          pathname: '/create-auction/',
+                                          search: '',
+                                          state: {product: this.props.product}
+                                      })}>گذاشتن مزایده</Button>;
+
+        }
+
+        let auction_button2 = <Button outline color="primary"
+                                      onClick={() => this.props.router.push({
+                                          pathname: '/product-auction/',
+                                          search: '',
+                                          state: {product: this.props.product}
+                                      })}>دیدن مزایده</Button>;
 
         return (
             <div className="content container">
@@ -119,7 +118,8 @@ class ProductDescription extends React.Component {
                                 <div className="row">
                                     <div className="product-auction-btn">
                                         {
-                                            (is_seller ? auction_button1 : auction_button2)
+                                            (logged_in ?
+                                                (is_seller && auction ? auction_button2 : auction_button1) : null)
                                         }
                                     </div>
                                     <div>

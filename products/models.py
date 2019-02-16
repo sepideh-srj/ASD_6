@@ -1,6 +1,7 @@
 from django.db import models
 import json
 
+
 class ProductManager(models.Manager):
     @property
     def visible(self):
@@ -12,9 +13,10 @@ class Comment(models.Model):
     author = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
     text = models.CharField('متن', max_length=1000)
 
+
 class Auction(models.Model):
     base_price = models.IntegerField('قیمت پایه')
-    deadline = models.IntegerField('زمان')
+    deadline = models.CharField('زمان', max_length=1000)
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
     prices = models.CharField('قیمت های پیشنهادی', max_length=100000, default='[]')
 

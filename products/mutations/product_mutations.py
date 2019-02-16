@@ -70,12 +70,13 @@ class AddCommentMutation(SafeClientIDMutation):
         comment.save()
         return cls(comment=comment)
 
+
 class AddAuctionMutation(SafeClientIDMutation):
     login_required = True
 
     class Input:
         base_price = graphene.Int(required=True)
-        deadline = graphene.Int(required=True)
+        deadline = graphene.String(required=True)
         product = graphene.ID(required=True)
 
     product = graphene.Field('products.schema.ProductType')
@@ -89,6 +90,7 @@ class AddAuctionMutation(SafeClientIDMutation):
         auction.full_clean()
         auction.save()
         return cls()
+
 
 class SuggestPriceMutation(SafeClientIDMutation):
     login_required = True

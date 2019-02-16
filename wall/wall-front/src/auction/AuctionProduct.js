@@ -4,39 +4,15 @@ import BuyProductMutation from "../mutations/BuyProductMutation";
 import {toast, ToastContainer} from 'react-toastify';
 import {Link} from 'react-router';
 import Countdown from "react-countdown-now";
-import CommentList from "../products/CommentList";
 import AuctionList from "./AuctionList";
 
 class AuctionProduct extends React.Component {
     constructor() {
         super();
+
         this.state = {
             auction_confirm: false
         };
-
-        this.p = {
-            id: '123',
-            description: 'salam',
-            address: 'tehran',
-            category: 'DIGITAL_GOODS',
-            subCategory: 'MOBILE_PHONE',
-            image: null,
-            seller: {
-                firstName: 'Alireza',
-                lastName: 'Naeiji',
-                id: '1'
-            },
-            prodYear: 1393,
-            price: 1100,
-            comments: [{
-                text: 'salam',
-                author: {
-                    firstName: 'Alireza',
-                    lastName: 'Naeiji'
-                }
-            },],
-            title: 'boooooook',
-        }
     }
 
     async auction() {
@@ -51,7 +27,7 @@ class AuctionProduct extends React.Component {
     }
 
     render() {
-        let {id, image, title, address, category, subCategory, description, seller, auctions, price} = this.p;
+        let {image, title, address, category, subCategory, seller, auction, price} = this.props.location.state.product;
         let is_seller = seller.id === localStorage.getItem('username');
 
         return (
@@ -75,7 +51,7 @@ class AuctionProduct extends React.Component {
 
                                 <div className="product-address">وقت باقی‌مانده:
                                     <Countdown
-                                        date={Date.now() + 10000 * 10000}
+                                        date={new Date(parseInt(auction['deadline']))}
                                         intervalDelay={0}
                                     />
                                 </div>

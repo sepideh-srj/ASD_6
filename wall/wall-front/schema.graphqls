@@ -505,8 +505,8 @@ type UserType implements Node {
   password: String!
   activated: Boolean!
   addresses: [String]
-  boughtProducts: [ProductType]
   sellingProducts: [ProductType]
+  boughtProducts: [ProductType]
   messages: [MessageType]
 }
 

@@ -1,25 +1,20 @@
 import React from 'react';
 import {Button, Col, Form, FormFeedback, FormGroup, Input, Label} from 'reactstrap';
 import AddAuctionMutation from "../mutations/AddAuctionMutation";
-import {Category} from '../utils/constants';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 
 class AuctionCreate extends React.Component {
     constructor() {
         super();
 
+        this._confirm = this._confirm.bind(this);
+
         this.state = {
             basePrice: '',
             basePrice_error: null,
-            days: 1,
-            days_error: null,
-            productId: null
+            days: '',
+            days_error: null
         };
-    }
-
-    componentDidMount() {
-        let id = this.props.location.query.id;
-        this.setState({productId: id});
     }
 
     render() {
@@ -48,7 +43,7 @@ class AuctionCreate extends React.Component {
                                     <Col sm={2}/>
                                     <Col sm={10}>
                                         <FormFeedback>
-                                            {this.state.basePrice_error ? this.state.basePrice_error[0] : ''}
+                                            {this.state.basePrice_error}
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
@@ -85,16 +80,32 @@ class AuctionCreate extends React.Component {
     }
 
     async _confirm() {
-        const {basePrice, days, productId} = this.state;
-        AddAuctionMutation(basePrice, days, productId, (response) => {
+        const {basePrice, days} = this.state;
+
+        if (basePrice === '') {
+            this.setState({
+                basePrice_error: 'لطفا قیمت پیشنهادی درست وارد کنید.',
+            });
+            return;
+        } else if (days === '') {
+            this.setState({
+                days_error: 'لطفا تعداد روز را به صورت درست وارد کنید.',
+            });
+            return;
+        }
+
+        const deadline = Date.now() + days * 86400 * 1000;
+
+        AddAuctionMutation(basePrice, deadline, this.props.location.state.product.id, (response) => {
             if (response.ok) {
-                toast('ساخته شد.')
+                toast('ساخته شد.');
             }
-            else
+            else {
                 this.setState({
                     basePrice_error: response.errors.basePrice,
                     days_error: response.errors.deadline,
                 });
+            }
         })
     }
 
