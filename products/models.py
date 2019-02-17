@@ -29,7 +29,8 @@ class Auction(models.Model):
             if p['user']['phone'] == user.phone:
                 p['price'] = price
                 return
-        prices += [{'user':{'phone': user.phone,'balance': user.balance, 'firstName': user.first_name, 'lastName': user.last_name}, 'price': price}]
+        prices += [{'user': {'id': user.id, 'phone': user.phone, 'balance': user.balance,
+                             'firstName': user.first_name, 'lastName': user.last_name}, 'price': price}]
         self.prices = json.dumps(prices)
 
     def get_prices(self):

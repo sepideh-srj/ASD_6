@@ -18034,25 +18034,25 @@ module.exports = normalizePayload;
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
-    { path: '/', components: __WEBPACK_IMPORTED_MODULE_6__BaseNavbarQueryRenderer__["a" /* default */] },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_5__products_ProductListQueryRenderer__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/signup', components: __WEBPACK_IMPORTED_MODULE_4__accounts_Signup__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/login', components: __WEBPACK_IMPORTED_MODULE_2__accounts_Login__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/activate', components: __WEBPACK_IMPORTED_MODULE_3__accounts_Activate__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/create-product', components: __WEBPACK_IMPORTED_MODULE_7__products_CreateProduct__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/products/:id', components: __WEBPACK_IMPORTED_MODULE_8__products_ProductRenderer__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/create-auction/', components: __WEBPACK_IMPORTED_MODULE_15__auction_AuctionCreate__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/product-auction/', components: __WEBPACK_IMPORTED_MODULE_16__auction_AuctionProduct__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
-        { path: '/profile/:username', components: __WEBPACK_IMPORTED_MODULE_9__profile_UserProfile__["a" /* default */] },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_11__profile_EditProfile__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/bought/:username', components: __WEBPACK_IMPORTED_MODULE_12__profile_BoughtListRenderer__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/selling/:username', components: __WEBPACK_IMPORTED_MODULE_13__profile_SellingListRenderer__["a" /* default */] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/message/:username', components: __WEBPACK_IMPORTED_MODULE_14__profile_MessageRenderer__["a" /* default */] })
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/public/:username', components: __WEBPACK_IMPORTED_MODULE_10__public_PublicProfileRenderer__["a" /* default */] })
+        { path: '/', components: __WEBPACK_IMPORTED_MODULE_6__BaseNavbarQueryRenderer__["a" /* default */] },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_5__products_ProductListQueryRenderer__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/signup', components: __WEBPACK_IMPORTED_MODULE_4__accounts_Signup__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/login', components: __WEBPACK_IMPORTED_MODULE_2__accounts_Login__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/activate', components: __WEBPACK_IMPORTED_MODULE_3__accounts_Activate__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/create-product', components: __WEBPACK_IMPORTED_MODULE_7__products_CreateProduct__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/products/:id', components: __WEBPACK_IMPORTED_MODULE_8__products_ProductRenderer__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/create-auction/', components: __WEBPACK_IMPORTED_MODULE_15__auction_AuctionCreate__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/product-auction/', components: __WEBPACK_IMPORTED_MODULE_16__auction_AuctionProduct__["a" /* default */] }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
+                { path: '/profile/:username', components: __WEBPACK_IMPORTED_MODULE_9__profile_UserProfile__["a" /* default */] },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* IndexRoute */], { components: __WEBPACK_IMPORTED_MODULE_11__profile_EditProfile__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/bought/:username', components: __WEBPACK_IMPORTED_MODULE_12__profile_BoughtListRenderer__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/selling/:username', components: __WEBPACK_IMPORTED_MODULE_13__profile_SellingListRenderer__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/message/:username', components: __WEBPACK_IMPORTED_MODULE_14__profile_MessageRenderer__["a" /* default */] })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/public/:username', components: __WEBPACK_IMPORTED_MODULE_10__public_PublicProfileRenderer__["a" /* default */] })
 ));
 
 /***/ }),
@@ -18326,6 +18326,10 @@ class BaseNavbar extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 phone: this.props.logged.phone
             });
             localStorage.setItem('username', this.props.logged.id);
+            localStorage.setItem('phone', this.props.logged.phone);
+            localStorage.setItem('firstName', this.props.logged.firstName);
+            localStorage.setItem('lastName', this.props.logged.lastName);
+            localStorage.setItem('balance', this.props.logged.balance);
             localStorage.setItem('addresses', JSON.stringify(this.props.logged.addresses));
             this.props.change_balance(this.props.logged.balance);
         } else {
@@ -19531,14 +19535,14 @@ class AuctionList extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     constructor(props) {
         super(props);
 
+        let auction = Object.assign({}, props.auction);
+        auction.prices = JSON.parse(auction.prices);
+
         this.state = {
             price: '',
-            price_error: null
+            price_error: null,
+            auction
         };
-    }
-
-    componentDidMount() {
-        alert(JSON.stringify(this.props));
     }
 
     render() {
@@ -19560,35 +19564,38 @@ class AuctionList extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_1_reactstrap__["b" /* Form */],
                     null,
-                    JSON.parse(this.props.auction.prices).map((price, key) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__AuctionCard__["a" /* default */], {
+                    this.state.auction.prices.map((price, key) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__AuctionCard__["a" /* default */], {
                         key: key,
                         price: price })),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_reactstrap__["e" /* Input */], { type: "auction",
-                        name: "text",
-                        id: "auction",
-                        placeholder: "قیمت (تومان)",
-                        valid: this.state.price_error == null ? undefined : false,
-                        onChange: e => this.setState({
-                            price: e.target.value,
-                            price_error: null
+                    this.props.is_seller ? null : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        null,
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_reactstrap__["e" /* Input */], { type: "auction",
+                            name: "text",
+                            id: "auction",
+                            placeholder: "قیمت (تومان)",
+                            valid: this.state.price_error == null ? undefined : false,
+                            onChange: e => this.setState({
+                                price: e.target.value,
+                                price_error: null
+                            }),
+                            value: this.state.price
                         }),
-                        value: this.state.price
-                    }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_reactstrap__["g" /* Button */],
-                        { type: "button", className: "submit", outline: true, color: "primary",
-                            disabled: this.props.is_seller,
-                            onClick: () => this._confirm() },
-                        "\u062B\u0628\u062A"
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Col */], { sm: 2 }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Col */],
-                        { sm: 10 },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_1_reactstrap__["f" /* FormFeedback */],
-                            null,
-                            this.state.price_error
+                            __WEBPACK_IMPORTED_MODULE_1_reactstrap__["g" /* Button */],
+                            { type: "button", className: "submit", outline: true, color: "primary",
+                                onClick: () => this._confirm() },
+                            "\u062B\u0628\u062A"
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Col */], { sm: 2 }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_1_reactstrap__["a" /* Col */],
+                            { sm: 10 },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                __WEBPACK_IMPORTED_MODULE_1_reactstrap__["f" /* FormFeedback */],
+                                null,
+                                this.state.price_error
+                            )
                         )
                     )
                 )
@@ -19600,18 +19607,47 @@ class AuctionList extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         var _this = this;
 
         return _asyncToGenerator(function* () {
-            if (_this.state.price === '') {
+            let { price, price_error, auction } = _this.state;
+
+            if (price === '') {
                 _this.setState({ price_error: 'قیمت نمی‌تواند خالی باشد!' });
                 return;
             }
 
-            if (_this.state.price_error) {
+            if (price_error) {
                 return;
             }
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__mutations_SuggestPriceMutation__["a" /* default */])(_this.props.auction.id, _this.state.price, function (response) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__mutations_SuggestPriceMutation__["a" /* default */])(auction.id, price, function (response) {
                 if (response.ok) {
-                    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_toastify__["toast"])('قمیت پیشنهادی شما با موفقیت ثبت شد.');
+                    // toast('قمیت پیشنهادی شما با موفقیت ثبت شد.');
+
+                    let index = null;
+                    alert(price['user']['id']);
+
+                    auction.prices.map(function (price, key) {
+                        if (price['user']['id'] === localStorage.getItem('username')) {
+                            index = key;
+                        }
+                    });
+
+                    if (index != null) {
+                        auction.prices[index]['price'] = price;
+
+                        _this.setState({ auction });
+                    } else {
+                        auction.prices.push({
+                            'user': {
+                                'id': localStorage.getItem('username'),
+                                'phone': localStorage.getItem('phone'),
+                                'balance': localStorage.getItem('balance'),
+                                'firstName': localStorage.getItem('firstName'),
+                                'lastName': localStorage.getItem('lastName')
+                            },
+                            'price': price
+                        });
+                    }
+
                     _this.setState({
                         price: '',
                         price_error: null
@@ -23837,8 +23873,6 @@ class ProductDescription extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.C
         let { image, title, address, category, subCategory, description, seller, auction, comments, price } = this.props.product;
         let is_seller = seller.id === localStorage.getItem('username');
         let logged_in = localStorage.getItem('logged') === 'true';
-
-        alert(JSON.stringify(auction));
 
         if (is_seller) {
             if (this.state.remove_confirm) seller_button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -29700,7 +29734,7 @@ exports = module.exports = __webpack_require__(23)(undefined);
 
 
 // module
-exports.push([module.i, ".tabs-wrapper input[type=radio] {\n  display: none; }\n.tabs-wrapper .tab-head {\n  transition: background 0.4s ease-in-out, height 0.2s linear;\n  display: inline-block;\n  cursor: pointer;\n  color: #DBDBD3;\n  padding: 1rem;\n  height: 3em;\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n  background: #525252;\n  text-align: center; }\n  .tabs-wrapper .tab-head:last-of-type {\n    border-bottom: none; }\n  .tabs-wrapper .tab-head:hover {\n    background: #667876; }\n  @media screen and (max-width: 600px) {\n    .tabs-wrapper .tab-head {\n      display: block;\n      border-bottom: 2px solid #4D4C47;\n      border-radius: 0; } }\n  .tabs-wrapper .tab-head.checked {\n    background: #B8B63E;\n    color: #F2F2F2; }\n@media screen and (max-width: 600px) {\n  .tabs-wrapper {\n    margin: 0; } }\n\n.tab-body {\n  position: absolute;\n  top: -9999px;\n  opacity: 0;\n  padding: 10px; }\n\n.tab-body-wrapper {\n  width: 100%;\n  padding: 1rem;\n  background: #F7EEC6;\n  border-top: #B8B63E 5px solid;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n  border-top-right-radius: 3px;\n  -webkit-animation-delay: 0.2s;\n  -webkit-animation-duration: 1.5s;\n  -webkit-animation-name: show;\n  -webkit-animation-fill-mode: forwards;\n  -moz-animation-delay: 0.2s;\n  -moz-animation-duration: 1.5s;\n  -moz-animation-name: show;\n  -moz-animation-fill-mode: forwards;\n  -o-animation-delay: 0.2s;\n  -o-animation-duration: 1.5s;\n  -o-animation-name: show;\n  -o-animation-fill-mode: forwards;\n  animation-delay: 0.2s;\n  animation-duration: 1.5s;\n  animation-name: show;\n  animation-fill-mode: forwards; }\n  @media screen and (max-width: 600px) {\n    .tab-body-wrapper {\n      border: none;\n      border-radius: 0; } }\n\n#tab1:checked ~ .tab-body-wrapper #tab-body-1, #tab2:checked ~ .tab-body-wrapper #tab-body-2, #tab3:checked ~ .tab-body-wrapper #tab-body-3, #tab4:checked ~ .tab-body-wrapper #tab-body-4 {\n  position: relative;\n  top: 0px;\n  /* Choose one */\n  /* @include animation(0.2s,0.8s,content-opacity); */\n  /* @include animation(0.2s,0.8s,content-rotate-x); */\n  /* @include animation(0.2s,0.8s,content-rotate-y); */\n  /* @include animation(0.2s,0.8s,content-rotate-both); */\n  /* @include animation(0.2s,0.8s,content-pop-in); */\n  /* @include animation(0.2s,0.8s,content-pop-out); */\n  /* @include animation(0.1s,1s,content-slide-bot); */\n  -webkit-animation-delay: 0.1s;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-name: content-slide-top;\n  -webkit-animation-fill-mode: forwards;\n  -moz-animation-delay: 0.1s;\n  -moz-animation-duration: 1s;\n  -moz-animation-name: content-slide-top;\n  -moz-animation-fill-mode: forwards;\n  -o-animation-delay: 0.1s;\n  -o-animation-duration: 1s;\n  -o-animation-name: content-slide-top;\n  -o-animation-fill-mode: forwards;\n  animation-delay: 0.1s;\n  animation-duration: 1s;\n  animation-name: content-slide-top;\n  animation-fill-mode: forwards; }\n", ""]);
+exports.push([module.i, ".tabs-wrapper input[type=radio] {\r\n  display: none; }\r\n.tabs-wrapper .tab-head {\r\n  transition: background 0.4s ease-in-out, height 0.2s linear;\r\n  display: inline-block;\r\n  cursor: pointer;\r\n  color: #DBDBD3;\r\n  padding: 1rem;\r\n  height: 3em;\r\n  border-top-left-radius: 3px;\r\n  border-top-right-radius: 3px;\r\n  background: #525252;\r\n  text-align: center; }\r\n  .tabs-wrapper .tab-head:last-of-type {\r\n    border-bottom: none; }\r\n  .tabs-wrapper .tab-head:hover {\r\n    background: #667876; }\r\n  @media screen and (max-width: 600px) {\r\n    .tabs-wrapper .tab-head {\r\n      display: block;\r\n      border-bottom: 2px solid #4D4C47;\r\n      border-radius: 0; } }\r\n  .tabs-wrapper .tab-head.checked {\r\n    background: #B8B63E;\r\n    color: #F2F2F2; }\r\n@media screen and (max-width: 600px) {\r\n  .tabs-wrapper {\r\n    margin: 0; } }\r\n\r\n.tab-body {\r\n  position: absolute;\r\n  top: -9999px;\r\n  opacity: 0;\r\n  padding: 10px; }\r\n\r\n.tab-body-wrapper {\r\n  width: 100%;\r\n  padding: 1rem;\r\n  background: #F7EEC6;\r\n  border-top: #B8B63E 5px solid;\r\n  border-bottom-right-radius: 3px;\r\n  border-bottom-left-radius: 3px;\r\n  border-top-right-radius: 3px;\r\n  -webkit-animation-delay: 0.2s;\r\n  -webkit-animation-duration: 1.5s;\r\n  -webkit-animation-name: show;\r\n  -webkit-animation-fill-mode: forwards;\r\n  -moz-animation-delay: 0.2s;\r\n  -moz-animation-duration: 1.5s;\r\n  -moz-animation-name: show;\r\n  -moz-animation-fill-mode: forwards;\r\n  -o-animation-delay: 0.2s;\r\n  -o-animation-duration: 1.5s;\r\n  -o-animation-name: show;\r\n  -o-animation-fill-mode: forwards;\r\n  animation-delay: 0.2s;\r\n  animation-duration: 1.5s;\r\n  animation-name: show;\r\n  animation-fill-mode: forwards; }\r\n  @media screen and (max-width: 600px) {\r\n    .tab-body-wrapper {\r\n      border: none;\r\n      border-radius: 0; } }\r\n\r\n#tab1:checked ~ .tab-body-wrapper #tab-body-1, #tab2:checked ~ .tab-body-wrapper #tab-body-2, #tab3:checked ~ .tab-body-wrapper #tab-body-3, #tab4:checked ~ .tab-body-wrapper #tab-body-4 {\r\n  position: relative;\r\n  top: 0px;\r\n  /* Choose one */\r\n  /* @include animation(0.2s,0.8s,content-opacity); */\r\n  /* @include animation(0.2s,0.8s,content-rotate-x); */\r\n  /* @include animation(0.2s,0.8s,content-rotate-y); */\r\n  /* @include animation(0.2s,0.8s,content-rotate-both); */\r\n  /* @include animation(0.2s,0.8s,content-pop-in); */\r\n  /* @include animation(0.2s,0.8s,content-pop-out); */\r\n  /* @include animation(0.1s,1s,content-slide-bot); */\r\n  -webkit-animation-delay: 0.1s;\r\n  -webkit-animation-duration: 1s;\r\n  -webkit-animation-name: content-slide-top;\r\n  -webkit-animation-fill-mode: forwards;\r\n  -moz-animation-delay: 0.1s;\r\n  -moz-animation-duration: 1s;\r\n  -moz-animation-name: content-slide-top;\r\n  -moz-animation-fill-mode: forwards;\r\n  -o-animation-delay: 0.1s;\r\n  -o-animation-duration: 1s;\r\n  -o-animation-name: content-slide-top;\r\n  -o-animation-fill-mode: forwards;\r\n  animation-delay: 0.1s;\r\n  animation-duration: 1s;\r\n  animation-name: content-slide-top;\r\n  animation-fill-mode: forwards; }\r\n", ""]);
 
 // exports
 

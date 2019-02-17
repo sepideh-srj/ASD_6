@@ -36,7 +36,11 @@ class BaseNavbar extends Component {
                 phone: this.props.logged.phone
             });
             localStorage.setItem('username', this.props.logged.id);
-            localStorage.setItem('addresses', JSON.stringify(this.props.logged.addresses))
+            localStorage.setItem('phone', this.props.logged.phone);
+            localStorage.setItem('firstName', this.props.logged.firstName);
+            localStorage.setItem('lastName', this.props.logged.lastName);
+            localStorage.setItem('balance', this.props.logged.balance);
+            localStorage.setItem('addresses', JSON.stringify(this.props.logged.addresses));
             this.props.change_balance(this.props.logged.balance);
         } else {
             localStorage.setItem('addresses', null)

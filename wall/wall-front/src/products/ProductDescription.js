@@ -46,9 +46,6 @@ class ProductDescription extends React.Component {
         let is_seller = seller.id === localStorage.getItem('username');
         let logged_in = localStorage.getItem('logged') === 'true';
 
-
-        alert(JSON.stringify(auction));
-
         if (is_seller) {
             if (this.state.remove_confirm)
                 seller_button = <div>
@@ -176,6 +173,7 @@ export default createFragmentContainer(ProductDescription, {
                 # {
                 #     price
                 #     user{
+                #         id
                 #         firstName
                 #         lastName
                 #         phone

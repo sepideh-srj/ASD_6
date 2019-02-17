@@ -9,14 +9,14 @@ class AuctionList extends Component {
     constructor(props) {
         super(props);
 
+        let auction = Object.assign({}, props.auction);
+        auction.prices = JSON.parse(auction.prices);
+
         this.state = {
             price: '',
-            price_error: null
+            price_error: null,
+            auction
         };
-    }
-
-    componentDidMount(){
-        alert(JSON.stringify(this.props))
     }
 
     render() {
@@ -27,31 +27,35 @@ class AuctionList extends Component {
                 </Col>
                 <Col sm={12}>
                     <Form>
-                        {(JSON.parse(this.props.auction.prices)).map((price, key) => <AuctionCard
+                        {this.state.auction.prices.map((price, key) => <AuctionCard
                             key={key}
                             price={price}/>)}
 
-                        <Input type="auction"
-                               name="text"
-                               id="auction"
-                               placeholder={"قیمت (تومان)"}
-                               valid={this.state.price_error == null ? undefined : false}
-                               onChange={(e) => this.setState({
-                                   price: e.target.value,
-                                   price_error: null
-                               })}
-                               value={this.state.price}
-                        />
+                        {
+                            this.props.is_seller ? null :
+                                <div>
+                                    <Input type="auction"
+                                           name="text"
+                                           id="auction"
+                                           placeholder={"قیمت (تومان)"}
+                                           valid={this.state.price_error == null ? undefined : false}
+                                           onChange={(e) => this.setState({
+                                               price: e.target.value,
+                                               price_error: null
+                                           })}
+                                           value={this.state.price}
+                                    />
 
-                        <Button type="button" className="submit" outline color="primary"
-                                disabled={this.props.is_seller}
-                                onClick={() => this._confirm()}>ثبت</Button>
-                        <Col sm={2}/>
-                        <Col sm={10}>
-                            <FormFeedback>
-                                {this.state.price_error}
-                            </FormFeedback>
-                        </Col>
+                                    <Button type="button" className="submit" outline color="primary"
+                                            onClick={() => this._confirm()}>ثبت</Button>
+                                    <Col sm={2}/>
+                                    <Col sm={10}>
+                                        <FormFeedback>
+                                            {this.state.price_error}
+                                        </FormFeedback>
+                                    </Col>
+                                </div>
+                        }
                     </Form>
                 </Col>
             </Card>
@@ -59,28 +63,56 @@ class AuctionList extends Component {
     }
 
     async _confirm() {
-        if (this.state.price === '') {
+        let {price, price_error, auction} = this.state;
+
+        if (price === '') {
             this.setState({price_error: 'قیمت نمی‌تواند خالی باشد!'});
             return;
         }
 
-        if (this.state.price_error) {
+        if (price_error) {
             return;
         }
-        
-        SuggestPriceMutation(this.props.auction.id, this.state.price, (response) => {
-            if (response.ok) {
-                toast('قمیت پیشنهادی شما با موفقیت ثبت شد.');
-                this.setState({
-                    price: '',
-                    price_error: null
-                })
+
+        SuggestPriceMutation(auction.id, price, (response) => {
+                if (response.ok) {
+                    toast('قمیت پیشنهادی شما با موفقیت ثبت شد.');
+
+                    let index = null;
+                    auction.prices.map((price, key) => {
+                        if (price['user']['id'] === localStorage.getItem('username')) {
+                            index = key;
+                        }
+                    });
+
+                    if (index != null) {
+                        auction.prices[index]['price'] = price;
+
+                        this.setState({auction});
+                    } else {
+                        auction.prices.push({
+                            'user': {
+                                'id': localStorage.getItem('username'),
+                                'phone': localStorage.getItem('phone'),
+                                'balance': localStorage.getItem('balance'),
+                                'firstName': localStorage.getItem('firstName'),
+                                'lastName': localStorage.getItem('lastName')
+                            },
+                            'price': price
+                        })
+                    }
+
+                    this.setState({
+                        price: '',
+                        price_error: null
+                    });
+                }
+                else
+                    this.setState({
+                        price_error: response.errors.price,
+                    });
             }
-            else
-                this.setState({
-                    price_error: response.errors.price,
-                });
-        })
+        )
     }
 }
 
