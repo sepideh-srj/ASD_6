@@ -1,11 +1,14 @@
 import graphene
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 from graphene import relay
 
 from accounts.models import Image
-from products.models import Product, Comment, Request
+from products.models import Auction
+from products.models import Product, Comment
+from products.models import Request
 from utils.mutation import SafeClientIDMutation
-from django.db.models import Q
+
 
 class ProductCreate(SafeClientIDMutation):
     login_required = True
@@ -73,6 +76,7 @@ class AddCommentMutation(SafeClientIDMutation):
         comment.save()
         return cls(comment=comment)
 
+
 class AddRequestMutation(SafeClientIDMutation):
     login_required = True
 
@@ -89,4 +93,44 @@ class AddRequestMutation(SafeClientIDMutation):
         products = Product.objects.filter(Q(buyer=None) & Q(hidden=False) & Q(title=title))
         if products.count() > 0:
             request.sendNotif(products[0].id)
+        return cls()
+
+
+class AddAuctionMutation(SafeClientIDMutation):
+    login_required = True
+
+    class Input:
+        base_price = graphene.Int(required=True)
+        deadline = graphene.String(required=True)
+        product = graphene.ID(required=True)
+
+    product = graphene.Field('products.schema.ProductType')
+
+    @classmethod
+    def safe_mutate(cls, root, info, **kwargs):
+        base_price = kwargs.get('base_price')
+        deadline = kwargs.get('deadline')
+        product = relay.Node.get_node_from_global_id(info, kwargs.get('product'))
+        auction = Auction(product=product, base_price=base_price, deadline=deadline)
+        auction.full_clean()
+        auction.save()
+        return cls()
+
+
+class SuggestPriceMutation(SafeClientIDMutation):
+    login_required = True
+
+    class Input:
+        auction = graphene.ID(required=True)
+        price = graphene.Int(required=True)
+
+    @classmethod
+    def safe_mutate(cls, root, info, **kwargs):
+        user = info.context.user
+        # user = User.objects.get(phone=user.phone)
+        price = kwargs.get('price')
+        auction = relay.Node.get_node_from_global_id(info, kwargs.get('auction'))
+        auction.add_price(user, price)
+        auction.full_clean()
+        auction.save()
         return cls()

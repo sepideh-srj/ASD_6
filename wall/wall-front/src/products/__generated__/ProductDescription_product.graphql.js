@@ -30,6 +30,12 @@ export type ProductDescription_product = {|
     |};
   |}>;
   +title: string;
+  +auction: ?{|
+    +id: string;
+    +basePrice: number;
+    +deadline: string;
+    +prices: string;
+  |};
 |};
 */
 
@@ -41,10 +47,35 @@ const fragment /*: ConcreteFragment*/ = {
   "name": "ProductDescription_product",
   "selections": [
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
       "args": null,
-      "name": "image",
+      "concreteType": "UserType",
+      "name": "seller",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "firstName",
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "lastName",
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "id",
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     },
     {
@@ -79,39 +110,14 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "description",
+      "name": "image",
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "concreteType": "UserType",
-      "name": "seller",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "firstName",
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "lastName",
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "id",
-          "storageKey": null
-        }
-      ],
+      "name": "description",
       "storageKey": null
     },
     {
@@ -176,6 +182,45 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "title",
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "args": null,
+      "concreteType": "AuctionType",
+      "name": "auction",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "id",
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "basePrice",
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "deadline",
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "prices",
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     }
   ],

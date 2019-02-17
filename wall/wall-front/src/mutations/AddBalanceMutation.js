@@ -6,14 +6,15 @@ const mutation = graphql`
         addBalance(input: $input){
             ok
             errors{
+                amount
                 nonFieldErrors
             }
         }
     }
 `;
 
-export default (callback) => {
-    const variables = {input:{}};
+export default (amount, callback) => {
+    const variables = {input:{amount}};
     commitMutation(
         environment,
         {

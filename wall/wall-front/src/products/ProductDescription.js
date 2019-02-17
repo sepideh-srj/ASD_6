@@ -41,9 +41,10 @@ class ProductDescription extends React.Component {
         let button_text = 'خرید';
         let button_state = false;
         let seller_button = null;
-        let auction_button = null;
-        let {id, image, title, address, category, subCategory, description, seller, comments, price} = this.props.product;
+        let auction_button1 = null;
+        let {image, title, address, category, subCategory, description, seller, auction, comments, price} = this.props.product;
         let is_seller = seller.id === localStorage.getItem('username');
+        let logged_in = localStorage.getItem('logged') === 'true';
 
         if (is_seller) {
             if (this.state.remove_confirm)
@@ -61,10 +62,21 @@ class ProductDescription extends React.Component {
                 seller_button = <Button outline color="primary"
                                         onClick={() => (this.setState({remove_confirm: true}))}>حذف محصول</Button>;
 
-            auction_button = <Button outline color="primary"
-                                     onClick={() => this.props.router.push('/create-auction/?id=' + id)}>گذاشتن
-                مزایده</Button>;
+            auction_button1 = <Button outline color="primary"
+                                      onClick={() => this.props.router.push({
+                                          pathname: '/create-auction/',
+                                          search: '',
+                                          state: {product: this.props.product}
+                                      })}>گذاشتن مزایده</Button>;
+
         }
+
+        let auction_button2 = <Button outline color="primary"
+                                      onClick={() => this.props.router.push({
+                                          pathname: '/product-auction/',
+                                          search: '',
+                                          state: {product: this.props.product}
+                                      })}>دیدن مزایده</Button>;
 
         return (
             <div className="content container">
@@ -105,7 +117,8 @@ class ProductDescription extends React.Component {
                                 <div className="row">
                                     <div className="product-auction-btn">
                                         {
-                                            (is_seller ? auction_button : null)
+                                            (logged_in ?
+                                                (auction ? auction_button2 : (is_seller ? auction_button1 : null)) : null)
                                         }
                                     </div>
                                     <div>
@@ -152,6 +165,21 @@ export default createFragmentContainer(ProductDescription, {
                 }
             }
             title
+            auction{
+                id
+                basePrice
+                deadline
+                prices
+                # {
+                #     price
+                #     user{
+                #         id
+                #         firstName
+                #         lastName
+                #         phone
+                #     }
+                # }
+            }
         }
     `
 });

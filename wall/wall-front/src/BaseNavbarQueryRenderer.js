@@ -9,10 +9,11 @@ class BaseNavbarQueryRenderer extends React.Component {
         this.state = {balance: 0, name: ''}
     }
 
-    change_balance(offset, coef = 0, name=null) {
+    change_balance(offset, coef = 0, name = null) {
         let newBalance = offset + coef * this.state.balance;
-        this.setState({balance: newBalance})
-        name && this.setState({name})
+        this.setState({balance: newBalance});
+        localStorage.setItem('balance', newBalance);
+        name && this.setState({name});
         return newBalance
     }
 

@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 
 
@@ -22,6 +24,31 @@ class Request(models.Model):
         text = 'سامانه وال\n' + 'کالای درخواستی شما به نام ' + self.title + ' در لینک ' + url + 'موجود شد.'
         from utils.sms import SMS
         SMS(self.user.phone, text).start()
+
+
+class Auction(models.Model):
+    base_price = models.IntegerField('قیمت پایه')
+    deadline = models.CharField('زمان', max_length=1000)
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
+    prices = models.CharField('قیمت های پیشنهادی', max_length=100000, default='[]')
+
+    def set_prices(self):
+        pass
+
+    def add_price(self, user, price):
+        prices = self.get_prices()
+        for p in prices:
+            if p['user']['phone'] == user.phone:
+                p['price'] = price
+                self.prices = json.dumps(prices)
+                return
+        prices += [{'user': {'id': user.id, 'phone': user.phone, 'balance': user.balance,
+                             'firstName': user.first_name, 'lastName': user.last_name}, 'price': price}]
+        self.prices = json.dumps(prices)
+
+    def get_prices(self):
+        return json.loads(self.prices)
+
 
 class Product(models.Model):
     price = models.IntegerField('قیمت')

@@ -7,6 +7,7 @@ from accounts.models import User, Message
 
 from graphene import relay
 
+
 class EditProfileMutation(SafeClientIDMutation):
     login_required = True
 
@@ -21,28 +22,30 @@ class EditProfileMutation(SafeClientIDMutation):
     def safe_mutate(cls, root, info, **kwargs):
         user = info.context.user
         for k, v in kwargs.items():
-            if(k == "password" and v == ""):
+            if (k == "password" and v == ""):
                 continue
             setattr(user, k, v)
         user.full_clean()
         user.save()
         return cls(user=user)
 
+
 class AddBalanceMutation(SafeClientIDMutation):
     login_required = True
 
     class Input:
-        pass
+        amount = graphene.Int()
 
     user = graphene.Field('accounts.schema.UserType')
 
     @classmethod
     def safe_mutate(cls, root, info, **kwargs):
         user = info.context.user
-        setattr(user, 'balance', getattr(user, 'balance') + 10)
+        setattr(user, 'balance', getattr(user, 'balance') + kwargs.get('amount'))
         user.full_clean()
         user.save()
         return cls(user=user)
+
 
 class AddAddressMutation(SafeClientIDMutation):
     login_required = True
@@ -59,6 +62,7 @@ class AddAddressMutation(SafeClientIDMutation):
         user.full_clean()
         user.save()
         return cls(user=user)
+
 
 class SendMessageMutation(SafeClientIDMutation):
     login_required = True
@@ -77,6 +81,7 @@ class SendMessageMutation(SafeClientIDMutation):
         message.full_clean()
         message.save()
         return cls(message=message)
+
 
 class BuyProductMutation(SafeClientIDMutation):
     login_required = True

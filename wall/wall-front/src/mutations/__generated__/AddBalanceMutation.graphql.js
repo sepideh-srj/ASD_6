@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 028b5a4582f8f4aa5710da189ba3d087
+ * @relayHash a47ed5b020d6654fd51a5d8abbcf9cb0
  */
 
 /* eslint-disable */
@@ -11,6 +11,7 @@
 import type {ConcreteBatch} from 'relay-runtime';
 export type AddBalanceMutationVariables = {|
   input: {
+    amount?: ?number;
     clientMutationId?: ?string;
   };
 |};
@@ -18,6 +19,7 @@ export type AddBalanceMutationResponse = {|
   +addBalance: ?{|
     +ok: boolean;
     +errors: ?{|
+      +amount: ?$ReadOnlyArray<?string>;
       +nonFieldErrors: ?$ReadOnlyArray<?string>;
     |};
   |};
@@ -32,6 +34,7 @@ mutation AddBalanceMutation(
   addBalance(input: $input) {
     ok
     errors {
+      amount
       nonFieldErrors
     }
   }
@@ -82,6 +85,13 @@ const batch /*: ConcreteBatch*/ = {
             "name": "errors",
             "plural": false,
             "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "amount",
+                "storageKey": null
+              },
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -149,6 +159,13 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
+                "name": "amount",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
                 "name": "nonFieldErrors",
                 "storageKey": null
               }
@@ -160,7 +177,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation AddBalanceMutation(\n  $input: AddBalanceMutationInput!\n) {\n  addBalance(input: $input) {\n    ok\n    errors {\n      nonFieldErrors\n    }\n  }\n}\n"
+  "text": "mutation AddBalanceMutation(\n  $input: AddBalanceMutationInput!\n) {\n  addBalance(input: $input) {\n    ok\n    errors {\n      amount\n      nonFieldErrors\n    }\n  }\n}\n"
 };
 
 module.exports = batch;
