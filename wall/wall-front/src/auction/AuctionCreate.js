@@ -14,7 +14,7 @@ class AuctionCreate extends React.Component {
             basePrice_error: null,
             days: '',
             days_error: null,
-            disabled: false,
+            confirm: false,
         };
     }
 
@@ -28,7 +28,7 @@ class AuctionCreate extends React.Component {
 
                     <div className="col col-md-9 order-md-1">
                         <div className="login-form-container">
-                        <ToastContainer/>
+                            <ToastContainer/>
                             <Form>
                                 <FormGroup row>
                                     <Label for="title" sm={2}>قیمت پایه</Label>
@@ -70,9 +70,14 @@ class AuctionCreate extends React.Component {
                                         </FormFeedback>
                                     </Col>
                                 </FormGroup>
-                                <Button className="submit" outline color="primary"
-                                        disabled={this.state.disabled}
-                                        onClick={() => this._confirm()}>ثبت</Button>
+                                {this.state.confirm ?
+                                    <Col sm={10}>
+                                        <FormFeedback>
+                                            {'ثبت شد!!'}
+                                        </FormFeedback>
+                                    </Col> :
+                                    <Button className="submit" outline color="primary"
+                                            onClick={() => this._confirm()}>ثبت</Button>}
                             </Form>
                         </div>
                     </div>
@@ -101,7 +106,7 @@ class AuctionCreate extends React.Component {
         AddAuctionMutation(basePrice, deadline, this.props.location.state.product.id, (response) => {
             if (response.ok) {
                 toast('ساخته شد.');
-                this.setState({disabled: true});
+                this.setState({confirm: true});
             }
             else {
                 this.setState({

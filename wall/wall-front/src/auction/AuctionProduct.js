@@ -16,7 +16,7 @@ class AuctionProduct extends React.Component {
     }
 
     async auction() {
-        SuggestPriceMutation(this.props.product.id, (response) => {
+        SuggestPriceMutation(this.props.location.state.product.id, (response) => {
             if (response.ok) {
                 this.props.router.push('/');
                 toast('کالای مورد نظر خریده شد.');
@@ -27,7 +27,7 @@ class AuctionProduct extends React.Component {
     }
 
     render() {
-        let {image, title, address, category, subCategory, seller, auction, price} = this.props.location.state.product;
+        let {image, title, address, category, subCategory, seller, auction} = this.props.location.state.product;
         let is_seller = seller.id === localStorage.getItem('username');
 
         return (
@@ -56,7 +56,8 @@ class AuctionProduct extends React.Component {
                                     />
                                 </div>
 
-                                {<AuctionList auction={auction} is_seller={is_seller}/>}
+                                {<AuctionList auction={auction} is_seller={is_seller}
+                                              change_balance={this.props.change_balance}/>}
                             </div>
                             <div className="bottom-part">
                                 <div className="product-seller">صاحب محصول:
@@ -71,7 +72,7 @@ class AuctionProduct extends React.Component {
                                 </div>
                                 <div className="product-seller">قیمت پایه:
                                     <span>   </span>
-                                    <span>{price}</span>
+                                    <span>{auction.basePrice}</span>
                                 </div>
                             </div>
                         </div>

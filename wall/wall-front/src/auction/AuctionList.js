@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Button, Card, Col, Form, FormFeedback, Input} from "reactstrap";
 import SuggestPriceMutation from "../mutations/SuggestPriceMutation";
+import AddBalanceMutation from "../mutations/AddBalanceMutation";
 import {toast} from "react-toastify";
 import AuctionCard from "./AuctionCard";
 
@@ -62,11 +63,27 @@ class AuctionList extends Component {
         );
     }
 
+    async _addBalance(amount) {
+        AddBalanceMutation(amount, (response) => {
+            if (response.ok) {
+                this.setState({balance: '' + this.props.change_balance(amount, 1)});
+                toast('اعتبار شما افزایش یافت.');
+            }
+        })
+    }
+
     async _confirm() {
         let {price, price_error, auction} = this.state;
+        let balance = localStorage.getItem('balance');
 
         if (price === '') {
             this.setState({price_error: 'قیمت نمی‌تواند خالی باشد!'});
+            return;
+        } else if (parseInt(price) < auction['basePrice']) {
+            this.setState({price_error: 'باید حداقل قیمت پایه را پیشنهاد دهید!'});
+            return;
+        } else if (balance < auction['basePrice']) {
+            toast('لطفا حساب خود را شارژ کنید.');
             return;
         }
 
@@ -80,7 +97,7 @@ class AuctionList extends Component {
 
                     let index = null;
                     auction.prices.map((price, key) => {
-                        if (price['user']['id'] === localStorage.getItem('username')) {
+                        if (price['user'].phone === localStorage.getItem('phone')) {
                             index = key;
                         }
                     });
@@ -90,6 +107,8 @@ class AuctionList extends Component {
 
                         this.setState({auction});
                     } else {
+                        this._addBalance(Math.floor(-0.1 * auction['basePrice']));
+
                         auction.prices.push({
                             'user': {
                                 'id': localStorage.getItem('username'),

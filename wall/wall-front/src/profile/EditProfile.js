@@ -32,174 +32,175 @@ class EditProfile extends React.Component {
 
     render() {
 
- return <QueryRenderer
-                environment={environment}
-                query={ProfileInfoQuery}
-                render={
-                    ({error, props}) => {
-                        if (error) {
-                            return <div>{error.message}</div>
-                        } else if (props) {
-                            this.me = props.me;
-                            return (
-                                <div className="tab-body-wrapper">
-                                    <ToastContainer/>
-                                    <Col className="explanation" sm={12}>
-                                        <span>اطلاعات خود را تکمیل کنید</span>
-                                    </Col>
-                    
-                                    <Col sm={12}>
-                    
-                                        <Form>
-                                            <FormGroup row>
-                                                <Label for="firstName" sm={2}>نام</Label>
-                                                <Col sm={10}>
-                                                    <Input type="text" name="name"
-                                                           id="firstName"
-                                                           valid={this.state.firstName_error == null ? undefined : false}
-                                                           placeholder={props.me.firstName || "نام"}
-                                                           onChange={(e) => this.setState({
-                                                               firstName: e.target.value,
-                                                               firstName_error: null
-                                                           })}
-                                                    />
-                                                </Col>
-                                                <Col sm={2}/>
-                                                <Col sm={10}>
-                                                    <FormFeedback>
-                                                        {this.state.firstName_error}
-                                                    </FormFeedback>
-                                                </Col>
-                                            </FormGroup>
-                                            <FormGroup row>
-                                                <Label for="lastName" sm={2}>نام خانوادگی</Label>
-                                                <Col sm={10}>
-                                                    <Input type="text" name="lastName"
-                                                           id="lastName"
-                                                           valid={this.state.lastName_error == null ? undefined : false}
-                                                           placeholder={props.me.lastName || "نام خانوادگی"}
-                                                           onChange={(e) => this.setState({
-                                                               lastName: e.target.value,
-                                                               lastName_error: null
-                                                           })}
-                                                    />
-                                                </Col>
-                                                <Col sm={2}/>
-                                                <Col sm={10}>
-                                                    <FormFeedback>
-                                                        {this.state.lastName_error}
-                                                    </FormFeedback>
-                                                </Col>
-                                            </FormGroup>
-                                            <FormGroup row>
-                                                <Label for="phone" sm={2}>شماره موبایل</Label>
-                                                <Col sm={10}>
-                                                    <Input type="text" 
-                                                           name="phone"
-                                                           id="phone"
-                                                           value={props.me.phone.substring(1)}
-                                                           dir="rtl"
-                                                           disabled
-                                                    />
-                                                </Col>
-                                            </FormGroup>
-                                            <FormGroup row>
-                                    <Label for="password" sm={2}>رمز عبور جدید</Label>
-                                    <Col sm={10}>
-                                        <Input className="ltr-input" type="text" name="password"
-                                               id="password"
-                                               valid={this.state.password_error == null ? undefined : false}
-                                               placeholder="رمز عبور جدید"
-                                               onChange={(e) => this.setState({
-                                                   password: e.target.value,
-                                                   password_error: null
-                                               })}
-                                        />
-                                    </Col>
-                                    <Col sm={2}/>
-                                    <Col sm={10}>
-                                        <FormFeedback>
-                                            {this.state.password_error}
-                                        </FormFeedback>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                    <Label for="cpassword" sm={2}>تایید رمز عبور جدید</Label>
-                                    <Col sm={10}>
-                                        <Input className="ltr-input" type="text" name="cpassword"
-                                               id="cpassword"
-                                               valid={this.state.cpassword_error == null ? undefined : false}
-                                               placeholder="تایید رمز عبور جدید"
-                                               onChange={(e) => this.setState({
-                                                   cpassword: e.target.value,
-                                                   cpassword_error: null
-                                               })}
-                                        />
-                                    </Col>
-                                    <Col sm={2}/>
-                                    <Col sm={10}>
-                                        <FormFeedback>
-                                            {this.state.cpassword_error}
-                                        </FormFeedback>
-                                    </Col>
-                                </FormGroup>
+        return <QueryRenderer
+            environment={environment}
+            query={ProfileInfoQuery}
+            render={
+                ({error, props}) => {
+                    if (error) {
+                        return <div>{error.message}</div>
+                    } else if (props) {
+                        this.me = props.me;
+                        return (
+                            <div className="tab-body-wrapper">
+                                <ToastContainer/>
+                                <Col className="explanation" sm={12}>
+                                    <span>اطلاعات خود را تکمیل کنید</span>
+                                </Col>
 
-                                <FormGroup row>
-                                    <Label for="balance" sm={2}>اعتبار</Label>
-                                    <Col sm={10}>
-                                        <Input type="text" 
-                                                name="balance"
-                                                id="balance"
-                                                placeholder={props.me.balance}
-                                                value={this.state.balance}
-                                                disabled
-                                        />
-                                        <Button type="button" className="submit" outline color="success"
-                                        onClick={() => this._addBalance()}>افزایش اعتبار</Button>
-                                    </Col>
-                                </FormGroup>
+                                <Col sm={12}>
 
-                                <FormGroup row>
-                                    <Label for="address" sm={2}>آدرس</Label>
-                                    <Col sm={10}>
-                                        <Input type="text" 
-                                                name="address"
-                                                id="address"
-                                                placeholder={"آدرس"}
-                                                value={this.state.address}
-                                                onChange={(e) => this.setState({
-                                                    address: e.target.value,
-                                                })}
-                                        />
-                                        <Button type="button" className="submit" outline color="success"
-                                        onClick={() => this._addAddress()}>افزودن آدرس</Button>
-                                    </Col>
-                                </FormGroup>
+                                    <Form>
+                                        <FormGroup row>
+                                            <Label for="firstName" sm={2}>نام</Label>
+                                            <Col sm={10}>
+                                                <Input type="text" name="name"
+                                                       id="firstName"
+                                                       valid={this.state.firstName_error == null ? undefined : false}
+                                                       placeholder={props.me.firstName || "نام"}
+                                                       onChange={(e) => this.setState({
+                                                           firstName: e.target.value,
+                                                           firstName_error: null
+                                                       })}
+                                                />
+                                            </Col>
+                                            <Col sm={2}/>
+                                            <Col sm={10}>
+                                                <FormFeedback>
+                                                    {this.state.firstName_error}
+                                                </FormFeedback>
+                                            </Col>
+                                        </FormGroup>
+                                        <FormGroup row>
+                                            <Label for="lastName" sm={2}>نام خانوادگی</Label>
+                                            <Col sm={10}>
+                                                <Input type="text" name="lastName"
+                                                       id="lastName"
+                                                       valid={this.state.lastName_error == null ? undefined : false}
+                                                       placeholder={props.me.lastName || "نام خانوادگی"}
+                                                       onChange={(e) => this.setState({
+                                                           lastName: e.target.value,
+                                                           lastName_error: null
+                                                       })}
+                                                />
+                                            </Col>
+                                            <Col sm={2}/>
+                                            <Col sm={10}>
+                                                <FormFeedback>
+                                                    {this.state.lastName_error}
+                                                </FormFeedback>
+                                            </Col>
+                                        </FormGroup>
+                                        <FormGroup row>
+                                            <Label for="phone" sm={2}>شماره موبایل</Label>
+                                            <Col sm={10}>
+                                                <Input type="text"
+                                                       name="phone"
+                                                       id="phone"
+                                                       value={props.me.phone.substring(1)}
+                                                       dir="rtl"
+                                                       disabled
+                                                />
+                                            </Col>
+                                        </FormGroup>
+                                        <FormGroup row>
+                                            <Label for="password" sm={2}>رمز عبور جدید</Label>
+                                            <Col sm={10}>
+                                                <Input className="ltr-input" type="text" name="password"
+                                                       id="password"
+                                                       valid={this.state.password_error == null ? undefined : false}
+                                                       placeholder="رمز عبور جدید"
+                                                       onChange={(e) => this.setState({
+                                                           password: e.target.value,
+                                                           password_error: null
+                                                       })}
+                                                />
+                                            </Col>
+                                            <Col sm={2}/>
+                                            <Col sm={10}>
+                                                <FormFeedback>
+                                                    {this.state.password_error}
+                                                </FormFeedback>
+                                            </Col>
+                                        </FormGroup>
+                                        <FormGroup row>
+                                            <Label for="cpassword" sm={2}>تایید رمز عبور جدید</Label>
+                                            <Col sm={10}>
+                                                <Input className="ltr-input" type="text" name="cpassword"
+                                                       id="cpassword"
+                                                       valid={this.state.cpassword_error == null ? undefined : false}
+                                                       placeholder="تایید رمز عبور جدید"
+                                                       onChange={(e) => this.setState({
+                                                           cpassword: e.target.value,
+                                                           cpassword_error: null
+                                                       })}
+                                                />
+                                            </Col>
+                                            <Col sm={2}/>
+                                            <Col sm={10}>
+                                                <FormFeedback>
+                                                    {this.state.cpassword_error}
+                                                </FormFeedback>
+                                            </Col>
+                                        </FormGroup>
 
-                                <div>
-                                    <div>
-                                        <p>{'آدرس ها:'}</p>
-                                    </div>
-                                    {(this.me.addresses.concat(this.state.additional_addresses)).map((address, key) => <div key={key}>
-                                        <p>{address}</p>
-                                    </div>)}
-                                </div>
+                                        <FormGroup row>
+                                            <Label for="balance" sm={2}>اعتبار</Label>
+                                            <Col sm={10}>
+                                                <Input type="text"
+                                                       name="balance"
+                                                       id="balance"
+                                                       placeholder={props.me.balance}
+                                                       value={this.state.balance}
+                                                       disabled
+                                                />
+                                                <Button type="button" className="submit" outline color="success"
+                                                        onClick={() => this._addBalance()}>افزایش اعتبار</Button>
+                                            </Col>
+                                        </FormGroup>
 
-                                <Button type="button" className="submit" outline color="primary"
-                                        onClick={() => this._confirm()}>ثبت</Button>
-                            </Form>
-                        </Col>
-                    </div>
-                )
-            }
-            return <div>Loading</div>
-        }}
+                                        <FormGroup row>
+                                            <Label for="address" sm={2}>آدرس</Label>
+                                            <Col sm={10}>
+                                                <Input type="text"
+                                                       name="address"
+                                                       id="address"
+                                                       placeholder={"آدرس"}
+                                                       value={this.state.address}
+                                                       onChange={(e) => this.setState({
+                                                           address: e.target.value,
+                                                       })}
+                                                />
+                                                <Button type="button" className="submit" outline color="success"
+                                                        onClick={() => this._addAddress()}>افزودن آدرس</Button>
+                                            </Col>
+                                        </FormGroup>
+
+                                        <div>
+                                            <div>
+                                                <p>{'آدرس ها:'}</p>
+                                            </div>
+                                            {(this.me.addresses.concat(this.state.additional_addresses)).map((address, key) =>
+                                                <div key={key}>
+                                                    <p>{address}</p>
+                                                </div>)}
+                                        </div>
+
+                                        <Button type="button" className="submit" outline color="primary"
+                                                onClick={() => this._confirm()}>ثبت</Button>
+                                    </Form>
+                                </Col>
+                            </div>
+                        )
+                    }
+                    return <div>Loading</div>
+                }}
         />
     }
 
     async _confirm() {
         const {firstName, lastName, password, cpassword} = this.state;
-        if (password !== cpassword){
+        if (password !== cpassword) {
             this.setState({cpassword_error: "تایید رمز عبور اشتباه است!"})
             return
         }
@@ -218,23 +219,26 @@ class EditProfile extends React.Component {
     }
 
     async _addBalance() {
-        AddBalanceMutation((response) => {
+        AddBalanceMutation(10, (response) => {
             if (response.ok) {
-                this.setState({balance: ''+this.props.change_balance(10, 1)})
+                this.setState({balance: '' + this.props.change_balance(10, 1)});
                 toast('اعتبار شما افزایش یافت.');
             }
         })
     }
 
     async _addAddress() {
-        if(this.state.address == ''){
+        if (this.state.address == '') {
             toast('آدرس نمیتواند خالی باشد.')
             return
         }
         AddAddressMutation(this.state.address, (response) => {
             if (response.ok) {
                 localStorage.setItem('addresses', JSON.stringify(JSON.parse(localStorage.getItem('addresses')).concat([this.state.address])))
-                this.setState({additional_addresses: this.state.additional_addresses.concat([this.state.address]), address: ''})
+                this.setState({
+                    additional_addresses: this.state.additional_addresses.concat([this.state.address]),
+                    address: ''
+                })
                 toast('آدرس اضافه شد.');
             }
         })
