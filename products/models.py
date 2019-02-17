@@ -28,6 +28,7 @@ class Auction(models.Model):
         for p in prices:
             if p['user']['phone'] == user.phone:
                 p['price'] = price
+                self.prices = json.dumps(prices)
                 return
         prices += [{'user': {'id': user.id, 'phone': user.phone, 'balance': user.balance,
                              'firstName': user.first_name, 'lastName': user.last_name}, 'price': price}]

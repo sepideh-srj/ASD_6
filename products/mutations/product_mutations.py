@@ -2,7 +2,7 @@ import graphene
 from django.core.exceptions import ValidationError
 from graphene import relay
 
-from accounts.models import Image
+from accounts.models import Image, User
 from products.models import Product, Comment, Auction
 from utils.mutation import SafeClientIDMutation
 
@@ -102,6 +102,7 @@ class SuggestPriceMutation(SafeClientIDMutation):
     @classmethod
     def safe_mutate(cls, root, info, **kwargs):
         user = info.context.user
+        # user = User.objects.get(phone=user.phone)
         price = kwargs.get('price')
         auction = relay.Node.get_node_from_global_id(info, kwargs.get('auction'))
         auction.add_price(user, price)
