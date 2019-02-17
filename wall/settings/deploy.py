@@ -5,7 +5,7 @@ from wall.settings.base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['warm-temple-16283.herokuapp.com']
+ALLOWED_HOSTS = ['fierce-badlands-13595.herokuapp.com']
 
 WSGI_APPLICATION = 'wall.wsgi.application'
 
@@ -15,8 +15,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 
-DROPBOX_OAUTH2_TOKEN = env.str('DROPBOX_TOKEN')
+DROPBOX_OAUTH2_TOKEN = env.str('slkjZh3VnWAAAAAAAAAAMjGKCgnMHENVP-jDx2PPmjI2lshgsA1wguHOrD_-gRXL')
 
 DROPBOX_ROOT_PATH = 'wall'
 
-SITE_URL = 'https://wall.herokuapp.com'
+SITE_URL = 'fierce-badlands-13595.herokuapp.com'
