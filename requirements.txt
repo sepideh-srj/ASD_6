@@ -9,7 +9,7 @@ django-filter==1.1.0
 django-fsm==2.6.0
 -e git+https://github.com/jschneier/django-storages.git@adefe324be22843148b03a2068d2922eaae1a48b#egg=django_storages
 django-webpack-loader==0.5.0
-djangorestframework==3.7.3
+djangorestframework==3.11.2
 dropbox==7.3.1
 envparse==0.2.0
 flake8==3.5.0
